@@ -1,0 +1,7 @@
+dist/
+node_modules/
+lsp.log
+yarn-error.log
+yarn-debug.log
+server/.env
+client/.env.*local
