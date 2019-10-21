@@ -1,8 +1,8 @@
 # Storyscript Playground
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/aeaf8eec-bc04-429f-95be-85fefcefe938/deploy-status)](https://app.netlify.com/sites/confident-heyrovsky-62c2f0/deploys)
+<!-- [![Netlify Status](https://api.netlify.com/api/v1/badges/aeaf8eec-bc04-429f-95be-85fefcefe938/deploy-status)](https://app.netlify.com/sites/confident-heyrovsky-62c2f0/deploys) -->
 [![codecov](https://codecov.io/gh/storyscript/playground/branch/master/graph/badge.svg)](https://codecov.io/gh/storyscript/playground)
-[![Lighthouse](./.lighthouse-badges/lighthouse.svg)](https://playground.storyscript.io)
+<!-- [![Lighthouse](./.lighthouse-badges/lighthouse.svg)](https://playground.storyscript.io) -->
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Storyscript/playground)
@@ -49,8 +49,8 @@ $> yarn playground
 
 [![Lighthouse](./.lighthouse-badges/lighthouse-logo.svg)](https://github.com/GoogleChrome/lighthouse)
 
-[![Lighthouse Accessibility Badge](./.lighthouse-badges/lighthouse_accessibility.svg)](https://playground.storyscript.io)
+<!-- [![Lighthouse Accessibility Badge](./.lighthouse-badges/lighthouse_accessibility.svg)](https://playground.storyscript.io)
 [![Lighthouse Best Practices Badge](./.lighthouse-badges/lighthouse_best-practices.svg)](https://playground.storyscript.io)
 [![Lighthouse Performance Badge](./.lighthouse-badges/lighthouse_performance.svg)](https://playground.storyscript.io)
 [![Lighthouse PWA Badge](./.lighthouse-badges/lighthouse_pwa.svg)](https://playground.storyscript.io)
-[![Lighthouse SEO Badge](./.lighthouse-badges/lighthouse_seo.svg)](https://playground.storyscript.io)
+[![Lighthouse SEO Badge](./.lighthouse-badges/lighthouse_seo.svg)](https://playground.storyscript.io) -->
