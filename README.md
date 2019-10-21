@@ -1,6 +1,6 @@
 # Storyscript Playground
 
-<!-- [![Netlify Status](https://api.netlify.com/api/v1/badges/aeaf8eec-bc04-429f-95be-85fefcefe938/deploy-status)](https://app.netlify.com/sites/confident-heyrovsky-62c2f0/deploys) -->
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aeaf8eec-bc04-429f-95be-85fefcefe938/deploy-status)](https://app.netlify.com/sites/playground-storyscript/deploys)
 [![codecov](https://codecov.io/gh/storyscript/playground/branch/master/graph/badge.svg)](https://codecov.io/gh/storyscript/playground)
 <!-- [![Lighthouse](./.lighthouse-badges/lighthouse.svg)](https://playground.storyscript.io) -->
 
