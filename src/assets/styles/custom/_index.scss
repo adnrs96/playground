@@ -1,0 +1,14 @@
+@import 'fonts';
+@import 'sizes';
+@import 'transitions';
+
+.blurred {
+  filter: blur(5px);
+}
+
+.blurred-3xl {
+  filter: blur(30px);
+}
+.bg-blurred-3xl {
+  backdrop-filter: blur(30px)
+}

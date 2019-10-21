@@ -1,0 +1,27 @@
+@font-face {
+  font-family: Manrope;
+  src: url('~@/assets/fonts/manrope/manrope-bold.otf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Manrope;
+  src: url('~@/assets/fonts/manrope/manrope-semibold.otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Manrope;
+  src: url('~@/assets/fonts/manrope/manrope-regular.otf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Manrope;
+  src: url('~@/assets/fonts/manrope/manrope-medium.otf');
+  font-weight: 500;
+}
+
+.ace_static_highlight {
+  @apply text-base
+}

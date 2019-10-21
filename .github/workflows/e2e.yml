@@ -1,0 +1,28 @@
+name: Playground E2E
+
+on: [pull_request]
+
+jobs:
+  
+  endtoend:
+  
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [12.x]
+    
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Start the integration playground
+        run: yarn stack:playground
+
+      - name: Install dependencies locally
+        run: yarn
+        
+      - name: End2End testing with Percy report
+        run: yarn percy
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN_DASHBOARD }}
+

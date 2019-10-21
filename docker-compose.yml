@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  playground:
+    build: 
+      context: .
+      dockerfile: .docker/Dockerfile.integration
+    ports:
+      - 8080:80
+
+  coverage:
+    image: nginx
+    volumes:
+      - ./coverage/lcov-report:/usr/share/nginx/html
+    ports:
+      - 8180:80

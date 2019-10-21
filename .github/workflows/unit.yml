@@ -1,0 +1,32 @@
+name: Playground Unit Tests
+
+on: [push]
+
+jobs:
+  
+  unit:
+
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Installing dependencies
+        run: yarn 
+      
+      - name: Linting
+        run: yarn lint
+      
+      - name: Testing with coverage
+        run: yarn test:unit
+
+      - name: Uploading to Codecov
+        run: bash <(curl -s https://codecov.io/bash -t $CODECOV_TOKEN)
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      
+      
