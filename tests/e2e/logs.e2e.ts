@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer'
 const { TEST_URL, puppeteerConfig } = require('./puppeteer.config')
 
-describe('Temporary', () => {
+describe('Logs', () => {
   let page: any
   let browser: any
 
@@ -18,6 +18,8 @@ describe('Temporary', () => {
   })
 
   it('should display', async () => {
-    expect(page.$('#playground')).toBeTruthy()
+    expect.assertions(1)
+    await page.waitForSelector('#logs')
+    expect(await page.$('#logs')).toBeTruthy()
   })
 })
