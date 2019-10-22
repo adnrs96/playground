@@ -1,0 +1,82 @@
+[{
+    "name": "Product",
+    "links": [{
+        "title": "Documentation",
+        "href": "//docs.storyscript.io"
+      },
+      {
+        "title": "FAQ",
+        "href": "//docs.storyscript.io/faq"
+      },
+      {
+        "title": "Give Feedback",
+        "href": "//asyncy.click/feedback"
+      }
+    ]
+  },
+  {
+    "name": "Resources",
+    "links": [{
+        "title": "Events",
+        "href": "//storyscript.io/events"
+      },
+      {
+        "title": "Blog",
+        "href": "//storyscript.io/blog"
+      },
+      {
+        "title": "Status",
+        "href": "//status.storyscript.io"
+      }
+    ]
+  },
+  {
+    "name": "Company",
+    "links": [{
+        "title": "About",
+        "href": "//storyscript.io/about"
+      },
+      {
+        "title": "Pricing",
+        "href": "//storyscript.io/pricing"
+      },
+      {
+        "title": "Jobs",
+        "href": "//jobs.lever.co/storyscript"
+      },
+      {
+        "title": "Contact",
+        "href": "//storyscript.io/contact"
+      },
+      {
+        "title": "We are hiring!",
+        "href": "//jobs.lever.co/storyscript",
+        "bold": true
+      }
+    ]
+  },
+  {
+    "children": [{
+      "classes": "flex items-center justify-start sm:justify-end",
+      "children": [{
+          "el": "s-icon",
+          "bind": {
+            "icon": "story",
+            "height": "32",
+            "width": "32"
+          }
+        },
+        {
+          "el": "s-icon",
+          "bind": {
+            "icon": "storyscript",
+            "height": "20",
+            "width": "108",
+            "color": "text-indigo-logo",
+            "class": "ml-2 mt-1"
+          }
+        }
+      ]
+    }]
+  }
+]

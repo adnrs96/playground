@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import { register } from 'register-service-worker'
 import event from './event'
 
@@ -32,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
     offline () {
       event.$emit('sw', { status: 'offline' })
     },
-    error (error) {
+    error (error: any) {
       event.$emit('sw', { status: 'error', error })
     }
   })
