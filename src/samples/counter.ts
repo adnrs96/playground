@@ -5,10 +5,10 @@ const counter: IStorySample = {
   'Compiling Stories…\n' +
   '✔ Compiled 1 story\n\n' +
 
-  'Deploying app <app name>... ⠹\n' +
+  'Deploying app counter...\n' +
   '  ✔ Version 1 of your app has been queued for deployment.\n\n' +
 
-  '  Waiting for deployment to complete…  ⠏\n' +
+  '  Waiting for deployment to complete…\n' +
   '  ✔ Configured 1 story\n' +
   '  - counter.story\n' +
   '  ✔ Deployed 2 services\n' +
