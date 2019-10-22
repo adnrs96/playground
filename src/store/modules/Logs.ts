@@ -1,5 +1,5 @@
 const state = {
-  releasesCount: 1
+  releasesCount: 0
 }
 
 const getters = {

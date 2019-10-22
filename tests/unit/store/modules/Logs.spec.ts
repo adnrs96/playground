@@ -18,7 +18,7 @@ describe('Store::Logs', () => {
       expect.assertions(1)
       it('should return the value', () => {
         const value = store.getters.getReleasesCount
-        expect(value).toEqual(1)
+        expect(value).toEqual(0)
       })
     })
   })
