@@ -1,3 +1,5 @@
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
+
 module.exports = {
   lintOnSave: false,
   pwa: {
@@ -15,5 +17,12 @@ module.exports = {
       maskIcon: 'img/icons/safari-pinned-tab.svg',
       msTileImage: 'img/icons/msapplication-icon-144x144.png'
     }
+  },
+  configureWebpack: {
+    plugins: [
+      new MonacoWebpackPlugin({
+        languages: ['storyscript']
+      })
+    ]
   }
 }
