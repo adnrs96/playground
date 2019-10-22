@@ -29,8 +29,10 @@
       <s-icon
         icon="play"
         :color="`${deploying ? 'text-gray-60' : 'text-indigo-60'}`"
-        class="mr-3"
+        class="mr-2 flex items-center"
         :clickable="!deploying"
+        width="12"
+        height="12"
       />
       <s-text
         p="3"
