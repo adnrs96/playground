@@ -2,7 +2,7 @@
   <nav class="flex items-center flex-no-wrap bg-white px-6 h-14 shadow-navbar border-solid border-b border-gray-20 z-20">
     <div
       id="home-btn-logo"
-      class="flex items-center mr-6 cursor-pointer"
+      class="flex items-center mr-24 cursor-pointer"
       @click="$router.push({ name: 'playground' })"
     >
       <s-icon
@@ -18,19 +18,64 @@
         class="ml-2 mt-1"
       />
     </div>
+    <div
+      id="deploy-btn"
+      class="flex items-center"
+      :class="[
+        `${deploying ? 'cursor-wait' : 'cursor-pointer'}`
+      ]"
+      @click="deploy"
+    >
+      <s-icon
+        icon="play"
+        :color="`${deploying ? 'text-gray-60' : 'text-indigo-60'}`"
+        class="mr-3"
+        :clickable="!deploying"
+      />
+      <s-text
+        p="3"
+        weight="semibold"
+        :class="[
+          `${deploying ? 'text-gray-60' : 'text-indigo-70 hover:text-indigo-80'}`
+        ]"
+      >
+        Deploy
+      </s-text>
+    </div>
   </nav>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Mutation } from 'vuex-class'
 import SIcon from '@/components/Icon.vue'
+import SText from '@/components/Text.vue'
+import event from '@/event'
 
 @Component({
   name: 'Navbar',
   components: {
-    SIcon
+    SIcon,
+    SText
   }
 })
 export default class Navbar extends Vue {
+  private deploying: boolean = false
+
+  @Mutation('incrementReleasesCount')
+  private incrementReleasesCount!: () => void
+
+  private deploy () {
+    if (this.deploying) {
+      return
+    }
+    this.incrementReleasesCount()
+    this.deploying = true
+    event.$emit('deploy', this.deployDone)
+  }
+
+  private deployDone () {
+    this.deploying = false
+  }
 }
 </script>

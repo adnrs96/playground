@@ -20,7 +20,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import SNavbar from '@/components/Navbar.vue'
 import SLogs from '@/views/Playground/Logs.vue'
 import { IStorySample } from '@/models/StorySample'
-import sample from '@/samples/counter'
+import counter from '@/samples/counter'
 
 @Component({
   components: {
@@ -29,6 +29,7 @@ import sample from '@/samples/counter'
   }
 })
 export default class Playground extends Vue {
-  private payload: IStorySample = sample
+  private payload: IStorySample = counter
+  private automateLogs: boolean = false
 }
 </script>
