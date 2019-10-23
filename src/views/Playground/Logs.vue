@@ -84,16 +84,18 @@ export default class Logs extends Vue {
       this.output += '  Waiting for deployment to complete...\n'
       await this.sleep(100)
       this.output += `  ✔ Configured ${this.logs.files.length} story\n`
-      await this.sleep(100)
-      this.output += `  - ${this.logs.files}.story\n`
-      this.logs.services.forEach(f => {
-        this.output += `  - ${f}\n`
-      })
+      if (this.logs.files.length > 0) {
+        this.logs.files.forEach(f => {
+          this.output += `  - ${f}\n`
+        })
+      }
       await this.sleep(100)
       this.output += `  ✔ Deployed ${this.logs.services.length} services\n`
-      this.logs.services.forEach(s => {
-        this.output += `  - ${s}\n`
-      })
+      if (this.logs.services.length > 0) {
+        this.logs.services.forEach(s => {
+          this.output += `  - ${s}\n`
+        })
+      }
       await this.sleep(100)
       this.output += '  ✔ Created ingress route\n'
       await this.sleep(100)

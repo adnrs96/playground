@@ -67,19 +67,39 @@ describe('Plaground::Logs', () => {
     })
 
     it('should use a custom timer', async () => {
-      expect.assertions(11)
+      expect.assertions(14)
       await vm.writeLogs(25)
       expect(/Compiling Stories\.\.\./.test(vm.output)).toBeTruthy()
-      expect(/✔ Compiled [\d]+ story/.test(vm.output)).toBeTruthy()
+      expect(/✔ Compiled 1 story/.test(vm.output)).toBeTruthy()
       expect(/Deploying app [\w]{1,25}\.\.\./.test(vm.output)).toBeTruthy()
       expect(/✔ Version [\d]+ of your app has been queued for deployment\./.test(vm.output)).toBeTruthy()
       expect(/Waiting for deployment to complete\.\.\./.test(vm.output)).toBeTruthy()
-      expect(/✔ Configured [\d]+ story/.test(vm.output)).toBeTruthy()
-      expect(/✔ Deployed [\d]+ services/.test(vm.output)).toBeTruthy()
+      expect(/✔ Configured 1 story/.test(vm.output)).toBeTruthy()
+      expect(/- counter/.test(vm.output)).toBeTruthy()
+      expect(/✔ Deployed 2 services/.test(vm.output)).toBeTruthy()
+      expect(/- http/.test(vm.output)).toBeTruthy()
+      expect(/- redis/.test(vm.output)).toBeTruthy()
       expect(/✔ Created ingress route/.test(vm.output)).toBeTruthy()
       expect(/✔ Configured logging/.test(vm.output)).toBeTruthy()
       expect(/✔ Configured health checks/.test(vm.output)).toBeTruthy()
       expect(/✔ Deployment successful!/.test(vm.output)).toBeTruthy()
+    })
+
+    it('should not print the files when none was provided', async () => {
+      expect.assertions(2)
+      vm.logs.files = []
+      await vm.writeLogs()
+      expect(/✔ Compiled 0 story/.test(vm.output)).toBeTruthy()
+      expect(/- counter/.test(vm.output)).toBeFalsy()
+    })
+
+    it('should not print the services when none was provided', async () => {
+      expect.assertions(3)
+      vm.logs.services = []
+      await vm.writeLogs()
+      expect(/✔ Deployed 0 services/.test(vm.output)).toBeTruthy()
+      expect(/- http/.test(vm.output)).toBeFalsy()
+      expect(/- redis/.test(vm.output)).toBeFalsy()
     })
   })
 
