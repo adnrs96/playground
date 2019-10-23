@@ -2,7 +2,7 @@
   <nav class="flex items-center flex-no-wrap bg-white px-6 h-14 shadow-navbar border-solid border-b border-gray-20 z-20">
     <div
       id="home-btn-logo"
-      class="flex items-center mr-24 cursor-pointer"
+      class="flex items-center mr-22 cursor-pointer"
       @click="$router.push({ name: 'playground' })"
     >
       <s-icon
