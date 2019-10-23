@@ -72,39 +72,56 @@ export default class Logs extends Vue {
         resolve()
       })
     }
-    return new Promise(async resolve => {
-      this.output += '\nCompiling Stories'
-      await tripleDot()
-      this.output += `\n✔ Compiled ${this.logs.files.length} story\n\n`
-      await this.sleep(250)
-      this.output += `Deploying app ${this.logs.name}`
-      await tripleDot()
-      this.output += `\n  ✔ Version ${this.releasesCount} of your app has been queued for deployment.\n\n`
-      await this.sleep(250)
-      this.output += '  Waiting for deployment to complete...\n'
-      await this.sleep(100)
-      this.output += `  ✔ Configured ${this.logs.files.length} story\n`
+    const files = () => {
       if (this.logs.files.length > 0) {
         this.logs.files.forEach(f => {
           this.output += `  - ${f}\n`
         })
       }
-      await this.sleep(100)
-      this.output += `  ✔ Deployed ${this.logs.services.length} services\n`
+    }
+    const services = () => {
       if (this.logs.services.length > 0) {
         this.logs.services.forEach(s => {
           this.output += `  - ${s}\n`
         })
       }
-      await this.sleep(100)
-      this.output += '  ✔ Created ingress route\n'
-      await this.sleep(100)
-      this.output += '  ✔ Configured logging\n'
-      await this.sleep(100)
-      this.output += '  ✔ Configured health checks\n'
-      await this.sleep(100)
-      this.output += '  ✔ Deployment successful!\n'
-      await this.sleep(100)
+    }
+    const lines = [
+      { delay: 0, text: '\nCompiling Stories' },
+      { delay: 0, fn: 'tripleDot' },
+      { delay: 250, text: `\n✔ Compiled ${this.logs.files.length} story\n\n` },
+      { delay: 0, text: `Deploying app ${this.logs.name}` },
+      { delay: 0, fn: 'tripleDot' },
+      { delay: 250, text: `\n  ✔ Version ${this.releasesCount} of your app has been queued for deployment.\n\n` },
+      { delay: 100, text: '  Waiting for deployment to complete...\n' },
+      { delay: 0, text: `  ✔ Configured ${this.logs.files.length} story\n` },
+      { delay: 100, fn: 'files' },
+      { delay: 0, text: `  ✔ Deployed ${this.logs.services.length} services\n` },
+      { delay: 100, fn: 'services' },
+      { delay: 100, text: '  ✔ Created ingress route\n' },
+      { delay: 100, text: '  ✔ Configured logging\n' },
+      { delay: 100, text: '  ✔ Configured health checks\n' },
+      { delay: 100, text: '  ✔ Deployment successful!\n' }
+    ]
+    return new Promise(async resolve => {
+      for (let l of lines) {
+        if ((l as any).text) {
+          this.output += (l as any).text
+        } else {
+          switch ((l as any).fn) {
+            case 'tripleDot':
+              await tripleDot()
+              break
+            case 'files':
+              files()
+              break
+            case 'services':
+              services()
+              break
+          }
+        }
+        await this.sleep((l as any).delay)
+      }
       resolve()
     })
   }

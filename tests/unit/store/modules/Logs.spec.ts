@@ -22,4 +22,14 @@ describe('Store::Logs', () => {
       })
     })
   })
+
+  describe('mutations', () => {
+    describe('incrementReleasesCount', () => {
+      expect.assertions(1)
+      it('should increment the value', () => {
+        store.commit('incrementReleasesCount')
+        expect(store.state.releasesCount).toEqual(1)
+      })
+    })
+  })
 })

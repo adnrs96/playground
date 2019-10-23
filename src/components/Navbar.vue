@@ -15,7 +15,7 @@
         color="text-indigo-logo"
         height="14"
         width="82"
-        class="ml-1 mt-1"
+        class="ml-2 mt-1"
       />
     </div>
     <div
