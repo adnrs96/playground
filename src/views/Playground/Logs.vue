@@ -22,7 +22,7 @@ import SText from '@/components/Text.vue'
 import { IStoryLogs } from '@/models/StorySample'
 import event from '@/event'
 
-const INITIAL_LOGS = '$> '
+const INITIAL_LOGS = ''
 
 @Component({
   name: 'Logs',
@@ -41,8 +41,7 @@ export default class Logs extends Vue {
   mounted () {
     event.$on('deploy', async (cb: Function) => {
       this.output = INITIAL_LOGS
-      await this.writeCmd()
-      await this.sleep(500)
+      await this.sleep(250)
       await this.writeLogs()
       cb()
     })
@@ -50,16 +49,6 @@ export default class Logs extends Vue {
 
   private sleep (time: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, time))
-  }
-
-  private writeCmd (interval: number = 50): Promise<void> {
-    return new Promise(async resolve => {
-      for (let i = 0; i < this.logs.cmd.length; i++) {
-        this.output += this.logs.cmd[i]
-        await this.sleep(interval)
-      }
-      resolve()
-    })
   }
 
   private writeLogs (interval: number = 75): Promise<void> {
@@ -74,20 +63,20 @@ export default class Logs extends Vue {
     }
     const files = () => {
       if (this.logs.files.length > 0) {
-        this.logs.files.forEach(f => {
+        this.logs.files.forEach((f: string) => {
           this.output += `  - ${f}\n`
         })
       }
     }
     const services = () => {
       if (this.logs.services.length > 0) {
-        this.logs.services.forEach(s => {
+        this.logs.services.forEach((s: string) => {
           this.output += `  - ${s}\n`
         })
       }
     }
     const lines = [
-      { delay: 0, text: '\nCompiling Stories' },
+      { delay: 0, text: 'Compiling Stories' },
       { delay: 0, fn: 'tripleDot' },
       { delay: 250, text: `\n✔ Compiled ${this.logs.files.length} story\n\n` },
       { delay: 0, text: `Deploying app ${this.logs.name}` },
