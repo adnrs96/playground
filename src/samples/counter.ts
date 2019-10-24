@@ -1,23 +1,17 @@
 import { IStorySample } from '@/models/StorySample'
 
 const counter: IStorySample = {
-  logs: '○ → story deploy\n' +
-  'Compiling Stories…\n' +
-  '✔ Compiled 1 story\n\n' +
-
-  'Deploying app counter...\n' +
-  '  ✔ Version 1 of your app has been queued for deployment.\n\n' +
-
-  '  Waiting for deployment to complete…\n' +
-  '  ✔ Configured 1 story\n' +
-  '  - counter.story\n' +
-  '  ✔ Deployed 2 services\n' +
-  '  - http\n' +
-  '  - redis\n' +
-  '  ✔ Created ingress route\n' +
-  '  ✔ Configured logging\n' +
-  '  ✔ Configured health checks\n' +
-  '  ✔ Deployment successful!\n'
+  logs: {
+    name: 'counter',
+    files: [
+      'counter'
+    ],
+    services: [
+      'http',
+      'redis'
+    ]
+  },
+  code: 'redis set key: "count" value: 0\nwhen http server listen path: "/count" as req\n  count = (redis get key: "count").result + 1\n  redis set key: "count" value: count\n  req write content: "This page has been loaded {count} times"'
 }
 
 export default counter

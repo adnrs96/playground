@@ -75,7 +75,8 @@ module.exports = {
       spacing: {
         initial: 'initial',
         'fit-content': 'fit-content',
-        '14': '3.5rem' // 56px
+        '14': '3.5rem', // 56px
+        '22': '5.5rem' // 88px
       },
       boxShadow: {
       }
