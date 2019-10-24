@@ -1,6 +1,11 @@
-const monacoAceTokenizer = require('monaco-ace-tokenizer')
-const TextHighlightRules = monacoAceTokenizer.TextHighlightRules
-const oop = monacoAceTokenizer.oop
+import {
+  TextHighlightRules,
+  oop
+} from 'monaco-ace-tokenizer'
+
+export {
+  registerRulesForLanguage
+} from 'monaco-ace-tokenizer'
 
 var StoryHighlightRules = function () {
   this.$rules = {

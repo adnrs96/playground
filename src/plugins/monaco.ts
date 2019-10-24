@@ -1,8 +1,8 @@
 import Vue, { PluginObject, PluginFunction } from 'vue'
 import storyTheme from 'monaco-themes/themes/IDLE.json'
-const registerRulesForLanguage = require('monaco-ace-tokenizer').registerRulesForLanguage
-const monaco = require('monaco-editor')
-const StoryscriptRules = require('./storyscript.lang.js').default
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+const StoryHighlightRules = require('./storyscript.lang.js').default
+const registerRulesForLanguage = require('./storyscript.lang.js').registerRulesForLanguage
 
 export class MonacoPlugin {
   private self: typeof monaco
@@ -13,7 +13,7 @@ export class MonacoPlugin {
 
   public init () {
     this.self.languages.register({ id: 'storyscript' })
-    registerRulesForLanguage('storyscript', new StoryscriptRules())
+    registerRulesForLanguage('storyscript', new StoryHighlightRules())
     this.self.editor.defineTheme('storyscript', storyTheme as any)
     this.self.editor.setTheme('storyscript')
   }
@@ -29,15 +29,15 @@ export const install: PluginFunction<any> = (V: typeof Vue, options?: any) => {
   if (isMonacoPluginInstalled) return
   isMonacoPluginInstalled = true
 
-  const monaco = new MonacoPlugin()
-  monaco.init()
+  const plugin = new MonacoPlugin()
+  plugin.init()
 
   Object.defineProperty(V.prototype, '$monaco', {
-    get () { return monaco.get() }
+    get () { return plugin.get() }
   })
 
   Object.defineProperty(V, '$monaco', {
-    get () { return monaco.get() }
+    get () { return plugin.get() }
   })
 }
 

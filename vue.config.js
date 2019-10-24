@@ -21,7 +21,8 @@ module.exports = {
   configureWebpack: {
     plugins: [
       new MonacoWebpackPlugin({
-        languages: ['storyscript']
+        languages: ['storyscript'],
+        features: ['!clipboard']
       })
     ]
   }
