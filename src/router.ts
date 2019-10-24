@@ -9,7 +9,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: () => import('@/Playground.vue')
+      component: () => import('@/views/Playground/index.vue')
     },
     {
       path: '*',
