@@ -3,6 +3,7 @@ import Playground from '@/Playground.vue'
 import router from '@/router'
 import store from '@/store'
 import directives from '@/directives'
+import '@/plugins'
 import '@/registerServiceWorker'
 import '@/assets/styles/tailwind.scss'
 

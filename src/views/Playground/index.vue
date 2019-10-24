@@ -3,8 +3,11 @@
     <s-navbar />
     <div class="min-h-screen-no-navbar flex">
       <div class="w-2/3">
-        <br>
-        <!-- HERE GOES THE EDITOR -->
+        <monaco-editor
+          v-model="payload.code"
+          class="w-full h-full"
+          :options="options"
+        />
       </div>
 
       <s-logs
@@ -21,15 +24,23 @@ import SNavbar from '@/components/Navbar.vue'
 import SLogs from '@/views/Playground/Logs.vue'
 import { IStorySample } from '@/models/StorySample'
 import counter from '@/samples/counter'
+import MonacoEditor from '@/components/MonacoEditor.vue'
 
 @Component({
   components: {
     SNavbar,
-    SLogs
+    SLogs,
+    MonacoEditor
   }
 })
 export default class Playground extends Vue {
   private payload: IStorySample = counter
-  private automateLogs: boolean = false
+
+  private options: any = {
+    readOnly: true,
+    minimap: { enabled: false },
+    fontSize: 16,
+    automaticLayout: true
+  }
 }
 </script>
