@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer'
-import { pathToFileURL } from 'url'
 const { TEST_URL, puppeteerConfig } = require('./puppeteer.config')
 
 describe('Logs', () => {
@@ -28,7 +27,7 @@ describe('Logs', () => {
     expect.assertions(1)
     await page.waitForSelector('#logs')
     const logs = await page.$eval('#logs>pre>code', (e: Element) => e.innerHTML)
-    expect(logs).toEqual('$&gt; ')
+    expect(logs).toEqual('')
   })
 
   it('should deplay the good sample after clicking on the deploy button', async () => {

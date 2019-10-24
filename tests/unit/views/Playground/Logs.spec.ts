@@ -35,20 +35,6 @@ describe('Plaground::Logs', () => {
     expect(vm).toHaveProperty('logs', counter.logs)
   })
 
-  describe('.writeCmd()', () => {
-    it('should append the command to the output', async () => {
-      expect.assertions(1)
-      await vm.writeCmd()
-      expect(vm).toHaveProperty('output', '$> story deploy')
-    })
-
-    it('should use a custom timer', async () => {
-      expect.assertions(1)
-      await vm.writeCmd(25)
-      expect(vm).toHaveProperty('output', '$> story deploy')
-    })
-  })
-
   describe('.writeLogs()', () => {
     it('should append the logs to the output', async () => {
       expect.assertions(11)
@@ -106,13 +92,11 @@ describe('Plaground::Logs', () => {
   describe(`event.$on('deploy')`, () => {
     it('should append all the logs', async () => {
       jest.setTimeout(15000)
-      expect.assertions(3)
+      expect.assertions(2)
       const fakeCb = jest.fn()
-      vm.writeCmd = jest.fn()
       vm.writeLogs = jest.fn()
       event.$emit('deploy', fakeCb)
       await new Promise(resolve => setTimeout(resolve, 10000))
-      expect(vm.writeCmd).toHaveBeenCalled()
       expect(vm.writeLogs).toHaveBeenCalled()
       expect(fakeCb).toHaveBeenCalled()
     })
