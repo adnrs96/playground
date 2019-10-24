@@ -1,5 +1,6 @@
 export interface IStorySample {
-  logs: IStoryLogs
+  logs: IStoryLogs,
+  code: string
 }
 
 export interface IStoryLogs {

@@ -4,7 +4,7 @@
     <div class="min-h-screen-no-navbar flex">
       <div class="w-2/3">
         <monaco-editor
-          v-model="code"
+          v-model="payload.code"
           class="w-full h-full"
           :options="options"
         />
@@ -36,7 +36,6 @@ import MonacoEditor from '@/components/MonacoEditor.vue'
 export default class Playground extends Vue {
   private payload: IStorySample = counter
   private automateLogs: boolean = false
-  private code: string = 'redis set key: "count" value: 0\nwhen http server listen path: "/count" as req\n  count = (redis get key: "count").result + 1\n  redis set key: "count" value: count\n  req write content: "This page has been loaded {count} times"'
 
   private options: any = {
     readOnly: true,
