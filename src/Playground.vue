@@ -8,7 +8,7 @@
   >
     <router-view
       key="route"
-      class="min-h-screen max-w-screen bg-gray-10"
+      class="min-h-screen max-w-screen"
     >
       <s-notification
         v-if="initialized"
