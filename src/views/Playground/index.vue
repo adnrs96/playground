@@ -35,7 +35,6 @@ import MonacoEditor from '@/components/MonacoEditor.vue'
 })
 export default class Playground extends Vue {
   private payload: IStorySample = counter
-  private automateLogs: boolean = false
 
   private options: any = {
     readOnly: true,
