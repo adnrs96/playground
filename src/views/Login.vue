@@ -25,7 +25,6 @@
           name="register-interest"
           netlify
           netlify-honeypot="bot-field"
-          @submit.prevent="submit"
         >
           <s-labeled-input
             name="bot-field"
@@ -83,12 +82,13 @@
             {{ emailError }}
           </s-text>
           <s-button
+            id="login-submit-btn"
             primary
-            class="w-full mt-8 mb-12"
+            class="w-full mt-8"
+            :class="{'mb-12': !error}"
             center
-            type="submit"
             :disabled="nameError.length > 0 || emailError.length > 0 || name.length === 0 || email.length === 0 || sending"
-            @click="close()"
+            @click="submit"
           >
             {{ sending ? 'Sending...' : 'Register Interest' }}
           </s-button>
@@ -97,6 +97,7 @@
             p="5"
             weight="medium"
             color="text-red-70"
+            :class="{'mb-12 mt-2': error}"
             class="mt-2"
           >
             Failed to send your information.
@@ -172,7 +173,7 @@ export default class Login extends Vue {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `form-name=regiester-interest&email=${encodeURIComponent(this.email)}&name=${encodeURIComponent(this.name)}`
+      body: `form-name=${encodeURIComponent('register-interest')}&email=${encodeURIComponent(this.email)}&name=${encodeURIComponent(this.name)}`
     }).then((response: Response) => {
       if (response.status !== 200) {
         this.error = true
