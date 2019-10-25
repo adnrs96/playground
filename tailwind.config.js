@@ -1,4 +1,4 @@
-const selectorParser = require('postcss-selector-parser')
+const _ = require('lodash')
 
 module.exports = {
   theme: {
@@ -75,10 +75,20 @@ module.exports = {
       spacing: {
         initial: 'initial',
         'fit-content': 'fit-content',
+        'max-content': 'max-content',
+        '2full': '200%',
         '14': '3.5rem', // 56px
         '22': '5.5rem' // 88px
       },
       boxShadow: {
+        sm: '0 3px 5px rgba(0, 0, 0, 0.05)'
+      },
+      inset: {
+        half: '50%',
+        full: '100%'
+      },
+      maxWidth: {
+        xxs: '10rem'
       }
     },
     letterSpacing: {
@@ -101,7 +111,11 @@ module.exports = {
     fontFamily: {
       body: ['Manrope', 'Helvetica', 'Arial', 'sans-serif'],
       monospace: ['SFMono-Regular', 'Monaco', 'Consolas', 'Liberation Mono', 'Menlo', 'monospace']
-    }
+    },
+    backgroundColor: theme => ({
+      ...theme('colors'),
+      'current-color': 'currentColor'
+    })
   },
   variants: {
     display: ['responsive', 'hover'],
@@ -161,7 +175,37 @@ module.exports = {
         }
       }
 
+      const beforeSpacing = _.map(config('theme.spacing'), (value, key) => {
+        return {
+          [`.${e(`before-ml-${key}`)}:before`]: {
+            'margin-left': value
+          },
+          [`.${e(`before-mr-${key}`)}:before`]: {
+            'margin-right': value
+          }
+        }
+      })
+
+      const minusInsets = _.map(config('theme.inset'), (value, key) => {
+        return {
+          [`.${e(`-top-${key}`)}`]: {
+            top: `-${value}`
+          },
+          [`.${e(`-right-${key}`)}`]: {
+            right: `-${value}`
+          },
+          [`.${e(`-bottom-${key}`)}`]: {
+            bottom: `-${value}`
+          },
+          [`.${e(`-left-${key}`)}`]: {
+            left: `-${value}`
+          }
+        }
+      })
+
       addUtilities(rotations)
+      addUtilities(beforeSpacing)
+      addUtilities(minusInsets)
       addVariant('group-active', ({
         modifySelectors,
         separator

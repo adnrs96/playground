@@ -20,10 +20,8 @@
     </div>
     <div
       id="deploy-btn"
-      class="flex items-center"
-      :class="[
-        `${deploying ? 'cursor-wait' : 'cursor-pointer'}`
-      ]"
+      class="flex items-center h-full"
+      :class="[`${deploying ? 'cursor-wait' : 'cursor-pointer'}`]"
       @click="deploy"
     >
       <s-icon
@@ -31,17 +29,37 @@
         :color="`${deploying ? 'text-gray-60' : 'text-indigo-60'}`"
         class="mr-2 flex items-center"
         :clickable="!deploying"
-        width="12"
-        height="12"
       />
       <s-text
         p="3"
         weight="semibold"
         :class="[
-          `${deploying ? 'text-gray-60' : 'text-indigo-70 hover:text-indigo-80'}`
+          `${
+            deploying ? 'text-gray-60' : 'text-indigo-70 hover:text-indigo-80'
+          }`
         ]"
       >
         Deploy
+      </s-text>
+    </div>
+    <div
+      id="new-from-scratch-btn"
+      class="flex items-center ml-12 cursor-default select-none h-full"
+    >
+      <s-icon
+        icon="rocket-o"
+        color="text-gray-40"
+        class="mr-2 flex items-center rotate-45deg"
+      />
+      <s-text
+        p="3"
+        weight="semibold"
+        class="text-gray-40 flex"
+      >
+        <span>
+          New from scratch
+        </span>
+        <s-tip>Playground for creating your own apps is under development.</s-tip>
       </s-text>
     </div>
   </nav>
@@ -53,12 +71,14 @@ import { Mutation } from 'vuex-class'
 import SIcon from '@/components/Icon.vue'
 import SText from '@/components/Text.vue'
 import event from '@/event'
+import STip from '@/components/Tip.vue'
 
 @Component({
   name: 'Navbar',
   components: {
     SIcon,
-    SText
+    SText,
+    STip
   }
 })
 export default class Navbar extends Vue {
