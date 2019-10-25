@@ -75,10 +75,12 @@ module.exports = {
       spacing: {
         initial: 'initial',
         'fit-content': 'fit-content',
+        '7/8': '.875rem', // 14px
         '14': '3.5rem', // 56px
         '22': '5.5rem' // 88px
       },
       boxShadow: {
+        sm: '0 3px 5px rgba(0, 0, 0, 0.05)'
       }
     },
     letterSpacing: {
