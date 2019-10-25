@@ -21,9 +21,8 @@
       weight="medium"
       color="text-gray-90"
       class="max-w-xxs whitespace-normal w-max-content"
-    >
-      {{ text }}
-    </s-text>
+      v-text="text"
+    />
   </s-drop>
 </template>
 
@@ -45,7 +44,7 @@ export default class Tip extends Vue {
   @Prop({ type: String, default: undefined }) private content!: string
 
   private get text (): string {
-    return this.content || (this.$slots.default || [{ text: '' }])[0].text || ''
+    return (this.content || (this.$slots.default || [{ text: '' }])[0].text || '').trim()
   }
 }
 </script>

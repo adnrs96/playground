@@ -59,7 +59,9 @@
         <span>
           New from scratch
         </span>
-        <s-tip>Playground for creating your own apps is under development.</s-tip>
+        <s-tip id="new-from-scratch-tip">
+          Playground for creating your own apps is under development.
+        </s-tip>
       </s-text>
     </div>
   </nav>
