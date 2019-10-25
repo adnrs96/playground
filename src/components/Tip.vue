@@ -1,4 +1,5 @@
 <template>
+  <!-- s-drop using class before-mr-2 -->
   <s-drop
     class="ml-px mt-px"
     mode="hover|focus"
