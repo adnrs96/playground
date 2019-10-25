@@ -49,6 +49,37 @@ describe('Login', () => {
     })
   })
 
+  describe('.submit()', () => {
+    it('should not do anything when already sending', async () => {
+      expect.assertions(1)
+      vm.sending = true
+      vm.submit()
+      expect(vm).toHaveProperty('sending', true)
+    })
+
+    it('should send form info to netlify - error', async () => {
+      expect.assertions(1)
+      vm.sending = false
+      window.fetch = jest.fn().mockResolvedValue({
+        status: 500
+      })
+      vm.$refs.loginModal.hide = jest.fn()
+      vm.submit()
+      expect(window.fetch).toHaveBeenCalledTimes(1)
+    })
+
+    it('should send form info to netlify - success', async () => {
+      expect.assertions(2)
+      vm.sending = false
+      window.fetch = jest.fn().mockResolvedValue({
+        status: 200
+      })
+      vm.$refs.loginModal.hide = jest.fn()
+      vm.submit()
+      expect(vm).toHaveProperty('error', false)
+      expect(window.fetch).toHaveBeenCalledTimes(1)
+    })
+  })
 
   describe('.close()', () => {
     it('should close the modal, then reset the inputs', () => {

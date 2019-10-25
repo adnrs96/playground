@@ -18,14 +18,14 @@
           class="w-full"
           center
         >
-          Register Interest
+          Continue Your Story
         </s-text>
         <form
           id="login-form"
           name="register-interest"
-          method="post"
-          data-netlify="true"
+          netlify
           netlify-honeypot="bot-field"
+          @submit.prevent="submit"
         >
           <s-labeled-input
             name="bot-field"
@@ -87,11 +87,20 @@
             class="w-full mt-8 mb-12"
             center
             type="submit"
-            :disabled="nameError.length > 0 || emailError.length > 0 || name.length === 0 || email.length === 0"
+            :disabled="nameError.length > 0 || emailError.length > 0 || name.length === 0 || email.length === 0 || sending"
             @click="close()"
           >
-            Get in touch
+            {{ sending ? 'Sending...' : 'Register Interest' }}
           </s-button>
+          <s-text
+            v-if="error"
+            p="5"
+            weight="medium"
+            color="text-red-70"
+            class="mt-2"
+          >
+            Failed to send your information.
+          </s-text>
         </form>
       </s-modal>
     </s-blur>
@@ -106,7 +115,7 @@
       small
       @click="$refs.loginModal.show()"
     >
-      Get in touch
+      Register Interest
     </s-button>
   </div>
 </template>
@@ -134,6 +143,8 @@ export default class Login extends Vue {
   private email: string = ''
   private nameError: string = ''
   private emailError: string = ''
+  private sending: boolean = false
+  private error: boolean = false
 
   @Watch('name')
   private onNameHandler () {
@@ -151,6 +162,27 @@ export default class Login extends Vue {
     } else {
       this.emailError = ''
     }
+  }
+
+  private submit () {
+    if (this.sending) {
+      return
+    }
+    this.sending = true
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `form-name=regiester-interest&email=${encodeURIComponent(this.email)}&name=${encodeURIComponent(this.name)}`
+    }).then((response: Response) => {
+      if (response.status !== 200) {
+        this.error = true
+      } else {
+        this.error = false
+        this.close()
+      }
+    }).finally(() => {
+      this.sending = false
+    })
   }
 
   private close () {
