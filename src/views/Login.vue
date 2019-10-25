@@ -1,5 +1,7 @@
 <template>
-  <div id="login">
+  <div
+    id="login"
+  >
     <s-blur
       id="login-blur"
       key="blur"
@@ -9,20 +11,33 @@
       <s-modal
         cross
       >
+        <s-text
+          head="2"
+          weight="semibold"
+          color="text-black"
+          class="w-full"
+          center
+        >
+          Register Interest
+        </s-text>
         <form
           id="login-form"
           name="register-interest"
           method="post"
           data-netlify="true"
+          netlify-honeypot="bot-field"
         >
-          <s-text
-            head="2"
-            weight="semibold"
-            color="text-black"
-            class="w-full"
+          <s-labeled-input
+            name="bot-field"
+            type="text"
+            class="w-full mt-6"
+            placeholder="Don’t fill this out if you're human"
+            hidden
           >
-            Register Interest
-          </s-text>
+            <div slot="label">
+              Name
+            </div>
+          </s-labeled-input>
           <s-labeled-input
             v-model="name"
             name="name"

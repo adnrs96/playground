@@ -34,7 +34,7 @@
         class="spacer"
       />
     </div>
-    <div>
+    <div class="w-4/5">
       <slot />
     </div>
   </div>

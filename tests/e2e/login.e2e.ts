@@ -41,9 +41,9 @@ describe('Logs', () => {
     await page.click('#login-btn')
     expect(await page.$('#login-form')).toBeTruthy()
 
-    expect((await page.$$('input')).length).toEqual(2)
-    expect((await page.$$eval('input', (nodes: any) => nodes.map((n:any) => n.type)))).toEqual(['text', 'email'])
-    expect((await page.$$eval('input', (nodes: any) => nodes.map((n:any) => n.name)))).toEqual(['name', 'email'])
+    expect((await page.$$('input')).length).toEqual(3)
+    expect((await page.$$eval('input', (nodes: any) => nodes.map((n:any) => n.type)))).toEqual(['text', 'text', 'email'])
+    expect((await page.$$eval('input', (nodes: any) => nodes.map((n:any) => n.name)))).toEqual(['bot-field', 'name', 'email'])
   })
 
   it('should display a some errors when I enter wrong info', async () => {
