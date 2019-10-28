@@ -23,9 +23,9 @@
         <form
           id="login-form"
           name="register-interest"
-          netlify
-          netlify-honeypot="bot-field"
-          @submit.prevent="submitHandler"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          @submit.prevent="submit"
         >
           <s-labeled-input
             name="bot-field"
@@ -167,8 +167,7 @@ export default class Login extends Vue {
     }
   }
 
-  private submitHandler () {
-    console.log('toto')
+  private submit () {
     if (this.sending) {
       return
     }
