@@ -39,7 +39,7 @@
       width="24"
       height="24"
       :class="[
-        { 'py-7/8 px-14': !$slots.default },
+        { 'py-3 px-14': !$slots.default },
         { [`p${dashed || danger ? 'r' : 'l'}-3`]: $slots.default }
       ]"
     />

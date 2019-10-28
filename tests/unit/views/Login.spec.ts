@@ -10,6 +10,10 @@ describe('Login', () => {
     vm = login.vm as any
   })
 
+  afterEach(() => {
+    login.destroy()
+  })
+
   it('should mount', () => {
     expect.assertions(1)
     expect(login.html()).toBeTruthy()
