@@ -28,8 +28,7 @@ const sendRegisteredInterestEmail = async ({ email, name }) => {
 exports.handler = async (event) => {
   try {
     const data = JSON.parse(event.body)
-    console.log(data, data.email, data.name)
-    await sendRegisteredInterestEmail(data)
+    await sendRegisteredInterestEmail(data.payload)
 
     return {
       stataudCode: 200,
