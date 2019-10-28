@@ -8,7 +8,6 @@ const sendRegisteredInterestEmail = async (email, name) => {
       apiKey: MG_API_KEY,
       domain: MG_DOMAIN
     })
-    console.log(`email: ${email}, name: ${name}`)
     const mail = {
       from: 'Steve from Storyscript <steve@storyscript.io>',
       to: email,
@@ -29,6 +28,7 @@ const sendRegisteredInterestEmail = async (email, name) => {
 exports.handler = async (event) => {
   try {
     const data = JSON.parse(event.body)
+    console.log(`email: ${data.email}, name: ${data.name}`)
     await sendRegisteredInterestEmail(data.email, data.name)
 
     return {
