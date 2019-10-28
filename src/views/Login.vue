@@ -34,7 +34,7 @@
             hidden
           >
             <div slot="label">
-              Name
+              Bot Field
             </div>
           </s-labeled-input>
           <s-labeled-input
