@@ -23,8 +23,10 @@
         <form
           id="login-form"
           name="register-interest"
+          method="post"
           netlify
           netlify-honeypot="bot-field"
+          @submit.prevent="submit"
         >
           <s-labeled-input
             name="bot-field"
@@ -88,7 +90,7 @@
             :class="{'mb-12': !error}"
             center
             :disabled="nameError.length > 0 || emailError.length > 0 || name.length === 0 || email.length === 0 || sending"
-            @click="submit"
+            type="submit"
           >
             {{ sending ? 'Sending...' : 'Register Interest' }}
           </s-button>

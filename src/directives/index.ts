@@ -1,6 +1,6 @@
-import ClickOutside from '@/directives/ClickOutside'
 import Vue, { DirectiveOptions } from 'vue'
 import ClickOutside from '@/directives/ClickOutside'
+
 
 export const directives: { [key: string]: DirectiveOptions } = {
   ClickOutside

@@ -44,28 +44,28 @@
         >
           Deploy
         </s-text>
-            <div
-      id="new-from-scratch-btn"
-      class="flex items-center ml-12 cursor-default select-none h-full"
-    >
-      <s-icon
-        icon="rocket-o"
-        color="text-gray-40"
-        class="mr-2 flex items-center rotate-45deg"
-      />
-      <s-text
-        p="3"
-        weight="semibold"
-        class="text-gray-40 flex"
-      >
-        <span>
-          New from scratch
-        </span>
-        <s-tip id="new-from-scratch-tip">
-          Playground for creating your own apps is under development.
-        </s-tip>
-      </s-text>
-    </div>
+        <div
+          id="new-from-scratch-btn"
+          class="flex items-center ml-12 cursor-default select-none h-full"
+        >
+          <s-icon
+            icon="rocket-o"
+            color="text-gray-40"
+            class="mr-2 flex items-center rotate-45deg"
+          />
+          <s-text
+            p="3"
+            weight="semibold"
+            class="text-gray-40 flex"
+          >
+            <span>
+              New from scratch
+            </span>
+            <s-tip id="new-from-scratch-tip">
+              Playground for creating your own apps is under development.
+            </s-tip>
+          </s-text>
+        </div>
       </div>
     </div>
     <s-login />
