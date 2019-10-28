@@ -4,6 +4,9 @@ node_modules
 /coverage
 .lighthouse-badges/storyscript_playground_netlify_com_.html
 
+# function
+functions/dist
+
 src/views/WIP.vue
 
 # local env files
