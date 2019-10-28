@@ -25,4 +25,4 @@ jobs:
         run: yarn percy
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-
+          VUE_APP_INTERCOM_APP_ID: ${{ secrets.VUE_APP_INTERCOM_APP_ID }}
