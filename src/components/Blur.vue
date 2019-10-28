@@ -2,7 +2,7 @@
   <transition name="fade-in">
     <div
       v-show="open"
-      class="ease bg-blurred-3xl z-30 w-screen h-screen absolute inset-0 bg-blur-grayish"
+      class="ease bg-blurred-3xl z-30 w-screen h-screen absolute inset-0 bg-indigo-100-10"
     >
       <perfect-scrollbar
         ref="blurPS"

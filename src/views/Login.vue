@@ -117,9 +117,10 @@
       danger
       center
       small
-      loading
       @click="$refs.loginModal.show()"
-    />
+    >
+      Register Interest
+    </s-button>
   </div>
 </template>
 
