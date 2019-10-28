@@ -2,7 +2,7 @@ import puppeteer from 'puppeteer'
 import { percySnapshot } from '@percy/puppeteer'
 const { TEST_URL, puppeteerConfig } = require('./puppeteer.config')
 
-describe('Tip', () => {
+describe('Intercom', () => {
   let page: any
   let browser: any
 
@@ -18,12 +18,12 @@ describe('Tip', () => {
     browser.close()
   })
 
-  it('should display text in tip', async () => {
+  it('should display the intercom dialog', async () => {
     expect.assertions(1)
-    await page.waitForSelector('#new-from-scratch-tip')
-    await page.click('#new-from-scratch-tip')
-    const tip = await page.$eval('#new-from-scratch-tip>.content>div>p', (e: Element) => e.innerHTML)
-    expect(tip).toEqual('Playground for creating your own apps is under development.')
-    await percySnapshot(page, 'Playground NewFromScratch Tip')
+    await page.waitForSelector('#intercom-container>div>iframe')
+    await page.click('#intercom-container>div>iframe')
+    const frame = await page.$eval('#intercom-container>div>div>iframe', (e: Element) => e.tagName)
+    expect(frame).toEqual('IFRAME')
+    await percySnapshot(page, 'Playground intercom dialog')
   })
 })
