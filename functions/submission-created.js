@@ -8,6 +8,7 @@ const sendRegisteredInterestEmail = async (email, name) => {
       apiKey: MG_API_KEY,
       domain: MG_DOMAIN
     })
+    console.log(`email: ${email}, name: ${name}`)
     const mail = {
       from: 'Steve from Storyscript <steve@storyscript.io>',
       to: email,
