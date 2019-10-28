@@ -1,3 +1,4 @@
+@import 'drop';
 @import 'fonts';
 @import 'sizes';
 @import 'transitions';
@@ -9,6 +10,7 @@
 .blurred-3xl {
   filter: blur(30px);
 }
+
 .bg-blurred-3xl {
   backdrop-filter: blur(30px)
 }
