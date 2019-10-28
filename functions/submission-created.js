@@ -1,15 +1,8 @@
-import Mailgun from 'mailgun-js'
+const Mailgun = require('mailgun-js')
 
 const { MG_API_KEY, MG_DOMAIN } = process.env
 
-interface IEmail {
-  from: string,
-  to: string,
-  subject: string,
-  text: string
-}
-
-const sendRegisteredInterestEmail = async ( to: string, name: string ) => {
+const sendRegisteredInterestEmail = async (to: string, name: string) => {
   return new Promise((resolve, reject) => {
     const mailgun = Mailgun({
       apiKey: MG_API_KEY,
@@ -32,7 +25,7 @@ const sendRegisteredInterestEmail = async ( to: string, name: string ) => {
   })
 }
 
-exports.handler = async (event:  any) => {
+exports.handler = async (event: any) => {
   try {
     const data = JSON.parse(event.body)
     const { email, name } = data

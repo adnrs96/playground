@@ -4,7 +4,7 @@ COPY yarn.lock .
 COPY package.json .
 RUN yarn
 COPY . .
-RUN yarn build:playground --mode docker
+RUN yarn build --mode docker
 
 FROM nginx:latest as production
 COPY --from=builder /app/dist /usr/share/nginx/html
