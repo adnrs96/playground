@@ -7,6 +7,8 @@ services:
       dockerfile: .docker/Dockerfile.integration
     ports:
       - 8080:80
+    environment:
+      - VUE_APP_INTERCOM_APP_ID=${VUE_APP_INTERCOM_APP_ID}
 
   coverage:
     image: nginx
