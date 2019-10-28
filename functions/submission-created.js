@@ -12,7 +12,7 @@ const sendRegisteredInterestEmail = async (to, name) => {
       from: 'Steve at Storyscript <steve@storyscript.io>',
       to,
       subject: 'Thank you for your interest',
-      text: `Thank you ${name}!`
+      text: `Thank you for your interest ${name}!`
     }
 
     mailgun.messages().send(mail, err => {
