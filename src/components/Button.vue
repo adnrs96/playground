@@ -17,7 +17,8 @@
       {'flex-row-reverse': reverse}
     ]"
     :type="!url ? type : undefined"
-    @click.prevent="!disabled ? $emit('click', $event) : ''"
+    :disabled="disabled"
+    @click="$emit('click', $event)"
   >
     <s-text
       v-if="$slots.default"

@@ -23,10 +23,9 @@
         <form
           id="login-form"
           name="register-interest"
-          method="post"
           netlify
           netlify-honeypot="bot-field"
-          @submit.prevent="submit"
+          @submit.prevent="submitHandler"
         >
           <s-labeled-input
             name="bot-field"
@@ -34,13 +33,14 @@
             class="w-full mt-6"
             placeholder="Don’t fill this out if you're human"
             hidden
+            readonly
           >
             <div slot="label">
               Bot Field
             </div>
           </s-labeled-input>
           <s-labeled-input
-            v-model="name"
+            v-model.trim="name"
             name="name"
             type="text"
             class="w-full mt-6"
@@ -62,7 +62,7 @@
             {{ nameError }}
           </s-text>
           <s-labeled-input
-            v-model="email"
+            v-model.trim="email"
             name="email"
             type="email"
             placeholder="Enter your e-mail address"
@@ -86,11 +86,11 @@
           <s-button
             id="login-submit-btn"
             primary
+            center
+            type="submit"
             class="w-full mt-8"
             :class="{'mb-12': !error}"
-            center
             :disabled="nameError.length > 0 || emailError.length > 0 || name.length === 0 || email.length === 0 || sending"
-            type="submit"
           >
             {{ sending ? 'Sending...' : 'Register Interest' }}
           </s-button>
@@ -167,7 +167,8 @@ export default class Login extends Vue {
     }
   }
 
-  private submit () {
+  private submitHandler () {
+    console.log('toto')
     if (this.sending) {
       return
     }
