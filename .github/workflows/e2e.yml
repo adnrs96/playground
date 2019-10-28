@@ -17,6 +17,8 @@ jobs:
 
       - name: Start the integration playground
         run: yarn stack:playground
+        env:
+          VUE_APP_INTERCOM_APP_ID: ${{ secrets.VUE_APP_INTERCOM_APP_ID }}
 
       - name: Install dependencies locally
         run: yarn
@@ -25,4 +27,3 @@ jobs:
         run: yarn percy
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          VUE_APP_INTERCOM_APP_ID: ${{ secrets.VUE_APP_INTERCOM_APP_ID }}
