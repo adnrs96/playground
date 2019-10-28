@@ -28,14 +28,11 @@ const sendRegisteredInterestEmail = async (email, name) => {
 exports.handler = async (event) => {
   try {
     const data = JSON.parse(event.body)
-    console.log(data)
-    const { email, name } = data
-    console.log(email, name)
-    await sendRegisteredInterestEmail(email, name)
+    await sendRegisteredInterestEmail(data.email, data.name)
 
     return {
       stataudCode: 200,
-      body: `Email sent to ${name} <${email}>`
+      body: `Email sent to ${data.name} <${data.email}>`
     }
   } catch (e) {
     console.log(e)
