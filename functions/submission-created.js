@@ -9,7 +9,7 @@ const sendRegisteredInterestEmail = async (email, name) => {
       domain: MG_DOMAIN
     })
     const mail = {
-      from: 'Steve at Storyscript <steve@storyscript.io>',
+      from: 'Steve from Storyscript <steve@storyscript.io>',
       to: email,
       subject: 'Thank you for your interest',
       text: `Thank you for your interest ${name}!`
