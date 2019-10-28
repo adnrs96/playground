@@ -28,10 +28,11 @@
           @submit.prevent="submit"
         >
           <s-labeled-input
-            name="bot-field"
+            name="form-name"
             type="text"
             class="w-full mt-6"
             placeholder="Don’t fill this out if you're human"
+            value="register-interest"
             hidden
             readonly
           >
