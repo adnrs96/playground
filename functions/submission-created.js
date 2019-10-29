@@ -8,7 +8,7 @@ const sendRegisteredInterestEmail = async ({ email, name }) => {
       apiKey: MG_API_KEY,
       domain: MG_DOMAIN
     })
-    const mail = {
+    const mailOpts = {
       from: 'Storyscript <will@storyscript.io>',
       to: email,
       subject: 'GitHub Universe: Thank you for your interest',
@@ -16,20 +16,46 @@ const sendRegisteredInterestEmail = async ({ email, name }) => {
 Hey ${name},
 
 Thank you for stopping by our booth at GitHub universe!
+
 We will be in touch after the event to help you continue your Story, so keep an eye out for an email from us.
+
 In the meantime, if you would like to get a feel of how Storyscript works, we’d love for you to read this article.
+
 
 Cheers,
 The Storyscript Team
-`
+      `,
+      html: `
+      Hey ${name},<br>
+      Thank you for stopping by our booth at GitHub universe!<br>
+      We will be in touch after the event to help you continue your Story, so keep an eye out for an email from us.<br>
+      In the meantime, if you would like to get a feel of how Storyscript works, we’d love for you to read <a href="https://docs.storyscript.io/storyscript/writing">this article</a>.<br>
+      <br>
+      <br>
+      Cheers,<br>
+      The Storyscript Team
+      `
     }
 
-    mailgun.messages().send(mail, err => {
+    const mail = new MailComposer(mailOpts)
+
+    mail.compile().build((err, message) => {
+      const data = {
+        to: email,
+        message: message.toString('ascii')
+      }
       if (err) {
         reject(err)
         return
       }
-      resolve()
+
+      mailgun.messages().sendMime(data, (err, body) => {
+        if (err) {
+          reject(err)
+          return
+        }
+        resolve(body)
+      })
     })
   })
 }
