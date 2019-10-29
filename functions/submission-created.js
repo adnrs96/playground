@@ -1,4 +1,5 @@
 const Mailgun = require('mailgun-js')
+const MailComposer = require('nodemailer/lib/mail-composer')
 
 const { MG_API_KEY, MG_DOMAIN } = process.env
 
