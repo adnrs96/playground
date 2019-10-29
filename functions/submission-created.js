@@ -27,14 +27,13 @@ Cheers,
 The Storyscript Team
       `,
       html: `
-      Hey ${name},<br>
-      Thank you for stopping by our booth at GitHub universe!<br>
-      We will be in touch after the event to help you continue your Story, so keep an eye out for an email from us.<br>
-      In the meantime, if you would like to get a feel of how Storyscript works, we’d love for you to read <a href="https://docs.storyscript.io/storyscript/writing">this article</a>.<br>
+      <p>Hey ${name},</p>
+      <p>Thank you for stopping by our booth at GitHub universe!</p>
+      <p>We will be in touch after the event to help you continue your Story, so keep an eye out for an email from us.</p>
+      <p>In the meantime, if you would like to get a feel of how Storyscript works, we’d love for you to read <a href="https://docs.storyscript.io/storyscript/writing">this article</a>.</p>
       <br>
-      <br>
-      Cheers,<br>
-      The Storyscript Team
+      <p>Cheers,<br>
+      The Storyscript Team</p>
       `
     }
 
