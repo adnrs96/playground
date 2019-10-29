@@ -14,17 +14,22 @@ const sendRegisteredInterestEmail = async ({ email, name }) => {
       to: email,
       subject: 'GitHub Universe: Thank you for your interest',
       html: `
-      <p>Hey ${name},</p>
-      <br>
-      <p>Thank you for stopping by our booth at GitHub universe!</p>
-      <br>
-      <p>We will be in touch after the event to help you continue your Story, so keep an eye out for an email from us.</p>
-      <br>
-      <p>In the meantime, if you would like to get a feel of how Storyscript works, we’d love for you to read <a href="https://docs.storyscript.io/storyscript/writing">this article</a>.</p>
+      Hey ${name},
       <br>
       <br>
-      <p>Cheers,<br>
-      The Storyscript Team</p>
+      Thank you for stopping by our booth at GitHub universe!
+      <br>
+      <br>
+      We will be in touch after the event to help you continue your Story, so keep an eye out for an email from us.
+      <br>
+      <br>
+      In the meantime, if you would like to get a feel of how Storyscript works, we’d love for you to read <a href="https://docs.storyscript.io/storyscript/writing">this article</a>.
+      <br>
+      <br>
+      <br>
+      <br>
+      Cheers,<br>
+      The Storyscript Team
       `
     }
 
