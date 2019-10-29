@@ -7,14 +7,17 @@
     :class="[
       { 'px-5': !center && !small },
       { 'px-12': !center && small },
+      { 'px-4': center && small },
       backgroundColor,
       dashed ? 'flex-row-reverse' : 'flex-row',
       { 'focus:shadow-outline': !dashed || danger },
       small ? 'rounded-lg' : 'rounded-xl',
       { 'border border-solid border-gray-30': !(black || primary || dashed || danger) },
-      `${center ? 'justify-center': 'justify-between'}`
+      `${center ? 'justify-center': 'justify-between'}`,
+      {'flex-row-reverse': reverse}
     ]"
     :type="!url ? type : undefined"
+    :disabled="disabled"
     @click="$emit('click', $event)"
   >
     <s-text
@@ -33,8 +36,10 @@
       :icon="icon || 'spinner'"
       :color="black || primary || danger ? 'text-white' : dashed ? 'text-gray-40 group-hover:text-gray-80 group-active:text-gray-40' : 'text-gray-50'"
       :loading="loading"
+      width="24"
+      height="24"
       :class="[
-        { 'py-7/8 px-14': !$slots.default },
+        { 'py-3 px-14': !$slots.default },
         { [`p${dashed || danger ? 'r' : 'l'}-3`]: $slots.default }
       ]"
     />
@@ -63,6 +68,8 @@ export default class Button extends Vue {
   @Prop({ type: Boolean, default: false }) readonly dashed!: boolean
   @Prop({ type: Boolean, default: false }) readonly center!: boolean
   @Prop({ type: Boolean, default: false }) readonly loading!: boolean
+  @Prop({ type: Boolean, default: false }) readonly reverse!: boolean
+  @Prop({ type: Boolean, default: false }) readonly disabled!: boolean
   @Prop({ type: String, default: undefined }) readonly url!: string | undefined
   @Prop({ type: String, default: 'button' }) readonly type!: boolean
   @Prop({
@@ -86,7 +93,7 @@ export default class Button extends Vue {
   }
 
   private get textColor (): string {
-    return this.black || this.primary ? 'text-white' : this.danger ? 'text-red-60 group-hover:text-white group-active:text-white' : this.dashed ? 'text-gray-50 group-hover:text-gray-80 group-active:text-gray-50' : this.color ? this.color : 'text-black'
+    return this.black || this.primary || this.disabled ? 'text-white' : this.danger ? 'text-red-60 group-hover:text-white group-active:text-white' : this.dashed ? 'text-gray-50 group-hover:text-gray-80 group-active:text-gray-50' : this.color ? this.color : 'text-black'
   }
 
   private get title (): string {
@@ -94,12 +101,13 @@ export default class Button extends Vue {
   }
 
   private get backgroundColor (): string {
-    return this.black
-      ? 'bg-gray-100 hover:bg-gray-90' : this.primary
-        ? 'bg-indigo-60 hover:bg-indigo-70' : this.dashed
-          ? 'bg-border-dashed' : this.danger
-            ? 'bg-white border-transparent hover:bg-red-70 active:bg-red-60' : this.transparent
-              ? 'bg-transparent border-gray-60 hover:bg-gray-20' : 'bg-white hover:bg-gray-10'
+    return this.disabled
+      ? 'bg-gray-20 cursor-not-allowed' : this.black
+        ? 'bg-gray-100 hover:bg-gray-90' : this.primary
+          ? 'bg-indigo-60 hover:bg-indigo-70' : this.dashed
+            ? 'bg-border-dashed' : this.danger
+              ? 'bg-white border-transparent hover:bg-red-70 active:bg-red-60' : this.transparent
+                ? 'bg-transparent border-gray-60 hover:bg-gray-20' : 'bg-white hover:bg-gray-10'
   }
 }
 </script>

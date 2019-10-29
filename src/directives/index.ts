@@ -1,6 +1,7 @@
 import Vue, { DirectiveOptions } from 'vue'
 import ClickOutside from '@/directives/ClickOutside'
 
+
 export const directives: { [key: string]: DirectiveOptions } = {
   ClickOutside
 }
@@ -12,5 +13,6 @@ export function register () {
 }
 
 export default {
+  ...directives,
   register
 }

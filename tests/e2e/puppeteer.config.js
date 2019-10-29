@@ -6,7 +6,13 @@ const TEST_URL = `http://localhost:${PORT}`
 const SEED = Date.now()
 
 const puppeteerConfig = () => {
-  const args = ['-–no-sandbox’, ‘-–disable-setuid-sandbox']
+  const args = [
+    '-–no-sandbox',
+    '-–disable-setuid-sandbox',
+    '--disable-backgrounding-occluded-windows',
+    '--disable-ipc-flooding-protection',
+    '--disable-renderer-backgrounding'
+  ]
   return {
     headless: process.env.TEST_MODE === 'integration',
     timeout: 10000,

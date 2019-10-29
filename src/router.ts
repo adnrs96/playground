@@ -9,6 +9,7 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'playground',
       component: () => import('@/views/Playground/index.vue')
     },
     {
