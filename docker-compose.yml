@@ -5,6 +5,8 @@ services:
     build: 
       context: .
       dockerfile: .docker/Dockerfile.integration
+      args:
+        - VUE_APP_INTERCOM_APP_ID=${VUE_APP_INTERCOM_APP_ID}
     ports:
       - 8080:80
 

@@ -85,5 +85,9 @@ export default class Playground extends Vue {
   created () {
     event.$on('sw', this.onSWEventListener)
   }
+
+  mounted () {
+    this.$intercom.boot()
+  }
 }
 </script>

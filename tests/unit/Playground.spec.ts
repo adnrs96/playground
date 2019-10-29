@@ -1,28 +1,23 @@
-import { shallowMount, createLocalVue, Wrapper } from '@vue/test-utils'
+import { shallowMount, Wrapper } from '@vue/test-utils'
 import Playground from '@/Playground.vue'
 
-import VueRouter from 'vue-router'
-import event from '@/event'
-import { Sentry } from '@/plugins'
-
-const localVue = createLocalVue()
-localVue.use(VueRouter)
-
 describe('main::Playground.vue', () => {
-  let router: VueRouter
   let playground: Wrapper<Playground>
   let vm: any
+  let boot: typeof jest.fn
 
   beforeEach(() => {
-    router = new VueRouter({
-      routes: [
-        {
-          name: 'playground',
-          path: '/'
+    boot = jest.fn()
+    playground = shallowMount(Playground, {
+      stubs: {
+        'router-view': '<div />'
+      },
+      mocks: {
+        $intercom: {
+          boot
         }
-      ]
+      }
     })
-    playground = shallowMount(Playground, { router, localVue })
     vm = playground.vm as any
   })
 
@@ -31,6 +26,8 @@ describe('main::Playground.vue', () => {
   })
 
   it('should mount', () => {
+    expect.assertions(2)
+    expect(boot).toHaveBeenCalled()
     expect(playground.html()).toBeTruthy()
   })
 
