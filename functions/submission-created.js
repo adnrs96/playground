@@ -17,15 +17,13 @@ const sendRegisteredInterestEmail = async ({ email, name }) => {
       Hey ${name},
       <br>
       <br>
-      Thank you for stopping by our booth at GitHub universe!
+      Thank you for stopping by our booth at GitHub Universe!
       <br>
       <br>
-      We will be in touch after the event to help you continue your Story, so keep an eye out for an email from us.
+      We will be in touch after the event to help you continue your Story so keep an eye out for an email from us.
       <br>
       <br>
-      In the meantime, if you would like to get a feel of how Storyscript works, we’d love for you to read <a href="https://docs.storyscript.io/storyscript/writing">this article</a>.
-      <br>
-      <br>
+      In the meantime, if you would like to get a feel for how Storyscript works, we’d love for you to read <a href="https://docs.storyscript.io/storyscript/writing">this article</a>.
       <br>
       <br>
       Cheers,<br>
