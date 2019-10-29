@@ -152,7 +152,7 @@ export default class Login extends Vue {
 
   @Watch('name')
   private onNameHandler () {
-    if (this.name.length < 3) {
+    if (this.name.length > 0 && this.name.length < 3) {
       this.nameError = 'Name too short.'
     } else {
       this.nameError = ''
@@ -161,7 +161,7 @@ export default class Login extends Vue {
 
   @Watch('email')
   private onEmailHandler () {
-    if (/^(([^<>()\\[\]\\.,;:\s@\\"]+(\.[^<>()\\[\]\\.,;:\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\]\\.,;:\s@\\"]+\.)+[^<>()[\]\\.,;:\s@\\"]{2,})$/.test(this.email) === false) {
+    if (/^(([^<>()\\[\]\\.,;:\s@\\"]+(\.[^<>()\\[\]\\.,;:\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\]\\.,;:\s@\\"]+\.)+[^<>()[\]\\.,;:\s@\\"]{2,})$/.test(this.email) === false && this.email.length > 0) {
       this.emailError = 'Email is invalid.'
     } else {
       this.emailError = ''
