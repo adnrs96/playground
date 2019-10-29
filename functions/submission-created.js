@@ -9,10 +9,16 @@ const sendRegisteredInterestEmail = async ({ email, name }) => {
       domain: MG_DOMAIN
     })
     const mail = {
-      from: 'Steve from Storyscript <steve@storyscript.io>',
+      from: 'Storyscript <will@storyscript.io>',
       to: email,
-      subject: 'Thank you for your interest',
-      text: `Thank you for your interest ${name}!`
+      subject: 'GitHub Universe: Thank you for your interest',
+      text: `Hey ${name},<br>
+      Thank you for stopping by our booth at GitHub universe!<br>
+      We will be in touch after the event to help you continue your Story, so keep an eye out for an email from us.<br>
+      In the meantime, if you would like to get a feel of how Storyscript works, we’d love for you to read this article.<br>
+      <br>
+      Cheers,
+      The Storyscript Team`
     }
 
     mailgun.messages().send(mail, err => {
