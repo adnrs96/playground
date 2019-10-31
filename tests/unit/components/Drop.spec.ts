@@ -213,7 +213,7 @@ describe('Drop.vue', () => {
       })
       const vm = navbar.vm as any
       vm.show = true
-      vm.$refs.button.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: -100, left: 3000, bottom: 1000 }))
+      vm.$refs.self.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: -100, left: 3000, bottom: 1000 }))
       vm.refreshPosition()
       navbar.vm.$nextTick().then(() => {
         expect(vm).toHaveProperty('currentPosition', ['bottom', 'right'])
@@ -231,7 +231,7 @@ describe('Drop.vue', () => {
       })
       const vm = navbar.vm as any
       vm.show = true
-      vm.$refs.button.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: 0, left: 0, bottom: 3000 }))
+      vm.$refs.self.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: 0, left: 0, bottom: 3000 }))
       vm.refreshPosition()
       navbar.vm.$nextTick().then(() => {
         expect(vm).toHaveProperty('buttonSize', 1)
@@ -250,7 +250,7 @@ describe('Drop.vue', () => {
       const vm = navbar.vm as any
       vm.show = true
       vm.$refs.content = { clientHeight: 1000, clientWidth: 10000 }
-      vm.$refs.button = { getBoundingClientRect: () => ({ top: -2000, left: 1000, bottom: -1000 }), clientWidth: 10, clientHeight: 1000 }
+      vm.$refs.self = { getBoundingClientRect: () => ({ top: -2000, left: 1000, bottom: -1000 }), clientWidth: 10, clientHeight: 1000 }
       vm.refreshPosition()
       navbar.vm.$nextTick().then(() => {
         expect(vm).toHaveProperty('currentPosition', ['top', 'right'])
@@ -285,7 +285,7 @@ describe('Drop.vue', () => {
       })
       const vm = navbar.vm as any
       vm.show = true
-      vm.$refs.button = { getBoundingClientRect: () => ({ top: 0, left: 0, right: 0 }), clientWidth: 10000 }
+      vm.$refs.self = { getBoundingClientRect: () => ({ top: 0, left: 0, right: 0 }), clientWidth: 10000 }
       vm.refreshPosition()
       navbar.vm.$nextTick().then(() => {
         expect(vm).toHaveProperty('buttonSize', 24)
