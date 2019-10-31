@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="self"
     v-click-outside="hideIfShown"
     class="drop"
     @mouseover="showTrigger('hover', true)"
@@ -121,6 +122,7 @@ export default class Drop extends Vue {
   public hideIfShown () {
     if (this.show) {
       this.show = false
+      this.$emit('close')
     }
   }
 
@@ -150,7 +152,7 @@ export default class Drop extends Vue {
     this.$nextTick().then(() => {
       let newPos = ['top', 'left']
       const content = this.$refs.content as Element
-      const button = this.$refs.button as Element
+      const button = this.$refs.self as Element
       if (content) {
         let spaceUp = button.getBoundingClientRect().top - content.clientHeight
         let spaceDown = window.innerHeight - button.getBoundingClientRect().bottom - content.clientHeight
