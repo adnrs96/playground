@@ -25,7 +25,7 @@
           class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card"
         >
           <div
-            class="flex mt-8 px-8 pb-6 border-b border-solid border-gray-10"
+            class="flex mt-8 px-8 pb-6 border-b border-solid border-gray-10 items-start"
           >
             <img
               src="@/assets/img/redis.svg"
