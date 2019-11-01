@@ -2,7 +2,7 @@
  * Container style
  */
 
- .ps {
+.ps {
   @apply relative block overflow-hidden;
   overflow-anchor: none;
   -ms-overflow-style: none;
@@ -12,22 +12,20 @@
     @apply overflow-auto;
   }
 
-  @media screen and (-ms-high-contrast: active),
-  (-ms-high-contrast: none) {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     @apply overflow-auto;
   }
 
-  &.ps--hidden {}
+  &.ps--hidden {
+  }
 
   &:not(.ps--hidden) {
-
     &:hover,
     .ps--focus,
     .ps--scrolling-x,
     .ps--scrolling-y {
-
-      &>.ps__rail-y,
-      &>.ps__rail-x {
+      & > .ps__rail-y,
+      & > .ps__rail-x {
         @apply opacity-75;
       }
     }
@@ -40,10 +38,10 @@
       @apply w-4 right-0;
     }
 
-    >.ps__rail-y,
-    >.ps__rail-x {
+    > .ps__rail-y,
+    > .ps__rail-x {
       @apply absolute hidden opacity-0;
-      transition: background-color .2s linear, opacity .2s linear;
+      transition: background-color 0.2s linear, opacity 0.2s linear;
 
       &:hover,
       &:focus,
@@ -60,20 +58,19 @@
       }
     }
 
-    &.ps--active-x>.ps__rail-x,
-    &.ps--active-y>.ps__rail-y {
+    &.ps--active-x > .ps__rail-x,
+    &.ps--active-y > .ps__rail-y {
       @apply block bg-transparent;
     }
 
     .ps__thumb-x {
       @apply absolute bottom-min bg-gray-40 rounded-md h-2;
-      transition: background-color .2s linear, height .2s ease-in-out;
+      transition: background-color 0.2s linear, height 0.2s ease-in-out;
     }
 
     .ps__thumb-y {
       @apply absolute right-min bg-gray-40 rounded-md w-2;
-      transition: background-color .2s linear, width .2s ease-in-out;
+      transition: background-color 0.2s linear, width 0.2s ease-in-out;
     }
-
   }
 }

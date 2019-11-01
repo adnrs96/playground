@@ -30,6 +30,8 @@
             <img
               src="@/assets/img/redis.svg"
               alt="redis logo"
+              width="71"
+              height="61"
               class="mr-6"
             >
             <div>
