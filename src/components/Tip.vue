@@ -10,8 +10,8 @@
   >
     <s-icon
       icon="dot"
-      width="8"
-      height="8"
+      width="12"
+      height="12"
       class="text-red-50 animate-ripple"
       clickable
     />

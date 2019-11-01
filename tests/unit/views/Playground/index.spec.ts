@@ -18,4 +18,17 @@ describe('Playground index', () => {
     expect.assertions(1)
     expect(playground.html()).toBeDefined()
   })
+
+  it('should skip intro', () => {
+    expect.assertions(1)
+    const view = shallowMount(Playground, {
+      mocks: {
+        $route: {
+          query: { skipIntro: 'true' }
+        }
+      }
+    })
+    expect(view.vm).toHaveProperty('isIntro', false)
+    view.destroy()
+  })
 })

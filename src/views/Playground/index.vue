@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen">
-    <s-navbar />
+    <s-navbar :intro="isIntro" />
     <div class="min-h-screen-no-navbar flex">
       <div class="flex flex-col w-2/3">
         <div class="flex items-center my-4 mx-8">
@@ -32,11 +32,16 @@
         :logs="payload.logs"
       />
     </div>
+    <s-intro
+      v-if="payload.tips && isIntro"
+      :tips="payload.tips"
+      @done="isIntro = false"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import SNavbar from '@/components/Navbar.vue'
 import SLogs from '@/views/Playground/Logs.vue'
 import { IStorySample } from '@/models/StorySample'
@@ -44,6 +49,7 @@ import counter from '@/samples/counter'
 import MonacoEditor from '@/components/MonacoEditor.vue'
 import SText from '@/components/Text.vue'
 import SIcon from '@/components/Icon.vue'
+import SIntro from '@/components/Intro.vue'
 
 @Component({
   components: {
@@ -51,17 +57,25 @@ import SIcon from '@/components/Icon.vue'
     SLogs,
     MonacoEditor,
     SIcon,
-    SText
+    SText,
+    SIntro
   }
 })
 export default class Playground extends Vue {
   private payload: IStorySample = counter
+  private isIntro: boolean = true
 
   private options: any = {
     readOnly: true,
     minimap: { enabled: false },
     fontSize: 16,
     automaticLayout: true
+  }
+
+  created () {
+    if (this.$route && this.$route.query && this.$route.query.skipIntro && this.$route.query.skipIntro === 'true') {
+      this.isIntro = false
+    }
   }
 }
 </script>
