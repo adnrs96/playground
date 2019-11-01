@@ -61,7 +61,7 @@ export default class Playground extends Vue {
   @Prop({ type: String, default: 'counter' }) readonly sample!: string
 
   private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']
-  private isIntro: boolean = true
+  private isIntro: boolean = false
 
   @Emit('introChange')
   @Watch('isIntro') private onIntroChange (): boolean {
@@ -87,9 +87,7 @@ export default class Playground extends Vue {
         this.$router.replace({ name: 'not-found' })
       }
     }
-    if (this.$route && this.$route.query && this.$route.query.skipIntro && this.$route.query.skipIntro === 'true') {
-      this.isIntro = false
-    }
+    this.isIntro = !(this.$route && this.$route.query && this.$route.query.skipIntro && this.$route.query.skipIntro === 'true')
   }
 }
 </script>
