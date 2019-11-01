@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
 import SLogs from '@/views/Playground/Logs.vue'
 import { IStorySample } from '@/models/StorySample'
 import samples from '@/samples'
@@ -62,6 +62,11 @@ export default class Playground extends Vue {
 
   private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']
   private isIntro: boolean = true
+
+  @Emit('introChange')
+  @Watch('isIntro') private onIntroChange (): boolean {
+    return this.isIntro
+  }
 
   private options: any = {
     readOnly: true,

@@ -1,7 +1,10 @@
 <template>
   <div class="min-h-screen">
-    <s-navbar :welcome="welcome" />
-    <router-view />
+    <s-navbar
+      :welcome="welcome"
+      :intro="isIntro"
+    />
+    <router-view @introChange="isIntro = $event" />
   </div>
 </template>
 
@@ -17,6 +20,7 @@ import event from '@/event'
 })
 export default class Layout extends Vue {
   private welcome: boolean = false
+  private isIntro: boolean = true
 
   mounted () {
     if (!this.$route.params.hasOwnProperty('sample') && !this.$route.path.includes('welcome')) {

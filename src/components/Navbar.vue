@@ -98,9 +98,9 @@ import STip from '@/components/Tip.vue'
 })
 export default class Navbar extends Vue {
   @Prop({ type: Boolean, default: false }) private intro!: boolean
-  private deploying: boolean = false
-
   @Prop({ type: Boolean, default: false }) readonly welcome!: boolean
+
+  private deploying: boolean = false
 
   @Mutation('incrementReleasesCount')
   private incrementReleasesCount!: () => void
