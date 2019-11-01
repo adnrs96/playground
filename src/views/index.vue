@@ -27,6 +27,7 @@ export default class Layout extends Vue {
       this.$router.push({ name: 'playground', params: { sample: 'counter' }, query: this.$route.query })
     }
     this.welcome = this.$route.name === 'welcome'
+    this.isIntro = !(this.$route && this.$route.query && this.$route.query.skipIntro && this.$route.query.skipIntro === 'true')
     event.$on('welcome', (val: boolean) => {
       this.welcome = val
     })
