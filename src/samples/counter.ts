@@ -32,6 +32,11 @@ const counter: IStorySample = {
     text: 'Services in Storyscript can also be event driven.\n\nHere, an http server listens for events and the inner block is executed when a request is received.',
     x: 133,
     y: 140
+  }, {
+    name: 'storyscript-deploy',
+    text: 'How about we deploy this story, and see what the platform takes care of for you?',
+    x: 304,
+    y: 20
   }]
 }
 
