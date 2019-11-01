@@ -14,7 +14,7 @@ const counter: IStorySample = {
   code: `redis set key:"count" value:0\nwhen http server listen path:"/counter" as request\n  count = redis increment key:"count" by:1\n  request write content:"This page has been visited {count} times"`,
   tips: [{
     name: 'welcome-to-storyscript',
-    text: "This is Storyscript, the cloud-native programming language.\n\nLet's take a quick walkthrough the language features with this example building a simple counter application.",
+    text: "This is Storyscript, the cloud-native programming language.\n\nLet's take a quick walk through the language features with this example building a simple counter application.",
     x: 256,
     y: 76
   }, {
