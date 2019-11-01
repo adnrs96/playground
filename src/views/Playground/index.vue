@@ -33,7 +33,7 @@
       />
     </div>
     <s-intro
-      v-if="payload.tips"
+      v-if="payload.tips && isIntro"
       :tips="payload.tips"
       @done="isIntro = false"
     />

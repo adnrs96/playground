@@ -4,6 +4,7 @@
     class="fixed z-50 top-0 left-0"
   >
     <div class="bg-gray-100 opacity-25 w-screen h-screen inset-0 absolute" />
+    <!-- s-drop using class before-ml-4 -->
     <s-drop
       v-if="!refreshTip"
       :id="`tip-${currentTip.name}`"
@@ -28,7 +29,7 @@
           p="5"
           weight="medium"
           color="text-gray-90"
-          class="max-w-xxs w-max-content"
+          class="max-w-xs w-max-content"
           v-text="currentTip.text"
         />
         <s-text
@@ -37,7 +38,7 @@
           color="text-indigo-60"
           class="mt-2 cursor-pointer"
           @click="$refs.tip.hideIfShown()"
-          v-text="currentTipIdx + 1 < tips.length ? 'Next tip' : undefined"
+          v-text="currentTipIdx + 1 < tips.length ? 'Next tip' : 'Got it!'"
         />
       </template>
     </s-drop>
