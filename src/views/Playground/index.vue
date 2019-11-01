@@ -71,5 +71,11 @@ export default class Playground extends Vue {
     fontSize: 16,
     automaticLayout: true
   }
+
+  created () {
+    if (this.$route && this.$route.query && this.$route.query.skipIntro && this.$route.query.skipIntro === 'true') {
+      this.isIntro = false
+    }
+  }
 }
 </script>
