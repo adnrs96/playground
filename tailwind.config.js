@@ -84,6 +84,7 @@ module.exports = {
         sm: '0 3px 5px rgba(0, 0, 0, 0.05)'
       },
       inset: {
+        min: '.125rem',
         half: '50%',
         full: '100%'
       },

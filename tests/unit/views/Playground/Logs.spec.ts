@@ -17,7 +17,8 @@ describe('Plaground::Logs', () => {
     store = new Vuex.Store(StoreLogs)
     logs = shallowMount(Logs, {
       propsData: {
-        logs: counter.logs
+        logs: counter.logs,
+        name: counter.name
       },
       store,
       localVue

@@ -8,9 +8,29 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'playground',
-      component: () => import('@/views/Playground/index.vue')
+      path: '',
+      component: () => import('@/Playground.vue'),
+      children: [
+        {
+          path: '/',
+          component: () => import('@/views/index.vue'),
+          children: [
+            {
+              path: '/welcome',
+              name: 'welcome',
+              component: () => import ('@/views/Welcome.vue')
+            },
+            {
+              path: ':sample',
+              name: 'playground',
+              props: route => ({
+                sample: route.params.sample
+              }),
+              component: () => import('@/views/Playground/index.vue')
+            }
+          ]
+        }
+      ]
     },
     {
       path: '*',

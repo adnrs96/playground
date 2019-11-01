@@ -1,10 +1,11 @@
 export interface IStorySample {
+  name: string,
   logs: IStoryLogs,
-  code: string
+  code: string,
+  description: string
 }
 
 export interface IStoryLogs {
-  name: string,
   files: Array<string>,
   services: Array<string>
 }
