@@ -64,7 +64,11 @@
           <span>
             New from scratch
           </span>
-          <s-tip id="new-from-scratch-tip">
+          <s-tip
+            v-if="!intro"
+            id="new-from-scratch-tip"
+            mode="hover|focus"
+          >
             Playground for creating your own apps is under development.
           </s-tip>
         </s-text>
@@ -93,6 +97,7 @@ import STip from '@/components/Tip.vue'
   }
 })
 export default class Navbar extends Vue {
+  @Prop({ type: Boolean, default: false }) private intro!: boolean
   private deploying: boolean = false
 
   @Prop({ type: Boolean, default: false }) readonly welcome!: boolean

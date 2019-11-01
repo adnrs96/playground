@@ -76,6 +76,19 @@ describe('Playground index', () => {
     expect(playground.html()).toBeDefined()
   })
 
+  it('should skip intro', () => {
+    expect.assertions(1)
+    const view = shallowMount(Playground, {
+      mocks: {
+        $route: {
+          query: { skipIntro: 'true' }
+        }
+      }
+    })
+    expect(view.vm).toHaveProperty('isIntro', false)
+    view.destroy()
+  })
+
   describe('.setPayload(string)', () => {
     it('should set the payload', () => {
       playground = shallowMount(Playground, {

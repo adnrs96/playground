@@ -10,7 +10,7 @@ describe('Logs', () => {
     browser = await puppeteer.launch(puppeteerConfig())
     page = await browser.newPage()
     page.setBypassCSP(true)
-    await page.goto(TEST_URL)
+    await page.goto(`${TEST_URL}/?skipIntro=true`)
   })
 
   afterAll(() => {

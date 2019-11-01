@@ -30,6 +30,11 @@
       :logs="payload.logs"
       :name="payload.name"
     />
+    <s-intro
+      v-if="payload.tips && isIntro"
+      :tips="payload.tips"
+      @done="isIntro = false"
+    />
   </div>
 </template>
 
@@ -41,19 +46,22 @@ import samples from '@/samples'
 import MonacoEditor from '@/components/MonacoEditor.vue'
 import SText from '@/components/Text.vue'
 import SIcon from '@/components/Icon.vue'
+import SIntro from '@/components/Intro.vue'
 
 @Component({
   components: {
     SLogs,
     MonacoEditor,
     SIcon,
-    SText
+    SText,
+    SIntro
   }
 })
 export default class Playground extends Vue {
   @Prop({ type: String, default: 'counter' }) readonly sample!: string
 
   private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']
+  private isIntro: boolean = true
 
   private options: any = {
     readOnly: true,
@@ -73,6 +81,9 @@ export default class Playground extends Vue {
       } else {
         this.$router.replace({ name: 'not-found' })
       }
+    }
+    if (this.$route && this.$route.query && this.$route.query.skipIntro && this.$route.query.skipIntro === 'true') {
+      this.isIntro = false
     }
   }
 }

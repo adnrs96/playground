@@ -2,7 +2,7 @@
   @apply relative select-none;
 
   .content {
-    @apply absolute bg-gray-100 rounded-xl text-white whitespace-no-wrap z-30;
+    @apply absolute bg-gray-100 rounded-xl text-white whitespace-pre-wrap z-30;
 
     &:before {
       content: '';
