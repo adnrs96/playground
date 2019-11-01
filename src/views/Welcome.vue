@@ -1,5 +1,8 @@
 <template>
-  <div class="bg-gray-10">
+  <div
+    id="welcome"
+    class="bg-gray-10"
+  >
     <perfect-scrollbar
       ref="content"
       class="overflow-hidden min-h-screen-no-navbar max-h-screen-no-navbar"
@@ -17,8 +20,9 @@
       <div class="flex flex-col md:flex-row justify-center mb-12">
         <div
           v-for="(card, idx) in samples"
+          :id="`sample-card-${card.name}`"
           :key="`sample-card-${idx}`"
-          class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3"
+          class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card"
         >
           <div
             class="flex mt-8 px-8 pb-6 border-b border-solid border-gray-10"
@@ -33,6 +37,7 @@
                 p="1"
                 weight="bold"
                 color="text-gray-100"
+                class="title"
               >
                 {{ card.name }}.story
               </s-text>
@@ -40,6 +45,7 @@
                 p="3"
                 weight="regular"
                 color="text-black"
+                class="description"
               >
                 {{ card.description }}
               </s-text>

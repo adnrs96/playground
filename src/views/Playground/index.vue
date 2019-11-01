@@ -1,5 +1,8 @@
 <template>
-  <div class="min-h-screen-no-navbar flex">
+  <div
+    id="playground"
+    class="min-h-screen-no-navbar flex"
+  >
     <div class="flex flex-col w-2/3">
       <div class="flex items-center my-4 mx-8">
         <s-text

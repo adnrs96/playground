@@ -35,4 +35,12 @@ describe('Percy screenshots', () => {
     await percySnapshot(page, 'Login Modal')
     expect(true).toBeTruthy()
   })
+
+  it('should take a screenshot of the welcome page', async () => {
+    expect.assertions(1)
+    await page.goto(`${TEST_URL}/welcome`)
+    await page.waitForSelector('#welcome')
+    await percySnapshot(page, 'Welcome page')
+    expect(true).toBeTruthy()
+  })
 })

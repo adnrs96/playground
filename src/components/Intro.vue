@@ -3,7 +3,10 @@
     v-if="currentTip"
     class="fixed z-50 top-0 left-0"
   >
-    <div class="bg-gray-100 opacity-25 w-screen h-screen inset-0 absolute" />
+    <div
+      id="intro-layer"
+      class="bg-gray-100 opacity-25 w-screen h-screen inset-0 absolute"
+    />
     <!-- s-drop using class before-ml-4 -->
     <s-drop
       v-if="!refreshTip"
@@ -26,6 +29,7 @@
       />
       <template #content>
         <s-text
+          id="tip-content"
           p="5"
           weight="medium"
           color="text-gray-90"
@@ -33,6 +37,7 @@
           v-text="currentTip.text"
         />
         <s-text
+          id="next-tip"
           p="6"
           weight="semibold"
           color="text-indigo-60"
