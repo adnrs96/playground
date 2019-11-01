@@ -1,10 +1,20 @@
 import Playground from '@/views/Playground/index.vue'
-import { Wrapper, shallowMount } from '@vue/test-utils'
+import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
 import samples from '@/samples'
+import VueRouter from 'vue-router'
 
 describe('Playground index', () => {
   let playground: Wrapper<Playground>
   let vm: any
+  let router = new VueRouter({
+    routes: [{
+      path: '*',
+      name: 'not-found'
+    }]
+  })
+
+  const localVue = createLocalVue()
+  localVue.use(VueRouter)
 
   beforeEach(() => {
   })
@@ -17,6 +27,47 @@ describe('Playground index', () => {
     playground = shallowMount(Playground, {
       propsData: {
         sample: ''
+      }
+    })
+    vm = playground.vm as any
+
+    expect.assertions(1)
+    expect(playground.html()).toBeDefined()
+  })
+
+  it('should mount', () => {
+    const routes = [
+      {
+        name: 'welcome',
+        path: '/welcome'
+      },
+      {
+        name: 'playground',
+        path: '/:sample'
+      },
+      {
+        name: 'not-found',
+        path: '*'
+      }
+    ]
+    const $route = {
+      path: '/example/test'
+    }
+    router = new VueRouter({
+      routes: [...routes]
+    })
+
+    playground = shallowMount(Playground, {
+      localVue,
+      router,
+      stubs: [
+        'router-view'
+      ],
+      mocks: {
+        $route
+      },
+      propsData: {
+        sample: 'test'
       }
     })
     vm = playground.vm as any

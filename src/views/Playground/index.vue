@@ -53,7 +53,7 @@ import SIcon from '@/components/Icon.vue'
 export default class Playground extends Vue {
   @Prop({ type: String, default: 'counter' }) readonly sample!: string
 
-  private payload: IStorySample = samples[this.sample || 'counter']
+  private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']
 
   private options: any = {
     readOnly: true,
@@ -68,7 +68,11 @@ export default class Playground extends Vue {
 
   created () {
     if (this.sample.length > 0) {
-      this.setPayload(this.sample)
+      if (samples.hasOwnProperty(this.sample)) {
+        this.setPayload(this.sample)
+      } else {
+        this.$router.replace({ name: 'not-found' })
+      }
     }
   }
 }

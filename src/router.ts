@@ -21,7 +21,7 @@ export default new Router({
               component: () => import ('@/views/Welcome.vue')
             },
             {
-              path: ':sample',
+              path: 'example/:sample',
               name: 'playground',
               props: route => ({
                 sample: route.params.sample
@@ -34,6 +34,7 @@ export default new Router({
     },
     {
       path: '*',
+      name: 'not-found',
       component: () => import('@/views/NotFound.vue')
     }
   ]
