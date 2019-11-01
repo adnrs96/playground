@@ -10,7 +10,7 @@ describe('Logs', () => {
     browser = await puppeteer.launch(puppeteerConfig())
     page = await browser.newPage()
     page.setBypassCSP(true)
-    await page.goto(TEST_URL)
+    await page.goto(`${TEST_URL}/?skipIntro=true`)
     await page.waitForSelector('#login')
   })
 
@@ -42,8 +42,8 @@ describe('Logs', () => {
     expect(await page.$('#login-form')).toBeTruthy()
 
     expect((await page.$$('input')).length).toEqual(3)
-    expect((await page.$$eval('input', (nodes: any) => nodes.map((n:any) => n.type)))).toEqual(['text', 'text', 'email'])
-    expect((await page.$$eval('input', (nodes: any) => nodes.map((n:any) => n.name)))).toEqual(['form-name', 'name', 'email'])
+    expect((await page.$$eval('input', (nodes: any) => nodes.map((n: any) => n.type)))).toEqual(['text', 'text', 'email'])
+    expect((await page.$$eval('input', (nodes: any) => nodes.map((n: any) => n.name)))).toEqual(['form-name', 'name', 'email'])
   })
 
   it('should display a some errors when I enter wrong info', async () => {
@@ -53,7 +53,7 @@ describe('Logs', () => {
     await page.type('[name="email"]', 'x')
 
     expect((await page.$$('.text-red-70')).length).toEqual(2)
-    expect((await page.$$eval('.text-red-70', (nodes: any) => nodes.map((n:any) => n.textContent.trim())))).toEqual(['Name too short.', 'Email is invalid.'])
+    expect((await page.$$eval('.text-red-70', (nodes: any) => nodes.map((n: any) => n.textContent.trim())))).toEqual(['Name too short.', 'Email is invalid.'])
   })
 
   /**
