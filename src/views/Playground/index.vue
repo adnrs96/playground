@@ -10,7 +10,7 @@
           weight="semibold"
           color="text-gray-100"
         >
-          {{ payload.logs.files[0] }}.story
+          {{ payload.files[0] }}.story
         </s-text>
         <s-text
           p="6"
@@ -27,11 +27,16 @@
         class="w-full h-full"
         :options="options"
       />
+      <div class="w-full flex">
+        <s-architecture
+          :services="payload.services"
+          :architecture="payload.architecture"
+        />
+      </div>
     </div>
     <s-logs
       class="w-1/3"
-      :logs="payload.logs"
-      :name="payload.name"
+      :payload="payload"
     />
     <s-intro
       v-if="payload.tips && isIntro"
@@ -44,6 +49,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
 import SLogs from '@/views/Playground/Logs.vue'
+import SArchitecture from '@/views/Playground/Architecture.vue'
 import { IStorySample } from '@/models/StorySample'
 import samples from '@/samples'
 import MonacoEditor from '@/components/MonacoEditor.vue'
@@ -54,6 +60,7 @@ import SIntro from '@/components/Intro.vue'
 @Component({
   components: {
     SLogs,
+    SArchitecture,
     MonacoEditor,
     SIcon,
     SText,

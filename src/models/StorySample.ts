@@ -1,19 +1,27 @@
 export interface IStorySampleTip {
-  x: number,
-  y: number,
-  name: string,
+  x: number
+  y: number
+  name: string
   text: string
 }
 
-export interface IStorySample {
-  name: string,
-  logs: IStoryLogs,
-  code: string,
-  description: string,
-  tips?: Array<IStorySampleTip>
+export interface IService {
+  icon: string,
+  name: string
 }
 
-export interface IStoryLogs {
-  files: Array<string>,
-  services: Array<string>
+
+export interface IArchitectureBlock {
+  icon: string;
+  health: number;
+}
+
+export interface IStorySample {
+  name: string
+  code: string,
+  architecture: IArchitectureBlock[][]
+  files: Array<string>
+  services: Array<IService>
+  description: string
+  tips?: Array<IStorySampleTip>
 }
