@@ -11,13 +11,16 @@ localVue.use(Vuex)
 describe('Plaground::Logs', () => {
   let logs: Wrapper<Logs>
   let vm: any
-    let store: Store<any>
+  let store: Store<any>
 
   beforeEach(() => {
     store = new Vuex.Store(StoreLogs)
     logs = shallowMount(Logs, {
       propsData: {
         payload: counter
+        startAfter: 0,
+        dotDelay: 0,
+        lineDelay: 0
       },
       store,
       localVue
@@ -36,25 +39,9 @@ describe('Plaground::Logs', () => {
   })
 
   describe('.writeLogs()', () => {
-    it('should append the logs to the output', async () => {
-      expect.assertions(11)
-      await vm.writeLogs()
-      expect(/Compiling Stories\.\.\./.test(vm.output)).toBeTruthy()
-      expect(/✔ Compiled [\d]+ story/.test(vm.output)).toBeTruthy()
-      expect(/Deploying app [\w]{1,25}\.\.\./.test(vm.output)).toBeTruthy()
-      expect(/✔ Version [\d]+ of your app has been queued for deployment\./.test(vm.output)).toBeTruthy()
-      expect(/Waiting for deployment to complete\.\.\./.test(vm.output)).toBeTruthy()
-      expect(/✔ Configured [\d]+ story/.test(vm.output)).toBeTruthy()
-      expect(/✔ Deployed [\d]+ services/.test(vm.output)).toBeTruthy()
-      expect(/✔ Created ingress route/.test(vm.output)).toBeTruthy()
-      expect(/✔ Configured logging/.test(vm.output)).toBeTruthy()
-      expect(/✔ Configured health checks/.test(vm.output)).toBeTruthy()
-      expect(/✔ Deployment successful!/.test(vm.output)).toBeTruthy()
-    })
-
-    it('should use a custom timer', async () => {
+    it('should append the logs', async () => {
       expect.assertions(14)
-      await vm.writeLogs(25)
+      await vm.writeLogs()
       expect(/Compiling Stories\.\.\./.test(vm.output)).toBeTruthy()
       expect(/✔ Compiled 1 story/.test(vm.output)).toBeTruthy()
       expect(/Deploying app [\w]{1,25}\.\.\./.test(vm.output)).toBeTruthy()
@@ -87,16 +74,31 @@ describe('Plaground::Logs', () => {
       expect(/- http/.test(vm.output)).toBeFalsy()
       expect(/- redis/.test(vm.output)).toBeFalsy()
     })
+
+    it('should write with actual line delay', async () => {
+      const view = shallowMount(Logs, {
+        propsData: {
+          logs: counter.logs,
+          name: counter.name,
+          startAfter: 0,
+          dotDelay: 0
+        },
+        store,
+        localVue
+      })
+      const vvm = view.vm as any
+      expect(vvm).toHaveProperty('lineDelay', -1)
+      view.destroy()
+    })
   })
 
   describe(`event.$on('deploy')`, () => {
     it('should append all the logs', async () => {
-      jest.setTimeout(15000)
       expect.assertions(2)
       const fakeCb = jest.fn()
       vm.writeLogs = jest.fn()
       event.$emit('deploy', fakeCb)
-      await new Promise(resolve => setTimeout(resolve, 10000))
+      await new Promise(resolve => setTimeout(resolve, 100))
       expect(vm.writeLogs).toHaveBeenCalled()
       expect(fakeCb).toHaveBeenCalled()
     })

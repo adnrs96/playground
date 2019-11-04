@@ -34,6 +34,11 @@ export default class Logs extends Vue {
   private output: string = INITIAL_LOGS
 
   @Prop({ type: Object, required: true }) readonly payload!: IStorySample
+  @Prop({ type: Number, default: 250 }) readonly startAfter!: number
+  @Prop({ type: Number, default: 500 }) readonly dotDelay!: number
+
+  // to unify line delay. If this has value >= 0, line.delay is skipped
+  @Prop({ type: Number, default: -1 }) readonly lineDelay!: number
 
   @Getter('getReleasesCount')
   private releasesCount!: number
@@ -41,7 +46,7 @@ export default class Logs extends Vue {
   mounted () {
     event.$on('deploy', async (cb: Function) => {
       this.output = INITIAL_LOGS
-      await this.sleep(250)
+      await this.sleep(this.startAfter)
       await this.writeLogs()
       cb()
     })
@@ -51,11 +56,11 @@ export default class Logs extends Vue {
     return new Promise(resolve => setTimeout(resolve, time))
   }
 
-  private writeLogs (interval: number = 75): Promise<void> {
+  private writeLogs (): Promise<void> {
     const tripleDot = () => {
       return new Promise(async resolve => {
         for (let i in [1, 2, 3]) {
-          await this.sleep(500)
+          await this.sleep(this.dotDelay)
           this.output += '.'
         }
         resolve()
@@ -109,7 +114,7 @@ export default class Logs extends Vue {
               break
           }
         }
-        await this.sleep((l as any).delay)
+        await this.sleep(this.lineDelay >= 0 ? this.lineDelay : (l as any).delay)
       }
       resolve()
     })
