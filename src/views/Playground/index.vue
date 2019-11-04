@@ -36,6 +36,7 @@
     <s-intro
       v-if="payload.tips && isIntro"
       :tips="payload.tips"
+      show-at-startup
       @done="isIntro = false"
     />
   </div>

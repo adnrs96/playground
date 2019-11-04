@@ -23,7 +23,8 @@ export default class Layout extends Vue {
   private isIntro: boolean = true
 
   mounted () {
-    if (!this.$route.params.hasOwnProperty('sample') && !this.$route.path.includes('welcome')) {
+    if ((!this.$route || !this.$route.params || !('sample' in this.$route.params)) &&
+      (this.$route && this.$route.path && !this.$route.path.includes('welcome'))) {
       this.$router.push({ name: 'playground', params: { sample: 'counter' }, query: this.$route.query })
     }
     this.welcome = this.$route.name === 'welcome'
