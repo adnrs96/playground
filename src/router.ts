@@ -7,10 +7,6 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    {
-      path: '',
-      component: () => import('@/Playground.vue'),
-      children: [
         {
           path: '/',
           component: () => import('@/views/index.vue'),
@@ -29,8 +25,6 @@ export default new Router({
               component: () => import('@/views/Playground/index.vue')
             }
           ]
-        }
-      ]
     },
     {
       path: '*',
