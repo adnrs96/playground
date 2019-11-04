@@ -23,7 +23,7 @@
         </s-text>
       </div>
       <monaco-editor
-        v-model="payload.code"
+        v-model="code"
         class="w-full h-full"
         :options="options"
       />
@@ -43,6 +43,7 @@
 </template>
 
 <script lang="ts">
+import { Getter, Mutation } from 'vuex-class'
 import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
 import SLogs from '@/views/Playground/Logs.vue'
 import { IStorySample } from '@/models/StorySample'
@@ -64,8 +65,13 @@ import SIntro from '@/components/Intro.vue'
 export default class Playground extends Vue {
   @Prop({ type: String, default: 'counter' }) readonly sample!: string
 
+  @Getter('isSampleWritten') isSampleWritten!: (sample: string) => boolean
+
+  @Mutation('writeSample') writeSample!: (sample: string) => void
+
   private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']
   private isIntro: boolean = false
+  private code: string = ''
 
   @Emit('introChange')
   @Watch('isIntro') private onIntroChange (): boolean {
@@ -81,6 +87,19 @@ export default class Playground extends Vue {
 
   public setPayload (sample: string) {
     this.payload = samples[sample]
+    this.writeCode()
+  }
+
+  public async writeCode () {
+    if (!this.isSampleWritten(this.sample)) {
+      for (let c of this.payload.code) {
+        this.code += c
+        await new Promise(resolve => setTimeout(resolve, Math.random()))
+      }
+      this.writeSample(this.sample)
+    } else {
+      this.code = this.payload.code
+    }
   }
 
   created () {
