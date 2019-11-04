@@ -27,7 +27,8 @@ describe('Intro.vue', () => {
             text: 'content',
             x: 0,
             y: 0
-          }]
+          }],
+          showAtStartup: true
         }
       })
       vm = view.vm as any
@@ -47,20 +48,29 @@ describe('Intro.vue', () => {
       })
     })
 
-    it('updateTip', async () => {
-      expect.assertions(4)
+    it('showTip', async () => {
+      expect.assertions(2)
       vm.$refs.tip = { show: false }
-      expect(vm).toHaveProperty('currentTipIdx', 0)
-      vm.updateTip()
-      expect(vm).toHaveProperty('currentTipIdx', 1)
+      expect(vm.$refs.tip).toHaveProperty('show', false)
+      vm.showTip()
       await new Promise(resolve => {
         setTimeout(() => {
           expect(vm.$refs.tip).toHaveProperty('show', true)
-          vm.updateTip()
-          expect(view.emitted().done).toBeTruthy()
           resolve()
-        }, 150)
+        }, 200)
       })
+    })
+
+    it('updateTip', async () => {
+      expect.assertions(4)
+      vm.showTip = jest.fn()
+      expect(vm).toHaveProperty('currentTipIdx', 0)
+      vm.updateTip()
+      expect(vm).toHaveProperty('currentTipIdx', 1)
+      await vm.$nextTick()
+      expect(vm.showTip).toHaveBeenCalled()
+      vm.updateTip()
+      expect(view.emitted().done).toBeTruthy()
     })
   })
 })

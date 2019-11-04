@@ -1,17 +1,12 @@
 import Index from '@/views/index.vue'
-import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
-import VueRouter from 'vue-router'
+import { Wrapper, shallowMount } from '@vue/test-utils'
 import event from '@/event'
-
-const localVue = createLocalVue()
-localVue.use(VueRouter)
 
 describe('index.vue', () => {
   let view: Wrapper<Index>
   let vm: any
-  let router: VueRouter
 
-  beforeEach(() => {})
+  beforeEach(() => { })
 
   afterEach(() => {
     view.destroy()
@@ -19,31 +14,13 @@ describe('index.vue', () => {
 
   describe('default routing', () => {
     beforeEach(() => {
-      const routes = [
-        {
-          name: 'welcome',
-          path: '/welcome'
-        },
-        {
-          name: 'playground',
-          path: '/:sample'
-        }
-      ]
-      const $route = {
-        path: '/welcome'
-      }
-      router = new VueRouter({
-        routes: [...routes]
-      })
-
       view = shallowMount(Index, {
-        localVue,
-        router,
-        stubs: [
-          'router-view'
-        ],
+        stubs: {
+          RouterView: true
+        },
         mocks: {
-          $route
+          $route: { params: {}, path: '/' },
+          $router: { push: jest.fn() }
         }
       })
       vm = view.vm as any
@@ -56,11 +33,32 @@ describe('index.vue', () => {
 
     describe(`event.$on('welcome')`, () => {
       it(`should register an eventListener for 'welcome'`, () => {
-        expect.assertions(1)
+        expect.assertions(2)
 
         event.$emit('welcome', true)
         expect(vm).toHaveProperty('welcome', true)
+        expect(vm).toHaveProperty('isIntro', true)
       })
+    })
+
+    it(`isIntro should be false`, async () => {
+      expect.assertions(1)
+
+      const idxView = await shallowMount(Index, {
+        stubs: {
+          RouterView: true
+        },
+        mocks: {
+          $route: {
+            query: {
+              skipIntro: 'true'
+            }
+          }
+        }
+      })
+      const ivm = idxView.vm as any
+      expect(ivm).toHaveProperty('isIntro', false)
+      idxView.destroy()
     })
   })
 })

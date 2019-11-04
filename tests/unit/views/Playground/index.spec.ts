@@ -1,22 +1,30 @@
 import Playground from '@/views/Playground/index.vue'
-import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
+import { Wrapper, shallowMount } from '@vue/test-utils'
 import samples from '@/samples'
-import VueRouter from 'vue-router'
 
 describe('Playground index', () => {
   let playground: Wrapper<Playground>
   let vm: any
-  let router = new VueRouter({
-    routes: [{
-      path: '*',
-      name: 'not-found'
-    }]
-  })
-
-  const localVue = createLocalVue()
-  localVue.use(VueRouter)
 
   beforeEach(() => {
+    playground = shallowMount(Playground, {
+      stubs: {
+        RouterView: true
+      },
+      mocks: {
+        $route: {
+          path: '/example/test'
+        },
+        $router: {
+          push: jest.fn(),
+          replace: jest.fn()
+        }
+      },
+      propsData: {
+        sample: ''
+      }
+    })
+    vm = playground.vm as any
   })
 
   afterEach(() => {
@@ -24,54 +32,6 @@ describe('Playground index', () => {
   })
 
   it('should mount', () => {
-    playground = shallowMount(Playground, {
-      propsData: {
-        sample: ''
-      }
-    })
-    vm = playground.vm as any
-
-    expect.assertions(1)
-    expect(playground.html()).toBeDefined()
-  })
-
-  it('should mount', () => {
-    const routes = [
-      {
-        name: 'welcome',
-        path: '/welcome'
-      },
-      {
-        name: 'playground',
-        path: '/:sample'
-      },
-      {
-        name: 'not-found',
-        path: '*'
-      }
-    ]
-    const $route = {
-      path: '/example/test'
-    }
-    router = new VueRouter({
-      routes: [...routes]
-    })
-
-    playground = shallowMount(Playground, {
-      localVue,
-      router,
-      stubs: [
-        'router-view'
-      ],
-      mocks: {
-        $route
-      },
-      propsData: {
-        sample: 'test'
-      }
-    })
-    vm = playground.vm as any
-
     expect.assertions(1)
     expect(playground.html()).toBeDefined()
   })
@@ -79,9 +39,16 @@ describe('Playground index', () => {
   it('should skip intro', () => {
     expect.assertions(1)
     const view = shallowMount(Playground, {
+      propsData: {
+        sample: 'not-a-sample'
+      },
       mocks: {
         $route: {
           query: { skipIntro: 'true' }
+        },
+        $router: {
+          push: jest.fn(),
+          replace: jest.fn()
         }
       }
     })
@@ -91,16 +58,26 @@ describe('Playground index', () => {
 
   describe('.setPayload(string)', () => {
     it('should set the payload', () => {
-      playground = shallowMount(Playground, {
+      const view = shallowMount(Playground, {
         propsData: {
           sample: 'counter'
+        },
+        mocks: {
+          $route: {
+            query: { skipIntro: 'true' }
+          },
+          $router: {
+            push: jest.fn(),
+            replace: jest.fn()
+          }
         }
       })
-      vm = playground.vm as any
+      const vvm = view.vm as any
 
       expect.assertions(1)
-      vm.setPayload('counter')
-      expect(vm).toHaveProperty('payload', samples['counter'])
+      vvm.setPayload('counter')
+      expect(vvm).toHaveProperty('payload', samples['counter'])
+      view.destroy()
     })
   })
 })

@@ -1,53 +1,68 @@
 <template>
-  <div
-    v-if="currentTip"
-    class="fixed z-50 top-0 left-0"
-  >
+  <transition name="fade-in">
     <div
-      id="intro-layer"
-      class="bg-gray-100 opacity-25 w-screen h-screen inset-0 absolute"
-    />
-    <!-- s-drop using class before-ml-4 -->
-    <s-drop
-      v-if="!refreshTip"
-      :id="`tip-${currentTip.name}`"
-      ref="tip"
-      bordered
-      class="ml-px mt-px"
-      light
-      mode="click"
-      shadow="sm"
-      :style="`left:${currentTip.x}px;top:${currentTip.y}px`"
-      @close="updateTip"
+      v-if="currentTip"
+      class="fixed z-50 top-0 left-0"
     >
-      <s-icon
-        icon="dot"
-        width="14"
-        height="14"
-        class="text-red-50 animate-ripple p-3 bg-white opacity-75 rounded-full -ml-3 -mt-3"
-        clickable
+      <div
+        id="intro-layer"
+        class="bg-gray-100 opacity-25 w-screen h-screen inset-0 absolute"
       />
-      <template #content>
-        <s-text
-          id="tip-content"
-          p="5"
-          weight="medium"
-          color="text-gray-90"
-          class="max-w-xs w-max-content"
-          v-text="currentTip.text"
+      <!-- s-drop using class before-ml-4 -->
+      <s-drop
+        v-if="!refreshTip"
+        :id="`tip-${currentTip.name}`"
+        ref="tip"
+        bordered
+        class="ml-px mt-px"
+        light
+        mode="click"
+        shadow="sm"
+        :style="`left:${currentTip.x}px;top:${currentTip.y}px`"
+        @close="updateTip"
+      >
+        <s-icon
+          icon="dot"
+          width="14"
+          height="14"
+          class="text-red-50 animate-ripple p-3 bg-white opacity-75 rounded-full -ml-3 -mt-3"
+          clickable
         />
-        <s-text
-          id="next-tip"
-          p="6"
-          weight="semibold"
-          color="text-indigo-60"
-          class="mt-2 cursor-pointer"
-          @click="$refs.tip.hideIfShown()"
-          v-text="currentTipIdx + 1 < tips.length ? 'Next tip' : 'Got it!'"
-        />
-      </template>
-    </s-drop>
-  </div>
+        <template #content>
+          <s-text
+            id="tip-content"
+            p="5"
+            weight="medium"
+            color="text-gray-90"
+            class="max-w-xs w-max-content"
+            v-text="currentTip.text"
+          />
+          <div class="flex items-stretch justify-between mt-2">
+            <s-text
+              id="next-tip"
+              p="6"
+              weight="semibold"
+              color="text-indigo-60"
+              class="cursor-pointer"
+              @click="$refs.tip.hideIfShown()"
+              v-text="currentTipIdx + 1 < tips.length ? 'Next tip' : 'Got it!'"
+            />
+            <s-text
+              v-if="currentTipIdx + 1 < tips.length"
+              id="skip-tips"
+              p="6"
+              weight="semibold"
+              color="text-indigo-60"
+              class="cursor-pointer"
+              @click="$emit('done')"
+            >
+              Skip tips
+            </s-text>
+          </div>
+        </template>
+      </s-drop>
+    </div>
+  </transition>
 </template>
 
 <script lang="ts">
@@ -67,6 +82,7 @@ import SText from '@/components/Text.vue'
 })
 export default class Intro extends Vue {
   @Prop({ type: Array, required: true }) private tips!: IStorySampleTip[]
+  @Prop({ type: Boolean, default: false }) private showAtStartup!: boolean
   private currentTipIdx: number = 0
   private refreshTip: boolean = false
 
@@ -79,14 +95,24 @@ export default class Intro extends Vue {
   private updateTip () {
     this.currentTipIdx++
     if (this.currentTip) {
-      this.$nextTick().then(() => {
-        setTimeout(() => {
-          const tip = this.$refs.tip as any
-          tip.show = true
-        }, 100)
-      })
+      this.$nextTick().then(this.showTip)
     } else {
       this.$emit('done')
+    }
+  }
+
+  private showTip () {
+    setTimeout(() => {
+      const tip = this.$refs.tip as any
+      if (tip) {
+        tip.show = true
+      }
+    }, 100)
+  }
+
+  mounted () {
+    if (this.showAtStartup) {
+      this.$nextTick().then(this.showTip)
     }
   }
 
