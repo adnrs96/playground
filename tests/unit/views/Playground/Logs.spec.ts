@@ -17,7 +17,7 @@ describe('Plaground::Logs', () => {
     store = new Vuex.Store(StoreLogs)
     logs = shallowMount(Logs, {
       propsData: {
-        payload: counter
+        payload: counter,
         startAfter: 0,
         dotDelay: 0,
         lineDelay: 0
@@ -78,8 +78,7 @@ describe('Plaground::Logs', () => {
     it('should write with actual line delay', async () => {
       const view = shallowMount(Logs, {
         propsData: {
-          logs: counter.logs,
-          name: counter.name,
+          payload: counter,
           startAfter: 0,
           dotDelay: 0
         },
