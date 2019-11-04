@@ -37,6 +37,7 @@ describe('Welcome', () => {
       expect(await page.$eval('#tip-content', (e: Element) => e.innerHTML.trim())).toEqual(t.text)
       await page.click('#next-tip')
     }
+    await page.waitFor(300)
     expect(await page.$('#intro-layer')).toBeNull()
   })
 })
