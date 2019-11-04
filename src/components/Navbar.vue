@@ -4,7 +4,7 @@
       <div
         id="home-btn-logo"
         class="flex items-center mr-22 cursor-pointer"
-        @click="$route.name !== 'playground' ? $router.push({ name: 'playground' }) : ''"
+        @click="$route.name !== 'welcome' ? $router.push({ name: 'welcome' }) : ''"
       >
         <s-icon
           icon="story"
@@ -20,6 +20,7 @@
         />
       </div>
       <div
+        v-if="!welcome"
         id="deploy-btn"
         class="flex items-center"
         :class="[
@@ -46,6 +47,7 @@
         </s-text>
       </div>
       <div
+        v-if="!welcome"
         id="new-from-scratch-btn"
         class="flex items-center ml-12 cursor-default select-none h-full"
       >
@@ -72,12 +74,12 @@
         </s-text>
       </div>
     </div>
-    <s-login />
+    <s-login v-if="!welcome" />
   </nav>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import { Component, Vue, Watch, Prop } from 'vue-property-decorator'
 import { Mutation } from 'vuex-class'
 import SLogin from '@/views/Login.vue'
 import SIcon from '@/components/Icon.vue'
@@ -96,6 +98,8 @@ import STip from '@/components/Tip.vue'
 })
 export default class Navbar extends Vue {
   @Prop({ type: Boolean, default: false }) private intro!: boolean
+  @Prop({ type: Boolean, default: false }) readonly welcome!: boolean
+
   private deploying: boolean = false
 
   @Mutation('incrementReleasesCount')

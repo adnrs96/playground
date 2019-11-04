@@ -6,13 +6,14 @@ export interface IStorySampleTip {
 }
 
 export interface IStorySample {
+  name: string,
   logs: IStoryLogs,
   code: string,
+  description: string,
   tips?: Array<IStorySampleTip>
 }
 
 export interface IStoryLogs {
-  name: string,
   files: Array<string>,
   services: Array<string>
 }

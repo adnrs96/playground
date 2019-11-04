@@ -7,7 +7,7 @@ describe('Counter sample', () => {
     const sample: IStorySample = counter
     expect(sample).toBeDefined()
     expect(sample.logs).toBeDefined()
-    expect(sample.logs.name).toBeDefined()
+    expect(sample.name).toBeDefined()
     expect(sample.logs.files).toBeDefined()
     expect(sample.logs.services).toBeDefined()
   })

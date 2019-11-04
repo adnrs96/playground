@@ -1,7 +1,6 @@
 <template>
   <!-- fade-enter fade-leave-to fade-enter-active fade-leave-active -->
   <transition-group
-    id="playground"
     class="max-h-screen max-w-screen overflow-hidden"
     name="fade"
     tag="div"

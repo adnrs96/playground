@@ -34,6 +34,7 @@ export default class Logs extends Vue {
   private output: string = INITIAL_LOGS
 
   @Prop({ type: Object, required: true }) readonly logs!: IStoryLogs
+  @Prop({ type: String, required: true }) readonly name!: string
 
   @Getter('getReleasesCount')
   private releasesCount!: number
@@ -79,7 +80,7 @@ export default class Logs extends Vue {
       { delay: 0, text: 'Compiling Stories' },
       { delay: 0, fn: 'tripleDot' },
       { delay: 250, text: `\n✔ Compiled ${this.logs.files.length} story\n\n` },
-      { delay: 0, text: `Deploying app ${this.logs.name}` },
+      { delay: 0, text: `Deploying app ${this.name}` },
       { delay: 0, fn: 'tripleDot' },
       { delay: 250, text: `\n  ✔ Version ${this.releasesCount} of your app has been queued for deployment.\n\n` },
       { delay: 100, text: '  Waiting for deployment to complete...\n' },
