@@ -11,7 +11,7 @@
     >
       Logs
     </s-text>
-    <pre class="whitespace-pre-wrap"><code class="text-gray-100 font-body text-sm">{{ output }}</code></pre>
+    <pre class="whitespace-pre-wrap"><code class="text-gray-100 font-monospace text-sm">{{ output }}</code></pre>
   </div>
 </template>
 
