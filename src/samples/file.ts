@@ -3,19 +3,15 @@ import code from './file.story'
 
 const counter: IStorySample = {
   name: 'file',
-  logs: {
-    files: [
-      'file'
-    ],
-    services: [
-      'http',
-      'file',
-      'schedule',
-    ]
-  },
+  services: [
+    'http',
+    'file',
+    'schedule'
+  ],
+  stories: ['file'],
   code,
   description: 'An ephermal file sharing app using the schedule, file and http services.',
-  tips: [],
+  tips: []
 }
 
 export default counter
