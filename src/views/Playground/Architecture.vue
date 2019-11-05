@@ -22,9 +22,7 @@
           v-show="showServices >= idx"
           :key="`card-${idx}`"
           class="card flex items-center bg-white rounded-md w-1/2-gutter-1 mb-2"
-          :class="[
-            {'mr-2': idx % 2 === 0},
-          ]"
+          :class="{'mr-2': idx % 2 === 0}"
         >
           <div class="px-6 my-3 py-3 border-r border-gray-20">
             <div class="w-6 h-6">
