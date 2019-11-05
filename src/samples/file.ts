@@ -1,5 +1,4 @@
 import { IStorySample } from '@/models/StorySample'
-
 import code from './file.story'
 
 const counter: IStorySample = {
