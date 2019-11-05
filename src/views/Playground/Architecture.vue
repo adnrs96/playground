@@ -26,12 +26,8 @@
             {'mr-2': idx % 2 === 0},
           ]"
         >
-          <div
-            class="px-6 my-3 py-3 border-r border-gray-20"
-          >
-            <div
-              class="w-6 h-6"
-            >
+          <div class="px-6 my-3 py-3 border-r border-gray-20">
+            <div class="w-6 h-6">
               <img
                 :src="`/img/services/${c}.svg`"
                 :alt="`${c} logo`"
@@ -55,9 +51,7 @@
         </div>
       </transition-group>
 
-      <div
-        class="base-card flex items-center w-full mb-2 bg-white rounded-md"
-      >
+      <div class="base-card flex items-center w-full mb-2 bg-white rounded-md">
         <div class="px-6 my-3 py-3 border-r border-gray-20">
           <s-icon
             icon="cloud-f"
@@ -66,9 +60,7 @@
             height="24"
           />
         </div>
-        <div
-          class="flex items-center w-full justify-center"
-        >
+        <div class="flex items-center w-full justify-center">
           <s-icon
             icon="story"
             height="18"
@@ -83,9 +75,7 @@
           />
         </div>
       </div>
-      <div
-        class="base-card flex items-center w-full mb-2 bg-white rounded-md"
-      >
+      <div class="base-card flex items-center w-full mb-2 bg-white rounded-md">
         <div class="px-6 my-3 py-3 border-r border-gray-20">
           <s-icon
             icon="cloud-f"
@@ -94,9 +84,7 @@
             height="24"
           />
         </div>
-        <div
-          class="flex items-center w-full justify-center"
-        >
+        <div class="flex items-center w-full justify-center">
           <img
             src="/img/services/kubernetes-full.svg"
             alt="kubernetes logo"
@@ -124,15 +112,21 @@ import event from '@/event'
 })
 export default class Architecture extends Vue {
   @Prop({ type: Array, default: [] }) readonly services!: Array<string>
+  @Prop({ type: Number, default: 3700 }) readonly startAfter!: number
+  @Prop({ type: Number, default: -1 }) readonly serviceDelay!: number
 
   private showServices: number = -1
+
+  private sleep (time: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, time))
+  }
 
   mounted () {
     event.$on('deploy', async () => {
       this.showServices = -1
-      await new Promise(resolve => setTimeout(resolve, 3700))
+      await this.sleep(this.startAfter)
       for (const i in this.services) {
-        await new Promise(resolve => setTimeout(resolve, 1000))
+        await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
         this.showServices++
       }
     })
