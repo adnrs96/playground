@@ -88,17 +88,18 @@
             center
             type="submit"
             class="w-full mt-8"
-            :class="{'mb-12': !error}"
+            color="text-white"
+            :class="{ 'mb-16': !error }"
             :disabled="nameError.length > 0 || emailError.length > 0 || name.length === 0 || email.length === 0 || sending"
           >
-            {{ sending ? 'Sending...' : 'Register Interest' }}
+            {{ sending ? 'Sending...' : success ? 'Thanks!' : 'Register Interest' }}
           </s-button>
           <s-text
             v-if="error"
             p="5"
             weight="medium"
             color="text-red-70"
-            :class="{'mb-12 mt-2': error}"
+            :class="{'mb-12': error}"
             class="mt-2"
           >
             Failed to send your information.
@@ -146,6 +147,7 @@ export default class Login extends Vue {
   private nameError: string = ''
   private emailError: string = ''
   private sending: boolean = false
+  private success: boolean = false
   private error: boolean = false
 
   @Watch('name')
@@ -155,6 +157,22 @@ export default class Login extends Vue {
     } else {
       this.nameError = ''
     }
+  }
+
+  @Watch('success')
+  private async onSuccess () {
+    return new Promise((resolve) => {
+      if (this.success) {
+        setTimeout(() => {
+          this.success = false
+          this.error = false
+          this.close()
+          resolve()
+        }, 2000)
+      } else {
+        resolve()
+      }
+    })
   }
 
   @Watch('email')
@@ -171,6 +189,8 @@ export default class Login extends Vue {
       return
     }
     this.sending = true
+    this.success = false
+    this.error = false
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -179,8 +199,7 @@ export default class Login extends Vue {
       if (response.status !== 200) {
         this.error = true
       } else {
-        this.error = false
-        this.close()
+        this.success = true
       }
     }).finally(() => {
       this.sending = false
@@ -188,7 +207,10 @@ export default class Login extends Vue {
   }
 
   private close () {
-    (this.$refs.loginModal as SBlur).hide()
+    const modal = this.$refs.loginModal as SBlur
+    if (modal) {
+      modal.hide()
+    }
     this.name = ''
     this.email = ''
   }
