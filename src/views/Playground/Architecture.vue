@@ -11,13 +11,13 @@
     >
       Architecture
     </s-text>
-    <perfect-scrollbar class="bg-gray-10 p-8 h-80">
-      <div class="flex">
+    <perfect-scrollbar class="bg-gray-10 p-8">
+      <div class="flex flex-wrap-reverse">
         <div
           v-for="(c, idx) in services"
           :key="`card-${idx}`"
-          class="card flex items-center bg-white rounded-md w-1/2 mb-2"
-          :class="{'mr-2': idx !== services.length - 1}"
+          class="card flex items-center bg-white rounded-md w-1/2-gutter-4 mb-2"
+          :class="{'mr-2': idx % 2 === 0}"
         >
           <div
             class="px-6 my-3 py-3 border-r border-gray-20"
