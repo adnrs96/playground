@@ -9,7 +9,7 @@ describe('Plaground::Architecture', () => {
   beforeEach(() => {
     archi = shallowMount(Architecture, {
       propsData: {
-        architecture: counter.architecture
+        services: counter.services
       }
     })
     vm = archi.vm as any
@@ -22,6 +22,6 @@ describe('Plaground::Architecture', () => {
   it('should mount with the required props', () => {
     expect.assertions(2)
     expect(archi.html()).toBeDefined()
-    expect(vm).toHaveProperty('architecture', counter.architecture)
+    expect(vm).toHaveProperty('services', counter.services)
   })
 })

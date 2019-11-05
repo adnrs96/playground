@@ -3,14 +3,10 @@ import { IStorySample } from '@/models/StorySample'
 const counter: IStorySample = {
   name: 'counter',
   services: [
-    { icon: 'redis.svg', name: 'http' },
-    { icon: 'redis.svg', name: 'redis' }
+    'http',
+    'redis'
   ],
-  architecture: [
-    [{ icon: 'redis', health: 1 }, { icon: 'python', health: -1 }],
-    [{ icon: 'redis', health: 1 }, { icon: 'python', health: -1 }],
-  ],
-  files: ['counter'],
+  stories: ['counter'],
   code: `redis set key:"count" value:0\nwhen http server listen path:"/counter" as request\n  count = redis increment key:"count" by:1\n  request write content:"This page has been visited {count} times"`,
   description:
     'A simple web page hit counter application, showing the power of Storyscript for rapid prototyping using the http and redis services.',

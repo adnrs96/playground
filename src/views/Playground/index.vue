@@ -10,7 +10,7 @@
           weight="semibold"
           color="text-gray-100"
         >
-          {{ payload.files[0] }}.story
+          {{ payload.stories[0] }}.story
         </s-text>
         <s-text
           p="6"
@@ -22,15 +22,17 @@
           <span class="ml-1">Read only</span>
         </s-text>
       </div>
-      <monaco-editor
-        v-model="payload.code"
-        class="w-full h-full"
-        :options="options"
-      />
+      <!-- FIX FOR SAFARI, see https://bugs.webkit.org/show_bug.cgi?id=198375 -->
+      <div class="h-0 flex-1">
+        <monaco-editor
+          v-model="payload.code"
+          class="w-full h-full"
+          :options="options"
+        />
+      </div>
       <div class="w-full flex">
         <s-architecture
           :services="payload.services"
-          :architecture="payload.architecture"
         />
       </div>
     </div>

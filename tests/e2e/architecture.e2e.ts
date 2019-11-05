@@ -24,16 +24,6 @@ describe('Architecture', () => {
     expect(await page.$('#architecture')).toBeTruthy()
   })
 
-  it('should display the base cards', async () => {
-    expect.assertions(2)
-    await page.waitForSelector('#architecture')
-    const card1 = await page.$eval('.base-card .text-base', (e: Element) =>
-      e.innerHTML.trim()
-    )
-    expect(card1).toEqual('Storyscript Orchestrator')
-    expect((await page.$$('.base-card')).length).toEqual(2)
-  })
-
   it('should display service cards', async () => {
     expect.assertions(2)
 
@@ -44,16 +34,14 @@ describe('Architecture', () => {
     })
     const texts = await page.evaluate(() => {
       const images = document.querySelectorAll('.card .text-xs')
-      const texts = Array.from(images).map((v: any) => v.textContent)
+      const texts = Array.from(images).map((v: any) => v.textContent.trim())
       return texts
     })
 
     expect(icons).toEqual([
-      'http://localhost:8080/img/services/redis.svg',
-      'http://localhost:8080/img/services/python.svg',
-      'http://localhost:8080/img/services/redis.svg',
-      'http://localhost:8080/img/services/python.svg'
+      'http://localhost:8080/img/services/http.svg',
+      'http://localhost:8080/img/services/redis.svg'
     ])
-    expect(texts).toEqual([ ' Healthy ', ' Not-working ', ' Healthy ', ' Not-working ' ])
+    expect(texts).toEqual([ 'http', 'redis' ])
   })
 })

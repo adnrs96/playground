@@ -5,23 +5,11 @@ export interface IStorySampleTip {
   text: string
 }
 
-export interface IService {
-  icon: string,
-  name: string
-}
-
-
-export interface IArchitectureBlock {
-  icon: string;
-  health: number;
-}
-
 export interface IStorySample {
   name: string
   code: string,
-  architecture: IArchitectureBlock[][]
-  files: Array<string>
-  services: Array<IService>
+  stories: Array<string>
+  services: Array<string>
   description: string
   tips?: Array<IStorySampleTip>
 }

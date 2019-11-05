@@ -60,7 +60,7 @@ describe('Plaground::Logs', () => {
 
     it('should not print the files when none was provided', async () => {
       expect.assertions(2)
-      vm.payload.files = []
+      vm.payload.stories = []
       await vm.writeLogs()
       expect(/✔ Compiled 0 story/.test(vm.output)).toBeTruthy()
       expect(/- counter/.test(vm.output)).toBeFalsy()
