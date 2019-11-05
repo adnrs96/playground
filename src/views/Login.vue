@@ -158,14 +158,19 @@ export default class Login extends Vue {
   }
 
   @Watch('success')
-  private onSuccess () {
-    if (this.success) {
-      setTimeout(() => {
-        this.success = false
-        this.error = false
-        this.close()
-      }, 2000)
-    }
+  private async onSuccess () {
+    return new Promise((resolve) => {
+      if (this.success) {
+        setTimeout(() => {
+          this.success = false
+          this.error = false
+          this.close()
+          resolve()
+        }, 2000)
+      } else {
+        resolve()
+      }
+    })
   }
 
   @Watch('email')
@@ -200,7 +205,10 @@ export default class Login extends Vue {
   }
 
   private close () {
-    (this.$refs.loginModal as SBlur).hide()
+    const modal = this.$refs.loginModal as SBlur
+    if (modal) {
+      modal.hide()
+    }
     this.name = ''
     this.email = ''
   }
