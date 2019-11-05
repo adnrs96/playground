@@ -11,7 +11,7 @@
     >
       Architecture
     </s-text>
-    <perfect-scrollbar class="bg-gray-10 p-8 max-h-80">
+    <perfect-scrollbar class="bg-gray-10 p-8 max-h-xs">
       <transition-group
         tag="div"
         name="zoom-in"
