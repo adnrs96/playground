@@ -78,8 +78,7 @@ module.exports = {
         'max-content': 'max-content',
         '2full': '200%',
         '14': '3.5rem', // 56px
-        '22': '5.5rem', // 88px
-        '80': '20rem' // 320px
+        '22': '5.5rem' // 88px
       },
       boxShadow: {
         sm: '0 3px 5px rgba(0, 0, 0, 0.05)'
