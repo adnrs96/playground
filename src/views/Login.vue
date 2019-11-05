@@ -38,6 +38,7 @@
           </s-labeled-input>
           <s-labeled-input
             v-model.trim="name"
+            autocomplete="off"
             name="name"
             type="text"
             class="w-full mt-6"
@@ -60,6 +61,7 @@
           </s-text>
           <s-labeled-input
             v-model.trim="email"
+            autocomplete="off"
             name="email"
             type="email"
             placeholder="Enter your e-mail address"
