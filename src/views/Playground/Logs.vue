@@ -18,8 +18,8 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { Getter } from 'vuex-class'
+import { IStorySample } from '@/models/StorySample'
 import SText from '@/components/Text.vue'
-import { IStoryLogs } from '@/models/StorySample'
 import event from '@/event'
 
 const INITIAL_LOGS = ''
@@ -33,8 +33,7 @@ const INITIAL_LOGS = ''
 export default class Logs extends Vue {
   private output: string = INITIAL_LOGS
 
-  @Prop({ type: Object, required: true }) readonly logs!: IStoryLogs
-  @Prop({ type: String, required: true }) readonly name!: string
+  @Prop({ type: Object, required: true }) readonly payload!: IStorySample
   @Prop({ type: Number, default: 250 }) readonly startAfter!: number
   @Prop({ type: Number, default: 500 }) readonly dotDelay!: number
 
@@ -67,16 +66,16 @@ export default class Logs extends Vue {
         resolve()
       })
     }
-    const files = () => {
-      if (this.logs.files.length > 0) {
-        this.logs.files.forEach((f: string) => {
+    const stories = () => {
+      if (this.payload.stories.length > 0) {
+        this.payload.stories.forEach((f: string) => {
           this.output += `  - ${f}\n`
         })
       }
     }
     const services = () => {
-      if (this.logs.services.length > 0) {
-        this.logs.services.forEach((s: string) => {
+      if (this.payload.services.length > 0) {
+        this.payload.services.forEach((s: string) => {
           this.output += `  - ${s}\n`
         })
       }
@@ -84,14 +83,14 @@ export default class Logs extends Vue {
     const lines = [
       { delay: 0, text: 'Compiling Stories' },
       { delay: 0, fn: 'tripleDot' },
-      { delay: 250, text: `\n✔ Compiled ${this.logs.files.length} story\n\n` },
-      { delay: 0, text: `Deploying app ${this.name}` },
+      { delay: 250, text: `\n✔ Compiled ${this.payload.stories.length} story\n\n` },
+      { delay: 0, text: `Deploying app ${this.payload.name}` },
       { delay: 0, fn: 'tripleDot' },
       { delay: 250, text: `\n  ✔ Version ${this.releasesCount} of your app has been queued for deployment.\n\n` },
       { delay: 100, text: '  Waiting for deployment to complete...\n' },
-      { delay: 0, text: `  ✔ Configured ${this.logs.files.length} story\n` },
-      { delay: 100, fn: 'files' },
-      { delay: 0, text: `  ✔ Deployed ${this.logs.services.length} services\n` },
+      { delay: 0, text: `  ✔ Configured ${this.payload.stories.length} story\n` },
+      { delay: 100, fn: 'stories' },
+      { delay: 0, text: `  ✔ Deployed ${this.payload.services.length} services\n` },
       { delay: 100, fn: 'services' },
       { delay: 100, text: '  ✔ Created ingress route\n' },
       { delay: 100, text: '  ✔ Configured logging\n' },
@@ -107,8 +106,8 @@ export default class Logs extends Vue {
             case 'tripleDot':
               await tripleDot()
               break
-            case 'files':
-              files()
+            case 'stories':
+              stories()
               break
             case 'services':
               services()

@@ -1,19 +1,15 @@
 export interface IStorySampleTip {
-  x: number,
-  y: number,
-  name: string,
+  x: number
+  y: number
+  name: string
   text: string
 }
 
 export interface IStorySample {
-  name: string,
-  logs: IStoryLogs,
+  name: string
   code: string,
-  description: string,
-  tips?: Array<IStorySampleTip>
-}
-
-export interface IStoryLogs {
-  files: Array<string>,
+  stories: Array<string>
   services: Array<string>
+  description: string
+  tips?: Array<IStorySampleTip>
 }

@@ -17,8 +17,7 @@ describe('Plaground::Logs', () => {
     store = new Vuex.Store(StoreLogs)
     logs = shallowMount(Logs, {
       propsData: {
-        logs: counter.logs,
-        name: counter.name,
+        payload: counter,
         startAfter: 0,
         dotDelay: 0,
         lineDelay: 0
@@ -36,7 +35,7 @@ describe('Plaground::Logs', () => {
   it('should mount with the required props', () => {
     expect.assertions(2)
     expect(logs.html()).toBeDefined()
-    expect(vm).toHaveProperty('logs', counter.logs)
+    expect(vm).toHaveProperty('payload', counter)
   })
 
   describe('.writeLogs()', () => {
@@ -61,7 +60,7 @@ describe('Plaground::Logs', () => {
 
     it('should not print the files when none was provided', async () => {
       expect.assertions(2)
-      vm.logs.files = []
+      vm.payload.stories = []
       await vm.writeLogs()
       expect(/✔ Compiled 0 story/.test(vm.output)).toBeTruthy()
       expect(/- counter/.test(vm.output)).toBeFalsy()
@@ -69,7 +68,7 @@ describe('Plaground::Logs', () => {
 
     it('should not print the services when none was provided', async () => {
       expect.assertions(3)
-      vm.logs.services = []
+      vm.payload.services = []
       await vm.writeLogs()
       expect(/✔ Deployed 0 services/.test(vm.output)).toBeTruthy()
       expect(/- http/.test(vm.output)).toBeFalsy()
@@ -79,8 +78,7 @@ describe('Plaground::Logs', () => {
     it('should write with actual line delay', async () => {
       const view = shallowMount(Logs, {
         propsData: {
-          logs: counter.logs,
-          name: counter.name,
+          payload: counter,
           startAfter: 0,
           dotDelay: 0
         },

@@ -95,4 +95,21 @@ describe('Login', () => {
       expect(vm).toHaveProperty('email', '')
     })
   })
+
+  describe('.onSuccess()', () => {
+    it('should reset success state, then close the modal, after 2s', async () => {
+      expect.assertions(6)
+      vm.$refs.loginModal = { hide: jest.fn() }
+      await vm.onSuccess()
+      expect(vm.$refs.loginModal.hide).toHaveBeenCalledTimes(0)
+      vm.success = true
+      vm.error = true
+      expect(vm).toHaveProperty('success', true)
+      expect(vm).toHaveProperty('error', true)
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      expect(vm.$refs.loginModal.hide).toHaveBeenCalledTimes(1)
+      expect(vm).toHaveProperty('success', false)
+      expect(vm).toHaveProperty('error', false)
+    })
+  })
 })
