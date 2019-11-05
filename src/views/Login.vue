@@ -90,7 +90,7 @@
             :class="{ 'mb-16': !error }"
             :disabled="nameError.length > 0 || emailError.length > 0 || name.length === 0 || email.length === 0 || sending"
           >
-            {{ sending ? 'Sending...' : success ? 'Thanks !' : 'Register Interest' }}
+            {{ sending ? 'Sending...' : success ? 'Thanks!' : 'Register Interest' }}
           </s-button>
           <s-text
             v-if="error"
