@@ -52,8 +52,8 @@ describe('Logs', () => {
     await page.type('[name="name"]', 'x')
     await page.type('[name="email"]', 'x')
 
-    expect((await page.$$('.text-red-70')).length).toEqual(2)
-    expect((await page.$$eval('.text-red-70', (nodes: any) => nodes.map((n: any) => n.textContent.trim())))).toEqual(['Name too short.', 'Email is invalid.'])
+    expect((await page.$$('#login .text-red-70')).length).toEqual(2)
+    expect((await page.$$eval('#login .text-red-70', (nodes: any) => nodes.map((n: any) => n.textContent.trim())))).toEqual(['Name too short.', 'Email is invalid.'])
   })
 
   /**
@@ -68,6 +68,7 @@ describe('Logs', () => {
       await page.click('[name="email"]', { clickCount: 3 })
       await page.type('[name="email"]', 'storyscript.e2e@gmail.com')
       await page.click('#login-submit-btn')
+      await page.waitFor(2000)
       expect((await page.waitForSelector('#login-blur', { hidden: true }))).toBeTruthy()
     } else {
       expect(true).toBeTruthy()
