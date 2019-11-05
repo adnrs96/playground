@@ -6,7 +6,7 @@ when http server listen path:"/" method:"post" as req
     req finish  # Go asynchronous
 
     file write path:id :content
-    wilzbach/schedule schedule name:"expire" delay:60 data:{"id":id}
+    scheduler schedule name:"expire" delay:60 data:{"id":id}
 
 # Endpoint to download
 when http server listen path:"/" as req
@@ -21,7 +21,7 @@ when http server listen path:"/" as req
         req write content:"Not found"
 
 # Delayed trigger to delete
-when wilzbach/schedule event triggered name:"expire" as ev
+when scheduler event triggered name:"expire" as ev
     { id } = ev.data to Map[string,string]
     try
         file removeFile path:id
