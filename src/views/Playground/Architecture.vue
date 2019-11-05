@@ -16,7 +16,7 @@
         <div
           v-for="(c, idx) in services"
           :key="`card-${idx}`"
-          class="card flex items-center bg-white rounded-md w-1/2-gutter-4 mb-2"
+          class="card flex items-center bg-white rounded-md w-1/2-gutter-1 mb-2"
           :class="{'mr-2': idx % 2 === 0}"
         >
           <div
