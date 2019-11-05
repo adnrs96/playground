@@ -28,7 +28,7 @@
             class="flex mt-8 px-8 pb-6 border-b border-solid border-gray-10 items-start"
           >
             <img
-              src="@/assets/img/redis.svg"
+              src="/img/services/redis.svg"
               alt="redis logo"
               width="71"
               height="61"
