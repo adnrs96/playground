@@ -4,7 +4,11 @@
       :welcome="welcome"
       :intro="isIntro"
     />
-    <router-view @introChange="isIntro = $event" />
+    <router-view @introChange="isIntro = $event">
+      <template slot="notification">
+        <slot name="notification" />
+      </template>
+    </router-view>
   </div>
 </template>
 

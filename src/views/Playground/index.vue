@@ -3,6 +3,12 @@
     id="playground"
     class="min-h-screen-no-navbar flex"
   >
+    <div
+      v-if="$slots.notification && $slots.notification.length > 0"
+      class="absolute mx-auto w-full -mt-2"
+    >
+      <slot name="notification" />
+    </div>
     <div class="flex flex-col w-2/3">
       <div class="flex items-center my-4 mx-8">
         <s-text
