@@ -24,6 +24,14 @@ module.exports = {
         languages: ['storyscript'],
         features: ['!clipboard']
       })
-    ]
+    ],
+    module: {
+      rules: [
+        {
+          test: /\.story$/,
+          use: 'raw-loader'
+        }
+      ]
+    }
   }
 }
