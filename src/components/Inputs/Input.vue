@@ -143,9 +143,10 @@ export default class Input extends Vue {
   }) readonly shake!: boolean
 
   @Prop({
-    type: Boolean,
-    default: false
-  }) readonly autocomplete!: boolean
+    type: String,
+    default: 'on',
+    validator: v => ['on', 'off'].includes(v)
+  }) readonly autocomplete!: string
 
   @Prop({
     type: Boolean,

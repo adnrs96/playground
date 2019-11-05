@@ -1,16 +1,12 @@
 <template>
-  <div
-    id="login"
-  >
+  <div id="login">
     <s-blur
       id="login-blur"
       key="blur"
       ref="loginModal"
       class="flex justify-center items-center h-full w-full"
     >
-      <s-modal
-        cross
-      >
+      <s-modal cross>
         <s-text
           head="2"
           weight="semibold"
@@ -42,6 +38,7 @@
           </s-labeled-input>
           <s-labeled-input
             v-model.trim="name"
+            autocomplete="off"
             name="name"
             type="text"
             class="w-full mt-6"
@@ -64,6 +61,7 @@
           </s-text>
           <s-labeled-input
             v-model.trim="email"
+            autocomplete="off"
             name="email"
             type="email"
             placeholder="Enter your e-mail address"
