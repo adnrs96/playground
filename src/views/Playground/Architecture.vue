@@ -12,12 +12,19 @@
       Architecture
     </s-text>
     <perfect-scrollbar class="bg-gray-10 p-8">
-      <div class="flex flex-wrap-reverse">
+      <transition-group
+        tag="div"
+        name="zoom-in"
+        class="flex flex-wrap-reverse"
+      >
         <div
           v-for="(c, idx) in services"
+          v-show="showServices >= idx"
           :key="`card-${idx}`"
           class="card flex items-center bg-white rounded-md w-1/2-gutter-4 mb-2"
-          :class="{'mr-2': idx % 2 === 0}"
+          :class="[
+            {'mr-2': idx % 2 === 0},
+          ]"
         >
           <div
             class="px-6 my-3 py-3 border-r border-gray-20"
@@ -35,13 +42,18 @@
             <s-text
               p="5"
               weight="bold"
-              color="text-gray-70"
+              color="text-green-70"
             >
-              {{ c }}
+              Healthy
             </s-text>
+            <s-icon
+              icon="check"
+              color="text-green-50"
+              class="bg-green-10 border border-green-30 rounded-full w-6 h-6 flex items-center justify-center ml-3"
+            />
           </div>
         </div>
-      </div>
+      </transition-group>
 
       <div
         class="base-card flex items-center w-full mb-2 bg-white rounded-md"
@@ -100,6 +112,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 import SText from '@/components/Text.vue'
 import SIcon from '@/components/Icon.vue'
 import PerfectScrollbar from '@/components/PerfectScrollbar.vue'
+import event from '@/event'
 
 @Component({
   name: 'Architecture',
@@ -111,5 +124,18 @@ import PerfectScrollbar from '@/components/PerfectScrollbar.vue'
 })
 export default class Architecture extends Vue {
   @Prop({ type: Array, default: [] }) readonly services!: Array<string>
+
+  private showServices: number = -1
+
+  mounted () {
+    event.$on('deploy', async () => {
+      this.showServices = -1
+      await new Promise(resolve => setTimeout(resolve, 3700))
+      for (const i in this.services) {
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        this.showServices++
+      }
+    })
+  }
 }
 </script>
