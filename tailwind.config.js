@@ -120,7 +120,7 @@ module.exports = {
   },
   variants: {
     display: ['responsive', 'hover'],
-    spacing: ['responsive', 'last'],
+    spacing: ['responsive'],
     shadow: ['responsive', 'hover'],
     textColor: [
       'responsive',
@@ -132,6 +132,7 @@ module.exports = {
     ],
     backgroundColor: [
       'responsive',
+      'odd',
       'hover',
       'focus',
       'active',
