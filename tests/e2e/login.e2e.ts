@@ -68,6 +68,7 @@ describe('Logs', () => {
       await page.click('[name="email"]', { clickCount: 3 })
       await page.type('[name="email"]', 'storyscript.e2e@gmail.com')
       await page.click('#login-submit-btn')
+      await page.waitFor(2000)
       expect((await page.waitForSelector('#login-blur', { hidden: true }))).toBeTruthy()
     } else {
       expect(true).toBeTruthy()
