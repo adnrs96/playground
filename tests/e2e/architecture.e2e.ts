@@ -27,6 +27,9 @@ describe('Architecture', () => {
   it('should display service cards', async () => {
     expect.assertions(2)
 
+    await page.click('#deploy-btn')
+    await page.waitFor(10000)
+
     const icons = await page.evaluate(() => {
       const images = document.querySelectorAll('.card img')
       const urls = Array.from(images).map((v: any) => v.src)
@@ -42,6 +45,6 @@ describe('Architecture', () => {
       'http://localhost:8080/img/services/http.svg',
       'http://localhost:8080/img/services/redis.svg'
     ])
-    expect(texts).toEqual([ 'http', 'redis' ])
+    expect(texts).toEqual([ 'Healthy', 'Healthy' ])
   })
 })
