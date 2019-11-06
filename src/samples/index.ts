@@ -1,7 +1,8 @@
 import counter from './counter'
+// import file from './file'
 
 const samples: any = {
-  'counter': counter,
+  counter
 }
 
 export default samples

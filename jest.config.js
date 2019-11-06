@@ -11,7 +11,8 @@ module.exports = {
     '^.+\\.vue$': 'vue-jest',
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
       'jest-transform-stub',
-    '^.+\\.tsx?$': 'ts-jest'
+    '^.+\\.tsx?$': 'ts-jest',
+    '\\.story': 'jest-raw-loader'
   },
   transformIgnorePatterns: ['node_modules'],
   moduleNameMapper: {
@@ -46,6 +47,7 @@ module.exports = {
     '!src/(registerServiceWorker|main|router).ts',
     '!src/store/index.ts',
     '!src/store/modules/index.ts',
+    '!src/samples/**/*.ts',
     '!src/directives/*.ts',
     '!src/plugins/**/*.{js,ts,vue}'
   ]
