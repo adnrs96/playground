@@ -81,7 +81,8 @@ module.exports = {
         '22': '5.5rem' // 88px
       },
       boxShadow: {
-        sm: '0 3px 5px rgba(0, 0, 0, 0.05)'
+        sm: '0 3px 5px rgba(0, 0, 0, 0.05)',
+        card: '0px 5px 18px rgba(0, 0, 0, 0.06)'
       },
       inset: {
         min: '.125rem',

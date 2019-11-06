@@ -23,33 +23,44 @@
           v-for="(card, idx) in samples"
           :id="`sample-card-${card.name}`"
           :key="`sample-card-${idx}`"
-          class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card"
+          class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card shadow-card"
         >
-          <div class="flex mt-8 px-8 pb-6 border-b border-solid border-gray-10 items-start">
-            <img
-              src="/img/services/redis.svg"
-              alt="redis logo"
-              width="71"
-              height="61"
-              class="mr-6"
-            >
-            <div>
-              <s-text
-                p="1"
-                weight="bold"
-                color="text-gray-100"
-                class="title"
+          <div
+            class="flex mt-8 px-8 pb-6 border-b border-solid border-gray-10 flex-col"
+          >
+            <div class="flex items-start">
+              <img
+                src="/img/services/redis.svg"
+                alt="redis logo"
+                width="71"
+                height="61"
+                class="mr-6"
               >
-                {{ card.name }}.story
-              </s-text>
-              <s-text
-                p="3"
-                weight="regular"
-                color="text-black"
-                class="description"
+              <div>
+                <s-text
+                  p="1"
+                  weight="bold"
+                  color="text-gray-100"
+                  class="title"
+                >
+                  {{ card.name }}.story
+                </s-text>
+                <s-text
+                  p="3"
+                  weight="regular"
+                  color="text-black"
+                  class="description"
+                >
+                  {{ card.description }}
+                </s-text>
+              </div>
+            </div>
+            <div class="flex flex-col items-start mt-8">
+              <img
+                :src="`/img/welcome-cards/${card.image}`"
+                alt="card image"
+                class="border border-gray-10 shadow-sm"
               >
-                {{ card.description }}
-              </s-text>
             </div>
           </div>
           <div class="w-full flex justify-between items-center p-3">
