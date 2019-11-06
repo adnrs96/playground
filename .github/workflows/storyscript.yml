@@ -16,4 +16,4 @@ jobs:
         run: pip install storyscript
 
       - name: Test storyscript compilation of sample stories
-        run: storyscript compile src/samples/{counter,file}.story
+        run: storyscript compile src/samples/{counter,file,gfs}.story
