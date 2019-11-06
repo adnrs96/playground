@@ -57,7 +57,7 @@
             </div>
             <div class="flex flex-col items-start mt-8">
               <img
-                :src="card.image"
+                :src="`/img/welcome-cards/${card.image}`"
                 alt="card image"
                 class="border border-gray-10 shadow-sm"
               >
