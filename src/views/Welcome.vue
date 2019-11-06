@@ -54,15 +54,18 @@
           </div>
           <div class="w-full flex justify-between items-center pl-8 pr-3 py-3">
             <div class="flex">
-              <img
+              <div
                 v-for="(s, idx2) in card.services"
                 :key="`service-${idx2}`"
-                :src="`/img/services/${s}.svg`"
-                width="24"
-                height="24"
-                :alt="`${s} service logo`"
-                class="mr-2"
+                class="-mr-3 bg-white shadow-md rounded-full p-2 flex  items-center justify-center"
               >
+                <img
+                  :src="`/img/services/${s}.svg`"
+                  width="32"
+                  height="32"
+                  :alt="`${s} service logo`"
+                >
+              </div>
             </div>
             <s-button
               :id="`explore-${card.name}`"
