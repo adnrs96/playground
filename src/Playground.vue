@@ -10,7 +10,6 @@
       class="min-h-screen max-w-screen"
     >
       <s-notification
-        v-if="initialized"
         slot="notification"
         key="pwa-update"
         ref="pwaUpdateNotification"
@@ -56,8 +55,6 @@ import SText from '@/components/Text.vue'
   }
 })
 export default class Playground extends Vue {
-  private initialized: boolean = true
-
   private refresh () {
     window.location.reload()
   }
@@ -67,8 +64,8 @@ export default class Playground extends Vue {
       switch (event.status) {
         case 'update':
           if (event.latest && event.refresh) {
-            const pwaUpdateNotification = this.$refs.pwaUpdateNotification as SNotification
             this.$nextTick().then(() => {
+              const pwaUpdateNotification = this.$refs.pwaUpdateNotification as SNotification
               pwaUpdateNotification.show()
             })
           }

@@ -22,7 +22,7 @@
             v-if="closeable"
             icon="cross"
             color="text-gray-50 active:text-gray-80"
-            class="pl-7"
+            class="pl-8"
             clickable
             @click="hide"
           />
