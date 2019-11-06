@@ -52,7 +52,18 @@
               </s-text>
             </div>
           </div>
-          <div class="w-full flex justify-end items-center p-3">
+          <div class="w-full flex justify-between items-center pl-8 pr-3 py-3">
+            <div class="flex">
+              <img
+                v-for="(s, idx2) in card.services"
+                :key="`service-${idx2}`"
+                :src="`/img/services/${s}.svg`"
+                width="24"
+                height="24"
+                :alt="`${s} service logo`"
+                class="mr-2"
+              >
+            </div>
             <s-button
               :id="`explore-${card.name}`"
               icon="rocket-o"
