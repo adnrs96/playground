@@ -31,15 +31,14 @@
   @apply opacity-0;
 }
 
-.service-card-zoom-in-enter-active,
-.service-card-zoom-in-leave-active {
-  transition: transform .5s ease-in-out;
-  transition: background-color .5s ease-in-out;
+.zoom-in-enter-active,
+.zoom-in-leave-active {
+  transition: all .1s ease-in;
 }
 
-.service-card-zoom-in-enter,
-.service-card-zoom-in-leave-to {
-  transform: scale3d(.3, .3, .3);
+.zoom-in-enter,
+.zoom-in-leave-to {
+  transform: scale(.75);
   @apply bg-green-10;
 }
 

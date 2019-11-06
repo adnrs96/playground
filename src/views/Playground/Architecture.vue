@@ -12,10 +12,10 @@
       Architecture
     </s-text>
     <perfect-scrollbar class="bg-gray-10 p-8 max-h-xs">
-      <!-- service-card-zoom-in-enter-active service-card-zoom-in-leave-active service-card-zoom-in-enter service-card-zoom-in-leave-to -->
+      <!-- zoom-in-enter-active zoom-in-leave-active zoom-in-enter zoom-in-leave-to -->
       <transition-group
         tag="div"
-        name="service-card-zoom-in"
+        name="zoom-in"
         class="flex flex-wrap-reverse"
       >
         <div
