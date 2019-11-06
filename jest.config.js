@@ -47,6 +47,7 @@ module.exports = {
     '!src/(registerServiceWorker|main|router).ts',
     '!src/store/index.ts',
     '!src/store/modules/index.ts',
+    '!src/samples/**/*.ts',
     '!src/directives/*.ts',
     '!src/plugins/**/*.{js,ts,vue}'
   ]

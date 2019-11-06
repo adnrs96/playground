@@ -73,11 +73,15 @@ export default class Logs extends Vue {
         })
       }
     }
-    const services = () => {
+    const services = async () => {
       if (this.payload.services.length > 0) {
-        this.payload.services.forEach((s: string) => {
-          this.output += `  - ${s}\n`
-        })
+        for (const s in this.payload.services) {
+          if (this.payload.services.hasOwnProperty(s)) {
+            const e = this.payload.services[s]
+            this.output += `  - ${e}\n`
+            await this.sleep(this.dotDelay * 2)
+          }
+        }
       }
     }
     const lines = [
@@ -110,7 +114,7 @@ export default class Logs extends Vue {
               stories()
               break
             case 'services':
-              services()
+              await services()
               break
           }
         }
