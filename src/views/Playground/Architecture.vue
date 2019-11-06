@@ -85,7 +85,8 @@
         </div>
         <div class="flex items-center w-full justify-center">
           <img
-            src="/img/services/kubernetes-full.svg"
+            src="/img/services/kubernetes.png"
+            srcset="/img/services/kubernetes@2x.png 2x, /img/services/kubernetes@3x.png 3x"
             alt="kubernetes logo"
           >
         </div>
