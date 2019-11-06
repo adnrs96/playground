@@ -52,7 +52,7 @@
               </s-text>
             </div>
           </div>
-          <div class="w-full flex justify-between items-center pl-8 pr-3 py-3">
+          <div class="w-full flex justify-between items-center p-3">
             <div class="flex">
               <div
                 v-for="(s, idx2) in card.services"
