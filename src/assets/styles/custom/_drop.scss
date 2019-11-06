@@ -1,0 +1,102 @@
+.drop {
+  @apply relative select-none;
+
+  .content {
+    @apply absolute bg-gray-100 rounded-xl text-white whitespace-pre-wrap z-30;
+
+    &:before {
+      content: '';
+      @apply absolute block bg-gray-100 w-2 h-2 rotate-45deg border-gray-30;
+    }
+
+    &.light {
+      @apply bg-white;
+
+      &:before {
+        content: '';
+        @apply bg-white;
+      }
+    }
+
+    >div,
+    >ul {
+      @apply relative;
+    }
+
+    &.top-full.right-0 {
+      @apply mt-3 -mr-3;
+
+      &:before {
+        top: -.3rem;
+        right: 0;
+      }
+    }
+
+    &.top-full.left-0 {
+      @apply mt-3 -ml-3;
+
+      &:before {
+        top: -.3rem;
+        left: 0;
+      }
+    }
+
+    &.bottom-full.left-0 {
+      @apply mb-3 -ml-3;
+
+      &:before {
+        bottom: -.3rem;
+        left: 0;
+      }
+    }
+
+    &.bottom-full.right-0 {
+      @apply mb-3 -mr-3;
+
+      &:before {
+        bottom: -.3rem;
+        right: 0;
+      }
+    }
+
+    &.top-full.border {
+      &:before {
+        border-width: 1px 0 0 1px;
+      }
+    }
+
+    &.bottom-full.border {
+      &:before {
+        border-width: 0 1px 1px 0;
+      }
+    }
+
+    &.right-0:not(.top-full):not(.bottom-full) {
+      @apply mr-3 right-full;
+
+      &:before {
+        right: -.3rem;
+      }
+
+      &.border {
+        &:before {
+          border-width: 1px 1px 0 0;
+        }
+      }
+    }
+
+    &.left-0:not(.top-full):not(.bottom-full) {
+      @apply ml-3 left-full;
+
+      &:before {
+        left: -.3rem;
+      }
+
+      &.border {
+        &:before {
+          border-width: 0 0 1px 1px;
+        }
+      }
+    }
+  }
+}

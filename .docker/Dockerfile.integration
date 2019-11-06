@@ -1,0 +1,15 @@
+FROM node:lts as builder
+ARG VUE_APP_INTERCOM_APP_ID
+ENV VUE_APP_INTERCOM_APP_ID "$VUE_APP_INTERCOM_APP_ID"
+WORKDIR /app
+COPY yarn.lock .
+COPY package.json .
+RUN yarn
+COPY . .
+RUN yarn build --mode integration
+
+FROM nginx:latest as production
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dockerfile-entrypoint.sh .
+RUN rm -f /etc/nginx/conf.d/default.conf
+COPY .docker/nginx.conf /etc/nginx/conf.d

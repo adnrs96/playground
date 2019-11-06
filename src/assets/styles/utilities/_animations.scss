@@ -1,0 +1,71 @@
+.animate-shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.animate-wheel {
+  animation: wheel 2.5s linear infinite;
+}
+
+@keyframes wheel {
+  0% {
+    @apply rotate;
+  }
+
+  100% {
+    @apply rotate-360deg;
+  }
+}
+
+.animate-ripple {
+  @apply relative z-10;
+
+  &:after {
+    content: '';
+    @apply absolute inset-0 rounded-full z-0 bg-current-color;
+
+    box-shadow: 0 0 .625rem rgba(0, 0, 0, .3) inset;
+    animation-name: ripple;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    @apply top-half left-half opacity-75 w-0 h-0;
+  }
+
+  100% {
+    @apply -top-half -left-half opacity-0 w-2full h-2full;
+  }
+}
