@@ -8,6 +8,7 @@ export interface IStorySampleTip {
 export interface IStorySample {
   name: string
   code: string,
+  image?: string
   stories: Array<string>
   services: Array<string>
   description: string

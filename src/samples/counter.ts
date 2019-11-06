@@ -11,6 +11,7 @@ const counter: IStorySample = {
   code,
   description:
     'A simple web page hit counter application, showing the power of Storyscript for rapid prototyping using the http and redis services.',
+  image: 'counter-tweet.png',
   tips: [
     {
       name: 'welcome-to-storyscript',
