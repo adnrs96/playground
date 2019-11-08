@@ -1,7 +1,7 @@
 import { IStorySample } from '@/models/StorySample'
 
 const state = {
-  payload: undefined
+  payload: {}
 }
 
 const getters = {
