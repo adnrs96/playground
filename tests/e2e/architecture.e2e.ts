@@ -45,6 +45,6 @@ describe('Architecture', () => {
       'http://localhost:8080/img/services/http.svg',
       'http://localhost:8080/img/services/redis.svg'
     ])
-    expect(texts).toEqual([ 'Healthy', 'Healthy' ])
+    expect(texts).toEqual([ 'Staged', 'Staged' ])
   })
 })
