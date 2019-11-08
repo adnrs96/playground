@@ -50,7 +50,14 @@ const counter: IStorySample = {
       x: 304,
       y: 20
     }
-  ]
+  ],
+  comments: [{
+    author: 'Sharkie',
+    comment: 'Hey Inkie, I think that the redis increment action defaults to 1 for the by argument, so this may be redundant!'
+  }, {
+    author: 'Inkie',
+    comment: "Thanks! I'll change it soon!"
+  }]
 }
 
 export default counter
