@@ -9,7 +9,9 @@ const getters = {
 }
 
 const mutations = {
-  setPayload: (state: any, payload: IStorySample) => state.payload = payload
+  setPayload: (state: any, payload: IStorySample) => {
+    state.payload = payload
+  }
 }
 
 export default {

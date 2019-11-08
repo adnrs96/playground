@@ -7,24 +7,24 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/',
+      component: () => import('@/views/index.vue'),
+      children: [
         {
-          path: '/',
-          component: () => import('@/views/index.vue'),
-          children: [
-            {
-              path: '/welcome',
-              name: 'welcome',
-              component: () => import ('@/views/Welcome.vue')
-            },
-            {
-              path: 'example/:sample',
-              name: 'playground',
-              props: route => ({
-                sample: route.params.sample
-              }),
-              component: () => import('@/views/Playground/index.vue')
-            }
-          ]
+          path: '/welcome',
+          name: 'welcome',
+          component: () => import('@/views/Welcome.vue')
+        },
+        {
+          path: 'example/:sample',
+          name: 'playground',
+          props: route => ({
+            sample: route.params.sample
+          }),
+          component: () => import('@/views/Playground/index.vue')
+        }
+      ]
     },
     {
       path: '*',

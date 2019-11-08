@@ -16,7 +16,7 @@ describe('Welcome.vue', () => {
     router = new VueRouter({ routes: [{
       name: 'playground',
       path: '/'
-    }]})
+    }] })
     welcome = shallowMount(Welcome, {
       router,
       localVue,

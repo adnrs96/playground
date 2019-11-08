@@ -1,5 +1,5 @@
 import {
-  SModal,
+  SModal
 } from '@/components/Modals'
 
 describe('Modals index.spec.ts', () => {
