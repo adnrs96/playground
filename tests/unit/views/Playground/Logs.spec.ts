@@ -91,12 +91,12 @@ describe('Plaground::Logs', () => {
     })
   })
 
-  describe(`event.$on('deploy')`, () => {
+  describe(`event.$on('publish')`, () => {
     it('should append all the logs', async () => {
       expect.assertions(2)
       const fakeCb = jest.fn()
       vm.writeLogs = jest.fn()
-      event.$emit('deploy', fakeCb)
+      event.$emit('publish', fakeCb)
       await new Promise(resolve => setTimeout(resolve, 100))
       expect(vm.writeLogs).toHaveBeenCalled()
       expect(fakeCb).toHaveBeenCalled()

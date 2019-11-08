@@ -44,7 +44,7 @@ export default class Logs extends Vue {
   private releasesCount!: number
 
   mounted () {
-    event.$on('deploy', async (cb: Function) => {
+    event.$on('publish', async (cb: Function) => {
       this.output = INITIAL_LOGS
       await this.sleep(this.startAfter)
       await this.writeLogs()

@@ -21,18 +21,18 @@
       </div>
       <div
         v-if="!welcome"
-        id="deploy-btn"
+        id="publish-btn"
         class="flex items-center"
         :class="[
-          `${deploying ? 'cursor-wait' : 'cursor-pointer'}`
+          `${publishing ? 'cursor-wait' : 'cursor-pointer'}`
         ]"
-        @click="deploy"
+        @click="publish"
       >
         <s-icon
           icon="play"
-          :color="`${deploying ? 'text-gray-60' : 'text-indigo-60'}`"
+          :color="`${publishing ? 'text-gray-60' : 'text-indigo-60'}`"
           class="mr-2 flex items-center"
-          :clickable="!deploying"
+          :clickable="!publishing"
           width="12"
           height="12"
         />
@@ -40,10 +40,10 @@
           p="3"
           weight="semibold"
           :class="[
-            `${deploying ? 'text-gray-60' : 'text-indigo-70 hover:text-indigo-80'}`
+            `${publishing ? 'text-gray-60' : 'text-indigo-70 hover:text-indigo-80'}`
           ]"
         >
-          Deploy
+          Publish
         </s-text>
       </div>
       <div
@@ -108,22 +108,22 @@ export default class Navbar extends Vue {
   @Prop({ type: Boolean, default: false }) private intro!: boolean
   @Prop({ type: Boolean, default: false }) readonly welcome!: boolean
 
-  private deploying: boolean = false
+  private publishing: boolean = false
 
   @Mutation('incrementReleasesCount')
   private incrementReleasesCount!: () => void
 
-  private deploy () {
-    if (this.deploying) {
+  private publish () {
+    if (this.publishing) {
       return
     }
     this.incrementReleasesCount()
-    this.deploying = true
-    event.$emit('deploy', this.deployDone)
+    this.publishing = true
+    event.$emit('publish', this.publishDone)
   }
 
-  private deployDone () {
-    this.deploying = false
+  private publishDone () {
+    this.publishing = false
   }
 }
 </script>

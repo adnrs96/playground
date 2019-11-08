@@ -30,10 +30,10 @@ describe('Logs', () => {
     expect(logs).toEqual('')
   })
 
-  it('should deplay the good sample after clicking on the deploy button', async () => {
+  it('should deplay the good sample after clicking on the publish button', async () => {
     expect.assertions(11)
-    await page.waitForSelector('#deploy-btn')
-    await page.click('#deploy-btn')
+    await page.waitForSelector('#publish-btn')
+    await page.click('#publish-btn')
     await page.waitFor(10000)
     const logs = await page.$eval('#logs>pre>code', (e: Element) => e.innerHTML)
     expect(/Compiling Stories\.\.\./.test(logs)).toBeTruthy()

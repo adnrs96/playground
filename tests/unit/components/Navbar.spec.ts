@@ -27,31 +27,31 @@ describe('Navbar.vue', () => {
     navbar.destroy()
   })
 
-  describe('.deploy()', () => {
-    it(`shouldn't do anything when already deploying`, () => {
+  describe('.publish()', () => {
+    it(`shouldn't do anything when already publishing`, () => {
       expect.assertions(1)
-      vm.deploying = true
+      vm.publishing = true
       vm.incrementReleaseCount = jest.fn()
-      vm.deploy()
+      vm.publish()
       expect(vm.incrementReleaseCount).not.toHaveBeenCalled()
     })
 
     it('should increment releases count, block button and emit an event', () => {
-      vm.deploy()
+      vm.publish()
       event.$emit = jest.fn()
       store.commit = jest.fn()
-      expect(vm).toHaveProperty('deploying', true)
+      expect(vm).toHaveProperty('publishing', true)
       // expect(store.commit).toHaveBeenCalledWith('incrementReleasesCount')
       // expect(event.$emit).toHaveBeenCalledTimes(1)
     })
   })
 
   describe('.deplyDone()', () => {
-    it('should reset the deploying state', () => {
+    it('should reset the publishing state', () => {
       expect.assertions(1)
-      vm.deploying = true
-      vm.deployDone()
-      expect(vm).toHaveProperty('deploying', false)
+      vm.publishing = true
+      vm.publishDone()
+      expect(vm).toHaveProperty('publishing', false)
     })
   })
 })

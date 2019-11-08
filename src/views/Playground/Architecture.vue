@@ -122,7 +122,7 @@ export default class Architecture extends Vue {
   }
 
   mounted () {
-    event.$on('deploy', async () => {
+    event.$on('publish', async () => {
       this.showServices = -1
       await this.sleep(this.startAfter)
       for (const i in this.services) {

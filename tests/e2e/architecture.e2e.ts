@@ -27,7 +27,7 @@ describe('Architecture', () => {
   it('should display service cards', async () => {
     expect.assertions(2)
 
-    await page.click('#deploy-btn')
+    await page.click('#publish-btn')
     await page.waitFor(10000)
 
     const icons = await page.evaluate(() => {
