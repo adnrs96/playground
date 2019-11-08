@@ -8,14 +8,23 @@
       v-for="(c, idx) in collaborators"
       :id="`collaborator-${idx}`"
       :key="`collaborator-${idx}`"
-      class="collaborator -mr-2 flex items-center transition-all-fastest"
+      class="collaborator -mr-2 flex items-center transition-all-fastest bg-indigo-10 rounded-full"
       @mouseenter="hoverHandler($event, true, idx)"
       @mouseleave="hoverHandler($event, false, idx)"
     >
       <div
-        class="bg-gray-30 rounded-full border-2 border-white flex items-center justify-center shadow-md z-10"
-        :class="{'p-1': !c.avatar}"
+        class="rounded-full border-2 border-white flex items-center justify-center shadow-md"
+        :class="{'p-1': !c.avatar, 'border-indigo-50': hovered === idx}"
       >
+        <s-text
+          v-show="hovered === idx"
+          p="3"
+          weight="medium"
+          color="text-indigo-70"
+          class="flex items-center justiryf-center px-2 py-1 mx-2"
+        >
+          {{ c.name }}
+        </s-text>
         <img
           v-if="c.avatar"
           :src="`/img/inkie-friends/${c.avatar}.png`"
@@ -33,14 +42,6 @@
           height="23"
         />
       </div>
-      <s-text
-        v-show="hovered === idx"
-        p="3"
-        weight="medium"
-        color="text-gray-70"
-      >
-        {{ c.name }}
-      </s-text>
     </div>
   </div>
 </template>
