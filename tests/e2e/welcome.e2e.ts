@@ -29,15 +29,15 @@ describe('Welcome', () => {
   it('should display the good amount of cards', async () => {
     const count = Object.keys(samples).length
     const cards = await page.$$('.sample-card')
-    
+
     expect.assertions(1)
     expect(cards.length).toEqual(count)
   })
 
   it('should display the good content in a card', async () => {
     const base: IStorySample = samples['counter']
-    const title =  await page.$eval('#sample-card-counter .title', (e: Element) => e.innerHTML.trim())
-    const description =  await page.$eval('#sample-card-counter .description', (e: Element) => e.innerHTML.trim())
+    const title = await page.$eval('#sample-card-counter .title', (e: Element) => e.innerHTML.trim())
+    const description = await page.$eval('#sample-card-counter .description', (e: Element) => e.innerHTML.trim())
 
     expect.assertions(2)
     expect(title).toEqual(`${base.name}.story`)

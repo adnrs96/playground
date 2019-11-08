@@ -1,12 +1,19 @@
 import Playground from '@/views/Playground/index.vue'
-import { Wrapper, shallowMount } from '@vue/test-utils'
+import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
 import samples from '@/samples'
+import Vuex, { Store } from 'vuex'
+import StorePayload from '@/store/modules/Payload'
+
+const localVue = createLocalVue()
+localVue.use(Vuex)
 
 describe('Playground index', () => {
   let playground: Wrapper<Playground>
   let vm: any
+  let store: Store<any>
 
   beforeEach(() => {
+    store = new Vuex.Store(StorePayload)
     playground = shallowMount(Playground, {
       stubs: {
         RouterView: true
@@ -22,7 +29,9 @@ describe('Playground index', () => {
       },
       propsData: {
         sample: ''
-      }
+      },
+      store,
+      localVue
     })
     vm = playground.vm as any
   })
@@ -59,6 +68,8 @@ describe('Playground index', () => {
   describe('.setPayload(string)', () => {
     it('should set the payload', () => {
       const view = shallowMount(Playground, {
+        store,
+        localVue,
         propsData: {
           sample: 'counter'
         },
@@ -75,6 +86,7 @@ describe('Playground index', () => {
       const vvm = view.vm as any
 
       expect.assertions(1)
+      store.commit = jest.fn()
       vvm.setPayload('counter')
       expect(vvm).toHaveProperty('payload', samples['counter'])
       view.destroy()

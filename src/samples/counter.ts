@@ -1,5 +1,6 @@
 import { IStorySample } from '@/models/StorySample'
 import code from './counter.story'
+import defaultCollaborators from './defaultCollaborators'
 
 const counter: IStorySample = {
   name: 'counter',
@@ -9,6 +10,7 @@ const counter: IStorySample = {
   ],
   stories: ['counter'],
   code,
+  collaborators: defaultCollaborators,
   description:
     'A simple web page hit counter application, showing the power of Storyscript for rapid prototyping using the http and redis services.',
   image: 'counter-tweet.png',
