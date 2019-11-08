@@ -86,7 +86,6 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from 'vue-property-decorator'
-import { Mutation } from 'vuex-class'
 import SLogin from '@/views/Login.vue'
 import SIcon from '@/components/Icon.vue'
 import SText from '@/components/Text.vue'
@@ -110,14 +109,10 @@ export default class Navbar extends Vue {
 
   private publishing: boolean = false
 
-  @Mutation('incrementReleasesCount')
-  private incrementReleasesCount!: () => void
-
   private publish () {
     if (this.publishing) {
       return
     }
-    this.incrementReleasesCount()
     this.publishing = true
     event.$emit('publish', this.publishDone)
   }

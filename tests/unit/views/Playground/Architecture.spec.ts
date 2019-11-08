@@ -49,7 +49,7 @@ describe('Plaground::Architecture', () => {
 
     it('should sleep n ms', async () => {
       expect.assertions(1)
-      const promise = vm.sleep(10)
+      const promise = vm.sleep(210)
       await promise
       expect(promise).toBeDefined()
     })
