@@ -74,7 +74,13 @@
         </s-text>
       </div>
     </div>
-    <s-login v-if="!welcome" />
+    <div
+      v-if="!welcome"
+      class="flex items-center"
+    >
+      <s-collaborators class="mr-8" />
+      <s-login />
+    </div>
   </nav>
 </template>
 
@@ -86,6 +92,7 @@ import SIcon from '@/components/Icon.vue'
 import SText from '@/components/Text.vue'
 import event from '@/event'
 import STip from '@/components/Tip.vue'
+import SCollaborators from '@/components/Collaborators.vue'
 
 @Component({
   name: 'Navbar',
@@ -93,7 +100,8 @@ import STip from '@/components/Tip.vue'
     SIcon,
     SText,
     SLogin,
-    STip
+    STip,
+    SCollaborators
   }
 })
 export default class Navbar extends Vue {

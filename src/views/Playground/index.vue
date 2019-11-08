@@ -65,6 +65,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
+import { Mutation } from 'vuex-class'
 import SLogs from '@/views/Playground/Logs.vue'
 import SArchitecture from '@/views/Playground/Architecture.vue'
 import { IStorySample } from '@/models/StorySample'
@@ -102,14 +103,18 @@ export default class Playground extends Vue {
     automaticLayout: true
   }
 
-  public setPayload (sample: string) {
+  @Mutation('setPayload')
+  private setPayload!: (payload: IStorySample) => void
+
+  public setPayloadName (sample: string) {
     this.payload = samples[sample]
+    this.setPayload(this.payload)
   }
 
   created () {
     if (this.sample.length > 0) {
       if (samples.hasOwnProperty(this.sample)) {
-        this.setPayload(this.sample)
+        this.setPayloadName(this.sample)
       } else {
         this.$router.replace({ name: 'not-found' })
       }
