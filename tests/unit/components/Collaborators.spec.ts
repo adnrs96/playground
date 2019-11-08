@@ -32,4 +32,18 @@ describe('Collaborators', () => {
     expect(view.html()).toBeTruthy()
     view.destroy()
   })
+
+  describe('hoverHandler', () => {
+    it('should handle the hover', () => {
+      const e = { target: { classList: { remove: jest.fn(), add: jest.fn()} }}
+
+      expect.assertions(3)
+      vm.hoverHandler(e, true, 0)
+      expect(vm.hovered).toEqual(0)
+      vm.hoverHandler(e, false, 0)
+      expect(vm.hovered).toEqual(-1)
+      vm.hoverHandler(e, true, 4)
+      expect(vm.hovered).toEqual(4)
+    })
+  })
 })
