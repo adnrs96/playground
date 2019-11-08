@@ -31,7 +31,7 @@
           p="6"
           weight="semibold"
           color="text-indigo-70"
-          class="flex items-center py-1 px-2 rounded-sm bg-indigo-10 ml-3 cursor-default select-none "
+          class="flex items-center py-1 px-2 rounded-sm bg-indigo-10 ml-3 cursor-default select-none"
         >
           <span>Demonstration</span>
         </s-text>

@@ -4,7 +4,7 @@
     <transition name="slide-down">
       <div
         v-if="visible"
-        :class="['relative', 'inset-x-0', 'w-fit-content', 'p-4', '-mb-12', 'mx-auto', 'transition-all-fast']"
+        :class="['relative', 'inset-x-0', 'w-fit-content', 'p-4', '-mb-12', 'mx-auto', 'transition-all-faster']"
       >
         <div class="flex flex-row p-3 rounded-sm bg-gray-100">
           <s-text

@@ -1,7 +1,6 @@
 export interface IStoryCollaborator {
   name: string
-  // Leaving this attribute even if we don't really need it right now. This way this is URL ready
-  photo?: string
+  avatar?: string
 }
 
 export interface IStorySampleTip {
