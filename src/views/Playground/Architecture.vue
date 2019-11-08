@@ -37,16 +37,15 @@
               class="flex items-center"
             >
               <s-text
-
                 p="5"
                 weight="bold"
-                color="text-yellow-70"
+                color="text-yellow-60"
               >
                 Staged
               </s-text>
               <s-icon
                 icon="error-warning-f"
-                color="text-yellow-50"
+                color="text-yellow-60"
                 class="ml-3"
                 width="24"
                 height="24"
