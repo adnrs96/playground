@@ -9,10 +9,10 @@ describe('Comments.vue', () => {
     view = shallowMount(Comments, {
       propsData: {
         comments: [{
-          author: 'story',
+          author: 'Crabbie',
           comment: 'hello'
         }, {
-          author: 'story',
+          author: 'Crabbie',
           comment: 'hello'
         }]
       }
@@ -40,7 +40,7 @@ describe('Comments.vue', () => {
       expect.assertions(1)
       vm.commentInput = 'hello'
       vm.addComment()
-      expect(vm).toHaveProperty('mComments', [{ author: 'story', comment: 'hello' }])
+      expect(vm).toHaveProperty('mComments', [{ author: 'Crabbie', comment: 'hello' }])
     })
   })
 })
