@@ -50,10 +50,18 @@
         />
       </div>
     </div>
-    <s-logs
-      class="w-1/3"
-      :payload="payload"
-    />
+    <s-tabs
+      class="w-1/3 border-l border-gray-20"
+    >
+      <s-logs
+        data-tab-title="Logs"
+        :payload="payload"
+      />
+      <s-comments
+        data-tab-title="Comments"
+        :comments="payload.comments"
+      />
+    </s-tabs>
     <s-intro
       v-if="payload.tips && isIntro"
       :tips="payload.tips"
@@ -74,6 +82,8 @@ import MonacoEditor from '@/components/MonacoEditor.vue'
 import SText from '@/components/Text.vue'
 import SIcon from '@/components/Icon.vue'
 import SIntro from '@/components/Intro.vue'
+import STabs from '@/components/Tabs.vue'
+import SComments from '@/components/Comments.vue'
 
 @Component({
   components: {
@@ -82,7 +92,9 @@ import SIntro from '@/components/Intro.vue'
     MonacoEditor,
     SIcon,
     SText,
-    SIntro
+    SIntro,
+    STabs,
+    SComments
   }
 })
 export default class Playground extends Vue {
