@@ -6,6 +6,14 @@
   max-height: calc(100vh - 3.5rem);
 }
 
+.min-h-screen-no-navbar-tabs {
+  min-height: calc(100vh - 3.5rem - 2rem);
+}
+
+.max-h-screen-no-navbar-tabs {
+  max-height: calc(100vh - 3.5rem - 2rem);
+}
+
 .max-w-modal {
   max-width: calc(100vw - 2.5rem);
 }
