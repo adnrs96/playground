@@ -10,6 +10,7 @@
       <slot name="notification" />
     </div>
     <div
+      id="left-col"
       class="flex flex-col"
       :class="[
         `${fullscreen ? 'w-full' : 'w-2/3'}`
@@ -44,6 +45,7 @@
         </div>
         <s-icon
           v-if="!fullscreen"
+          id="enter-fullscreen"
           icon="fullscreen"
           width="20"
           height="20"
@@ -54,6 +56,7 @@
         />
         <s-icon
           v-else
+          id="exit-fullscreen"
           icon="fullscreen-exit"
           width="20"
           height="20"
@@ -72,6 +75,7 @@
         />
       </div>
       <div
+        id="bottom-container"
         class="w-full flex"
         :class="{'h-0': fullscreen}"
       >
@@ -81,6 +85,7 @@
       </div>
     </div>
     <s-tabs
+      id="right-col"
       class="border-l border-gray-20"
       :class="[
         `${fullscreen ? 'w-0' : 'w-1/3'}`]
