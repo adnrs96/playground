@@ -1,4 +1,4 @@
-name: Playground E2E
+name: Studio E2E
 
 on: [pull_request]
 
@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Start the integration playground
-        run: yarn stack:playground
+      - name: Start the integration studio
+        run: yarn stack:studio
         env:
           VUE_APP_INTERCOM_APP_ID: ${{ secrets.VUE_APP_INTERCOM_APP_ID }}
 

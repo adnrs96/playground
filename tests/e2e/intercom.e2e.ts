@@ -24,6 +24,6 @@ describe('Intercom', () => {
     await page.click('#intercom-container>div>iframe')
     const frame = await page.$eval('#intercom-container>div>div>iframe', (e: Element) => e.tagName)
     expect(frame).toEqual('IFRAME')
-    await percySnapshot(page, 'Playground intercom dialog')
+    await percySnapshot(page, 'Studio intercom dialog')
   })
 })

@@ -18,11 +18,11 @@ export default new Router({
         },
         {
           path: 'example/:sample',
-          name: 'playground',
+          name: 'studio',
           props: route => ({
             sample: route.params.sample
           }),
-          component: () => import('@/views/Playground/index.vue')
+          component: () => import('@/views/Studio/index.vue')
         }
       ]
     },

@@ -47,7 +47,7 @@ describe('Welcome', () => {
   it('should redirect to the good story', async () => {
     expect.assertions(1)
     await page.click('#explore-counter')
-    await page.waitForSelector('#playground')
+    await page.waitForSelector('#studio')
     expect(page.url()).toEqual(`${TEST_URL}/example/counter`)
   })
 

@@ -24,7 +24,7 @@ describe('Logs', () => {
   })
 
   /**
-   * Given I navigate to the playground,
+   * Given I navigate to the studio,
    * Then I see a “Register Interest” button
    */
   it('should display the button in the navbar', async () => {

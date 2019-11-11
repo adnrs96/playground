@@ -15,7 +15,7 @@
         class="pt-20 pb-10"
         center
       >
-        Welcome to Storyscript Playground!
+        Welcome to Storyscript Studio!
       </s-text>
 
       <div class="flex flex-col md:flex-row justify-center mb-12">
@@ -130,7 +130,7 @@ export default class Welcome extends Vue {
 
   private go (sample: string) {
     event.$emit('welcome', false)
-    this.$router.push({ name: 'playground', params: { sample } })
+    this.$router.push({ name: 'studio', params: { sample } })
   }
 }
 </script>
