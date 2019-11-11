@@ -53,6 +53,10 @@
     <s-tabs
       class="w-1/3 border-l border-gray-20"
     >
+      <s-events
+        data-tab-title="Events"
+        :event="payload.event"
+      />
       <s-comments
         data-tab-title="Comments"
         :comments="payload.comments"
@@ -71,6 +75,7 @@
 import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
 import { Mutation } from 'vuex-class'
 import SArchitecture from '@/views/Playground/Architecture.vue'
+import SEvents from '@/views/Playground/Events.vue'
 import { IStorySample } from '@/models/StorySample'
 import samples from '@/samples'
 import MonacoEditor from '@/components/MonacoEditor.vue'
@@ -88,7 +93,8 @@ import SComments from '@/components/Comments.vue'
     SText,
     SIntro,
     STabs,
-    SComments
+    SComments,
+    SEvents
   }
 })
 export default class Playground extends Vue {
