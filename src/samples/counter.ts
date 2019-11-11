@@ -24,7 +24,7 @@ const counter: IStorySample = {
       name: 'welcome-to-storyscript',
       text:
         "This is Storyscript, the cloud-native programming language.\n\nLet's take a quick walk through the language features with this example building a simple counter application.",
-      x: 256,
+      x: 375,
       y: 76
     },
     {
