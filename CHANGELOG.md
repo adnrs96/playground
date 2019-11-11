@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/storyscript/studio/compare/v0.0.2...v0.1.0) (2019-11-11)
+
+
+### Features
+
+* **archi:** add staged state to archi diagram service cards ([028530c](https://github.com/storyscript/studio/commit/028530c5e7990393a2bf84eacceabcbf3539a70f))
+* **collaborators:** add inkie friends collaborators in the navbar ([8131844](https://github.com/storyscript/studio/commit/813184432064143e299ba313bd51476c5260ce1e))
+* **collaborators:** animated the collaborators on hover ([eca5a46](https://github.com/storyscript/studio/commit/eca5a4651916e7a09b7f431a36561770832b1b0e))
+* **comments+tabs:** add tabs and comments components with tests ([1912c69](https://github.com/storyscript/studio/commit/1912c6984707881af476b7defbece804819607c9))
+* **comments+tabs:** add tabs and comments components with tests ([592c79c](https://github.com/storyscript/studio/commit/592c79c4da18e6e56ee4cb0e71da2cc16edabe3f))
+* **events:** add event bubbles ([1fa93cd](https://github.com/storyscript/studio/commit/1fa93cd081e541f252c9e46d667216c3551b38ea))
+* **tips:** move first tip on the right of the demo tag ([7a23049](https://github.com/storyscript/studio/commit/7a23049fc37c9e414f62925175c161250957c67b))
+* **welcome:** add image to welcome page card ([b9629d5](https://github.com/storyscript/studio/commit/b9629d52bb083f1e2e27b748f0987aaf1ad0121a))
+
+
+### Bug Fixes
+
+* **collaborators:** fix issue where the collaborators are not loaded when coming from w-page ([f427f0d](https://github.com/storyscript/studio/commit/f427f0de57273fb9a23c913f54cf7f9526821007))
+
 ### 0.0.2 (2019-11-06)
 
 
