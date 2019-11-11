@@ -53,13 +53,13 @@
     <s-tabs
       class="w-1/3 border-l border-gray-20"
     >
-      <s-comments
-        data-tab-title="Comments"
-        :comments="payload.comments"
-      />
       <s-events
         data-tab-title="Events"
         :event="payload.event"
+      />
+      <s-comments
+        data-tab-title="Comments"
+        :comments="payload.comments"
       />
     </s-tabs>
     <s-intro

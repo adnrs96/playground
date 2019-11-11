@@ -3,7 +3,7 @@ import code from './counter.story'
 import defaultCollaborators from './defaultCollaborators'
 
 const event: Function = (count: number) => {
-  return `  Story:\n    ${count}\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+  return `  Story:\n    count: ${count}\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
 }
 
 const counter: IStorySample = {

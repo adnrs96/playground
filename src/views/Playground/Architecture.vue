@@ -147,7 +147,7 @@ export default class Architecture extends Vue {
   }
 
   mounted () {
-    event.$on('publish', async (cb: Function) => {
+    event.$on('publish', async () => {
       this.showServices = -1
       await this.sleep(this.startAfter)
       for (const i in this.services) {
@@ -160,7 +160,6 @@ export default class Architecture extends Vue {
         await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
       }
       this.showServices++
-      cb()
     })
   }
 }

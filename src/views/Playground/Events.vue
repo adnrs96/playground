@@ -1,7 +1,7 @@
 <template>
   <div
     id="events"
-    class="p-2"
+    class="p-2 bg-gray-10 h-full"
   >
     <s-text
       v-if="events.length === 0"
@@ -9,12 +9,12 @@
       weight="medium"
       color="text-gray-50"
     >
-      Click publish to see events appear...
+      Events will appear after a story is published...
     </s-text>
     <div
       v-for="(e, idx) in events"
       :key="`event-${idx}`"
-      class="event base-card w-full mb-2 bg-gray-10 shadow-md hover:shadow-none rounded-md cursor-pointer"
+      class="event base-card w-full bg-white hover:bg-indigo-10 mb-2 shadow-md rounded-md cursor-pointer"
       @click="toggle(e.idx)"
     >
       <div class="flex items-center">
@@ -66,17 +66,19 @@ const BASE_EVENT = { icon: 'http', title: 'http', open: false }
 export default class Events extends Vue {
   @Prop({ type: Function, required: true }) readonly event!: Function
   @Prop({ type: Number, default: 3250 }) readonly startAfter!: number
+  @Prop({ type: Number, default: 1000 }) readonly eventDelay!: number
 
-  private interval: any
   private events: any[] = []
 
   mounted () {
-    event.$on('publish', async () => {
-      clearInterval(this.interval)
+    event.$on('publish', async (cb: Function) => {
       this.events = []
-      let i = 1
       await new Promise(resolve => setTimeout(resolve, this.startAfter))
-      this.interval = setInterval(() => this.triggerEvent(this.event, i++), 1000)
+      for (let i of [1, 2, 3, 4, 5]) {
+        this.triggerEvent(this.event, i)
+        await new Promise(resolve => setTimeout(resolve, this.eventDelay))
+      }
+      cb()
     })
   }
 
