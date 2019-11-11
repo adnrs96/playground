@@ -25,7 +25,7 @@ describe('Architecture', () => {
   })
 
   it('should display service cards', async () => {
-    expect.assertions(2)
+    expect.assertions(3)
 
     await page.click('#publish-btn')
     await page.waitFor(10000)
@@ -46,5 +46,6 @@ describe('Architecture', () => {
       'http://localhost:8080/img/services/redis.svg'
     ])
     expect(texts).toEqual([ 'Staged', 'Healthy', 'Staged', 'Healthy' ])
+    expect((await page.$eval('#publish-btn', (btn: Element) => btn.classList.contains('cursor-pointer')))).toBeTruthy()
   })
 })
