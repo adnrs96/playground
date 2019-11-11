@@ -9,32 +9,59 @@
     >
       <slot name="notification" />
     </div>
-    <div class="flex flex-col w-2/3">
-      <div class="flex items-center my-4 mx-8">
-        <s-text
-          p="3"
-          weight="semibold"
-          color="text-gray-100"
-        >
-          {{ payload.stories[0] }}.story
-        </s-text>
-        <s-text
-          p="6"
-          weight="semibold"
-          color="text-indigo-70"
-          class="flex items-center py-1 px-2 rounded-sm bg-indigo-10 ml-3 cursor-default select-none"
-        >
-          <s-icon icon="eye" />
-          <span class="ml-1">Read only</span>
-        </s-text>
-        <s-text
-          p="6"
-          weight="semibold"
-          color="text-indigo-70"
-          class="flex items-center py-1 px-2 rounded-sm bg-indigo-10 ml-3 cursor-default select-none"
-        >
-          <span>Demonstration</span>
-        </s-text>
+    <div
+      class="flex flex-col"
+      :class="[
+        `${fullscreen ? 'w-full' : 'w-2/3'}`
+      ]"
+    >
+      <div class="flex justify-between items-center my-4 mx-8">
+        <div class="flex items-center">
+          <s-text
+            p="3"
+            weight="semibold"
+            color="text-gray-100"
+          >
+            {{ payload.stories[0] }}.story
+          </s-text>
+          <s-text
+            p="6"
+            weight="semibold"
+            color="text-indigo-70"
+            class="flex items-center py-1 px-2 rounded-sm bg-indigo-10 ml-3 cursor-default select-none"
+          >
+            <s-icon icon="eye" />
+            <span class="ml-1">Read only</span>
+          </s-text>
+          <s-text
+            p="6"
+            weight="semibold"
+            color="text-indigo-70"
+            class="flex items-center py-1 px-2 rounded-sm bg-indigo-10 ml-3 cursor-default select-none"
+          >
+            <span>Demonstration</span>
+          </s-text>
+        </div>
+        <s-icon
+          v-if="!fullscreen"
+          icon="fullscreen"
+          width="20"
+          height="20"
+          color="text-indigo-50"
+          class="hover:bg-gray-10 rounded-full p-1"
+          clickable
+          @click="fullscreen = true"
+        />
+        <s-icon
+          v-else
+          icon="fullscreen-exit"
+          width="20"
+          height="20"
+          color="text-indigo-50"
+          class="hover:bg-gray-10 rounded-full p-1"
+          clickable
+          @click="fullscreen = false"
+        />
       </div>
       <!-- FIX FOR SAFARI, see https://bugs.webkit.org/show_bug.cgi?id=198375 -->
       <div class="h-0 flex-1">
@@ -44,14 +71,20 @@
           :options="options"
         />
       </div>
-      <div class="w-full flex">
+      <div
+        class="w-full flex"
+        :class="{'h-0': fullscreen}"
+      >
         <s-architecture
           :services="payload.services"
         />
       </div>
     </div>
     <s-tabs
-      class="w-1/3 border-l border-gray-20"
+      class="border-l border-gray-20"
+      :class="[
+        `${fullscreen ? 'w-0' : 'w-1/3'}`]
+      "
     >
       <s-comments
         data-tab-title="Comments"
@@ -96,6 +129,7 @@ export default class Playground extends Vue {
 
   private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']
   private isIntro: boolean = false
+  private fullscreen: boolean = false
 
   @Emit('introChange')
   @Watch('isIntro') private onIntroChange (): boolean {
@@ -115,6 +149,14 @@ export default class Playground extends Vue {
   public setPayloadName (sample: string) {
     this.payload = samples[sample]
     this.setPayload(this.payload)
+  }
+
+  mounted () {
+    window.addEventListener('keyup', (evt: KeyboardEvent) => {
+      if (evt.key === 'Escape' && this.fullscreen) {
+        this.fullscreen = false
+      }
+    })
   }
 
   created () {
