@@ -11,19 +11,19 @@ describe('Percy screenshots', () => {
     browser = await puppeteer.launch(puppeteerConfig())
     page = await browser.newPage()
     page.setBypassCSP(true)
-    await page.goto(`${TEST_URL}/?skipIntro=true`)
+    await page.goto(`${TEST_URL}/example/counter?skipIntro=true`)
   })
 
   afterAll(() => {
     browser.close()
   })
 
-  it('should take a screenshot of the playground page', async () => {
+  it('should take a screenshot of the studio page', async () => {
     expect.assertions(1)
     await page.waitForSelector('#publish-btn')
     await page.click('#publish-btn')
     await page.waitFor(10000)
-    await percySnapshot(page, 'Playground page')
+    await percySnapshot(page, 'Studio page')
     expect(true).toBeTruthy()
   })
 

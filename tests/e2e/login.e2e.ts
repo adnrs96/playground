@@ -10,7 +10,7 @@ describe('Logs', () => {
     browser = await puppeteer.launch(puppeteerConfig())
     page = await browser.newPage()
     page.setBypassCSP(true)
-    await page.goto(`${TEST_URL}/?skipIntro=true`)
+    await page.goto(`${TEST_URL}/example/counter?skipIntro=true`)
     await page.waitForSelector('#login')
   })
 
@@ -24,7 +24,7 @@ describe('Logs', () => {
   })
 
   /**
-   * Given I navigate to the playground,
+   * Given I navigate to the studio,
    * Then I see a “Register Interest” button
    */
   it('should display the button in the navbar', async () => {

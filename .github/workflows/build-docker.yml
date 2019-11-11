@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Build image
-        run: docker build -f .docker/Dockerfile.docker -t storyscript/playground .
+        run: docker build -f .docker/Dockerfile.docker -t storyscript/studio .
 
       - name: Login to Docker HUB
         run: docker login -u $DOCKER_USER -p $DOCKER_PASSWD
@@ -22,4 +22,4 @@ jobs:
           DOCKER_PASSWD: ${{ secrets.DOCKER_PASSWD }}
       
       - name: Push the image
-        run: docker push storyscript/playground
+        run: docker push storyscript/studio

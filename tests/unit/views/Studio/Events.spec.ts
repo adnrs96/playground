@@ -1,4 +1,4 @@
-import Events from '@/views/Playground/Events.vue'
+import Events from '@/views/Studio/Events.vue'
 import { Wrapper, shallowMount } from '@vue/test-utils'
 import event from '@/event'
 

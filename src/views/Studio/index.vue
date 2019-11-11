@@ -1,6 +1,6 @@
 <template>
   <div
-    id="playground"
+    id="studio"
     class="min-h-screen-no-navbar flex"
   >
     <div
@@ -74,8 +74,8 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
 import { Mutation } from 'vuex-class'
-import SArchitecture from '@/views/Playground/Architecture.vue'
-import SEvents from '@/views/Playground/Events.vue'
+import SArchitecture from '@/views/Studio/Architecture.vue'
+import SEvents from '@/views/Studio/Events.vue'
 import { IStorySample } from '@/models/StorySample'
 import samples from '@/samples'
 import MonacoEditor from '@/components/MonacoEditor.vue'
@@ -97,7 +97,7 @@ import SComments from '@/components/Comments.vue'
     SEvents
   }
 })
-export default class Playground extends Vue {
+export default class Studio extends Vue {
   @Prop({ type: String, default: 'counter' }) readonly sample!: string
 
   private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']

@@ -69,7 +69,7 @@
             id="new-from-scratch-tip"
             mode="hover|focus"
           >
-            Playground for creating your own apps is under development.
+            Studio for creating your own apps is under development.
           </s-tip>
         </s-text>
       </div>

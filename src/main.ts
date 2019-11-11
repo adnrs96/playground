@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Playground from '@/Playground.vue'
+import Studio from '@/Studio.vue'
 import router from '@/router'
 import store from '@/store'
 import directives from '@/directives'
@@ -13,5 +13,5 @@ directives.register()
 new Vue({
   router,
   store,
-  render: h => h(Playground)
-}).$mount('#playground')
+  render: h => h(Studio)
+}).$mount('#studio')

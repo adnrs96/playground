@@ -1,14 +1,14 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Playground from '@/Playground.vue'
+import Studio from '@/Studio.vue'
 
-describe('main::Playground.vue', () => {
-  let playground: Wrapper<Playground>
+describe('main::Studio.vue', () => {
+  let studio: Wrapper<Studio>
   let vm: any
   let boot: typeof jest.fn
 
   beforeEach(() => {
     boot = jest.fn()
-    playground = shallowMount(Playground, {
+    studio = shallowMount(Studio, {
       stubs: {
         'router-view': '<div />'
       },
@@ -18,17 +18,17 @@ describe('main::Playground.vue', () => {
         }
       }
     })
-    vm = playground.vm as any
+    vm = studio.vm as any
   })
 
   afterEach(() => {
-    playground.destroy()
+    studio.destroy()
   })
 
   it('should mount', () => {
     expect.assertions(2)
     expect(boot).toHaveBeenCalled()
-    expect(playground.html()).toBeTruthy()
+    expect(studio.html()).toBeTruthy()
   })
 
   it('status should have proper value', () => {

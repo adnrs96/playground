@@ -1,4 +1,4 @@
-name: Playground Unit Tests
+name: Studio Unit Tests
 
 on: [push]
 

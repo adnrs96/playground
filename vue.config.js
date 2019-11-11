@@ -6,7 +6,7 @@ module.exports = {
     workboxOptions: {
       skipWaiting: true
     },
-    name: 'Storyscript Playground',
+    name: 'Storyscript Studio',
     themeColor: '#5C52FF',
     msTileColor: '#FFFFFF',
     assetsVersion: require('./package.json').version,

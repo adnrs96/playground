@@ -2,7 +2,7 @@
 node_modules
 /dist
 /coverage
-.lighthouse-badges/storyscript_playground_netlify_com_.html
+.lighthouse-badges/storyscript_studio_netlify_com_.html
 
 src/views/WIP.vue
 
