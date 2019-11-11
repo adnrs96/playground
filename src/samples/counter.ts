@@ -44,9 +44,9 @@ const counter: IStorySample = {
       y: 140
     },
     {
-      name: 'storyscript-deploy',
+      name: 'storyscript-publish',
       text:
-        'How about we deploy this story, and see what the platform takes care of for you?',
+        'How about we publish this story, and see what the platform takes care of for you?',
       x: 304,
       y: 20
     }

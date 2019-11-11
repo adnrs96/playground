@@ -20,8 +20,8 @@ describe('Percy screenshots', () => {
 
   it('should take a screenshot of the playground page', async () => {
     expect.assertions(1)
-    await page.waitForSelector('#deploy-btn')
-    await page.click('#deploy-btn')
+    await page.waitForSelector('#publish-btn')
+    await page.click('#publish-btn')
     await page.waitFor(10000)
     await percySnapshot(page, 'Playground page')
     expect(true).toBeTruthy()

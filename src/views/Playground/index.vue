@@ -53,10 +53,6 @@
     <s-tabs
       class="w-1/3 border-l border-gray-20"
     >
-      <s-logs
-        data-tab-title="Logs"
-        :payload="payload"
-      />
       <s-comments
         data-tab-title="Comments"
         :comments="payload.comments"
@@ -74,7 +70,6 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
 import { Mutation } from 'vuex-class'
-import SLogs from '@/views/Playground/Logs.vue'
 import SArchitecture from '@/views/Playground/Architecture.vue'
 import { IStorySample } from '@/models/StorySample'
 import samples from '@/samples'
@@ -87,7 +82,6 @@ import SComments from '@/components/Comments.vue'
 
 @Component({
   components: {
-    SLogs,
     SArchitecture,
     MonacoEditor,
     SIcon,

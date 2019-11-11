@@ -12,18 +12,16 @@
       Architecture
     </s-text>
     <perfect-scrollbar class="bg-gray-10 p-8 max-h-xs">
-      <!-- zoom-in-enter-active zoom-in-leave-active zoom-in-enter zoom-in-leave-to -->
-      <transition-group
-        tag="div"
-        name="zoom-in"
-        class="flex flex-wrap-reverse"
-      >
+      <div class="flex flex-wrap-reverse">
         <div
           v-for="(c, idx) in services"
-          v-show="showServices >= idx"
           :key="`card-${idx}`"
-          class="card flex items-center bg-white rounded-md w-1/2-gutter-1 mb-2"
-          :class="{'mr-2': idx % 2 === 0}"
+          class="card flex items-center bg-white rounded-md w-1/2-gutter-1 mb-2 transition-all-faster"
+          :class="{
+            'mr-2': idx % 2 === 0,
+            'bg-white': showServices !== idx || !blink,
+            'bg-green-20': showServices === idx && blink
+          }"
         >
           <div class="px-6 my-3 py-3 border-r border-gray-20">
             <div class="w-6 h-6">
@@ -34,21 +32,47 @@
             </div>
           </div>
           <div class="flex items-center justify-end w-full p-4">
-            <s-text
-              p="5"
-              weight="bold"
-              color="text-green-70"
+            <div
+              v-show="showServices < idx"
+              class="flex items-center"
             >
-              Healthy
-            </s-text>
-            <s-icon
-              icon="check"
-              color="text-green-50"
-              class="bg-green-10 border border-green-30 rounded-full w-6 h-6 flex items-center justify-center ml-3"
-            />
+              <s-text
+                p="5"
+                weight="bold"
+                color="text-yellow-60"
+              >
+                Staged
+              </s-text>
+              <s-icon
+                icon="error-warning-f"
+                color="text-yellow-60"
+                class="ml-3"
+                width="24"
+                height="24"
+              />
+            </div>
+            <transition name="zoom-in">
+              <div
+                v-show="showServices >= idx"
+                class="flex items-center"
+              >
+                <s-text
+                  p="5"
+                  weight="bold"
+                  color="text-green-70"
+                >
+                  Healthy
+                </s-text>
+                <s-icon
+                  icon="check"
+                  color="text-green-50"
+                  class="bg-green-10 border border-green-30 rounded-full w-6 h-6 flex items-center justify-center ml-3"
+                />
+              </div>
+            </transition>
           </div>
         </div>
-      </transition-group>
+      </div>
 
       <div class="base-card flex items-center w-full mb-2 bg-white rounded-md">
         <div class="px-6 my-3 py-3 border-r border-gray-20">
@@ -112,23 +136,30 @@ import event from '@/event'
 })
 export default class Architecture extends Vue {
   @Prop({ type: Array, default: [] }) readonly services!: Array<string>
-  @Prop({ type: Number, default: 3700 }) readonly startAfter!: number
+  @Prop({ type: Number, default: 250 }) readonly startAfter!: number
   @Prop({ type: Number, default: -1 }) readonly serviceDelay!: number
 
   private showServices: number = -1
+  private blink = false
 
   private sleep (time: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, time))
   }
 
   mounted () {
-    event.$on('deploy', async () => {
+    event.$on('publish', async () => {
       this.showServices = -1
       await this.sleep(this.startAfter)
       for (const i in this.services) {
         await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
         this.showServices++
+        this.blink = true
+        setTimeout(() => {
+          this.blink = false
+        }, 200)
+        await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
       }
+      this.showServices++
     })
   }
 }

@@ -22,7 +22,7 @@ describe('Plaground::Architecture', () => {
     vm = archi.vm as any
     vm.sleep = jest.fn()
 
-    event.$emit('deploy')
+    event.$emit('publish')
     expect(archi.html()).toBeDefined()
     expect(vm).toHaveProperty('services', ['toto'])
   })
@@ -42,14 +42,14 @@ describe('Plaground::Architecture', () => {
     it('should display services (no timeout)', async () => {
       expect.assertions(2)
       vm.sleep = jest.fn()
-      event.$emit('deploy')
+      event.$emit('publish')
       expect(archi.html()).toBeDefined()
       expect(vm).toHaveProperty('services', ['toto'])
     })
 
     it('should sleep n ms', async () => {
       expect.assertions(1)
-      const promise = vm.sleep(10)
+      const promise = vm.sleep(210)
       await promise
       expect(promise).toBeDefined()
     })
