@@ -134,6 +134,7 @@ module.exports = {
     backgroundColor: [
       'responsive',
       'odd',
+      'even',
       'hover',
       'focus',
       'active',

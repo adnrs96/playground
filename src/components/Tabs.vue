@@ -8,8 +8,8 @@
         p="4"
         weight="semibold"
         color="text-gray-100"
-        :class="{ 'bg-gray-20 rounded-t-sm cursor-default': visibleSlot === idx, 'cursor-pointer hover:bg-gray-10': visibleSlot !== idx }"
-        class="ml-4 px-3 py-1 mt-1 flex items-center focus:outline-none"
+        :class="{ 'bg-gray-20 cursor-default': visibleSlot === idx, 'cursor-pointer hover:bg-gray-10': visibleSlot !== idx }"
+        class="ml-4 px-3 py-1 mt-1 flex items-center focus:outline-none rounded-t-sm"
         role="tab"
         @click="visibleSlot = idx"
       >
