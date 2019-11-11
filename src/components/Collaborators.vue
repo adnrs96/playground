@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="collaborators && collaborators.length > 0"
     id="collaborators"
     class="flex items-center"
   >
@@ -48,10 +47,10 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { Getter } from 'vuex-class'
 import { IStoryCollaborator, IStorySample } from '../models/StorySample'
 import SIcon from '@/components/Icon.vue'
 import SText from '@/components/Text.vue'
+import collaborators from '@/samples/defaultCollaborators'
 
 @Component({
   name: 'Collaborators',
@@ -61,15 +60,8 @@ import SText from '@/components/Text.vue'
   }
 })
 export default class Collaborators extends Vue {
-  @Getter('getPayload')
-  private payload!: IStorySample
-
-  private collaborators: Array<IStoryCollaborator> = []
+  private collaborators: Array<IStoryCollaborator> = collaborators
   private hovered = -1
-
-  mounted () {
-    this.collaborators = this.payload.collaborators
-  }
 
   hoverHandler (e: any, inside: boolean, idx: number) {
     if (inside) {
