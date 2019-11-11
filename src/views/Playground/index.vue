@@ -151,12 +151,18 @@ export default class Playground extends Vue {
     this.setPayload(this.payload)
   }
 
+  private exitFullscreen (evt: KeyboardEvent) {
+    if (evt.key === 'Escape' && this.fullscreen) {
+      this.fullscreen = false
+    }
+  }
+
   mounted () {
-    window.addEventListener('keyup', (evt: KeyboardEvent) => {
-      if (evt.key === 'Escape' && this.fullscreen) {
-        this.fullscreen = false
-      }
-    })
+    window.addEventListener('keyup', this.exitFullscreen)
+  }
+
+  beforeDestroy () {
+    window.removeEventListener('keyup', this.exitFullscreen)
   }
 
   created () {

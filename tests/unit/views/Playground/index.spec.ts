@@ -92,4 +92,51 @@ describe('Playground index', () => {
       view.destroy()
     })
   })
+
+  describe('exitFullscreen', () => {
+    let idxView: Wrapper<Playground>
+    let ivm: any
+
+    beforeEach(() => {
+      idxView = shallowMount(Playground, {
+        store,
+        localVue,
+        propsData: {
+          sample: 'counter'
+        },
+        mocks: {
+          $route: {
+            query: { skipIntro: 'true' }
+          },
+          $router: {
+            push: jest.fn(),
+            replace: jest.fn()
+          }
+        }
+      })
+      ivm = idxView.vm as any
+    })
+
+    afterEach(() => {
+      idxView.destroy()
+    })
+
+    it('should exit fullscreen when hitting Esc', () => {
+      ivm.fullscreen = true
+      ivm.exitFullscreen({ key: 'Escape' })
+      expect(ivm.fullscreen).toBeFalsy()
+    })
+
+    it('shoud not exit on different keys', () => {
+      ivm.fullscreen = true
+      ivm.exitFullscreen({ key: 'Enter' })
+      expect(ivm.fullscreen).toBeTruthy()
+    })
+
+    it('shoud not exit when not in fullscreen', () => {
+      ivm.fullscreen = false
+      ivm.exitFullscreen({ key: 'Escape' })
+      expect(ivm.fullscreen).toBeFalsy()
+    })
+  })
 })
