@@ -11,7 +11,6 @@ describe('Events.vue', () => {
     events = shallowMount(Events, {
       propsData: {
         event: eventFn,
-        startAfter: 0,
         eventDelay: 0
       }
     })
@@ -54,13 +53,12 @@ describe('Events.vue', () => {
   })
 
   describe('event.$on(publish)', () => {
-    it('should add 5 events then call the callback', async () => {
-      expect.assertions(2)
+    it('should add 5 events', async () => {
+      expect.assertions(1)
       const fakeCb = jest.fn()
 
-      event.$emit('publish', fakeCb)
+      event.$emit('published', fakeCb)
       await new Promise(resolve => setTimeout(resolve, 1000))
-      expect(fakeCb).toHaveBeenCalled()
       expect(vm).toHaveProperty('events', [
         {
           icon: 'http',

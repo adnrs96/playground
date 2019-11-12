@@ -9,7 +9,7 @@
       weight="medium"
       color="text-gray-50"
     >
-      Events will appear after a story is published...
+      {{ `${event ? 'Events will appear after a story is published...' : 'This story does not handle events...'}` }}
     </s-text>
     <div
       v-for="(e, idx) in events"
@@ -64,20 +64,23 @@ const BASE_EVENT = { icon: 'http', title: 'http', open: false }
   }
 })
 export default class Events extends Vue {
-  @Prop({ type: Function, required: true }) readonly event!: Function
-  @Prop({ type: Number, default: 3250 }) readonly startAfter!: number
+  @Prop({ type: Function, default: undefined }) readonly event!: Function | undefined
   @Prop({ type: Number, default: 1000 }) readonly eventDelay!: number
 
   private events: any[] = []
 
   mounted () {
-    event.$on('publish', async (cb: Function) => {
-      this.events = []
-      await new Promise(resolve => setTimeout(resolve, this.startAfter))
-      for (let i of [1, 2, 3, 4, 5]) {
-        this.triggerEvent(this.event, i)
-        await new Promise(resolve => setTimeout(resolve, this.eventDelay))
+    event.$on('published', async (cb: Function) => {
+      const fireEvents = async () => {
+        this.events = []
+        if (this.event !== undefined) {
+          for (let i of [1, 2, 3, 4, 5]) {
+            this.triggerEvent(this.event, i)
+            await new Promise(resolve => setTimeout(resolve, this.eventDelay))
+          }
+        }
       }
+      await fireEvents()
       cb()
     })
   }

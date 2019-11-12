@@ -29,6 +29,13 @@ describe('Comments.vue', () => {
     expect(view.html()).toBeTruthy()
   })
 
+  it('should mount without comments', () => {
+    expect.assertions(1)
+    const vView = shallowMount(Comments)
+    expect(vView.html()).toBeTruthy()
+    vView.destroy()
+  })
+
   describe('.addComment()', () => {
     it('should not add comment', () => {
       expect.assertions(1)

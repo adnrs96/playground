@@ -18,25 +18,25 @@
         Welcome to Storyscript Studio!
       </s-text>
 
-      <div class="flex flex-col md:flex-row justify-center mb-12">
+      <div class="flex flex-col md:flex-row md:flex-wrap justify-center mb-12">
         <div
           v-for="(card, idx) in samples"
           :id="`sample-card-${card.name}`"
           :key="`sample-card-${idx}`"
-          class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card shadow-card"
+          class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card shadow-card flex flex-col"
         >
           <div
-            class="flex mt-8 px-8 pb-6 border-b border-solid border-gray-10 flex-col"
+            class="flex flex-col mt-8 px-8 pb-6 border-b border-solid border-gray-10"
           >
             <div class="flex items-start">
-              <img
-                src="/img/services/redis.svg"
-                alt="redis logo"
-                width="71"
-                height="61"
-                class="mr-6"
-              >
-              <div>
+              <div class="w-1/5 mr-6">
+                <img
+                  :src="`/img/services/${card.services[0]}.svg`"
+                  :alt="`${card.services[0]} logo`"
+                  class="w-full"
+                >
+              </div>
+              <div class="w-4/5">
                 <s-text
                   p="1"
                   weight="bold"
@@ -90,6 +90,10 @@
             </s-button>
           </div>
         </div>
+        <div
+          v-if="samples.length % 2 !== 0"
+          class="m-4 w-full md:w-1/2 lg:w-1/3"
+        />
       </div>
 
       <s-footer

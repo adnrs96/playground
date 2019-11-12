@@ -9,8 +9,8 @@ const event: Function = (count: number) => {
 const counter: IStorySample = {
   name: 'counter',
   services: [
-    'http',
-    'redis'
+    'redis',
+    'http'
   ],
   stories: ['counter'],
   code,
