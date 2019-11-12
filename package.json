@@ -31,7 +31,7 @@
     "@sentry/integrations": "5.7.1",
     "@types/jest": "24.0.22",
     "@types/mailgun-js": "0.22.3",
-    "@types/node": "12.12.6",
+    "@types/node": "12.12.7",
     "@types/puppeteer": "1.20.2",
     "@types/uuid": "3.4.6",
     "@vue/cli-plugin-babel": "4.0.5",
