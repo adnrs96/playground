@@ -1,6 +1,6 @@
 <template>
   <div
-    id="playground"
+    id="studio"
     class="min-h-screen-no-navbar flex"
   >
     <div
@@ -91,6 +91,10 @@
         `${fullscreen ? 'w-0' : 'w-1/3'}`]
       "
     >
+      <s-events
+        data-tab-title="Events"
+        :event="payload.event"
+      />
       <s-comments
         data-tab-title="Comments"
         :comments="payload.comments"
@@ -108,7 +112,8 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
 import { Mutation } from 'vuex-class'
-import SArchitecture from '@/views/Playground/Architecture.vue'
+import SArchitecture from '@/views/Studio/Architecture.vue'
+import SEvents from '@/views/Studio/Events.vue'
 import { IStorySample } from '@/models/StorySample'
 import samples from '@/samples'
 import MonacoEditor from '@/components/MonacoEditor.vue'
@@ -126,10 +131,11 @@ import SComments from '@/components/Comments.vue'
     SText,
     SIntro,
     STabs,
-    SComments
+    SComments,
+    SEvents
   }
 })
-export default class Playground extends Vue {
+export default class Studio extends Vue {
   @Prop({ type: String, default: 'counter' }) readonly sample!: string
 
   private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']

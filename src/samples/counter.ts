@@ -2,6 +2,10 @@ import { IStorySample } from '@/models/StorySample'
 import code from './counter.story'
 import defaultCollaborators from './defaultCollaborators'
 
+const event: Function = (count: number) => {
+  return `  Story:\n    count: ${count}\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+}
+
 const counter: IStorySample = {
   name: 'counter',
   services: [
@@ -14,12 +18,13 @@ const counter: IStorySample = {
   description:
     'A simple web page hit counter application, showing the power of Storyscript for rapid prototyping using the http and redis services.',
   image: 'counter-tweet.png',
+  event,
   tips: [
     {
       name: 'welcome-to-storyscript',
       text:
         "This is Storyscript, the cloud-native programming language.\n\nLet's take a quick walk through the language features with this example building a simple counter application.",
-      x: 256,
+      x: 375,
       y: 76
     },
     {

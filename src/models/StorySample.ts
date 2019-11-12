@@ -25,6 +25,7 @@ export interface IStorySample {
   code: string
   collaborators: Array<IStoryCollaborator>
   image?: string
+  event?: Function
   stories: Array<string>
   services: Array<string>
   description: string

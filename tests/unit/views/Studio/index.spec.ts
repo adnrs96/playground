@@ -1,4 +1,4 @@
-import Playground from '@/views/Playground/index.vue'
+import Studio from '@/views/Studio/index.vue'
 import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
 import samples from '@/samples'
 import Vuex, { Store } from 'vuex'
@@ -7,14 +7,14 @@ import StorePayload from '@/store/modules/Payload'
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-describe('Playground index', () => {
-  let playground: Wrapper<Playground>
+describe('Studio index', () => {
+  let studio: Wrapper<Studio>
   let vm: any
   let store: Store<any>
 
   beforeEach(() => {
     store = new Vuex.Store(StorePayload)
-    playground = shallowMount(Playground, {
+    studio = shallowMount(Studio, {
       stubs: {
         RouterView: true
       },
@@ -33,21 +33,21 @@ describe('Playground index', () => {
       store,
       localVue
     })
-    vm = playground.vm as any
+    vm = studio.vm as any
   })
 
   afterEach(() => {
-    playground.destroy()
+    studio.destroy()
   })
 
   it('should mount', () => {
     expect.assertions(1)
-    expect(playground.html()).toBeDefined()
+    expect(studio.html()).toBeDefined()
   })
 
   it('should skip intro', () => {
     expect.assertions(1)
-    const view = shallowMount(Playground, {
+    const view = shallowMount(Studio, {
       propsData: {
         sample: 'not-a-sample'
       },
@@ -67,7 +67,7 @@ describe('Playground index', () => {
 
   describe('.setPayload(string)', () => {
     it('should set the payload', () => {
-      const view = shallowMount(Playground, {
+      const view = shallowMount(Studio, {
         store,
         localVue,
         propsData: {

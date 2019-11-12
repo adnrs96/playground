@@ -1,7 +1,7 @@
 {
-  "name": "Storyscript Playground",
-  "short_name": "Playground",
-  "description": "Storyscript Playground. From here you can see the status of all your stories",
+  "name": "Storyscript Studio",
+  "short_name": "Studio",
+  "description": "Storyscript Studio. From here you can see the status of all your stories",
   "icons": [
     {
       "src": "./img/icons/android-chrome-512x512.png",

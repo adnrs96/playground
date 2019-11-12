@@ -1,8 +1,8 @@
 import puppeteer from 'puppeteer'
-import { percySnapshot } from '@percy/puppeteer'
+import { emit } from 'cluster'
 const { TEST_URL, puppeteerConfig } = require('./puppeteer.config')
 
-describe('Tip', () => {
+describe('Architecture', () => {
   let page: any
   let browser: any
 
@@ -18,12 +18,19 @@ describe('Tip', () => {
     browser.close()
   })
 
-  it('should display text in tip', async () => {
+  it('should display', async () => {
     expect.assertions(1)
-    await page.waitForSelector('#new-from-scratch-tip')
-    await page.click('#new-from-scratch-tip')
-    const tip = await page.$eval('#new-from-scratch-tip>.content>div>p', (e: Element) => e.innerHTML)
-    expect(tip).toEqual('Studio for creating your own apps is under development.')
-    await percySnapshot(page, 'Studio NewFromScratch Tip')
+    await page.waitForSelector('#events')
+    expect(await page.$('#events')).toBeTruthy()
+  })
+
+  it('should display events cards', async () => {
+    expect.assertions(1)
+
+    await page.click('#publish-btn')
+    await page.waitFor(10000)
+
+    const cardsCount = await page.$$eval('#events .event', (c: Element[]) => c.length)
+    expect(cardsCount).toEqual(5)
   })
 })

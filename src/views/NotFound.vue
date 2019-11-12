@@ -5,7 +5,7 @@
     </p>
     <button
       black
-      @click="$router.push({ name: 'playground' })"
+      @click="$router.push({ name: 'studio' })"
     >
       Go back home
     </button>
