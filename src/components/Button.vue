@@ -22,7 +22,7 @@
   >
     <s-text
       v-if="$slots.default"
-      :p="dashed ? '5' : '2'"
+      :p="dashed || small ? '4' : '2'"
       :weight="dashed ? 'medium' : 'semibold'"
       :color="textColor"
       :class="[

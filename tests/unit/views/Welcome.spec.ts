@@ -14,9 +14,9 @@ describe('Welcome.vue', () => {
 
   beforeEach(() => {
     router = new VueRouter({ routes: [{
-      name: 'playground',
+      name: 'studio',
       path: '/'
-    }]})
+    }] })
     welcome = shallowMount(Welcome, {
       router,
       localVue,

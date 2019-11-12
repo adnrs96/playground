@@ -1,6 +1,6 @@
 <template>
   <div
-    id="playground"
+    id="studio"
     class="min-h-screen-no-navbar flex"
   >
     <div
@@ -27,6 +27,14 @@
           <s-icon icon="eye" />
           <span class="ml-1">Read only</span>
         </s-text>
+        <s-text
+          p="6"
+          weight="semibold"
+          color="text-indigo-70"
+          class="flex items-center py-1 px-2 rounded-sm bg-indigo-10 ml-3 cursor-default select-none"
+        >
+          <span>Demonstration</span>
+        </s-text>
       </div>
       <!-- FIX FOR SAFARI, see https://bugs.webkit.org/show_bug.cgi?id=198375 -->
       <div class="h-0 flex-1">
@@ -42,10 +50,18 @@
         />
       </div>
     </div>
-    <s-logs
-      class="w-1/3"
-      :payload="payload"
-    />
+    <s-tabs
+      class="w-1/3 border-l border-gray-20"
+    >
+      <s-events
+        data-tab-title="Events"
+        :event="payload.event"
+      />
+      <s-comments
+        data-tab-title="Comments"
+        :comments="payload.comments"
+      />
+    </s-tabs>
     <s-intro
       v-if="payload.tips && isIntro"
       :tips="payload.tips"
@@ -57,26 +73,31 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
-import SLogs from '@/views/Playground/Logs.vue'
-import SArchitecture from '@/views/Playground/Architecture.vue'
+import { Mutation } from 'vuex-class'
+import SArchitecture from '@/views/Studio/Architecture.vue'
+import SEvents from '@/views/Studio/Events.vue'
 import { IStorySample } from '@/models/StorySample'
 import samples from '@/samples'
 import MonacoEditor from '@/components/MonacoEditor.vue'
 import SText from '@/components/Text.vue'
 import SIcon from '@/components/Icon.vue'
 import SIntro from '@/components/Intro.vue'
+import STabs from '@/components/Tabs.vue'
+import SComments from '@/components/Comments.vue'
 
 @Component({
   components: {
-    SLogs,
     SArchitecture,
     MonacoEditor,
     SIcon,
     SText,
-    SIntro
+    SIntro,
+    STabs,
+    SComments,
+    SEvents
   }
 })
-export default class Playground extends Vue {
+export default class Studio extends Vue {
   @Prop({ type: String, default: 'counter' }) readonly sample!: string
 
   private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']
@@ -94,14 +115,18 @@ export default class Playground extends Vue {
     automaticLayout: true
   }
 
-  public setPayload (sample: string) {
+  @Mutation('setPayload')
+  private setPayload!: (payload: IStorySample) => void
+
+  public setPayloadName (sample: string) {
     this.payload = samples[sample]
+    this.setPayload(this.payload)
   }
 
   created () {
     if (this.sample.length > 0) {
       if (samples.hasOwnProperty(this.sample)) {
-        this.setPayload(this.sample)
+        this.setPayloadName(this.sample)
       } else {
         this.$router.replace({ name: 'not-found' })
       }

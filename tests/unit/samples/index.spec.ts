@@ -2,7 +2,7 @@ import { IStorySample } from '@/models/StorySample'
 import samples from '@/samples'
 
 describe('Counter sample', () => {
-  it('should export logs', () => {
+  it('should export', () => {
     expect.assertions(Object.keys(samples).length * 6)
 
     for (const s in samples) {

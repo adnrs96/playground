@@ -11,7 +11,7 @@ describe('Tip', () => {
     browser = await puppeteer.launch(puppeteerConfig())
     page = await browser.newPage()
     page.setBypassCSP(true)
-    await page.goto(`${TEST_URL}/?skipIntro=true`)
+    await page.goto(`${TEST_URL}/example/counter?skipIntro=true`)
   })
 
   afterAll(() => {
@@ -23,7 +23,7 @@ describe('Tip', () => {
     await page.waitForSelector('#new-from-scratch-tip')
     await page.click('#new-from-scratch-tip')
     const tip = await page.$eval('#new-from-scratch-tip>.content>div>p', (e: Element) => e.innerHTML)
-    expect(tip).toEqual('Playground for creating your own apps is under development.')
-    await percySnapshot(page, 'Playground NewFromScratch Tip')
+    expect(tip).toEqual('Studio for creating your own apps is under development.')
+    await percySnapshot(page, 'Studio NewFromScratch Tip')
   })
 })

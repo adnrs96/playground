@@ -1,5 +1,10 @@
 import { IStorySample } from '@/models/StorySample'
 import code from './counter.story'
+import defaultCollaborators from './defaultCollaborators'
+
+const event: Function = (count: number) => {
+  return `  Story:\n    count: ${count}\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+}
 
 const counter: IStorySample = {
   name: 'counter',
@@ -9,14 +14,17 @@ const counter: IStorySample = {
   ],
   stories: ['counter'],
   code,
+  collaborators: defaultCollaborators,
   description:
     'A simple web page hit counter application, showing the power of Storyscript for rapid prototyping using the http and redis services.',
+  image: 'counter-tweet.png',
+  event,
   tips: [
     {
       name: 'welcome-to-storyscript',
       text:
         "This is Storyscript, the cloud-native programming language.\n\nLet's take a quick walk through the language features with this example building a simple counter application.",
-      x: 256,
+      x: 375,
       y: 76
     },
     {
@@ -41,13 +49,20 @@ const counter: IStorySample = {
       y: 140
     },
     {
-      name: 'storyscript-deploy',
+      name: 'storyscript-publish',
       text:
-        'How about we deploy this story, and see what the platform takes care of for you?',
+        'How about we publish this story, and see what the platform takes care of for you?',
       x: 304,
       y: 20
     }
-  ]
+  ],
+  comments: [{
+    author: 'Sharkie',
+    comment: 'Hey Inkie, I think that the redis increment action defaults to 1 for the by argument, so this may be redundant!'
+  }, {
+    author: 'Inkie',
+    comment: "Thanks! I'll change it soon!"
+  }]
 }
 
 export default counter

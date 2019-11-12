@@ -10,7 +10,7 @@ describe('Logs', () => {
     browser = await puppeteer.launch(puppeteerConfig())
     page = await browser.newPage()
     page.setBypassCSP(true)
-    await page.goto(`${TEST_URL}/?skipIntro=true`)
+    await page.goto(`${TEST_URL}/example/counter?skipIntro=true`)
     await page.waitForSelector('#login')
   })
 
@@ -24,7 +24,7 @@ describe('Logs', () => {
   })
 
   /**
-   * Given I navigate to the playground,
+   * Given I navigate to the studio,
    * Then I see a “Register Interest” button
    */
   it('should display the button in the navbar', async () => {
@@ -41,9 +41,9 @@ describe('Logs', () => {
     await page.click('#login-btn')
     expect(await page.$('#login-form')).toBeTruthy()
 
-    expect((await page.$$('input')).length).toEqual(3)
-    expect((await page.$$eval('input', (nodes: any) => nodes.map((n: any) => n.type)))).toEqual(['text', 'text', 'email'])
-    expect((await page.$$eval('input', (nodes: any) => nodes.map((n: any) => n.name)))).toEqual(['form-name', 'name', 'email'])
+    expect((await page.$$('#login input')).length).toEqual(3)
+    expect((await page.$$eval('#login input', (nodes: any) => nodes.map((n: any) => n.type)))).toEqual(['text', 'text', 'email'])
+    expect((await page.$$eval('#login input', (nodes: any) => nodes.map((n: any) => n.name)))).toEqual(['form-name', 'name', 'email'])
   })
 
   it('should display a some errors when I enter wrong info', async () => {

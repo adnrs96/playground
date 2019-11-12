@@ -15,7 +15,7 @@
         class="pt-20 pb-10"
         center
       >
-        Welcome to Storyscript Playground!
+        Welcome to Storyscript Studio!
       </s-text>
 
       <div class="flex flex-col md:flex-row justify-center mb-12">
@@ -23,36 +23,61 @@
           v-for="(card, idx) in samples"
           :id="`sample-card-${card.name}`"
           :key="`sample-card-${idx}`"
-          class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card"
+          class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card shadow-card"
         >
-          <div class="flex mt-8 px-8 pb-6 border-b border-solid border-gray-10 items-start">
-            <img
-              src="/img/services/redis.svg"
-              alt="redis logo"
-              width="71"
-              height="61"
-              class="mr-6"
-            >
-            <div>
-              <s-text
-                p="1"
-                weight="bold"
-                color="text-gray-100"
-                class="title"
+          <div
+            class="flex mt-8 px-8 pb-6 border-b border-solid border-gray-10 flex-col"
+          >
+            <div class="flex items-start">
+              <img
+                src="/img/services/redis.svg"
+                alt="redis logo"
+                width="71"
+                height="61"
+                class="mr-6"
               >
-                {{ card.name }}.story
-              </s-text>
-              <s-text
-                p="3"
-                weight="regular"
-                color="text-black"
-                class="description"
+              <div>
+                <s-text
+                  p="1"
+                  weight="bold"
+                  color="text-gray-100"
+                  class="title"
+                >
+                  {{ card.name }}.story
+                </s-text>
+                <s-text
+                  p="3"
+                  weight="regular"
+                  color="text-black"
+                  class="description"
+                >
+                  {{ card.description }}
+                </s-text>
+              </div>
+            </div>
+            <div class="flex flex-col items-start mt-8">
+              <img
+                :src="`/img/welcome-cards/${card.image}`"
+                alt="card image"
+                class="border border-gray-10 shadow-sm"
               >
-                {{ card.description }}
-              </s-text>
             </div>
           </div>
-          <div class="w-full flex justify-end items-center p-3">
+          <div class="w-full flex justify-between items-center p-3">
+            <div class="flex">
+              <div
+                v-for="(s, idx2) in card.services"
+                :key="`service-${idx2}`"
+                class="-mr-3 bg-white shadow-md rounded-full p-2 flex  items-center justify-center"
+              >
+                <img
+                  :src="`/img/services/${s}.svg`"
+                  width="32"
+                  height="32"
+                  :alt="`${s} service logo`"
+                >
+              </div>
+            </div>
             <s-button
               :id="`explore-${card.name}`"
               icon="rocket-o"
@@ -105,7 +130,7 @@ export default class Welcome extends Vue {
 
   private go (sample: string) {
     event.$emit('welcome', false)
-    this.$router.push({ name: 'playground', params: { sample } })
+    this.$router.push({ name: 'studio', params: { sample } })
   }
 }
 </script>

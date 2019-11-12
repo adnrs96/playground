@@ -25,18 +25,18 @@ describe('Architecture', () => {
   })
 
   it('should display service cards', async () => {
-    expect.assertions(2)
+    expect.assertions(3)
 
-    await page.click('#deploy-btn')
+    await page.click('#publish-btn')
     await page.waitFor(10000)
 
     const icons = await page.evaluate(() => {
-      const images = document.querySelectorAll('.card img')
+      const images = document.querySelectorAll('#architecture .card img')
       const urls = Array.from(images).map((v: any) => v.src)
       return urls
     })
     const texts = await page.evaluate(() => {
-      const images = document.querySelectorAll('.card .text-xs')
+      const images = document.querySelectorAll('#architecture .card .text-xs')
       const texts = Array.from(images).map((v: any) => v.textContent.trim())
       return texts
     })
@@ -45,6 +45,7 @@ describe('Architecture', () => {
       'http://localhost:8080/img/services/http.svg',
       'http://localhost:8080/img/services/redis.svg'
     ])
-    expect(texts).toEqual([ 'Healthy', 'Healthy' ])
+    expect(texts).toEqual([ 'Staged', 'Healthy', 'Staged', 'Healthy' ])
+    expect((await page.$eval('#publish-btn', (btn: Element) => btn.classList.contains('cursor-pointer')))).toBeTruthy()
   })
 })

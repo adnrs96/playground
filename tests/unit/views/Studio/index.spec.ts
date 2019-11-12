@@ -1,13 +1,20 @@
-import Playground from '@/views/Playground/index.vue'
-import { Wrapper, shallowMount } from '@vue/test-utils'
+import Studio from '@/views/Studio/index.vue'
+import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
 import samples from '@/samples'
+import Vuex, { Store } from 'vuex'
+import StorePayload from '@/store/modules/Payload'
 
-describe('Playground index', () => {
-  let playground: Wrapper<Playground>
+const localVue = createLocalVue()
+localVue.use(Vuex)
+
+describe('Studio index', () => {
+  let studio: Wrapper<Studio>
   let vm: any
+  let store: Store<any>
 
   beforeEach(() => {
-    playground = shallowMount(Playground, {
+    store = new Vuex.Store(StorePayload)
+    studio = shallowMount(Studio, {
       stubs: {
         RouterView: true
       },
@@ -22,23 +29,25 @@ describe('Playground index', () => {
       },
       propsData: {
         sample: ''
-      }
+      },
+      store,
+      localVue
     })
-    vm = playground.vm as any
+    vm = studio.vm as any
   })
 
   afterEach(() => {
-    playground.destroy()
+    studio.destroy()
   })
 
   it('should mount', () => {
     expect.assertions(1)
-    expect(playground.html()).toBeDefined()
+    expect(studio.html()).toBeDefined()
   })
 
   it('should skip intro', () => {
     expect.assertions(1)
-    const view = shallowMount(Playground, {
+    const view = shallowMount(Studio, {
       propsData: {
         sample: 'not-a-sample'
       },
@@ -58,7 +67,9 @@ describe('Playground index', () => {
 
   describe('.setPayload(string)', () => {
     it('should set the payload', () => {
-      const view = shallowMount(Playground, {
+      const view = shallowMount(Studio, {
+        store,
+        localVue,
         propsData: {
           sample: 'counter'
         },
@@ -75,6 +86,7 @@ describe('Playground index', () => {
       const vvm = view.vm as any
 
       expect.assertions(1)
+      store.commit = jest.fn()
       vvm.setPayload('counter')
       expect(vvm).toHaveProperty('payload', samples['counter'])
       view.destroy()

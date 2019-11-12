@@ -48,13 +48,13 @@ import SNotification from '@/components/Notification.vue'
 import SText from '@/components/Text.vue'
 
 @Component({
-  name: 'Playground',
+  name: 'Studio',
   components: {
     SNotification,
     SText
   }
 })
-export default class Playground extends Vue {
+export default class Studio extends Vue {
   private refresh () {
     window.location.reload()
   }
