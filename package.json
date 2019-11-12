@@ -55,7 +55,7 @@
     "jest-puppeteer": "4.3.0",
     "jest-raw-loader": "1.0.1",
     "jest-transform-graphql": "2.1.0",
-    "lighthouse-badges": "^1.0.23",
+    "lighthouse-badges": "1.0.23",
     "lint-staged": "9.4.2",
     "lodash": "4.17.15",
     "mailgun-js": "0.22.0",
