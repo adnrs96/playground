@@ -2,7 +2,7 @@ machinebox/classificationbox create id:"gmail-labels"
 
 when gmail inbox received as email
   res = machinebox/classificationbox predict id:"gmail-labels"
-                                             inputs:email_to_inputs(:email)
+                                             inputs:email_to_inputs(email:email)
                                              limit:3
   if res.success
     redis sadd key:"tagged-by-ml" item:email.id
