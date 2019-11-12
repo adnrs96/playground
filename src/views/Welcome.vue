@@ -26,7 +26,7 @@
           class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card shadow-card flex flex-col"
         >
           <div
-            class="flex h-0 flex-1 mt-8 px-8 pb-6 border-b border-solid border-gray-10 flex-col"
+            class="flex flex-col mt-8 px-8 pb-6 border-b border-solid border-gray-10"
           >
             <div class="flex items-start">
               <div class="w-1/5 mr-6">
