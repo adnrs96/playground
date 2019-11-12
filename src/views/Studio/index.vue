@@ -140,8 +140,12 @@ export default class Studio extends Vue {
   private options: any = {
     readOnly: true,
     minimap: { enabled: false },
-    fontSize: 16,
-    automaticLayout: true
+    fontSize: 12,
+    automaticLayout: true,
+    renderIndentGuides: false,
+    scrollBeyondLastLine: false,
+    scrollBeyondLastColumn: false,
+    contextmenu: false
   }
 
   mounted () {
