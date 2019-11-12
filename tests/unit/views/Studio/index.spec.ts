@@ -94,11 +94,11 @@ describe('Studio index', () => {
   })
 
   describe('exitFullscreen', () => {
-    let idxView: Wrapper<Playground>
+    let idxView: Wrapper<Studio>
     let ivm: any
 
     beforeEach(() => {
-      idxView = shallowMount(Playground, {
+      idxView = shallowMount(Studio, {
         store,
         localVue,
         propsData: {
