@@ -18,15 +18,15 @@
         Welcome to Storyscript Studio!
       </s-text>
 
-      <div class="flex flex-col md:flex-row justify-center mb-12">
+      <div class="flex flex-col md:flex-row md:flex-wrap justify-center mb-12">
         <div
           v-for="(card, idx) in samples"
           :id="`sample-card-${card.name}`"
           :key="`sample-card-${idx}`"
-          class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card shadow-card"
+          class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card shadow-card flex flex-col"
         >
           <div
-            class="flex mt-8 px-8 pb-6 border-b border-solid border-gray-10 flex-col"
+            class="flex h-0 flex-1 mt-8 px-8 pb-6 border-b border-solid border-gray-10 flex-col"
           >
             <div class="flex items-start">
               <div class="w-1/5 mr-6">
@@ -90,6 +90,10 @@
             </s-button>
           </div>
         </div>
+        <div
+          v-if="samples.length % 2 !== 0"
+          class="m-4 w-full md:w-1/2 lg:w-1/3"
+        />
       </div>
 
       <s-footer

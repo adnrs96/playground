@@ -7,16 +7,14 @@ const autolabel: IStorySample = {
   services: [
     'gmail',
     'machinebox',
-    'redis',
+    'redis'
   ],
   stories: ['autolabel'],
   code,
   collaborators: defaultCollaborators,
   description:
     'Train a machine learning model to predict and apply labels to a gmail inbox using the gmail, machinebox, and redis services.',
-  image: 'autolabel-tweet.png',
-  tips: [],
-  comments: []
+  image: 'autolabel-tweet.png'
 }
 
 export default autolabel
