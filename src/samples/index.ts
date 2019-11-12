@@ -1,8 +1,10 @@
 import counter from './counter'
+import autolabel from './autolabel'
 // import file from './file'
 
 const samples: any = {
-  counter
+  counter,
+  autolabel,
 }
 
 export default samples
