@@ -16,8 +16,10 @@
         {{ s }}
       </s-text>
     </div>
+    <!-- FIX FOR SAFARI, see https://bugs.webkit.org/show_bug.cgi?id=198375 -->
+    <!-- Added flex to be able to add `flex-1` when we need a 10% height div on Safari (iPad) -->
     <s-perfect-scrollbar
-      class="min-h-screen-no-navbar-tabs max-h-screen-no-navbar-tabs w-full"
+      class="flex min-h-screen-no-navbar-tabs max-h-screen-no-navbar-tabs w-full"
     >
       <slot />
     </s-perfect-scrollbar>
