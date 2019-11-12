@@ -44,26 +44,14 @@
           </s-text>
         </div>
         <s-icon
-          v-if="!fullscreen"
-          id="enter-fullscreen"
-          icon="fullscreen"
+          id="toggle-fullscreen"
+          :icon="`${fullscreen ? 'fullscreen' : 'fullscreen-exit'}`"
           width="20"
           height="20"
           color="text-indigo-50"
           class="hover:bg-gray-10 rounded-full p-1"
           clickable
-          @click="fullscreen = true"
-        />
-        <s-icon
-          v-else
-          id="exit-fullscreen"
-          icon="fullscreen-exit"
-          width="20"
-          height="20"
-          color="text-indigo-50"
-          class="hover:bg-gray-10 rounded-full p-1"
-          clickable
-          @click="fullscreen = false"
+          @click="fullscreen = !fullscreen"
         />
       </div>
       <!-- FIX FOR SAFARI, see https://bugs.webkit.org/show_bug.cgi?id=198375 -->
@@ -138,34 +126,22 @@ import SComments from '@/components/Comments.vue'
 export default class Studio extends Vue {
   @Prop({ type: String, default: 'counter' }) readonly sample!: string
 
-  private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']
-  private isIntro: boolean = false
-  private fullscreen: boolean = false
-
   @Emit('introChange')
   @Watch('isIntro') private onIntroChange (): boolean {
     return this.isIntro
   }
 
+  @Mutation('setPayload')
+  private setPayload!: (payload: IStorySample) => void
+
+  private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']
+  private isIntro: boolean = false
+  private fullscreen: boolean = false
   private options: any = {
     readOnly: true,
     minimap: { enabled: false },
     fontSize: 16,
     automaticLayout: true
-  }
-
-  @Mutation('setPayload')
-  private setPayload!: (payload: IStorySample) => void
-
-  public setPayloadName (sample: string) {
-    this.payload = samples[sample]
-    this.setPayload(this.payload)
-  }
-
-  private exitFullscreen (evt: KeyboardEvent) {
-    if (evt.key === 'Escape' && this.fullscreen) {
-      this.fullscreen = false
-    }
   }
 
   mounted () {
@@ -185,6 +161,17 @@ export default class Studio extends Vue {
       }
     }
     this.isIntro = !(this.$route && this.$route.query && this.$route.query.skipIntro && this.$route.query.skipIntro === 'true')
+  }
+
+  public setPayloadName (sample: string) {
+    this.payload = samples[sample]
+    this.setPayload(this.payload)
+  }
+
+  private exitFullscreen (evt: KeyboardEvent) {
+    if (evt.key === 'Escape' && this.fullscreen) {
+      this.fullscreen = false
+    }
   }
 }
 </script>

@@ -12,6 +12,7 @@ describe('Architecture', () => {
     page = await browser.newPage()
     page.setBypassCSP(true)
     await page.goto(`${TEST_URL}/example/counter?skipIntro=true`)
+    await page.waitForSelector('#toggle-fullscreen')
   })
 
   afterAll(() => {
@@ -20,8 +21,7 @@ describe('Architecture', () => {
 
   it('should display', async () => {
     expect.assertions(1)
-    await page.waitForSelector('#enter-fullscreen')
-    expect(await page.$('#enter-fullscreen')).toBeTruthy()
+    expect(await page.$('#toggle-fullscreen')).toBeTruthy()
   })
 
   it('should handle fullscreen', async () => {
@@ -35,7 +35,7 @@ describe('Architecture', () => {
     expect(Object.values(bottomContainerClasses)).not.toContain('h-0')
 
     // GOING FULLSCREEN
-    await page.click('#enter-fullscreen')
+    await page.click('#toggle-fullscreen')
     leftColClasses = await page.$eval('#left-col', (d: Element) => d.classList)
     rightColClasses = await page.$eval('#right-col', (d: Element) => d.classList)
     bottomContainerClasses = await page.$eval('#bottom-container', (d: Element) => d.classList)
@@ -44,7 +44,7 @@ describe('Architecture', () => {
     expect(Object.values(bottomContainerClasses)).toContain('h-0')
 
     // EXITING FULLSCREEN WITH BUTTON
-    await page.click('#exit-fullscreen')
+    await page.click('#toggle-fullscreen')
     leftColClasses = await page.$eval('#left-col', (d: Element) => d.classList)
     rightColClasses = await page.$eval('#right-col', (d: Element) => d.classList)
     bottomContainerClasses = await page.$eval('#bottom-container', (d: Element) => d.classList)
@@ -53,7 +53,7 @@ describe('Architecture', () => {
     expect(Object.values(bottomContainerClasses)).not.toContain('h-0')
 
     // GOING FULLSCREEN AGAIN
-    await page.click('#enter-fullscreen')
+    await page.click('#toggle-fullscreen')
     leftColClasses = await page.$eval('#left-col', (d: Element) => d.classList)
     rightColClasses = await page.$eval('#right-col', (d: Element) => d.classList)
     bottomContainerClasses = await page.$eval('#bottom-container', (d: Element) => d.classList)
