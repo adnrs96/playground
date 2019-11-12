@@ -13,7 +13,7 @@ const stripe: IStorySample = {
   code,
   collaborators: defaultCollaborators,
   description:
-    'Inform your customers that their subscriptions have been cancelled upon stripe payment failure, using the stripe, postgres and mailgun services.',
+    'Inform customers that their subscriptions have been cancelled upon stripe payment failure, using the stripe, postgres and mailgun services.',
   image: 'stripe-tweet.png',
   tips: [],
   comments: []
