@@ -1,7 +1,7 @@
 <template>
   <div
     id="events"
-    class="p-2 bg-gray-10 h-full"
+    class="p-2 bg-gray-10 flex-1"
   >
     <s-text
       v-if="events.length === 0"

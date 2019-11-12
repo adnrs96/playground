@@ -45,7 +45,7 @@
         </div>
         <s-icon
           id="toggle-fullscreen"
-          :icon="`${fullscreen ? 'fullscreen' : 'fullscreen-exit'}`"
+          :icon="`${!fullscreen ? 'fullscreen' : 'fullscreen-exit'}`"
           width="20"
           height="20"
           color="text-indigo-50"
