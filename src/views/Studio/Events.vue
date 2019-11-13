@@ -74,7 +74,7 @@ export default class Events extends Vue {
       this.firedEvents = []
       let i = 0
       this.interval = setInterval(() => {
-        if (this.events.length === 0 || i === 5) {
+        if (this.events.length === 0 || i === this.events.length) {
           cb()
           clearInterval(this.interval)
           return
