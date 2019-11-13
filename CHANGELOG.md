@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/storyscript/studio/compare/v0.2.0...v0.3.0) (2019-11-13)
+
+
+### Features
+
+* **samples:** add comments and events for zoom ([8c63123](https://github.com/storyscript/studio/commit/8c631230e5c11ab807287cb33dc47ea71057be26))
+* **samples:** add events and comments for stripe ([8ddf5e9](https://github.com/storyscript/studio/commit/8ddf5e9def7cb8cc8f3aa8019e09b5b1ee31fe4f))
+* **samples:** add events to autolabel example ([1eef5df](https://github.com/storyscript/studio/commit/1eef5dfcaf53c929e9b5159529564638c5440915))
+* **welcome:** match descriptions to landing page ([c8ddc5c](https://github.com/storyscript/studio/commit/c8ddc5cd6d21955e98373f2d03f1b01b7d3ebc38))
+
+
+### Bug Fixes
+
+* **publish:** fix publish issue ([da472ec](https://github.com/storyscript/studio/commit/da472ec37c7d18c45950c412f789a9c25e07c8ca))
+* **unit:** fix unit testing ([4d60777](https://github.com/storyscript/studio/commit/4d607770129dafc25ab1d4eb1ce0a3115bd2cf03))
+
 ## [0.2.0](https://github.com/storyscript/studio/compare/v0.1.0...v0.2.0) (2019-11-13)
 
 
