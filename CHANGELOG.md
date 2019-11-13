@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/storyscript/studio/compare/v0.1.0...v0.2.0) (2019-11-13)
+
+
+### Features
+
+* **Architecture:** make services healthy faster ([f65c6c7](https://github.com/storyscript/studio/commit/f65c6c776ba942d6031baedc2876ba5fafbf4eae))
+* **editor:** add fullscreen behavior ([d53be8b](https://github.com/storyscript/studio/commit/d53be8b2b8d2619c6fca2cca28c05da3870b93fc))
+* **editor:** set sane defaults ([a793974](https://github.com/storyscript/studio/commit/a7939742ebcd67d506ad79ce36b301b57db5c2f2))
+* **nav:** add button to see more examples ([7a74886](https://github.com/storyscript/studio/commit/7a748863e107b3144427511b4741957c99bfb222))
+* **samples:** add autolabel comments ([bf6075e](https://github.com/storyscript/studio/commit/bf6075e86e6c8271faca901946aee5f52a385a52))
+* **samples:** add gmail autolabel sample ([31d4a27](https://github.com/storyscript/studio/commit/31d4a27b9892a59f2c2ee7d6a251f21e7fc56740))
+* **samples:** add stripe cancellation sample ([14da4cd](https://github.com/storyscript/studio/commit/14da4cd81913d326eba6f15431c92f7ba40eebea))
+* **samples:** add zoom and stripe examples ([df7ce26](https://github.com/storyscript/studio/commit/df7ce26c5e0f9e78a132543539d4abb660bb3c5a))
+* **welcome:** remove unattributed images ([09264aa](https://github.com/storyscript/studio/commit/09264aae9364d8339d0ec84dea096430f9333070))
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to v3.4.1 ([6597074](https://github.com/storyscript/studio/commit/659707477f5236b3dbe846d0bfcce5eb2790df74))
+* **deps:** update dependency vuex to v3.1.2 ([ea2b823](https://github.com/storyscript/studio/commit/ea2b823a4c07a113d472b80682bbf0cd2a66301d))
+* **events:** fix events ([3cad058](https://github.com/storyscript/studio/commit/3cad05859a56f7cac4459574bdd3e5c2bd70b1a3))
+* **publish:** fix issue where the publish event are carried over the other examples ([7ddcd8e](https://github.com/storyscript/studio/commit/7ddcd8e9acba2f4a3567e4029c321b34a16b560a))
+* **safari:** fix issue on safari ([4119f20](https://github.com/storyscript/studio/commit/4119f207944da13499ef27638c804cb86ba0a1bf))
+* fix a lot of small issues ([319a1ad](https://github.com/storyscript/studio/commit/319a1ad1a565f286effd013f96da32bfb0648cf0))
+* **safari:** fix safari issue ([2779c09](https://github.com/storyscript/studio/commit/2779c09be009ceb336a1101af0bffb24122a1ae2))
+* resolve merge conflicts ([e7b6467](https://github.com/storyscript/studio/commit/e7b646781146875d05164b82157f74e963d478ca))
+
 ## [0.1.0](https://github.com/storyscript/studio/compare/v0.0.2...v0.1.0) (2019-11-11)
 
 
