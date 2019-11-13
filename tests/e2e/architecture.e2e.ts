@@ -28,7 +28,7 @@ describe('Architecture', () => {
     expect.assertions(3)
 
     await page.click('#publish-btn')
-    await page.waitFor(10000)
+    await page.waitFor(15000)
 
     const icons = await page.evaluate(() => {
       const images = document.querySelectorAll('#architecture .card img')
