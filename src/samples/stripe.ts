@@ -15,7 +15,8 @@ const stripe: IStorySample = {
   description:
     'Inform customers that their subscriptions have been cancelled upon stripe payment failure, using the stripe, postgres and mailgun services.',
   tips: [],
-  comments: []
+  comments: [],
+  events: []
 }
 
 export default stripe

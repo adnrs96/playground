@@ -16,7 +16,8 @@ const zoom: IStorySample = {
   description:
     'Transcribe your zoom meetings and receive emails when they are ready using the zoom, http, deepspeech and mailgun services.',
   tips: [],
-  comments: []
+  comments: [],
+  events: []
 }
 
 export default zoom
