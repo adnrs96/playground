@@ -15,7 +15,6 @@ const zoom: IStorySample = {
   collaborators: defaultCollaborators,
   description:
     'Transcribe your zoom meetings and receive emails when they are ready using the zoom, http, deepspeech and mailgun services',
-  image: 'zoom-tweet.png',
   tips: [],
   comments: []
 }
