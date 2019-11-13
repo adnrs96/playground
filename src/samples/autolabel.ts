@@ -13,7 +13,7 @@ const autolabel: IStorySample = {
   code,
   collaborators: defaultCollaborators,
   description:
-    'Train a machine learning model to predict and apply labels to a gmail inbox using the gmail, machinebox, and redis services.',
+    'Train a machine learning model to predict and apply labels to a Gmail inbox using Gmail, Machine Box, and Redis services.',
   image: 'autolabel-tweet.png',
   comments: [{
     author: 'Sharkie',
