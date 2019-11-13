@@ -48,6 +48,27 @@
       </div>
       <div
         v-if="!welcome"
+        id="see-more-examples-btn"
+        class="flex items-center ml-12 cursor-pointer select-none h-full"
+        @click="$router.push({ name: 'welcome' })"
+      >
+        <s-icon
+          icon="rocket-o"
+          color="text-indigo-60"
+          class="mr-2 flex items-center rotate-45deg"
+        />
+        <s-text
+          p="3"
+          weight="semibold"
+          class="text-indigo-70 hover:text-indigo-80 flex"
+        >
+          <span>
+            See more examples
+          </span>
+        </s-text>
+      </div>
+      <div
+        v-if="!welcome"
         id="new-from-scratch-btn"
         class="flex items-center ml-12 cursor-default select-none h-full"
       >

@@ -9,8 +9,8 @@ const event: Function = (count: number) => {
 const counter: IStorySample = {
   name: 'counter',
   services: [
-    'http',
-    'redis'
+    'redis',
+    'http'
   ],
   stories: ['counter'],
   code,
@@ -18,7 +18,6 @@ const counter: IStorySample = {
   description:
     'A simple web page hit counter application, showing the power of Storyscript for rapid prototyping using the http and redis services.',
   image: 'counter-tweet.png',
-  event,
   tips: [
     {
       name: 'welcome-to-storyscript',
@@ -31,27 +30,27 @@ const counter: IStorySample = {
       name: 'storyscript-redis',
       text:
         "Storyscript removes the need for you to care about infrastructure. When this story runs, the platform will create, configure and connect a Redis database so you don't have to!\n\nBy integrating with the Open Microservice Specification, a library of services become available on the Storyscript Hub.",
-      x: 90,
+      x: 35,
       y: 118
     },
     {
       name: 'storyscript-oms',
       text:
         'The Open Microservice Specification also allows Storyscript to strongly type interactions with microservices with IDE support.',
-      x: 372,
+      x: 285,
       y: 118
     },
     {
       name: 'storyscript-http',
       text:
         'Services in Storyscript can also be event driven.\n\nHere, an http server listens for events and the inner block is executed when a request is received.',
-      x: 133,
-      y: 140
+      x: 35,
+      y: 135
     },
     {
       name: 'storyscript-publish',
       text:
-        'How about we publish this story, and see what the platform takes care of for you?',
+        'How about we publish this story, and see what the platform can takes care of for you?',
       x: 304,
       y: 20
     }
@@ -62,7 +61,34 @@ const counter: IStorySample = {
   }, {
     author: 'Inkie',
     comment: "Thanks! I'll change it soon!"
-  }]
+  }],
+  events: [
+    {
+      title: "http",
+      icon: "http",
+      text: `  Story:\n    count: 1\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+    },
+    {
+      title: "http",
+      icon: "http",
+      text: `  Story:\n    count: 2\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+    },
+    {
+      title: "http",
+      icon: "http",
+      text: `  Story:\n    count: 3\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+    },
+    {
+      title: "http",
+      icon: "http",
+      text: `  Story:\n    count: 4\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+    },
+    {
+      title: "http",
+      icon: "http",
+      text: `  Story:\n    count: 5\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+    },
+  ]
 }
 
 export default counter

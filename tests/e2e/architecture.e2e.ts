@@ -28,7 +28,7 @@ describe('Architecture', () => {
     expect.assertions(3)
 
     await page.click('#publish-btn')
-    await page.waitFor(10000)
+    await page.waitFor(15000)
 
     const icons = await page.evaluate(() => {
       const images = document.querySelectorAll('#architecture .card img')
@@ -42,8 +42,8 @@ describe('Architecture', () => {
     })
 
     expect(icons).toEqual([
-      'http://localhost:8080/img/services/http.svg',
-      'http://localhost:8080/img/services/redis.svg'
+      'http://localhost:8080/img/services/redis.svg',
+      'http://localhost:8080/img/services/http.svg'
     ])
     expect(texts).toEqual([ 'Staged', 'Healthy', 'Staged', 'Healthy' ])
     expect((await page.$eval('#publish-btn', (btn: Element) => btn.classList.contains('cursor-pointer')))).toBeTruthy()

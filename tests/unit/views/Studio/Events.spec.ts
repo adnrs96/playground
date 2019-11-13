@@ -5,13 +5,38 @@ import event from '@/event'
 describe('Events.vue', () => {
   let events: Wrapper<Events>
   let vm: any
-  const eventFn = (idx: number) => `toto ${idx}`
+  const testEvents = [
+    {
+      icon: "foo-0",
+      title: "bar",
+      text: "baz",
+    },
+    {
+      icon: "foo-1",
+      title: "bar",
+      text: "baz",
+    },
+    {
+      icon: "foo-2",
+      title: "bar",
+      text: "baz",
+    },
+    {
+      icon: "foo-3",
+      title: "bar",
+      text: "baz",
+    },
+    {
+      icon: "foo-4",
+      title: "bar",
+      text: "baz",
+    },
+  ]
 
   beforeEach(() => {
     events = shallowMount(Events, {
       propsData: {
-        event: eventFn,
-        startAfter: 0,
+        events: testEvents,
         eventDelay: 0
       }
     })
@@ -30,22 +55,22 @@ describe('Events.vue', () => {
   describe('.triggerEvent(fn, idx)', () => {
     it('should add event to the event array', () => {
       expect.assertions(1)
-      vm.triggerEvent(eventFn, 2)
-      expect(vm).toHaveProperty('events', [{ icon: 'http', title: 'http', open: false, more: 'toto 2', idx: 2 }])
+      vm.triggerEvent(testEvents[0], 0)
+      expect(vm).toHaveProperty('firedEvents', [{ icon: 'foo-0', title: 'bar', open: false, text: 'baz', idx: 0 }])
     })
   })
 
   describe('.toggle(idx)', () => {
     it('should add open to the 2nd event', () => {
       expect.assertions(1)
-      vm.events = [
+      vm.firedEvents = [
         { icon: 'http', title: 'http', open: false, more: 'toto 1', idx: 1 },
         { icon: 'http', title: 'http', open: false, more: 'toto 2', idx: 2 },
         { icon: 'http', title: 'http', open: false, more: 'toto 3', idx: 3 }
       ]
 
       vm.toggle(2)
-      expect(vm).toHaveProperty('events', [
+      expect(vm).toHaveProperty('firedEvents', [
         { icon: 'http', title: 'http', open: false, more: 'toto 1', idx: 1 },
         { icon: 'http', title: 'http', open: true, more: 'toto 2', idx: 2 },
         { icon: 'http', title: 'http', open: false, more: 'toto 3', idx: 3 }
@@ -54,49 +79,48 @@ describe('Events.vue', () => {
   })
 
   describe('event.$on(publish)', () => {
-    it('should add 5 events then call the callback', async () => {
-      expect.assertions(2)
+    it('should add 5 events as a stack', async () => {
+      expect.assertions(1)
       const fakeCb = jest.fn()
 
-      event.$emit('publish', fakeCb)
+      event.$emit('published', fakeCb)
       await new Promise(resolve => setTimeout(resolve, 1000))
-      expect(fakeCb).toHaveBeenCalled()
-      expect(vm).toHaveProperty('events', [
+      expect(vm).toHaveProperty('firedEvents', [
         {
-          icon: 'http',
-          title: 'http',
+          icon: "foo-4",
+          title: "bar",
+          text: "baz",
           open: false,
-          more: 'toto 5',
-          idx: 5
+          idx: 4,
         },
         {
-          icon: 'http',
-          title: 'http',
+          icon: "foo-3",
+          title: "bar",
+          text: "baz",
           open: false,
-          more: 'toto 4',
-          idx: 4
+          idx: 3,
         },
         {
-          icon: 'http',
-          title: 'http',
+          icon: "foo-2",
+          title: "bar",
+          text: "baz",
           open: false,
-          more: 'toto 3',
-          idx: 3
+          idx: 2,
         },
         {
-          icon: 'http',
-          title: 'http',
+          icon: "foo-1",
+          title: "bar",
+          text: "baz",
           open: false,
-          more: 'toto 2',
-          idx: 2
+          idx: 1,
         },
         {
-          icon: 'http',
-          title: 'http',
+          icon: "foo-0",
+          title: "bar",
+          text: "baz",
           open: false,
-          more: 'toto 1',
-          idx: 1
-        }
+          idx: 0,
+        },
       ])
     })
   })

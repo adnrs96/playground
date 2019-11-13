@@ -12,13 +12,13 @@
       Architecture
     </s-text>
     <perfect-scrollbar class="bg-gray-10 p-8 max-h-xs">
-      <div class="flex flex-wrap-reverse">
+      <perfect-scrollbar class="flex">
         <div
           v-for="(c, idx) in services"
           :key="`card-${idx}`"
           class="card flex items-center bg-white rounded-md w-1/2-gutter-1 mb-2 transition-all-faster"
           :class="{
-            'mr-2': idx % 2 === 0,
+            'mr-2': idx !== services.length - 1,
             'bg-white': showServices !== idx || !blink,
             'bg-green-20': showServices === idx && blink
           }"
@@ -72,7 +72,7 @@
             </transition>
           </div>
         </div>
-      </div>
+      </perfect-scrollbar>
 
       <div class="base-card flex items-center w-full mb-2 bg-white rounded-md">
         <div class="px-6 my-3 py-3 border-r border-gray-20">
@@ -141,26 +141,41 @@ export default class Architecture extends Vue {
 
   private showServices: number = -1
   private blink = false
+  private destroyed: boolean = false
 
   private sleep (time: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, time))
   }
 
   mounted () {
-    event.$on('publish', async () => {
-      this.showServices = -1
-      await this.sleep(this.startAfter)
-      for (const i in this.services) {
-        await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
-        this.showServices++
-        this.blink = true
-        setTimeout(() => {
-          this.blink = false
-        }, 200)
-        await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
+    event.$on('publish', async (cb: Function) => {
+      const publish = () => {
+        return new Promise(async (resolve, reject) => {
+          this.showServices = -1
+          await this.sleep(this.startAfter)
+          for (const i in this.services) {
+            await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 500)
+            this.showServices++
+            this.blink = true
+            setTimeout(() => {
+              this.blink = false
+            }, 200)
+            await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 500)
+          }
+          resolve()
+          this.showServices++
+        })
       }
-      this.showServices++
+      await publish()
+      if (!this.destroyed) {
+        event.$emit('published', cb)
+      }
     })
+  }
+
+  beforeDestroy () {
+    this.destroyed = true
+    event.$off('publish')
   }
 }
 </script>
