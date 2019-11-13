@@ -16,7 +16,7 @@ const counter: IStorySample = {
   code,
   collaborators: defaultCollaborators,
   description:
-    'A simple web page hit counter application, showing the power of Storyscript for rapid prototyping using the http and redis services.',
+    'A simple web page hit counter application, showing the power of Storyscript for rapid prototyping using HTTP and Redis services.',
   image: 'counter-tweet.png',
   tips: [
     {
