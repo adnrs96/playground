@@ -13,7 +13,7 @@ const autolabel: IStorySample = {
   code,
   collaborators: defaultCollaborators,
   description:
-    'Train a machine learning model to predict and apply labels to a gmail inbox using the gmail, machinebox, and redis services.',
+    'Train a machine learning model to predict and apply labels to a Gmail inbox using Gmail, Machine Box, and Redis services.',
   image: 'autolabel-tweet.png',
   comments: [{
     author: 'Sharkie',
@@ -22,7 +22,18 @@ const autolabel: IStorySample = {
     author: 'Inkie',
     comment: "Thanks! I'll change it soon!"
   }],
-  events: [],
+  events: [
+    {
+      title: "gmail",
+      icon: "gmail",
+      text: `  Email:\n    From:    steve@storyscript.io\n    Subject: Hello from Storyscript!\n\n  Classes:\n    - Not Spam\n    - Super Interesting\n    - Relevant To Your Interests`
+    },
+    {
+      title: "gmail",
+      icon: "gmail",
+      text: `  Email:\n    From:    steve@storyscript.io\n    Subject: Interested in learning more?!\n`
+    },
+  ],
 }
 
 export default autolabel
