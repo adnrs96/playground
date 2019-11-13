@@ -68,21 +68,27 @@ export default class Events extends Vue {
   @Prop({ type: Number, default: 1000 }) readonly eventDelay!: number
 
   private events: any[] = []
+  private interval: any
 
   mounted () {
     event.$on('published', async (cb: Function) => {
-      const fireEvents = async () => {
-        this.events = []
-        if (this.event !== undefined) {
-          for (let i of [1, 2, 3, 4, 5]) {
-            this.triggerEvent(this.event, i)
-            await new Promise(resolve => setTimeout(resolve, this.eventDelay))
-          }
+      this.events = []
+      let i = 1
+      this.interval = setInterval(() => {
+        if (this.event === undefined || i === 6) {
+          cb()
+          clearInterval(this.interval)
+          return
         }
-      }
-      await fireEvents()
-      cb()
+
+        this.triggerEvent(this.event, i++)
+      }, this.eventDelay)
     })
+  }
+
+  beforeDestroy () {
+    clearInterval(this.interval)
+    event.$off('published')
   }
 
   private triggerEvent (fn: Function, idx: number) {
