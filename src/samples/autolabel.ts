@@ -21,7 +21,8 @@ const autolabel: IStorySample = {
   }, {
     author: 'Inkie',
     comment: "Thanks! I'll change it soon!"
-  }]
+  }],
+  events: [],
 }
 
 export default autolabel

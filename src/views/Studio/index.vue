@@ -81,7 +81,7 @@
     >
       <s-events
         data-tab-title="Events"
-        :event="payload.event"
+        :events="payload.events"
       />
       <s-comments
         data-tab-title="Comments"

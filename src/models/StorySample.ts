@@ -20,12 +20,18 @@ export interface IStorySampleComment {
   metas?: IStorySampleCommentMetas
 }
 
+export interface IEvent {
+  title: string
+  icon: string
+  text: string
+}
+
 export interface IStorySample {
   name: string
   code: string
   collaborators: Array<IStoryCollaborator>
   image?: string
-  event?: Function
+  events: Array<IEvent>
   stories: Array<string>
   services: Array<string>
   description: string

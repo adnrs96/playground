@@ -20,8 +20,8 @@ describe('Architecture', () => {
 
   it('should display', async () => {
     expect.assertions(1)
-    await page.waitForSelector('#events')
-    expect(await page.$('#events')).toBeTruthy()
+    await page.waitForSelector('#fired-events')
+    expect(await page.$('#fired-events')).toBeTruthy()
   })
 
   it('should display events cards', async () => {
@@ -30,7 +30,7 @@ describe('Architecture', () => {
     await page.click('#publish-btn')
     await page.waitFor(10000)
 
-    const cardsCount = await page.$$eval('#events .event', (c: Element[]) => c.length)
+    const cardsCount = await page.$$eval('#fired-events .event', (c: Element[]) => c.length)
     expect(cardsCount).toEqual(5)
   })
 })
