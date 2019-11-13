@@ -14,7 +14,7 @@ const zoom: IStorySample = {
   code,
   collaborators: defaultCollaborators,
   description:
-    'Transcribe your zoom meetings and receive emails when they are ready using the zoom, http, deepspeech and mailgun services.',
+    'Transcribe your Zoom meetings and receive emails when they are ready using Zoom, HTTP, DeepSpeech and Mailgun services.',
   tips: [],
   comments: [{
     author: 'Sharkie',
