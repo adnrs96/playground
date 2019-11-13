@@ -141,6 +141,7 @@ export default class Architecture extends Vue {
 
   private showServices: number = -1
   private blink = false
+  private destroyed: boolean = false
 
   private sleep (time: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, time))
@@ -166,11 +167,14 @@ export default class Architecture extends Vue {
         })
       }
       await publish()
-      event.$emit('published', cb)
+      if (!this.destroyed) {
+        event.$emit('published', cb)
+      }
     })
   }
 
   beforeDestroy () {
+    this.destroyed = true
     event.$off('publish')
   }
 }
