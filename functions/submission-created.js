@@ -10,7 +10,7 @@ const sendRegisteredInterestEmail = async ({ email, name }) => {
       domain: MG_DOMAIN
     })
     const mailOpts = {
-      from: 'Storyscript <will@storyscript.io>',
+      from: 'Storyscript <steve@storyscript.io>',
       to: email,
       subject: 'GitHub Universe: Thank you for your interest',
       html: `
@@ -21,9 +21,6 @@ const sendRegisteredInterestEmail = async ({ email, name }) => {
       <br>
       <br>
       We will be in touch after the event to help you continue your Story so keep an eye out for an email from us.
-      <br>
-      <br>
-      In the meantime, if you would like to get a feel for how Storyscript works, we’d love for you to read <a href="https://docs.storyscript.io/storyscript/writing">this article</a>.
       <br>
       <br>
       Cheers,<br>
