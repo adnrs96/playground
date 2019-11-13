@@ -1,18 +1,18 @@
 <template>
   <div
-    id="events"
+    id="fired-events"
     class="p-2 bg-gray-10 flex-1"
   >
     <s-text
-      v-if="events.length === 0"
+      v-if="firedEvents.length === 0"
       p="3"
       weight="medium"
       color="text-gray-50"
     >
-      {{ `${event ? 'Events will appear after a story is published...' : 'This story does not handle events...'}` }}
+      {{ `${events.length !== 0 ? 'Events will appear after a story is published...' : 'This story does not handle events...'}` }}
     </s-text>
     <div
-      v-for="(e, idx) in events"
+      v-for="(e, idx) in firedEvents"
       :key="`event-${idx}`"
       class="event base-card w-full bg-white hover:bg-indigo-10 mb-2 shadow-md rounded-md cursor-pointer"
       @click="toggle(e.idx)"
@@ -44,7 +44,7 @@
         :class="{'hidden': !e.open}"
         class="py-4 border-t border-gray-20"
       >
-        <pre class="text-gray-70">{{ e.more }}</pre>
+        <pre class="text-gray-70">{{ e.text }}</pre>
       </div>
     </div>
   </div>
@@ -52,10 +52,9 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
+import { IEvent } from '@/models/StorySample.ts'
 import SText from '@/components/Text.vue'
 import event from '@/event'
-
-const BASE_EVENT = { icon: 'http', title: 'http', open: false }
 
 @Component({
   name: 'Events',
@@ -64,24 +63,24 @@ const BASE_EVENT = { icon: 'http', title: 'http', open: false }
   }
 })
 export default class Events extends Vue {
-  @Prop({ type: Function, default: undefined }) readonly event!: Function | undefined
+  @Prop({ type: Array, default: () => ([]) }) readonly events!: Array<IEvent> | []
   @Prop({ type: Number, default: 1000 }) readonly eventDelay!: number
 
-  private events: any[] = []
+  private firedEvents: any[] = []
   private interval: any
 
   mounted () {
     event.$on('published', async (cb: Function) => {
-      this.events = []
-      let i = 1
+      this.firedEvents = []
+      let i = 0
       this.interval = setInterval(() => {
-        if (this.event === undefined || i === 6) {
+        if (this.events.length === 0 || i === 5) {
           cb()
           clearInterval(this.interval)
           return
         }
 
-        this.triggerEvent(this.event, i++)
+        this.triggerEvent(this.events[i], i++)
       }, this.eventDelay)
     })
   }
@@ -91,12 +90,12 @@ export default class Events extends Vue {
     event.$off('published')
   }
 
-  private triggerEvent (fn: Function, idx: number) {
-    this.events.unshift({ ...BASE_EVENT, more: fn(idx), idx })
+  private triggerEvent (event: IEvent, idx: number) {
+    this.firedEvents.unshift({ ...event, open: false, idx })
   }
 
   private toggle (idx: number) {
-    this.events.map((e: any) => {
+    this.firedEvents.map((e: any) => {
       if (e.idx === idx) {
         e.open = !e.open
       }
