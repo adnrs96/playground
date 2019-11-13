@@ -142,6 +142,7 @@ export default class Architecture extends Vue {
   private showServices: number = -1
   private blink = false
   private destroyed: boolean = false
+  private stopPublishCb: Function | null = null
 
   private sleep (time: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, time))
@@ -149,6 +150,7 @@ export default class Architecture extends Vue {
 
   mounted () {
     event.$on('publish', async (cb: Function) => {
+      this.stopPublishCb = cb
       const publish = () => {
         return new Promise(async (resolve, reject) => {
           this.showServices = -1
@@ -174,6 +176,9 @@ export default class Architecture extends Vue {
   }
 
   beforeDestroy () {
+    if (this.stopPublishCb !== null) {
+      this.stopPublishCb()
+    }
     this.destroyed = true
     event.$off('publish')
   }

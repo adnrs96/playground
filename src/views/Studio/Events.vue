@@ -68,9 +68,11 @@ export default class Events extends Vue {
 
   private firedEvents: any[] = []
   private interval: any
+  private stopPublishCb: Function | null = null
 
   mounted () {
     event.$on('published', async (cb: Function) => {
+      this.stopPublishCb = cb
       this.firedEvents = []
       let i = 0
       this.interval = setInterval(() => {
@@ -86,6 +88,9 @@ export default class Events extends Vue {
   }
 
   beforeDestroy () {
+    if (this.stopPublishCb !== null) {
+      this.stopPublishCb()
+    }
     clearInterval(this.interval)
     event.$off('published')
   }
