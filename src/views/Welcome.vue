@@ -100,7 +100,6 @@
       </div>
 
       <s-footer
-        full
         @scrollTop="$refs.content.$el.scrollTop = 0"
       />
     </perfect-scrollbar>
