@@ -5,6 +5,7 @@ import event from '@/event'
 describe('Plaground::Architecture', () => {
   let archi: Wrapper<Architecture>
   let vm: any
+  const fakeCB = jest.fn()
 
   afterEach(() => {
     archi.destroy()
@@ -22,7 +23,7 @@ describe('Plaground::Architecture', () => {
     vm = archi.vm as any
     vm.sleep = jest.fn()
 
-    event.$emit('publish')
+    event.$emit('publish', fakeCB)
     expect(archi.html()).toBeDefined()
     expect(vm).toHaveProperty('services', ['toto'])
   })
@@ -42,7 +43,7 @@ describe('Plaground::Architecture', () => {
     it('should display services (no timeout)', async () => {
       expect.assertions(2)
       vm.sleep = jest.fn()
-      event.$emit('publish')
+      event.$emit('publish', fakeCB)
       expect(archi.html()).toBeDefined()
       expect(vm).toHaveProperty('services', ['toto'])
     })
