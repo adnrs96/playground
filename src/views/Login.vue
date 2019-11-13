@@ -116,7 +116,7 @@
       danger
       center
       small
-      @click="$refs.loginModal.show()"
+      url="//storyscript.io/#bottom"
     >
       Register Interest
     </s-button>
