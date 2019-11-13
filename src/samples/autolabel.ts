@@ -31,7 +31,7 @@ const autolabel: IStorySample = {
     {
       title: "gmail",
       icon: "gmail",
-      text: `  Email:\n    From:    steve@storyscript.io\n    Subject: You should register your interest!\n`
+      text: `  Email:\n    From:    steve@storyscript.io\n    Subject: Interested in learning more?!\n`
     },
   ],
 }
