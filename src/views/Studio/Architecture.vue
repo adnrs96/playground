@@ -154,13 +154,13 @@ export default class Architecture extends Vue {
           this.showServices = -1
           await this.sleep(this.startAfter)
           for (const i in this.services) {
-            await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
+            await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 500)
             this.showServices++
             this.blink = true
             setTimeout(() => {
               this.blink = false
             }, 200)
-            await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
+            await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 500)
           }
           resolve()
           this.showServices++
