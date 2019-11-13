@@ -55,7 +55,10 @@
                 </s-text>
               </div>
             </div>
-            <div class="flex flex-col items-start mt-8">
+            <div
+              v-if="card.image"
+              class="flex flex-col items-start mt-8"
+            >
               <img
                 :src="`/img/welcome-cards/${card.image}`"
                 alt="card image"
