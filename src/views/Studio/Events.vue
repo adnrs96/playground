@@ -75,16 +75,13 @@ export default class Events extends Vue {
       this.events = []
       let i = 1
       this.interval = setInterval(() => {
-        if (this.event !== undefined) {
-          this.triggerEvent(this.event, i)
-          i++
-        } else {
-          i = 6
-        }
-        if (i === 6) {
+        if (this.event === undefined || i === 6) {
           cb()
           clearInterval(this.interval)
+          return
         }
+
+        this.triggerEvent(this.event, i++)
       }, this.eventDelay)
     })
   }
