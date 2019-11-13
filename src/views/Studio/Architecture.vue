@@ -148,23 +148,30 @@ export default class Architecture extends Vue {
 
   mounted () {
     event.$on('publish', async (cb: Function) => {
-      const publish = async () => {
-        this.showServices = -1
-        await this.sleep(this.startAfter)
-        for (const i in this.services) {
-          await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
+      const publish = () => {
+        return new Promise(async (resolve, reject) => {
+          this.showServices = -1
+          await this.sleep(this.startAfter)
+          for (const i in this.services) {
+            await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
+            this.showServices++
+            this.blink = true
+            setTimeout(() => {
+              this.blink = false
+            }, 200)
+            await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
+          }
+          resolve()
           this.showServices++
-          this.blink = true
-          setTimeout(() => {
-            this.blink = false
-          }, 200)
-          await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 1000)
-        }
-        this.showServices++
+        })
       }
       await publish()
       event.$emit('published', cb)
     })
+  }
+
+  beforeDestroy () {
+    event.$off('publish')
   }
 }
 </script>
