@@ -30,27 +30,27 @@ const counter: IStorySample = {
       name: 'storyscript-redis',
       text:
         "Storyscript removes the need for you to care about infrastructure. When this story runs, the platform will create, configure and connect a Redis database so you don't have to!\n\nBy integrating with the Open Microservice Specification, a library of services become available on the Storyscript Hub.",
-      x: 90,
+      x: 35,
       y: 118
     },
     {
       name: 'storyscript-oms',
       text:
         'The Open Microservice Specification also allows Storyscript to strongly type interactions with microservices with IDE support.',
-      x: 372,
+      x: 285,
       y: 118
     },
     {
       name: 'storyscript-http',
       text:
         'Services in Storyscript can also be event driven.\n\nHere, an http server listens for events and the inner block is executed when a request is received.',
-      x: 133,
-      y: 140
+      x: 35,
+      y: 135
     },
     {
       name: 'storyscript-publish',
       text:
-        'How about we publish this story, and see what the platform takes care of for you?',
+        'How about we publish this story, and see what the platform can takes care of for you?',
       x: 304,
       y: 20
     }
