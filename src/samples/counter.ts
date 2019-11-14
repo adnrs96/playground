@@ -50,7 +50,7 @@ const counter: IStorySample = {
     {
       name: 'storyscript-publish',
       text:
-        'How about we publish this story, and see what the platform can takes care of for you?',
+        'How about we publish this story, and see what the platform can take care of for you?',
       x: 304,
       y: 20
     }

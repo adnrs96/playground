@@ -8,12 +8,12 @@ when gmail inbox received as email
     redis sadd key:"tagged-by-ml" item:email.id
 
     labels = [] to List[int]
-      foreach res.classes as cls
-        if cls.score >= app.secrets.min_score
-          labels = labels.append(item:cls.id)
-
-      if labels.length() != 0
-        email label add:labels
+    foreach res.classes as cls
+      if cls.score >= app.secrets.min_score
+        labels = labels.append(item:cls.id)
+    
+    if labels.length() != 0
+      email label add:labels
 
 when gmail inbox labeled as email
   # skip if tagged by ML module
@@ -24,10 +24,11 @@ when gmail inbox labeled as email
     foreach email.labels as label
       examples = examples.append(item:{"class":label, "inputs":inputs})
 
-    ml teach_multi :examples
+    machinebox/classificationbox teach_multi id:"gmail-labels" :examples
 
 
 function email_to_inputs email:object returns List[Map[string, string]]
+  # structure data in a format the model requires to predict/teach
   return [
     {"key":"from",    "type":"keyword", "value":email.from},
     {"key":"to",      "type":"keyword", "value":email.to},
