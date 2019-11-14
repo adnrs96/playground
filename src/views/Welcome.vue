@@ -12,10 +12,20 @@
         head="1"
         weifht="regular"
         color="text-gray-90"
-        class="pt-20 pb-10"
+        class="py-10"
         center
       >
         Welcome to Storyscript Studio!
+      </s-text>
+
+      <s-text
+        p="3"
+        weight="regular"
+        color="text-gray-70"
+        class="pb-10"
+        center
+      >
+        toto
       </s-text>
 
       <div class="flex flex-col md:flex-row md:flex-wrap justify-center mb-12">
