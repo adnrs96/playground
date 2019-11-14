@@ -4,6 +4,8 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import { SLS } from '@/plugins/sls'
+import { enterIndentAction } from '@/plugins/editor/actions'
 
 @Component({
   name: 'MonacoEditor'
@@ -17,6 +19,7 @@ export default class MonacoEditor extends Vue {
   @Prop({ type: Boolean, default: false }) private diffEditor!: boolean
 
   private editor: any = undefined
+  private sls : SLS | undefined = undefined
 
   @Watch('options', { deep: true })
   private onOptionsChange () {
@@ -68,6 +71,7 @@ export default class MonacoEditor extends Vue {
 
   beforeDestroy () {
     this.editor && this.editor.dispose()
+    this.sls && this.sls.disconnect()
   }
 
   private initMonaco () {
@@ -77,7 +81,11 @@ export default class MonacoEditor extends Vue {
       ...this.options,
       value: this.value,
       theme: this.theme,
-      language: this.language
+      language: this.language,
+      glyphMargin: true,
+      lightbulb: {
+        enabled: true
+      }
     }
 
     if (this.diffEditor) {
@@ -96,6 +104,8 @@ export default class MonacoEditor extends Vue {
       })
     } else {
       this.editor = this.$monaco.editor.create(this.$el as HTMLElement, options)
+      this.sls = new SLS(this.editor)
+      this.editor.addAction(enterIndentAction(this.sls))
     }
 
     const editor = this.getModifiedEditor()
