@@ -18,7 +18,7 @@
         Welcome to Storyscript Studio!
       </s-text>
 
-      <s-text
+      <!-- <s-text
         p="3"
         weight="regular"
         color="text-gray-70"
@@ -26,7 +26,7 @@
         center
       >
         toto
-      </s-text>
+      </s-text> -->
 
       <div class="flex flex-col md:flex-row md:flex-wrap justify-center mb-12">
         <div
