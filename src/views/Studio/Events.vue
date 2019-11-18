@@ -95,7 +95,7 @@ export default class Events extends Vue {
     event.$off('published')
   }
 
-  private triggerEvent (event: IEvent, idx: number) {
+  private triggerEvent (event: IStoryEvent, idx: number) {
     this.firedEvents.unshift({ ...event, open: false, idx })
   }
 
