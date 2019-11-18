@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/camelcase */
+
 import Vue, { PluginObject, PluginFunction } from 'vue'
 
 const callIf = (a: boolean, f: () => void) => a && f()
 
 export interface VueIntercom extends Vue {
-  ready: boolean
-  visible: boolean
-  unreadCount: number
+  ready: boolean;
+  visible: boolean;
+  unreadCount: number;
 }
 
 export class IntercomPlugin {

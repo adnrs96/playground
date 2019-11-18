@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer'
-import { emit } from 'cluster'
 const { TEST_URL, puppeteerConfig } = require('./puppeteer.config')
 
 describe('Navbar', () => {

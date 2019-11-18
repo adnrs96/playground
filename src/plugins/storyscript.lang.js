@@ -7,7 +7,9 @@ export {
   registerRulesForLanguage
 } from 'monaco-ace-tokenizer'
 
-var StoryHighlightRules = function () {
+/* eslint-disable */
+
+const StoryHighlightRules = function () {
   this.$rules = {
     start: [{
       token: 'comment',

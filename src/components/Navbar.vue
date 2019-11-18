@@ -106,7 +106,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 import SLogin from '@/views/Login.vue'
 import SIcon from '@/components/Icon.vue'
 import SText from '@/components/Text.vue'
@@ -128,7 +128,7 @@ export default class Navbar extends Vue {
   @Prop({ type: Boolean, default: false }) private intro!: boolean
   @Prop({ type: Boolean, default: false }) readonly welcome!: boolean
 
-  private publishing: boolean = false
+  private publishing = false
 
   private publish () {
     if (this.publishing) {

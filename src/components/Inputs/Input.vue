@@ -172,7 +172,7 @@ export default class Input extends Vue {
     }
   }
 
-  private focused: boolean = false
+  private focused = false
 
   private get listeners (): object {
     return {

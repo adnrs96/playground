@@ -27,8 +27,8 @@ import IDisplay from '@/models/Display'
   components: { PerfectScrollbar }
 })
 export default class Blur extends Vue implements IDisplay {
-  private open: boolean = false
-  private enforce: boolean = false
+  private open = false
+  private enforce = false
 
   @Watch('open')
   private onOpenWatcher () {

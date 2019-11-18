@@ -9,7 +9,6 @@ localVue.use(Vuex)
 
 describe('Studio index', () => {
   let studio: Wrapper<Studio>
-  let vm: any
   let store: Store<any>
 
   beforeEach(() => {
@@ -33,7 +32,6 @@ describe('Studio index', () => {
       store,
       localVue
     })
-    vm = studio.vm as any
   })
 
   afterEach(() => {

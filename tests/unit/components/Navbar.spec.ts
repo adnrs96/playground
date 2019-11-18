@@ -1,4 +1,4 @@
-import { shallowMount, Wrapper, createLocalVue } from '@vue/test-utils'
+import { shallowMount, Wrapper } from '@vue/test-utils'
 import Navbar from '@/components/Navbar.vue'
 import event from '@/event'
 

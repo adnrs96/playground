@@ -17,4 +17,4 @@ const file: IStorySample = {
   events: []
 }
 
-export default counter
+export default file

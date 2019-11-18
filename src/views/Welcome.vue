@@ -125,7 +125,7 @@ import SButton from '@/components/Button.vue'
 import SIcon from '@/components/Icon.vue'
 import SFooter from '@/components/Footer.vue'
 import samples from '@/samples'
-import { IStorySample } from '../models/StorySample'
+import { IStorySample } from '@/models/StorySample'
 
 @Component({
   name: 'Welcome',

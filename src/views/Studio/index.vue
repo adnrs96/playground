@@ -135,8 +135,8 @@ export default class Studio extends Vue {
   private setPayload!: (payload: IStorySample) => void
 
   private payload: IStorySample = samples[this.sample in samples ? this.sample : 'counter' || 'counter']
-  private isIntro: boolean = false
-  private fullscreen: boolean = false
+  private isIntro = false
+  private fullscreen = false
   private options: any = {
     readOnly: true,
     minimap: { enabled: false },

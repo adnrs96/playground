@@ -142,7 +142,7 @@ export default class Drop extends Vue {
     }
   }
 
-  private buttonSize: number = 0
+  private buttonSize = 0
 
   /**
    * refreshPosition will set a new array of position and define the buttonSize needed for the arrow position

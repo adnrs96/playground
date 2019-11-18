@@ -65,7 +65,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import SText from '@/components/Text.vue'
 import SIcon from '@/components/Icon.vue'
-import { IStorySampleComment, IStorySample } from '@/models/StorySample.ts'
+import { IStorySampleComment } from '@/models/StorySample.ts'
 import { SInput } from '@/components/Inputs'
 import SButton from '@/components/Button.vue'
 import SPerfectScrollbar from '@/components/PerfectScrollbar.vue'
@@ -83,7 +83,7 @@ export default class Comments extends Vue {
   @Prop({ type: Array, default: () => ([]) })
   private comments!: Array<IStorySampleComment> | []
 
-  private commentInput: string = ''
+  private commentInput = ''
   private mComments: Array<IStorySampleComment> = []
 
   private get commentsDisplay (): Array<IStorySampleComment> {
