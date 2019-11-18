@@ -1,6 +1,5 @@
 import Index from '@/views/index.vue'
 import { Wrapper, shallowMount } from '@vue/test-utils'
-import event from '@/event'
 
 describe('index.vue', () => {
   let view: Wrapper<Index>
@@ -29,16 +28,6 @@ describe('index.vue', () => {
     it('should mount', () => {
       expect.assertions(1)
       expect(view.html()).toBeDefined()
-    })
-
-    describe('event.$on(\'welcome\')', () => {
-      it('should register an eventListener for \'welcome\'', () => {
-        expect.assertions(2)
-
-        event.$emit('welcome', true)
-        expect(vm).toHaveProperty('welcome', true)
-        expect(vm).toHaveProperty('isIntro', true)
-      })
     })
 
     it('isIntro should be false', async () => {

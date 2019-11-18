@@ -7,7 +7,13 @@ describe('Navbar.vue', () => {
   let vm: any
 
   beforeEach(() => {
-    navbar = shallowMount(Navbar)
+    navbar = shallowMount(Navbar, {
+      mocks: {
+        $route: {
+          name: 'welcome'
+        }
+      }
+    })
     vm = navbar.vm as any
   })
 
@@ -20,8 +26,16 @@ describe('Navbar.vue', () => {
     navbar.destroy()
   })
 
+  describe('.onRouteChange()', () => {
+    it('should watch and update this.welcome based on the $route', () => {
+      vm.$route = { name: 'toto' }
+      vm.onRouteChange()
+      expect(vm.welcome).toBeFalsy()
+    })
+  })
+
   describe('.publish()', () => {
-    it('shouldn\'t do anything when already publishing', () => {
+    it(`shouldn't do anything when already publishing`, () => {
       expect.assertions(1)
       vm.publishing = true
       vm.publish()
@@ -35,7 +49,7 @@ describe('Navbar.vue', () => {
     })
   })
 
-  describe('.deplyDone()', () => {
+  describe('.deployDone()', () => {
     it('should reset the publishing state', () => {
       expect.assertions(1)
       vm.publishing = true
