@@ -49,9 +49,11 @@ export class IntercomPlugin {
     callIf(!options.app_id, () => (options.app_id = this.id))
     this.callIntercom('boot', options)
   }
+
   public shutdown (): any {
     return this.callIntercom('shutdown')
   }
+
   public update (...options: any): any {
     return this.callIntercom('update', ...options)
   }
@@ -59,18 +61,23 @@ export class IntercomPlugin {
   public show (): any {
     return this.callIntercom('show')
   }
+
   public hide (): any {
     return this.callIntercom('hide')
   }
+
   public showMessages (): any {
     return this.callIntercom('showMessages')
   }
+
   public showNewMessage (content: string): any {
     return this.callIntercom('showNewMessage', ...(typeof content === typeof '' ? [content] : []))
   }
+
   public trackEvent (name: string, ...metadata: any[]): any {
     return this.callIntercom('trackEvent', ...[name, ...metadata])
   }
+
   public getVisitorId (): string {
     return this.callIntercom('getVisitorId') as string
   }

@@ -152,6 +152,7 @@ export default class Architecture extends Vue {
     event.$on('publish', async (cb: Function) => {
       this.stopPublishCb = cb
       const publish = () => {
+        /* eslint-disable no-async-promise-executor */
         return new Promise(async (resolve, reject) => {
           this.showServices = -1
           await this.sleep(this.startAfter)

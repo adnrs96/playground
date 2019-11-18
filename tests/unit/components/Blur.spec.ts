@@ -7,7 +7,7 @@ describe('Blur.vue', () => {
 
   beforeEach(() => {
     view = shallowMount(Blur, {})
-    let ps = view.vm.$refs.blurPS as any
+    const ps = view.vm.$refs.blurPS as any
     ps.setScrollingY = jest.fn()
     vm = view.vm as any
   })
@@ -29,7 +29,7 @@ describe('Blur.vue', () => {
       expect(vm.open).toEqual(false)
     })
 
-    it(`shouldn't do anything when already closed`, () => {
+    it('shouldn\'t do anything when already closed', () => {
       vm.open = false
       vm.hide()
       expect(view.emitted().hidden).toBeFalsy()

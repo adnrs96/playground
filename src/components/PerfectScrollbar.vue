@@ -86,6 +86,7 @@ export default class VuePerfectScrollbar extends Vue implements IPerfectScrollba
       this.destroy()
     }
   }
+
   @Watch('$route') private onRouteUpdate () {
     this.update()
   }

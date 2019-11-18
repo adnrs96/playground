@@ -33,7 +33,7 @@ describe('Tabs.vue', () => {
       expect(view.emitted().selected.length).toBe(1)
     })
 
-    it(`should set new slot and emit`, () => {
+    it('should set new slot and emit', () => {
       expect.assertions(1)
       vm.visibleSlot = 1
       expect(view.emitted().selected).toBeTruthy()

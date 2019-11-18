@@ -8,7 +8,7 @@ const samples: any = {
   counter,
   autolabel,
   stripe,
-  zoom,
+  zoom
 }
 
 export default samples

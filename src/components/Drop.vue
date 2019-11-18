@@ -150,14 +150,14 @@ export default class Drop extends Vue {
    */
   public refreshPosition () {
     this.$nextTick().then(() => {
-      let newPos = ['top', 'left']
+      const newPos = ['top', 'left']
       const content = this.$refs.content as Element
       const button = this.$refs.self as Element
       if (content) {
-        let spaceUp = button.getBoundingClientRect().top - content.clientHeight
-        let spaceDown = window.innerHeight - button.getBoundingClientRect().bottom - content.clientHeight
-        let spaceLeft = button.getBoundingClientRect().left + button.clientWidth - content.clientWidth
-        let spaceRight = window.innerWidth - button.getBoundingClientRect().left - content.clientWidth
+        const spaceUp = button.getBoundingClientRect().top - content.clientHeight
+        const spaceDown = window.innerHeight - button.getBoundingClientRect().bottom - content.clientHeight
+        const spaceLeft = button.getBoundingClientRect().left + button.clientWidth - content.clientWidth
+        const spaceRight = window.innerWidth - button.getBoundingClientRect().left - content.clientWidth
         this.buttonSize = (button.clientWidth >= 160) ? 24 : (button.clientWidth > 64) ? (((button.clientWidth / 2 >> 4) + 1) << 4) / 4 : Math.round(button.clientWidth / 2 / 4) + 1
         if ((spaceDown < 0 &&
           (spaceUp >= 0 || spaceUp > spaceDown)) ||

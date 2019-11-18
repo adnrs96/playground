@@ -88,7 +88,7 @@ describe('Studio index', () => {
       expect.assertions(1)
       store.commit = jest.fn()
       vvm.setPayload('counter')
-      expect(vvm).toHaveProperty('payload', samples['counter'])
+      expect(vvm).toHaveProperty('payload', samples.counter)
       view.destroy()
     })
   })

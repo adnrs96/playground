@@ -171,6 +171,7 @@ export default class Input extends Vue {
         return this.focused ? 'border-gray-50' : 'border-gray-30'
     }
   }
+
   private focused: boolean = false
 
   private get listeners (): object {

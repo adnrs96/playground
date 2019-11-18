@@ -71,7 +71,7 @@ export default class Tabs extends Vue {
   mounted () {
     this.$nextTick().then(() => {
       if (!this.$slots || !this.$slots.default) return
-      for (let slot of this.$slots.default) {
+      for (const slot of this.$slots.default) {
         (slot as any).elm.style.display = 'none'
       }
       this.visibleSlot = this.selectedIdx
