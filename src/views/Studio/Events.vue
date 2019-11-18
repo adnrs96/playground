@@ -52,7 +52,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { IEvent } from '@/models/StorySample.ts'
+import { IStoryEvent } from '@/models/StorySample.ts'
 import SText from '@/components/Text.vue'
 import event from '@/event'
 
@@ -63,7 +63,7 @@ import event from '@/event'
   }
 })
 export default class Events extends Vue {
-  @Prop({ type: Array, default: () => ([]) }) readonly events!: Array<IEvent> | []
+  @Prop({ type: Array, default: () => ([]) }) readonly events!: Array<IStoryEvent> | []
   @Prop({ type: Number, default: 1000 }) readonly eventDelay!: number
 
   private firedEvents: any[] = []
