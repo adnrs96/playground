@@ -156,7 +156,7 @@ export default class Architecture extends Vue {
         return new Promise(async (resolve, reject) => {
           this.showServices = -1
           await this.sleep(this.startAfter)
-          for (let i = 0; i > this.services.length; i++) {
+          for (let i = 0; i < this.services.length; i++) {
             await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 500)
             this.showServices++
             this.blink = true
