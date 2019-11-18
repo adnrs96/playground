@@ -1,7 +1,6 @@
 <template>
   <div class="min-h-screen">
     <s-navbar
-      :welcome="welcome"
       :intro="isIntro"
     />
     <router-view @introChange="isIntro = $event">
@@ -15,7 +14,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import SNavbar from '@/components/Navbar.vue'
-import event from '@/event'
 
 @Component({
   components: {
@@ -23,7 +21,6 @@ import event from '@/event'
   }
 })
 export default class Layout extends Vue {
-  private welcome = false
   private isIntro = true
 
   mounted () {
@@ -31,11 +28,7 @@ export default class Layout extends Vue {
       (this.$route && this.$route.path && !this.$route.path.includes('welcome'))) {
       this.$router.push({ name: 'welcome' })
     }
-    this.welcome = this.$route.name === 'welcome'
     this.isIntro = !(this.$route && this.$route.query && this.$route.query.skipIntro && this.$route.query.skipIntro === 'true')
-    event.$on('welcome', (val: boolean) => {
-      this.welcome = val
-    })
   }
 }
 </script>
