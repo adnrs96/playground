@@ -71,9 +71,11 @@ export default class Events extends Vue {
   private stopPublishCb: Function | null = null
 
   mounted () {
+    event.$on('publish', () => {
+      this.firedEvents = []
+    })
     event.$on('published', async (cb: Function) => {
       this.stopPublishCb = cb
-      this.firedEvents = []
       let i = 0
       this.interval = setInterval(() => {
         if (this.events.length === 0 || i === this.events.length) {
