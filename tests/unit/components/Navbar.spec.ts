@@ -35,7 +35,7 @@ describe('Navbar.vue', () => {
   })
 
   describe('.publish()', () => {
-    it(`shouldn't do anything when already publishing`, () => {
+    it('shouldn\'t do anything when already publishing', () => {
       expect.assertions(1)
       vm.publishing = true
       vm.publish()

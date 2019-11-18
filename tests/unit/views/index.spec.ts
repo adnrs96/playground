@@ -3,7 +3,6 @@ import { Wrapper, shallowMount } from '@vue/test-utils'
 
 describe('index.vue', () => {
   let view: Wrapper<Index>
-  let vm: any
 
   beforeEach(() => { })
 
@@ -22,7 +21,6 @@ describe('index.vue', () => {
           $router: { push: jest.fn() }
         }
       })
-      vm = view.vm as any
     })
 
     it('should mount', () => {
