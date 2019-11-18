@@ -79,6 +79,14 @@ describe('Events.vue', () => {
   })
 
   describe('event.$on(publish)', () => {
+    it('should reset the display event cards', () => {
+      vm.firedEvents = ['toto', 'tata']
+      event.$emit('publish')
+      expect(vm.firedEvents).toEqual([])
+    })
+  })
+
+  describe('event.$on(publish)', () => {
     it('should add 5 events as a stack', async () => {
       expect.assertions(1)
       const fakeCb = jest.fn()
