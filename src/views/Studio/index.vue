@@ -134,9 +134,9 @@ export default class Studio extends Vue {
   @Mutation('setPayload')
   private setPayload!: (payload: IStorySample) => void
 
-  private payload: IStorySample = samples[samples.hasOwnProperty(this.sample) ? this.sample : 'counter' || 'counter']
-  private isIntro: boolean = false
-  private fullscreen: boolean = false
+  private payload: IStorySample = samples[this.sample in samples ? this.sample : 'counter' || 'counter']
+  private isIntro = false
+  private fullscreen = false
   private options: any = {
     readOnly: true,
     minimap: { enabled: false },
@@ -158,7 +158,7 @@ export default class Studio extends Vue {
 
   created () {
     if (this.sample.length > 0) {
-      if (samples.hasOwnProperty(this.sample)) {
+      if (this.sample in samples) {
         this.setPayloadName(this.sample)
       } else {
         this.$router.replace({ name: 'not-found' })

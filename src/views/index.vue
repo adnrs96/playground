@@ -23,8 +23,8 @@ import event from '@/event'
   }
 })
 export default class Layout extends Vue {
-  private welcome: boolean = false
-  private isIntro: boolean = true
+  private welcome = false
+  private isIntro = true
 
   mounted () {
     if ((!this.$route || !this.$route.params || !('sample' in this.$route.params)) &&

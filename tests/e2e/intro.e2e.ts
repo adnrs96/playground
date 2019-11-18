@@ -7,7 +7,7 @@ const { TEST_URL, puppeteerConfig } = require('./puppeteer.config')
 describe('Welcome', () => {
   let page: any
   let browser: any
-  const sample = samples['counter']
+  const sample = samples.counter
 
   beforeAll(async () => {
     jest.setTimeout(1000 * 60 * 1)
@@ -30,7 +30,7 @@ describe('Welcome', () => {
   it('should display give an intro to the user', async () => {
     const tips: IStorySampleTip[] = sample.tips
     expect.assertions(tips.length + 1)
-    for (let t of tips) {
+    for (const t of tips) {
       await page.waitForSelector(`#tip-${t.name}`)
       await page.click(`#tip-${t.name}`)
       await page.waitForSelector(`#tip-${t.name} .content`)

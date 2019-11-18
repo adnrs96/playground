@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+import { Component } from 'vue-property-decorator'
 import SInput from '@/components/Inputs/Input.vue'
 import SText from '@/components/Text.vue'
 import SIcon from '@/components/Icon.vue'

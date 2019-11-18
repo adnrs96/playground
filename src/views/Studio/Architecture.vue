@@ -139,9 +139,9 @@ export default class Architecture extends Vue {
   @Prop({ type: Number, default: 250 }) readonly startAfter!: number
   @Prop({ type: Number, default: -1 }) readonly serviceDelay!: number
 
-  private showServices: number = -1
+  private showServices = -1
   private blink = false
-  private destroyed: boolean = false
+  private destroyed = false
   private stopPublishCb: Function | null = null
 
   private sleep (time: number): Promise<void> {
@@ -152,10 +152,11 @@ export default class Architecture extends Vue {
     event.$on('publish', async (cb: Function) => {
       this.stopPublishCb = cb
       const publish = () => {
+        /* eslint-disable no-async-promise-executor */
         return new Promise(async (resolve, reject) => {
           this.showServices = -1
           await this.sleep(this.startAfter)
-          for (const i in this.services) {
+          for (let i = 0; i < this.services.length; i++) {
             await this.sleep(this.serviceDelay >= 0 ? this.serviceDelay : 500)
             this.showServices++
             this.blink = true

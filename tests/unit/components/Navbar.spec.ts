@@ -1,4 +1,4 @@
-import { shallowMount, Wrapper, createLocalVue } from '@vue/test-utils'
+import { shallowMount, Wrapper } from '@vue/test-utils'
 import Navbar from '@/components/Navbar.vue'
 import event from '@/event'
 
@@ -21,7 +21,7 @@ describe('Navbar.vue', () => {
   })
 
   describe('.publish()', () => {
-    it(`shouldn't do anything when already publishing`, () => {
+    it('shouldn\'t do anything when already publishing', () => {
       expect.assertions(1)
       vm.publishing = true
       vm.publish()

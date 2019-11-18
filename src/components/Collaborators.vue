@@ -46,8 +46,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
-import { IStoryCollaborator, IStorySample } from '../models/StorySample'
+import { Component, Vue } from 'vue-property-decorator'
+import { IStoryCollaborator } from '../models/StorySample'
 import SIcon from '@/components/Icon.vue'
 import SText from '@/components/Text.vue'
 import collaborators from '@/samples/defaultCollaborators'

@@ -31,8 +31,8 @@ describe('index.vue', () => {
       expect(view.html()).toBeDefined()
     })
 
-    describe(`event.$on('welcome')`, () => {
-      it(`should register an eventListener for 'welcome'`, () => {
+    describe('event.$on(\'welcome\')', () => {
+      it('should register an eventListener for \'welcome\'', () => {
         expect.assertions(2)
 
         event.$emit('welcome', true)
@@ -41,7 +41,7 @@ describe('index.vue', () => {
       })
     })
 
-    it(`isIntro should be false`, async () => {
+    it('isIntro should be false', async () => {
       expect.assertions(1)
 
       const idxView = await shallowMount(Index, {

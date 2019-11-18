@@ -76,10 +76,12 @@ export default class Button extends Vue {
     type: String,
     default: undefined
   }) readonly icon!: string | undefined
+
   @Prop({
     type: Boolean,
     default: false
   }) readonly small!: boolean
+
   @Prop({
     type: String,
     default: undefined

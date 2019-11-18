@@ -35,7 +35,7 @@ describe('Collaborators', () => {
 
   describe('hoverHandler', () => {
     it('should handle the hover', () => {
-      const e = { target: { classList: { remove: jest.fn(), add: jest.fn()} }}
+      const e = { target: { classList: { remove: jest.fn(), add: jest.fn() } } }
 
       expect.assertions(3)
       vm.hoverHandler(e, true, 0)

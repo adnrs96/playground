@@ -25,7 +25,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import event from '@/event'
 
 export interface IPerfectScrollbar {
-  setScrollingY: (enable: boolean) => void
+  setScrollingY: (enable: boolean) => void;
 }
 
 /** perfect-scrollbar classes to keep: .ps__rail-x, .ps__rail-y, .ps__thumb-x, .ps__thumb-y, .ps--clicking, .ps--focus, .ps--scrolling-x, .ps--scrolling-y, .ps--active-y, .ps--active-x */
@@ -36,9 +36,9 @@ export default class VuePerfectScrollbar extends Vue implements IPerfectScrollba
   @Prop({ type: Boolean, default: false }) private disableUi!: boolean
   @Prop({ type: String, default: 'section' }) private tagname!: string
 
-  private isPSInitialized: boolean = false
+  private isPSInitialized = false
   private ps?: PerfectScrollbar = undefined
-  private suppressScrollY: boolean = false
+  private suppressScrollY = false
 
   private scrollHandle (e: any) {
     this.$emit(e.type, e)
@@ -86,6 +86,7 @@ export default class VuePerfectScrollbar extends Vue implements IPerfectScrollba
       this.destroy()
     }
   }
+
   @Watch('$route') private onRouteUpdate () {
     this.update()
   }

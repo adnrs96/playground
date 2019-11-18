@@ -83,8 +83,8 @@ import SText from '@/components/Text.vue'
 export default class Intro extends Vue {
   @Prop({ type: Array, required: true }) private tips!: IStorySampleTip[]
   @Prop({ type: Boolean, default: false }) private showAtStartup!: boolean
-  private currentTipIdx: number = 0
-  private refreshTip: boolean = false
+  private currentTipIdx = 0
+  private refreshTip = false
 
   @Watch('currentTipIdx')
   private onCurrentTipIncrement () {

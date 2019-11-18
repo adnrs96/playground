@@ -24,16 +24,16 @@ const autolabel: IStorySample = {
   }],
   events: [
     {
-      title: "gmail",
-      icon: "gmail",
-      text: `  Email:\n    From:    steve@storyscript.io\n    Subject: Hello from Storyscript!\n\n  Classes:\n    - Not Spam\n    - Super Interesting\n    - Relevant To Your Interests`
+      title: 'gmail',
+      icon: 'gmail',
+      text: '  Email:\n    From:    steve@storyscript.io\n    Subject: Hello from Storyscript!\n\n  Classes:\n    - Not Spam\n    - Super Interesting\n    - Relevant To Your Interests'
     },
     {
-      title: "gmail",
-      icon: "gmail",
-      text: `  Email:\n    From:    steve@storyscript.io\n    Subject: Interested in learning more?!\n`
-    },
-  ],
+      title: 'gmail',
+      icon: 'gmail',
+      text: '  Email:\n    From:    steve@storyscript.io\n    Subject: Interested in learning more?!\n'
+    }
+  ]
 }
 
 export default autolabel

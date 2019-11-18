@@ -15,7 +15,7 @@ describe('Welcome', () => {
     page.setBypassCSP(true)
   })
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     await page.goto(`${TEST_URL}/welcome`)
     await page.waitForSelector('#welcome')
   })
@@ -38,7 +38,7 @@ describe('Welcome', () => {
   })
 
   describe('the card contents', () => {
-    for (let sample of Object.values(samples)) {
+    for (const sample of Object.values(samples)) {
       const base: IStorySample = sample as IStorySample
 
       it(`should display the ${base.name} example content in a card`, async () => {

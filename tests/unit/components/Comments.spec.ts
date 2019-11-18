@@ -43,7 +43,7 @@ describe('Comments.vue', () => {
       expect(vm).toHaveProperty('mComments', [])
     })
 
-    it(`should add comment`, () => {
+    it('should add comment', () => {
       expect.assertions(1)
       vm.commentInput = 'hello'
       vm.addComment()
