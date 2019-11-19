@@ -7,7 +7,7 @@ const zoom: IStorySample = {
   services: [
     'zoom',
     'http',
-    'machinebox',
+    'deepspeech',
     'mailgun'
   ],
   stories: ['zoom'],
