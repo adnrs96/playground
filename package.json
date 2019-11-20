@@ -32,7 +32,7 @@
     "@types/jest": "24.0.23",
     "@types/mailgun-js": "0.22.3",
     "@types/node": "12.12.9",
-    "@types/puppeteer": "1.20.2",
+    "@types/puppeteer": "2.0.0",
     "@types/uuid": "3.4.6",
     "@typescript-eslint/eslint-plugin": "2.8.0",
     "@typescript-eslint/parser": "2.8.0",
