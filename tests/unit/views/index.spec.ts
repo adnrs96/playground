@@ -1,10 +1,8 @@
 import Index from '@/views/index.vue'
 import { Wrapper, shallowMount } from '@vue/test-utils'
-import event from '@/event'
 
 describe('index.vue', () => {
   let view: Wrapper<Index>
-  let vm: any
 
   beforeEach(() => { })
 
@@ -23,7 +21,6 @@ describe('index.vue', () => {
           $router: { push: jest.fn() }
         }
       })
-      vm = view.vm as any
     })
 
     it('should mount', () => {
@@ -31,17 +28,7 @@ describe('index.vue', () => {
       expect(view.html()).toBeDefined()
     })
 
-    describe(`event.$on('welcome')`, () => {
-      it(`should register an eventListener for 'welcome'`, () => {
-        expect.assertions(2)
-
-        event.$emit('welcome', true)
-        expect(vm).toHaveProperty('welcome', true)
-        expect(vm).toHaveProperty('isIntro', true)
-      })
-    })
-
-    it(`isIntro should be false`, async () => {
+    it('isIntro should be false', async () => {
       expect.assertions(1)
 
       const idxView = await shallowMount(Index, {

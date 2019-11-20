@@ -1,4 +1,4 @@
-name: Playground Storyscript verification
+name: Studio Storyscript verification
 
 on: [pull_request]
 

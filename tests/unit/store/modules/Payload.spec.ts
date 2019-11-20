@@ -1,34 +1,33 @@
 import Vuex, { Store } from 'vuex'
 import { createLocalVue } from '@vue/test-utils'
-import Logs from '@/store/modules/Logs'
+import Payload from '@/store/modules/Payload'
 
 const localVue = createLocalVue()
-
 localVue.use(Vuex)
 
-describe('Store::Logs', () => {
+describe('Store::Payload', () => {
   let store: Store<any>
 
   beforeEach(() => {
-    store = new Vuex.Store(Logs)
+    store = new Vuex.Store(Payload)
   })
 
   describe('getters', () => {
-    describe('releasesCount', () => {
+    describe('getPayload', () => {
       expect.assertions(1)
       it('should return the value', () => {
-        const value = store.getters.getReleasesCount
-        expect(value).toEqual(0)
+        const value = store.getters.getPayload
+        expect(value).toEqual({})
       })
     })
   })
 
   describe('mutations', () => {
-    describe('incrementReleasesCount', () => {
+    describe('setPayload', () => {
       expect.assertions(1)
       it('should increment the value', () => {
-        store.commit('incrementReleasesCount')
-        expect(store.state.releasesCount).toEqual(1)
+        store.commit('setPayload', { name: 'Richard Tichaut' })
+        expect(store.state.payload).toEqual({ name: 'Richard Tichaut' })
       })
     })
   })

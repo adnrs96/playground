@@ -116,7 +116,7 @@
       danger
       center
       small
-      @click="$refs.loginModal.show()"
+      url="//storyscript.io/#bottom"
     >
       Register Interest
     </s-button>
@@ -142,13 +142,13 @@ import SModal from '@/components/Modals/Modal.vue'
   }
 })
 export default class Login extends Vue {
-  private name: string = ''
-  private email: string = ''
-  private nameError: string = ''
-  private emailError: string = ''
-  private sending: boolean = false
-  private success: boolean = false
-  private error: boolean = false
+  private name = ''
+  private email = ''
+  private nameError = ''
+  private emailError = ''
+  private sending = false
+  private success = false
+  private error = false
 
   @Watch('name')
   private onNameHandler () {

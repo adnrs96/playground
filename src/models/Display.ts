@@ -1,4 +1,4 @@
 export default interface IDisplay {
-  show: () => void
-  hide: () => void
+  show: () => void;
+  hide: () => void;
 }

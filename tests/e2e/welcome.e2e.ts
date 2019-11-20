@@ -13,6 +13,9 @@ describe('Welcome', () => {
     browser = await puppeteer.launch(puppeteerConfig())
     page = await browser.newPage()
     page.setBypassCSP(true)
+  })
+
+  beforeEach(async () => {
     await page.goto(`${TEST_URL}/welcome`)
     await page.waitForSelector('#welcome')
   })
@@ -29,26 +32,31 @@ describe('Welcome', () => {
   it('should display the good amount of cards', async () => {
     const count = Object.keys(samples).length
     const cards = await page.$$('.sample-card')
-    
+
     expect.assertions(1)
     expect(cards.length).toEqual(count)
   })
 
-  it('should display the good content in a card', async () => {
-    const base: IStorySample = samples['counter']
-    const title =  await page.$eval('#sample-card-counter .title', (e: Element) => e.innerHTML.trim())
-    const description =  await page.$eval('#sample-card-counter .description', (e: Element) => e.innerHTML.trim())
+  describe('the card contents', () => {
+    for (const sample of Object.values(samples)) {
+      const base: IStorySample = sample as IStorySample
 
-    expect.assertions(2)
-    expect(title).toEqual(`${base.name}.story`)
-    expect(description).toEqual(base.description)
-  })
+      it(`should display the ${base.name} example content in a card`, async () => {
+        const title = await page.$eval(`#sample-card-${base.name} .title`, (e: Element) => e.innerHTML.trim())
+        const description = await page.$eval(`#sample-card-${base.name} .description`, (e: Element) => e.innerHTML.trim())
 
-  it('should redirect to the good story', async () => {
-    expect.assertions(1)
-    await page.click('#explore-counter')
-    await page.waitForSelector('#playground')
-    expect(page.url()).toEqual(`${TEST_URL}/example/counter`)
+        expect.assertions(2)
+        expect(title).toEqual(`${base.name}.story`)
+        expect(description).toEqual(base.description)
+      })
+
+      it(`should redirect to the ${base.name} story`, async () => {
+        expect.assertions(1)
+        await page.click(`#explore-${base.name}`)
+        await page.waitForSelector('#studio')
+        expect(page.url()).toEqual(`${TEST_URL}/example/${base.name}`)
+      })
+    }
   })
 
   it('navbar logo should redirect to the welcome page', async () => {

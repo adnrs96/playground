@@ -5,7 +5,7 @@ module.exports = {
     (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'integration') && require('@fullhuman/postcss-purgecss')({
       content: [
         './public/index.html',
-        './src/Playground.vue',
+        './src/Studio.vue',
         './src/**/*.vue',
         './node_modules/monaco-editor/esm/vs/base/**/*.css',
         './node_modules/monaco-editor/esm/vs/editor/standalone/**/*.js',

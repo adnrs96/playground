@@ -11,7 +11,7 @@ describe('Intercom', () => {
     browser = await puppeteer.launch(puppeteerConfig())
     page = await browser.newPage()
     page.setBypassCSP(true)
-    await page.goto(`${TEST_URL}/?skipIntro=true`)
+    await page.goto(`${TEST_URL}/example/counter?skipIntro=true`)
   })
 
   afterAll(() => {
@@ -24,6 +24,6 @@ describe('Intercom', () => {
     await page.click('#intercom-container>div>iframe')
     const frame = await page.$eval('#intercom-container>div>div>iframe', (e: Element) => e.tagName)
     expect(frame).toEqual('IFRAME')
-    await percySnapshot(page, 'Playground intercom dialog')
+    await percySnapshot(page, 'Studio intercom dialog')
   })
 })

@@ -13,10 +13,12 @@ describe('Welcome.vue', () => {
   let router: VueRouter
 
   beforeEach(() => {
-    router = new VueRouter({ routes: [{
-      name: 'playground',
-      path: '/'
-    }]})
+    router = new VueRouter({
+      routes: [{
+        name: 'studio',
+        path: '/'
+      }]
+    })
     welcome = shallowMount(Welcome, {
       router,
       localVue,

@@ -1,7 +1,8 @@
 import { IStorySample } from '@/models/StorySample'
 import code from './file.story'
+import defaultCollaborators from './defaultCollaborators'
 
-const counter: IStorySample = {
+const file: IStorySample = {
   name: 'file',
   services: [
     'http',
@@ -10,8 +11,10 @@ const counter: IStorySample = {
   ],
   stories: ['file'],
   code,
+  collaborators: defaultCollaborators,
   description: 'An ephermal file sharing app using the schedule, file and http services.',
-  tips: []
+  tips: [],
+  events: []
 }
 
-export default counter
+export default file

@@ -22,7 +22,7 @@
   >
     <s-text
       v-if="$slots.default"
-      :p="dashed ? '5' : '2'"
+      :p="dashed || small ? '4' : '2'"
       :weight="dashed ? 'medium' : 'semibold'"
       :color="textColor"
       :class="[
@@ -76,10 +76,12 @@ export default class Button extends Vue {
     type: String,
     default: undefined
   }) readonly icon!: string | undefined
+
   @Prop({
     type: Boolean,
     default: false
   }) readonly small!: boolean
+
   @Prop({
     type: String,
     default: undefined

@@ -40,21 +40,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
-import { Route } from 'vue-router'
-import { Sentry } from './plugins'
+import { Component, Vue } from 'vue-property-decorator'
 import event from './event'
 import SNotification from '@/components/Notification.vue'
 import SText from '@/components/Text.vue'
 
 @Component({
-  name: 'Playground',
+  name: 'Studio',
   components: {
     SNotification,
     SText
   }
 })
-export default class Playground extends Vue {
+export default class Studio extends Vue {
   private refresh () {
     window.location.reload()
   }

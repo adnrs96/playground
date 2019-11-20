@@ -4,7 +4,7 @@
       <div
         id="home-btn-logo"
         class="flex items-center mr-22 cursor-pointer"
-        @click="$route.name !== 'welcome' ? $router.push({ name: 'welcome' }) : ''"
+        @click="!welcome ? $router.push({ name: 'welcome' }) : ''"
       >
         <s-icon
           icon="story"
@@ -21,18 +21,18 @@
       </div>
       <div
         v-if="!welcome"
-        id="deploy-btn"
+        id="publish-btn"
         class="flex items-center"
         :class="[
-          `${deploying ? 'cursor-wait' : 'cursor-pointer'}`
+          `${publishing ? 'cursor-wait' : 'cursor-pointer'}`
         ]"
-        @click="deploy"
+        @click="publish"
       >
         <s-icon
           icon="play"
-          :color="`${deploying ? 'text-gray-60' : 'text-indigo-60'}`"
+          :color="`${publishing ? 'text-gray-60' : 'text-indigo-60'}`"
           class="mr-2 flex items-center"
-          :clickable="!deploying"
+          :clickable="!publishing"
           width="12"
           height="12"
         />
@@ -40,10 +40,31 @@
           p="3"
           weight="semibold"
           :class="[
-            `${deploying ? 'text-gray-60' : 'text-indigo-70 hover:text-indigo-80'}`
+            `${publishing ? 'text-gray-60' : 'text-indigo-70 hover:text-indigo-80'}`
           ]"
         >
-          Deploy
+          Publish
+        </s-text>
+      </div>
+      <div
+        v-if="!welcome"
+        id="see-more-examples-btn"
+        class="flex items-center ml-12 cursor-pointer select-none h-full"
+        @click="$router.push({ name: 'welcome' })"
+      >
+        <s-icon
+          icon="rocket-o"
+          color="text-indigo-60"
+          class="mr-2 flex items-center rotate-45deg"
+        />
+        <s-text
+          p="3"
+          weight="semibold"
+          class="text-indigo-70 hover:text-indigo-80 flex"
+        >
+          <span>
+            See more examples
+          </span>
         </s-text>
       </div>
       <div
@@ -69,23 +90,29 @@
             id="new-from-scratch-tip"
             mode="hover|focus"
           >
-            Playground for creating your own apps is under development.
+            Studio for creating your own apps is under development.
           </s-tip>
         </s-text>
       </div>
     </div>
-    <s-login v-if="!welcome" />
+    <div
+      v-if="!welcome"
+      class="flex items-center"
+    >
+      <s-collaborators class="mr-8" />
+      <s-login />
+    </div>
   </nav>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from 'vue-property-decorator'
-import { Mutation } from 'vuex-class'
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import SLogin from '@/views/Login.vue'
 import SIcon from '@/components/Icon.vue'
 import SText from '@/components/Text.vue'
 import event from '@/event'
 import STip from '@/components/Tip.vue'
+import SCollaborators from '@/components/Collaborators.vue'
 
 @Component({
   name: 'Navbar',
@@ -93,29 +120,35 @@ import STip from '@/components/Tip.vue'
     SIcon,
     SText,
     SLogin,
-    STip
+    STip,
+    SCollaborators
   }
 })
 export default class Navbar extends Vue {
   @Prop({ type: Boolean, default: false }) private intro!: boolean
-  @Prop({ type: Boolean, default: false }) readonly welcome!: boolean
 
-  private deploying: boolean = false
+  private publishing = false
+  private welcome: boolean = true
 
-  @Mutation('incrementReleasesCount')
-  private incrementReleasesCount!: () => void
-
-  private deploy () {
-    if (this.deploying) {
-      return
-    }
-    this.incrementReleasesCount()
-    this.deploying = true
-    event.$emit('deploy', this.deployDone)
+  @Watch('$route')
+  private onRouteChange () {
+    this.welcome = this.$route.name === 'welcome'
   }
 
-  private deployDone () {
-    this.deploying = false
+  mounted () {
+    this.welcome = this.$route.name === 'welcome'
+  }
+
+  private publish () {
+    if (this.publishing) {
+      return
+    }
+    this.publishing = true
+    event.$emit('publish', this.publishDone)
+  }
+
+  private publishDone () {
+    this.publishing = false
   }
 }
 </script>
