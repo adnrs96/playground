@@ -4,7 +4,7 @@
       <div
         id="home-btn-logo"
         class="flex items-center mr-22 cursor-pointer"
-        @click="$route.name !== 'welcome' ? $router.push({ name: 'welcome' }) : ''"
+        @click="!welcome ? $router.push({ name: 'welcome' }) : ''"
       >
         <s-icon
           icon="story"
@@ -106,7 +106,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from 'vue-property-decorator'
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import SLogin from '@/views/Login.vue'
 import SIcon from '@/components/Icon.vue'
 import SText from '@/components/Text.vue'
@@ -126,9 +126,18 @@ import SCollaborators from '@/components/Collaborators.vue'
 })
 export default class Navbar extends Vue {
   @Prop({ type: Boolean, default: false }) private intro!: boolean
-  @Prop({ type: Boolean, default: false }) readonly welcome!: boolean
 
-  private publishing: boolean = false
+  private publishing = false
+  private welcome: boolean = true
+
+  @Watch('$route')
+  private onRouteChange () {
+    this.welcome = this.$route.name === 'welcome'
+  }
+
+  mounted () {
+    this.welcome = this.$route.name === 'welcome'
+  }
 
   private publish () {
     if (this.publishing) {

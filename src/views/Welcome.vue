@@ -12,11 +12,21 @@
         head="1"
         weifht="regular"
         color="text-gray-90"
-        class="pt-20 pb-10"
+        class="py-10"
         center
       >
         Welcome to Storyscript Studio!
       </s-text>
+
+      <!-- <s-text
+        p="3"
+        weight="regular"
+        color="text-gray-70"
+        class="pb-10"
+        center
+      >
+        toto
+      </s-text> -->
 
       <div class="flex flex-col md:flex-row md:flex-wrap justify-center mb-12">
         <div
@@ -115,7 +125,7 @@ import SButton from '@/components/Button.vue'
 import SIcon from '@/components/Icon.vue'
 import SFooter from '@/components/Footer.vue'
 import samples from '@/samples'
-import { IStorySample } from '../models/StorySample'
+import { IStorySample } from '@/models/StorySample'
 
 @Component({
   name: 'Welcome',

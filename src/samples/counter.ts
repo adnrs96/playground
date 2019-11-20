@@ -2,10 +2,6 @@ import { IStorySample } from '@/models/StorySample'
 import code from './counter.story'
 import defaultCollaborators from './defaultCollaborators'
 
-const event: Function = (count: number) => {
-  return `  Story:\n    count: ${count}\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
-}
-
 const counter: IStorySample = {
   name: 'counter',
   services: [
@@ -64,30 +60,30 @@ const counter: IStorySample = {
   }],
   events: [
     {
-      title: "http",
-      icon: "http",
-      text: `  Story:\n    count: 1\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+      title: 'http',
+      icon: 'http',
+      text: '  Story:\n    count: 1\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
     },
     {
-      title: "http",
-      icon: "http",
-      text: `  Story:\n    count: 2\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+      title: 'http',
+      icon: 'http',
+      text: '  Story:\n    count: 2\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
     },
     {
-      title: "http",
-      icon: "http",
-      text: `  Story:\n    count: 3\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+      title: 'http',
+      icon: 'http',
+      text: '  Story:\n    count: 3\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
     },
     {
-      title: "http",
-      icon: "http",
-      text: `  Story:\n    count: 4\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
+      title: 'http',
+      icon: 'http',
+      text: '  Story:\n    count: 4\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
     },
     {
-      title: "http",
-      icon: "http",
-      text: `  Story:\n    count: 5\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla`
-    },
+      title: 'http',
+      icon: 'http',
+      text: '  Story:\n    count: 5\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
+    }
   ]
 }
 

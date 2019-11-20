@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer'
-import { emit } from 'cluster'
 const { TEST_URL, puppeteerConfig } = require('./puppeteer.config')
 
 describe('Architecture', () => {
@@ -45,7 +44,7 @@ describe('Architecture', () => {
       'http://localhost:8080/img/services/redis.svg',
       'http://localhost:8080/img/services/http.svg'
     ])
-    expect(texts).toEqual([ 'Staged', 'Healthy', 'Staged', 'Healthy' ])
+    expect(texts).toEqual(['Staged', 'Healthy', 'Staged', 'Healthy'])
     expect((await page.$eval('#publish-btn', (btn: Element) => btn.classList.contains('cursor-pointer')))).toBeTruthy()
   })
 })

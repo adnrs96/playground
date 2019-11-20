@@ -3,7 +3,7 @@ import monaco from 'monaco-editor'
 
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
-    $monaco?: typeof monaco
+    $monaco?: typeof monaco;
   }
 }
 

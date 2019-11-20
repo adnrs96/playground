@@ -36,7 +36,7 @@ export default class Tabs extends Vue {
   @Prop({ type: [String, Number], default: 0 })
   private selected!: string | number
 
-  private visibleSlot: number = -1
+  private visibleSlot = -1
 
   private get slots (): string[] {
     return (this.$slots &&
@@ -71,7 +71,7 @@ export default class Tabs extends Vue {
   mounted () {
     this.$nextTick().then(() => {
       if (!this.$slots || !this.$slots.default) return
-      for (let slot of this.$slots.default) {
+      for (const slot of this.$slots.default) {
         (slot as any).elm.style.display = 'none'
       }
       this.visibleSlot = this.selectedIdx

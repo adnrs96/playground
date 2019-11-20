@@ -7,30 +7,30 @@ describe('Events.vue', () => {
   let vm: any
   const testEvents = [
     {
-      icon: "foo-0",
-      title: "bar",
-      text: "baz",
+      icon: 'foo-0',
+      title: 'bar',
+      text: 'baz'
     },
     {
-      icon: "foo-1",
-      title: "bar",
-      text: "baz",
+      icon: 'foo-1',
+      title: 'bar',
+      text: 'baz'
     },
     {
-      icon: "foo-2",
-      title: "bar",
-      text: "baz",
+      icon: 'foo-2',
+      title: 'bar',
+      text: 'baz'
     },
     {
-      icon: "foo-3",
-      title: "bar",
-      text: "baz",
+      icon: 'foo-3',
+      title: 'bar',
+      text: 'baz'
     },
     {
-      icon: "foo-4",
-      title: "bar",
-      text: "baz",
-    },
+      icon: 'foo-4',
+      title: 'bar',
+      text: 'baz'
+    }
   ]
 
   beforeEach(() => {
@@ -79,6 +79,14 @@ describe('Events.vue', () => {
   })
 
   describe('event.$on(publish)', () => {
+    it('should reset the display event cards', () => {
+      vm.firedEvents = ['toto', 'tata']
+      event.$emit('publish')
+      expect(vm.firedEvents).toEqual([])
+    })
+  })
+
+  describe('event.$on(publish)', () => {
     it('should add 5 events as a stack', async () => {
       expect.assertions(1)
       const fakeCb = jest.fn()
@@ -87,40 +95,40 @@ describe('Events.vue', () => {
       await new Promise(resolve => setTimeout(resolve, 1000))
       expect(vm).toHaveProperty('firedEvents', [
         {
-          icon: "foo-4",
-          title: "bar",
-          text: "baz",
+          icon: 'foo-4',
+          title: 'bar',
+          text: 'baz',
           open: false,
-          idx: 4,
+          idx: 4
         },
         {
-          icon: "foo-3",
-          title: "bar",
-          text: "baz",
+          icon: 'foo-3',
+          title: 'bar',
+          text: 'baz',
           open: false,
-          idx: 3,
+          idx: 3
         },
         {
-          icon: "foo-2",
-          title: "bar",
-          text: "baz",
+          icon: 'foo-2',
+          title: 'bar',
+          text: 'baz',
           open: false,
-          idx: 2,
+          idx: 2
         },
         {
-          icon: "foo-1",
-          title: "bar",
-          text: "baz",
+          icon: 'foo-1',
+          title: 'bar',
+          text: 'baz',
           open: false,
-          idx: 1,
+          idx: 1
         },
         {
-          icon: "foo-0",
-          title: "bar",
-          text: "baz",
+          icon: 'foo-0',
+          title: 'bar',
+          text: 'baz',
           open: false,
-          idx: 0,
-        },
+          idx: 0
+        }
       ])
     })
   })

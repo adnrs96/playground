@@ -7,8 +7,8 @@ const zoom: IStorySample = {
   services: [
     'zoom',
     'http',
-    'machinebox',
-    'mailgun',
+    'deepspeech',
+    'mailgun'
   ],
   stories: ['zoom'],
   code,
@@ -25,21 +25,21 @@ const zoom: IStorySample = {
   }],
   events: [
     {
-      title: "zoom",
-      icon: "zoom",
-      text: `  Zoom:\n    Name: Retrospective\n    Date: 13/11/2019\n    Host: Steve Peak`
+      title: 'zoom',
+      icon: 'zoom',
+      text: '  Zoom:\n    Name: Retrospective\n    Date: 13/11/2019\n    Host: Steve Peak'
     },
     {
-      title: "zoom",
-      icon: "zoom",
-      text: `  Zoom:\n    Name: Iteration Planning\n    Date: 11/11/2019\n    Host: Steve Peak`
+      title: 'zoom',
+      icon: 'zoom',
+      text: '  Zoom:\n    Name: Iteration Planning\n    Date: 11/11/2019\n    Host: Steve Peak'
     },
     {
-      title: "zoom",
-      icon: "zoom",
-      text: `  Zoom:\n    Name: Standup\n    Date: 11/11/2019\n    Host: Steve Peak`
-    },
-  ],
+      title: 'zoom',
+      icon: 'zoom',
+      text: '  Zoom:\n    Name: Standup\n    Date: 11/11/2019\n    Host: Steve Peak'
+    }
+  ]
 }
 
 export default zoom

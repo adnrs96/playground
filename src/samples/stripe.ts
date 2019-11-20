@@ -7,7 +7,7 @@ const stripe: IStorySample = {
   services: [
     'stripe',
     'postgres',
-    'mailgun',
+    'mailgun'
   ],
   stories: ['stripe'],
   code,
@@ -24,16 +24,16 @@ const stripe: IStorySample = {
   }],
   events: [
     {
-      title: "stripe",
-      icon: "stripe",
-      text: `  Stripe:\n    Email: steve@storyscript.io\n    Plan:  Gold\n`
+      title: 'stripe',
+      icon: 'stripe',
+      text: '  Stripe:\n    Email: steve@storyscript.io\n    Plan:  Gold\n'
     },
     {
-      title: "stripe",
-      icon: "stripe",
-      text: `  Stripe:\n    Email: jean@storyscript.io\n    Plan:  Silver\n`
-    },
-  ],
+      title: 'stripe',
+      icon: 'stripe',
+      text: '  Stripe:\n    Email: jean@storyscript.io\n    Plan:  Silver\n'
+    }
+  ]
 }
 
 export default stripe
