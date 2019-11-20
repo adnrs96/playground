@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/storyscript/studio/compare/v0.3.1...v0.4.0) (2019-11-20)
+
+
+### Features
+
+* add deepspeech icon and update the zoom example ([6e00415](https://github.com/storyscript/studio/commit/6e0041581c6acc72aee07c57af66d3ee07725d59))
+* **events:** remove bubble before diagram goes healthy ([d294b5e](https://github.com/storyscript/studio/commit/d294b5e710f4bc2763feba373cf12b6453ec54fa))
+
+
+### Bug Fixes
+
+* fix lint issue ([acd74c7](https://github.com/storyscript/studio/commit/acd74c72f9aa07c7221e24f892bbfae52048091f))
+* **archi:** fix typo when refactored ([72ec6b7](https://github.com/storyscript/studio/commit/72ec6b73fa20879bc3fdef173e0cec5b22793c0c))
+* **events:** fix naming issue ([f409907](https://github.com/storyscript/studio/commit/f4099073948205cb1e59f87c307df231b5bd1f45))
+* **events:** fix remaning naming issue ([0d81d9c](https://github.com/storyscript/studio/commit/0d81d9c94a99f34b4914d5b825329c731a8a8ec9))
+* **navbar:** fix navbar routing issue ([39669fc](https://github.com/storyscript/studio/commit/39669fcda20bc6b58d628d94c79af37cdfedef00))
+
 ### [0.3.1](https://github.com/storyscript/studio/compare/v0.3.0...v0.3.1) (2019-11-14)
 
 ## [0.3.0](https://github.com/storyscript/studio/compare/v0.2.0...v0.3.0) (2019-11-13)
