@@ -8,6 +8,7 @@
       :class="[
         color,
         'fill-current',
+        {'stroke-current': isStroke},
         { 'animate-wheel': loading === true },
         { 'cursor-pointer': clickable }
       ]"
@@ -92,6 +93,11 @@ export default class Icon extends Vue {
     type: Boolean,
     default: false
   }) readonly clickable!: boolean
+
+  @Prop({
+    type: Boolean,
+    default: false
+  }) readonly isStroke!: boolean
 
   @Prop({
     type: Boolean,

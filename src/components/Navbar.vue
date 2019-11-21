@@ -99,7 +99,8 @@
       v-if="!welcome"
       class="flex items-center"
     >
-      <s-collaborators class="mr-8" />
+      <s-collaborators class="mr-4" />
+      <s-share class="mr-16" />
       <s-login />
     </div>
   </nav>
@@ -113,6 +114,7 @@ import SText from '@/components/Text.vue'
 import event from '@/event'
 import STip from '@/components/Tip.vue'
 import SCollaborators from '@/components/Collaborators.vue'
+import SShare from '@/views/Share.vue'
 
 @Component({
   name: 'Navbar',
@@ -121,7 +123,8 @@ import SCollaborators from '@/components/Collaborators.vue'
     SText,
     SLogin,
     STip,
-    SCollaborators
+    SCollaborators,
+    SShare
   }
 })
 export default class Navbar extends Vue {
