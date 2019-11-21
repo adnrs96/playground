@@ -9,7 +9,7 @@
       color="text-gray-100"
       class="bg-white pl-8 py-1 flex items-center border-t border-b border-gray-20"
     >
-      Architecture
+      Services
     </s-text>
     <perfect-scrollbar class="bg-gray-10 p-8 max-h-xs flex flex-wrap">
       <div
