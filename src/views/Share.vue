@@ -30,10 +30,14 @@
           </s-text>
           <s-input
             readonly
+            autocomplete="off"
+            name="url"
+            :placeholder="url"
             :value="url"
             class="bg-gray-10 shadow-sm"
           >
             <s-icon
+              id="copy-icon"
               slot="icon"
               icon="file-copy"
               color="text-gray-100"
