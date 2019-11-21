@@ -11,13 +11,13 @@
     >
       Services
     </s-text>
-    <perfect-scrollbar class="bg-gray-10 p-8 max-h-xs">
+    <perfect-scrollbar class="bg-gray-10 p-8 max-h-xs flex flex-wrap">
       <div
         v-for="(c, idx) in services"
         :key="`card-${idx}`"
-        class="card flex items-center bg-white rounded-md w-full mb-2 transition-all-faster"
+        class="card flex items-center bg-white rounded-md w-1/3-gutter-1 mb-2 transition-all-faster"
         :class="{
-          'mr-2': idx !== services.length - 1,
+          'mr-2': (idx + 1) % 3 !== 0,
           'bg-white': showServices !== idx || !blink,
           'bg-green-20': showServices === idx && blink
         }"
