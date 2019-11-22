@@ -40,7 +40,7 @@
       height="24"
       :class="[
         { 'py-3 px-14': !$slots.default },
-        { [`p${dashed || danger ? 'r' : 'l'}-3`]: $slots.default }
+        { [`p${dashed || danger || reverse ? 'r' : 'l'}-3`]: $slots.default }
       ]"
     />
   </component>
