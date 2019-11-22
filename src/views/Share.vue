@@ -8,7 +8,7 @@
     >
       <s-modal
         cross
-        class="flex justify-center items-center flex-col pb-8"
+        class="pb-8"
       >
         <s-text
           center
@@ -107,11 +107,11 @@ export default class Share extends Vue {
   private copied: boolean = false
 
   private copy (): void {
+    this.$copyText(this.url)
     this.copied = true
     setTimeout(() => {
-      this.$copyText(this.url)
       this.copied = false
-    }, 1000)
+    }, 2000)
   }
 }
 </script>
