@@ -3,14 +3,14 @@ import code from './zoom.story'
 import defaultCollaborators from './defaultCollaborators'
 
 const zoom: IStorySample = {
-  name: 'zoom',
+  id: 'zoom',
+  name: 'Zoom audio to text transcript',
   services: [
     'zoom',
     'http',
     'deepspeech',
     'mailgun'
   ],
-  stories: ['zoom'],
   code,
   collaborators: defaultCollaborators,
   description:

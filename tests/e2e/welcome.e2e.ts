@@ -42,19 +42,19 @@ describe('Welcome', () => {
       const base: IStorySample = sample as IStorySample
 
       it(`should display the ${base.name} example content in a card`, async () => {
-        const title = await page.$eval(`#sample-card-${base.name} .title`, (e: Element) => e.innerHTML.trim())
-        const description = await page.$eval(`#sample-card-${base.name} .description`, (e: Element) => e.innerHTML.trim())
+        const title = await page.$eval(`#sample-card-${base.id} .title`, (e: Element) => e.innerHTML.trim())
+        const description = await page.$eval(`#sample-card-${base.id} .description`, (e: Element) => e.innerHTML.trim())
 
         expect.assertions(2)
-        expect(title).toEqual(`${base.name}.story`)
+        expect(title).toEqual(`${base.name}`)
         expect(description).toEqual(base.description)
       })
 
       it(`should redirect to the ${base.name} story`, async () => {
         expect.assertions(1)
-        await page.click(`#explore-${base.name}`)
+        await page.click(`#explore-${base.id}`)
         await page.waitForSelector('#studio')
-        expect(page.url()).toEqual(`${TEST_URL}/example/${base.name}`)
+        expect(page.url()).toEqual(`${TEST_URL}/example/${base.id}`)
       })
     }
   })

@@ -3,12 +3,12 @@ import code from './counter.story'
 import defaultCollaborators from './defaultCollaborators'
 
 const counter: IStorySample = {
-  name: 'counter',
+  id: 'counter',
+  name: 'Website hit counter',
   services: [
     'redis',
     'http'
   ],
-  stories: ['counter'],
   code,
   collaborators: defaultCollaborators,
   description:

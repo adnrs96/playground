@@ -3,13 +3,13 @@ import code from './stripe.story'
 import defaultCollaborators from './defaultCollaborators'
 
 const stripe: IStorySample = {
-  name: 'stripe',
+  id: 'stripe',
+  name: 'Stripe plan ended',
   services: [
     'stripe',
     'postgres',
     'mailgun'
   ],
-  stories: ['stripe'],
   code,
   collaborators: defaultCollaborators,
   description:

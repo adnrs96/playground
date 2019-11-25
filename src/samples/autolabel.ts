@@ -3,13 +3,13 @@ import code from './autolabel.story'
 import defaultCollaborators from './defaultCollaborators'
 
 const autolabel: IStorySample = {
-  name: 'autolabel',
+  id: 'autolabel',
+  name: 'Gmail auto-labeling',
   services: [
     'gmail',
     'machinebox',
     'redis'
   ],
-  stories: ['autolabel'],
   code,
   collaborators: defaultCollaborators,
   description:

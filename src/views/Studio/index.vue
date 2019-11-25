@@ -23,7 +23,7 @@
             weight="semibold"
             color="text-gray-100"
           >
-            {{ payload.stories[0] }}.story
+            {{ payload.name }}
           </s-text>
         </div>
         <s-icon
@@ -50,9 +50,7 @@
         class="w-full flex"
         :class="{'h-0': fullscreen}"
       >
-        <s-architecture
-          :services="payload.services"
-        />
+        <s-architecture :services="payload.services" />
       </div>
     </div>
     <s-tabs
