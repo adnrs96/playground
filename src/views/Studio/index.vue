@@ -25,23 +25,6 @@
           >
             {{ payload.stories[0] }}.story
           </s-text>
-          <s-text
-            p="6"
-            weight="semibold"
-            color="text-indigo-70"
-            class="flex items-center py-1 px-2 rounded-sm bg-indigo-10 ml-3 cursor-default select-none"
-          >
-            <s-icon icon="eye" />
-            <span class="ml-1">Read only</span>
-          </s-text>
-          <s-text
-            p="6"
-            weight="semibold"
-            color="text-indigo-70"
-            class="flex items-center py-1 px-2 rounded-sm bg-indigo-10 ml-3 cursor-default select-none"
-          >
-            <span>Demonstration</span>
-          </s-text>
         </div>
         <s-icon
           id="toggle-fullscreen"
