@@ -27,12 +27,12 @@ export interface IStoryEvent {
 }
 
 export interface IStorySample {
+  id: string;
   name: string;
   code: string;
   collaborators: Array<IStoryCollaborator>;
   image?: string;
   events: Array<IStoryEvent>;
-  stories: Array<string>;
   services: Array<string>;
   description: string;
   tips?: Array<IStorySampleTip>;

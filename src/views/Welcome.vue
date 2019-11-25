@@ -31,13 +31,11 @@
       <div class="flex flex-col md:flex-row md:flex-wrap justify-center mb-12">
         <div
           v-for="(card, idx) in samples"
-          :id="`sample-card-${card.name}`"
+          :id="`sample-card-${card.id}`"
           :key="`sample-card-${idx}`"
           class="bg-white rounded-xl m-4 w-full md:w-1/2 lg:w-1/3 sample-card shadow-card flex flex-col"
         >
-          <div
-            class="flex flex-col mt-8 px-8 pb-6 border-b border-solid border-gray-10"
-          >
+          <div class="flex flex-col mt-8 px-8 pb-6 border-b border-solid border-gray-10">
             <div class="flex items-start">
               <div class="w-1/5 mr-6">
                 <img
@@ -53,7 +51,7 @@
                   color="text-gray-100"
                   class="title"
                 >
-                  {{ card.name }}.story
+                  {{ card.name }}
                 </s-text>
                 <s-text
                   p="3"
@@ -92,12 +90,12 @@
               </div>
             </div>
             <s-button
-              :id="`explore-${card.name}`"
+              :id="`explore-${card.id}`"
               icon="rocket-o"
               primary
               reverse
               danger
-              @click="go(card.name)"
+              @click="go(card.id)"
             >
               Explore
             </s-button>
@@ -109,9 +107,7 @@
         />
       </div>
 
-      <s-footer
-        @scrollTop="$refs.content.$el.scrollTop = 0"
-      />
+      <s-footer @scrollTop="$refs.content.$el.scrollTop = 0" />
     </perfect-scrollbar>
   </div>
 </template>

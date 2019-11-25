@@ -52,6 +52,17 @@ describe('Events.vue', () => {
     expect(events.html()).toBeTruthy()
   })
 
+  it('should mount without events', () => {
+    expect.assertions(1)
+    const view = shallowMount(Events, {
+      propsData: {
+        eventDelay: 0
+      }
+    })
+    expect(view.html()).toBeTruthy()
+    view.destroy()
+  })
+
   describe('.triggerEvent(fn, idx)', () => {
     it('should add event to the event array', () => {
       expect.assertions(1)
