@@ -5,7 +5,7 @@ import event from '@/event'
 describe('Plaground::Architecture', () => {
   let archi: Wrapper<Architecture>
   let vm: any
-  const fakeCB = jest.fn()
+  let fakeCB = jest.fn()
 
   afterEach(() => {
     archi.destroy()
@@ -26,6 +26,24 @@ describe('Plaground::Architecture', () => {
     event.$emit('publish', fakeCB)
     expect(archi.html()).toBeDefined()
     expect(vm).toHaveProperty('services', ['toto'])
+  })
+
+  it('should display services but not emit', async () => {
+    expect.assertions(1)
+    archi = shallowMount(Architecture, {
+      propsData: {
+        services: ['toto'],
+        startAfter: 0,
+        serviceDelay: -1
+      }
+    })
+    vm = archi.vm as any
+    vm.sleep = jest.fn()
+    fakeCB = jest.fn()
+
+    vm.destroyed = true
+    event.$emit('publish', fakeCB)
+    expect(fakeCB).not.toHaveBeenCalled()
   })
 
   describe('.sleep()', () => {

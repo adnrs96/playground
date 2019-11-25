@@ -104,7 +104,7 @@ export default class Architecture extends Vue {
     return new Promise(resolve => setTimeout(resolve, time))
   }
 
-  mounted () {
+  private registerEvent () {
     event.$on('publish', async (cb: Function) => {
       this.stopPublishCb = cb
       const publish = () => {
@@ -130,6 +130,10 @@ export default class Architecture extends Vue {
         event.$emit('published', cb)
       }
     })
+  }
+
+  mounted () {
+    this.registerEvent()
   }
 
   beforeDestroy () {

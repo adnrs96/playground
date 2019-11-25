@@ -27,9 +27,7 @@
           </div>
         </div>
         <div class="flex items-center justify-start w-full p-4">
-          <div
-            class="flex items-center"
-          >
+          <div class="flex items-center">
             <s-text
               p="5"
               weight="bold"
@@ -63,7 +61,7 @@ import event from '@/event'
   }
 })
 export default class Events extends Vue {
-  @Prop({ type: Array, default: () => ([]) }) readonly events!: Array<IStoryEvent> | []
+  @Prop({ type: Array, default: () => ([]) }) readonly events!: Array<IStoryEvent>
   @Prop({ type: Number, default: 1000 }) readonly eventDelay!: number
 
   private firedEvents: any[] = []
