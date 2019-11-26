@@ -73,14 +73,14 @@
       v-if="payload.tips && isIntro"
       :tips="payload.tips"
       show-at-startup
-      @done="isIntro = false"
+      @done="sampleHasBeenShown(payload.id)"
     />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
-import { Mutation } from 'vuex-class'
+import { Mutation, Getter } from 'vuex-class'
 import SArchitecture from '@/views/Studio/Architecture.vue'
 import SEvents from '@/views/Studio/Events.vue'
 import { IStorySample } from '@/models/StorySample'
@@ -112,12 +112,23 @@ export default class Studio extends Vue {
     return this.isIntro
   }
 
+  @Getter('hasTipsBeenShown')
+  private hasTipsBeenShown!: (sampleId: string) => boolean
+
   @Mutation('setPayload')
   private setPayload!: (payload: IStorySample) => void
 
+  @Mutation('sampleHasBeenShown')
+  private sampleHasBeenShown!: (sampleId: string) => void
+
   private payload: IStorySample = samples[this.sample in samples ? this.sample : 'counter' || 'counter']
-  private isIntro = false
-  private fullscreen = false
+
+  private get isIntro (): boolean {
+    return !(this.hasTipsBeenShown(this.payload.id) || this.skipIntro)
+  }
+
+  private skipIntro: boolean = false
+  private fullscreen: boolean = false
   private options: any = {
     readOnly: true,
     minimap: { enabled: false },
@@ -145,7 +156,7 @@ export default class Studio extends Vue {
         this.$router.replace({ name: 'not-found' })
       }
     }
-    this.isIntro = !(this.$route && this.$route.query && this.$route.query.skipIntro && this.$route.query.skipIntro === 'true')
+    this.skipIntro = !!(this.$route && this.$route.query && this.$route.query.skipIntro && this.$route.query.skipIntro === 'true')
   }
 
   public setPayloadName (sample: string) {
