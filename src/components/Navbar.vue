@@ -1,118 +1,103 @@
 <template>
-  <nav class="flex items-center flex-no-wrap bg-white px-6 h-14 shadow-navbar border-solid border-b border-gray-20 z-20 justify-between">
-    <div class="flex items-center">
-      <div
-        id="home-btn-logo"
-        class="flex items-center mr-22 cursor-pointer"
-        @click="!welcome ? $router.push({ name: 'welcome' }) : ''"
-      >
+  <nav class="flex items-center flex-no-wrap bg-indigo-50 px-6 h-14 z-20 justify-between">
+    <div class="flex flex-1 items-center justify-start">
+      <div class="flex items-center mr-6">
+        <s-text
+          p="2"
+          weight="medium"
+          color="text-white whitespace-no-wrap"
+        >
+          My first story
+        </s-text>
         <s-icon
-          icon="story"
-          height="18"
-          width="18"
-        />
-        <s-icon
-          icon="storyscript"
-          color="text-indigo-logo"
-          height="14"
-          width="82"
-          class="ml-2 mt-1"
+          icon="info-o"
+          color="text-indigo-20 hover:text-indigo-10"
+          class="ml-1"
+          clickable
         />
       </div>
       <div
-        v-if="!welcome"
         id="publish-btn"
-        class="flex items-center"
+        tabindex="1"
+        class="flex items-center rounded-md"
         :class="[
-          `${publishing ? 'cursor-wait' : 'cursor-pointer'}`
+          `${publishing ? 'cursor-wait bg-indigo-40' : 'cursor-pointer bg-indigo-70 hover:bg-indigo-60'}`
         ]"
         @click="publish"
       >
-        <s-icon
-          icon="play"
-          :color="`${publishing ? 'text-gray-60' : 'text-indigo-60'}`"
-          class="mr-2 flex items-center"
-          :clickable="!publishing"
-          width="12"
-          height="12"
-        />
         <s-text
-          p="3"
+          p="5"
           weight="semibold"
-          :class="[
-            `${publishing ? 'text-gray-60' : 'text-indigo-70 hover:text-indigo-80'}`
-          ]"
+          class="mx-3 my-1 text-white"
         >
           Publish
         </s-text>
-      </div>
-      <div
-        v-if="!welcome"
-        id="see-more-examples-btn"
-        class="flex items-center ml-12 cursor-pointer select-none h-full"
-        @click="$router.push({ name: 'welcome' })"
-      >
         <s-icon
-          icon="rocket-o"
-          color="text-indigo-60"
-          class="mr-2 flex items-center rotate-45deg"
+          icon="send"
+          color="text-white"
+          class="mr-2"
+          clickable
         />
-        <s-text
-          p="3"
-          weight="semibold"
-          class="text-indigo-70 hover:text-indigo-80 flex"
-        >
-          <span>
-            See more examples
-          </span>
-        </s-text>
-      </div>
-      <div
-        v-if="!welcome"
-        id="new-from-scratch-btn"
-        class="flex items-center ml-12 cursor-default select-none h-full"
-      >
-        <s-icon
-          icon="rocket-o"
-          color="text-gray-40"
-          class="mr-2 flex items-center rotate-45deg"
-        />
-        <s-text
-          p="3"
-          weight="semibold"
-          class="text-gray-40 flex"
-        >
-          <span>
-            New from scratch
-          </span>
-          <s-tip
-            v-if="!intro"
-            id="new-from-scratch-tip"
-            mode="hover|focus"
-          >
-            Studio for creating your own apps is under development.
-          </s-tip>
-        </s-text>
       </div>
     </div>
-    <div
-      v-if="!welcome"
-      class="flex items-center"
-    >
+    <div class="flex flex-1 items-center justify-center">
+      <s-text
+        p="5"
+        weight="medium"
+        color="text-white whitespace-no-wrap"
+      >
+        Studio Preview
+      </s-text>
+      <s-icon
+        icon="info-o"
+        color="text-indigo-20 hover:text-indigo-10"
+        class="ml-1"
+        clickable
+      />
+    </div>
+    <div class="flex flex-1 items-center justify-end">
       <s-collaborators class="mr-4" />
-      <s-share class="mr-16" />
-      <s-login />
+      <s-share />
+      <s-drop
+        mode="hover|focus"
+        bottom
+        light
+        bordered
+        class="ml-8"
+      >
+        <div
+          id="new-from-tpl-btn"
+          class="flex items-center cursor-pointer select-none bg-colorful"
+        >
+          <s-text
+            p="5"
+            weight="medium"
+            color="text-gray-100"
+            class="px-3 py-2 whitespace-no-wrap"
+          >
+            New from template
+          </s-text>
+        </div>
+        <s-text
+          slot="content"
+          p="5"
+          weight="medium"
+          color="text-gray-90"
+          class="max-w-xxs whitespace-normal w-max-content"
+        >
+          Studio for creating your own apps is under active development.
+        </s-text>
+      </s-drop>
     </div>
   </nav>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
-import SLogin from '@/views/Login.vue'
+import SDrop from '@/components/Drop.vue'
 import SIcon from '@/components/Icon.vue'
 import SText from '@/components/Text.vue'
 import event from '@/event'
-import STip from '@/components/Tip.vue'
 import SCollaborators from '@/components/Collaborators.vue'
 import SShare from '@/views/Share.vue'
 
@@ -121,8 +106,7 @@ import SShare from '@/views/Share.vue'
   components: {
     SIcon,
     SText,
-    SLogin,
-    STip,
+    SDrop,
     SCollaborators,
     SShare
   }
