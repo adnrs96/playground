@@ -59,16 +59,14 @@
       <s-collaborators class="mr-4" />
       <s-share />
       <s-drop
+        id="new-from-tpl-btn"
         mode="hover|focus"
         bottom
         light
         bordered
         class="ml-8"
       >
-        <div
-          id="new-from-tpl-btn"
-          class="flex items-center cursor-pointer select-none bg-colorful"
-        >
+        <div class="flex items-center cursor-pointer select-none bg-colorful">
           <s-text
             p="5"
             weight="medium"
