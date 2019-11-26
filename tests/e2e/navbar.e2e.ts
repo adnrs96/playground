@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer'
+import { percySnapshot } from '@percy/puppeteer'
 const { TEST_URL, puppeteerConfig } = require('./puppeteer.config')
 
 describe('Navbar', () => {
@@ -20,23 +21,12 @@ describe('Navbar', () => {
     browser.close()
   })
 
-  describe('the storyscript logo', () => {
-    it('should redirect to the welcome page', async () => {
-      expect.assertions(1)
-      await page.waitForSelector('#home-btn-logo')
-      await page.click('#home-btn-logo')
-      await page.waitForSelector('#welcome')
-      expect(await page.url()).toEqual(`${TEST_URL}/welcome`)
-    })
-  })
-
-  describe('the See More Examples button', () => {
-    it('should redirect to the welcome page', async () => {
-      expect.assertions(1)
-      await page.waitForSelector('#see-more-examples-btn')
-      await page.click('#see-more-examples-btn')
-      await page.waitForSelector('#welcome')
-      expect(await page.url()).toEqual(`${TEST_URL}/welcome`)
-    })
+  it('should display text under button', async () => {
+    expect.assertions(1)
+    await page.waitForSelector('#new-from-tpl-btn')
+    await page.click('#new-from-tpl-btn')
+    const tip = await page.$eval('#new-from-tpl-btn>.content>div>p', (e: Element) => e.innerHTML)
+    expect(tip.trim()).toEqual('Studio for creating your own apps is under active development.')
+    await percySnapshot(page, 'Studio NewFromTemplate Tip')
   })
 })

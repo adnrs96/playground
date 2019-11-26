@@ -2,6 +2,9 @@ const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 
 module.exports = {
   lintOnSave: false,
+  devServer: {
+    disableHostCheck: true
+  },
   pwa: {
     workboxOptions: {
       skipWaiting: true
@@ -26,12 +29,10 @@ module.exports = {
       })
     ],
     module: {
-      rules: [
-        {
-          test: /\.story$/,
-          use: 'raw-loader'
-        }
-      ]
+      rules: [{
+        test: /\.story$/,
+        use: 'raw-loader'
+      }]
     }
   }
 }

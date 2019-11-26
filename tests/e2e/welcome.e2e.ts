@@ -53,18 +53,9 @@ describe('Welcome', () => {
       it(`should redirect to the ${base.name} story`, async () => {
         expect.assertions(1)
         await page.click(`#explore-${base.id}`)
-        await page.waitForSelector('#studio')
+        await page.waitForSelector('#studio-view')
         expect(page.url()).toEqual(`${TEST_URL}/example/${base.id}`)
       })
     }
-  })
-
-  it('navbar logo should redirect to the welcome page', async () => {
-    expect.assertions(1)
-    await page.goto(`${TEST_URL}/example/counter?skipIntro=true`)
-    await page.waitForSelector('#home-btn-logo')
-    await page.click('#home-btn-logo')
-    await page.waitForSelector('#welcome')
-    expect(await page.url()).toEqual(`${TEST_URL}/welcome`)
   })
 })
