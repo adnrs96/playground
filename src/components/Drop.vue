@@ -92,9 +92,13 @@ export default class Drop extends Vue {
   @Prop({ type: Array, default: undefined }) private options!: any[]
 
   @Prop({ type: Boolean, default: false }) private up!: boolean
-  @Prop({ type: Boolean, default: true }) private down!: boolean
+  @Prop({ type: Boolean, default: false }) private down!: boolean
   @Prop({ type: Boolean, default: false }) private left!: boolean
   @Prop({ type: Boolean, default: false }) private right!: boolean
+  @Prop({ type: Boolean, default: false }) private aup!: boolean
+  @Prop({ type: Boolean, default: false }) private adown!: boolean
+  @Prop({ type: Boolean, default: false }) private aleft!: boolean
+  @Prop({ type: Boolean, default: false }) private aright!: boolean
   @Prop({ type: Boolean, default: false }) private narrow!: boolean
   @Prop({ type: [String, Number], default: undefined }) private arrowForceMargin!: string | number | undefined
 
@@ -147,6 +151,7 @@ export default class Drop extends Vue {
   /**
    * refreshPosition will set a new array of position and define the buttonSize needed for the arrow position
    * prevent those classes to be purged in production : before-mr-3 before-mr-4 before-mr-6 top-full bottom-full
+   * left-full right-full
    */
   public refreshPosition () {
     this.$nextTick().then(() => {
@@ -156,24 +161,42 @@ export default class Drop extends Vue {
       if (content) {
         const spaceUp = button.getBoundingClientRect().top - content.clientHeight
         const spaceDown = window.innerHeight - button.getBoundingClientRect().bottom - content.clientHeight
-        const spaceLeft = button.getBoundingClientRect().left + button.clientWidth - content.clientWidth
-        const spaceRight = window.innerWidth - button.getBoundingClientRect().left - content.clientWidth
+        const spaceLeft = button.getBoundingClientRect().left - content.clientWidth
+        const spaceRight = window.innerWidth - button.getBoundingClientRect().right - content.clientWidth
+        const spaceAUp = button.getBoundingClientRect().top + button.clientHeight - content.clientHeight
+        const spaceADown = window.innerHeight - button.getBoundingClientRect().top - content.clientHeight
+        const spaceALeft = button.getBoundingClientRect().left + button.clientWidth - content.clientWidth
+        const spaceARight = window.innerWidth - button.getBoundingClientRect().left - content.clientWidth
         this.buttonSize = (button.clientWidth >= 160) ? 24 : (button.clientWidth > 64) ? (((button.clientWidth / 2 >> 4) + 1) << 4) / 4 : Math.round(button.clientWidth / 2 / 4) + 1
-        if ((spaceDown < 0 &&
-          (spaceUp >= 0 || spaceUp > spaceDown)) ||
-          this.up) {
+
+        const anyTrue = this.up || this.down || this.left || this.right
+        const maxSpace = Math.max(spaceUp, spaceDown, spaceLeft, spaceRight)
+
+        if (this.up || (maxSpace === spaceUp && !anyTrue)) {
           newPos[0] = 'bottom'
-        }
-        if ((spaceRight < 0 &&
-          (spaceLeft >= 0 || spaceLeft > spaceRight)) ||
-          this.right) {
-          newPos[1] = 'right'
+          newPos[1] = this.compareSpace(spaceALeft, spaceARight, this.aright) ? 'left' : 'right'
+        } else if (this.down || (maxSpace === spaceDown && !anyTrue)) {
+          newPos[0] = 'top'
+          newPos[1] = this.compareSpace(spaceALeft, spaceARight, this.aright) ? 'left' : 'right'
+        } else if (this.left || (maxSpace === spaceLeft && !anyTrue)) {
+          newPos[0] = 'right'
+          newPos[1] = this.compareSpace(spaceAUp, spaceADown, this.adown) ? 'top' : 'bottom'
+        } else {
+          newPos[0] = 'left'
+          newPos[1] = this.compareSpace(spaceAUp, spaceADown, this.adown) ? 'top' : 'bottom'
         }
         if (newPos[0] !== this.currentPosition[0] || newPos[1] !== this.currentPosition[1]) {
           this.currentPosition = newPos
         }
       }
     })
+  }
+
+  private compareSpace (s1: number, s2: number, o: boolean) {
+    if ((s2 < 0 && (s1 >= 0 || s1 > s2)) || o) {
+      return false
+    }
+    return true
   }
 
   mounted () {
