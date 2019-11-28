@@ -150,8 +150,9 @@ export default class Drop extends Vue {
 
   /**
    * refreshPosition will set a new array of position and define the buttonSize needed for the arrow position
-   * prevent those classes to be purged in production : before-mr-3 before-mr-4 before-mr-6 top-full bottom-full
-   * left-full right-full
+   * prevent those classes to be purged in production : before-mr-3 before-mr-4 before-mr-6 before-ml-3
+   * before-ml-4 before-ml-6 before-mt-3 before-mt-4 before-mt-6 before-mb-3 before-m-4 before-mb-6
+   * top-full bottom-full left-full right-full top-0 bottom-0 left-0 right-0
    */
   public refreshPosition () {
     this.$nextTick().then(() => {
