@@ -340,6 +340,158 @@ describe('Drop.vue', () => {
       })
     })
 
+    it('currentPosition should be changed to [bottom, right] using props', async () => {
+      expect.assertions(1)
+      const navbar = shallowMount(Drop, {
+        propsData: {
+          up: true,
+          arrowright: true,
+          options: [{ name: 'hello' }]
+        }
+      })
+      const vm = navbar.vm as any
+      vm.show = true
+      vm.$refs.self.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: 40, left: 400, bottom: 50, right: 450 }))
+      vm.refreshPosition()
+      navbar.vm.$nextTick().then(() => {
+        expect(vm).toHaveProperty('currentPosition', ['bottom', 'right'])
+        navbar.destroy()
+      })
+    })
+
+    it('currentPosition should be changed to [bottom, left]', async () => {
+      expect.assertions(1)
+      const navbar = shallowMount(Drop, {
+        propsData: {
+          up: true,
+          arrowleft: true,
+          options: [{ name: 'hello' }]
+        }
+      })
+      const vm = navbar.vm as any
+      vm.show = true
+      vm.$refs.self.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: 40, left: 550, bottom: 50, right: 570 }))
+      vm.refreshPosition()
+      navbar.vm.$nextTick().then(() => {
+        expect(vm).toHaveProperty('currentPosition', ['bottom', 'left'])
+        navbar.destroy()
+      })
+    })
+
+    it('currentPosition should be changed to [top, right]', async () => {
+      expect.assertions(1)
+      const navbar = shallowMount(Drop, {
+        propsData: {
+          down: true,
+          arrowright: true,
+          options: [{ name: 'hello' }]
+        }
+      })
+      const vm = navbar.vm as any
+      vm.show = true
+      vm.$refs.self.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: 700, left: 400, bottom: 710, right: 450 }))
+      vm.refreshPosition()
+      navbar.vm.$nextTick().then(() => {
+        expect(vm).toHaveProperty('currentPosition', ['top', 'right'])
+        navbar.destroy()
+      })
+    })
+
+    it('currentPosition should be changed to [top, left]', async () => {
+      expect.assertions(1)
+      const navbar = shallowMount(Drop, {
+        propsData: {
+          down: true,
+          arrowleft: true,
+          options: [{ name: 'hello' }]
+        }
+      })
+      const vm = navbar.vm as any
+      vm.show = true
+      vm.$refs.self.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: 700, left: 550, bottom: 710, right: 570 }))
+      vm.refreshPosition()
+      navbar.vm.$nextTick().then(() => {
+        expect(vm).toHaveProperty('currentPosition', ['top', 'left'])
+        navbar.destroy()
+      })
+    })
+
+    it('currentPosition should be changed to [left, top]', async () => {
+      expect.assertions(1)
+      const navbar = shallowMount(Drop, {
+        propsData: {
+          right: true,
+          arrowup: true,
+          options: [{ name: 'hello' }]
+        }
+      })
+      const vm = navbar.vm as any
+      vm.show = true
+      vm.$refs.self.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: 700, left: 900, bottom: 750, right: 950 }))
+      vm.refreshPosition()
+      navbar.vm.$nextTick().then(() => {
+        expect(vm).toHaveProperty('currentPosition', ['left', 'top'])
+        navbar.destroy()
+      })
+    })
+
+    it('currentPosition should be changed to [left, bottom]', async () => {
+      expect.assertions(1)
+      const navbar = shallowMount(Drop, {
+        propsData: {
+          right: true,
+          arrowdown: true,
+          options: [{ name: 'hello' }]
+        }
+      })
+      const vm = navbar.vm as any
+      vm.show = true
+      vm.$refs.self.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: 10, left: 900, bottom: 50, right: 950 }))
+      vm.refreshPosition()
+      navbar.vm.$nextTick().then(() => {
+        expect(vm).toHaveProperty('currentPosition', ['left', 'bottom'])
+        navbar.destroy()
+      })
+    })
+
+    it('currentPosition should be changed to [right, top]', async () => {
+      expect.assertions(1)
+      const navbar = shallowMount(Drop, {
+        propsData: {
+          left: true,
+          arrowup: true,
+          options: [{ name: 'hello' }]
+        }
+      })
+      const vm = navbar.vm as any
+      vm.show = true
+      vm.$refs.self.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: 700, left: 10, bottom: 750, right: 50 }))
+      vm.refreshPosition()
+      navbar.vm.$nextTick().then(() => {
+        expect(vm).toHaveProperty('currentPosition', ['right', 'top'])
+        navbar.destroy()
+      })
+    })
+
+    it('currentPosition should be changed to [right, bottom]', async () => {
+      expect.assertions(1)
+      const navbar = shallowMount(Drop, {
+        propsData: {
+          left: true,
+          arrowdown: true,
+          options: [{ name: 'hello' }]
+        }
+      })
+      const vm = navbar.vm as any
+      vm.show = true
+      vm.$refs.self.getBoundingClientRect = jest.fn().mockImplementation(() => ({ top: 10, left: 10, bottom: 50, right: 50 }))
+      vm.refreshPosition()
+      navbar.vm.$nextTick().then(() => {
+        expect(vm).toHaveProperty('currentPosition', ['right', 'bottom'])
+        navbar.destroy()
+      })
+    })
+
     it('buttonSize should be 24', async () => {
       expect.assertions(1)
       const navbar = shallowMount(Drop, {
