@@ -118,33 +118,5 @@
         border-width: 0 1px 1px 0;
       }
     }
-
-    &.right-0:not(.top-full):not(.bottom-full) {
-      @apply mr-3 right-full;
-
-      &:before {
-        right: -.3rem;
-      }
-
-      &.border {
-        &:before {
-          border-width: 1px 1px 0 0;
-        }
-      }
-    }
-
-    &.left-0:not(.top-full):not(.bottom-full) {
-      @apply ml-3 left-full;
-
-      &:before {
-        left: -.3rem;
-      }
-
-      &.border {
-        &:before {
-          border-width: 0 0 1px 1px;
-        }
-      }
-    }
   }
 }
