@@ -95,10 +95,10 @@ export default class Drop extends Vue {
   @Prop({ type: Boolean, default: false }) private down!: boolean
   @Prop({ type: Boolean, default: false }) private left!: boolean
   @Prop({ type: Boolean, default: false }) private right!: boolean
-  @Prop({ type: Boolean, default: false }) private aup!: boolean
-  @Prop({ type: Boolean, default: false }) private adown!: boolean
-  @Prop({ type: Boolean, default: false }) private aleft!: boolean
-  @Prop({ type: Boolean, default: false }) private aright!: boolean
+  @Prop({ type: Boolean, default: false }) private arrowup!: boolean
+  @Prop({ type: Boolean, default: false }) private arrowdown!: boolean
+  @Prop({ type: Boolean, default: false }) private arrowleft!: boolean
+  @Prop({ type: Boolean, default: false }) private arrowright!: boolean
   @Prop({ type: Boolean, default: false }) private narrow!: boolean
   @Prop({ type: [String, Number], default: undefined }) private arrowForceMargin!: string | number | undefined
 
@@ -164,10 +164,10 @@ export default class Drop extends Vue {
         const spaceDown = window.innerHeight - button.getBoundingClientRect().bottom - content.clientHeight
         const spaceLeft = button.getBoundingClientRect().left - content.clientWidth
         const spaceRight = window.innerWidth - button.getBoundingClientRect().right - content.clientWidth
-        const spaceAUp = button.getBoundingClientRect().top + button.clientHeight - content.clientHeight
-        const spaceADown = window.innerHeight - button.getBoundingClientRect().top - content.clientHeight
-        const spaceALeft = button.getBoundingClientRect().left + button.clientWidth - content.clientWidth
-        const spaceARight = window.innerWidth - button.getBoundingClientRect().left - content.clientWidth
+        const spaceArrowUp = button.getBoundingClientRect().top + button.clientHeight - content.clientHeight
+        const spaceArrowDown = window.innerHeight - button.getBoundingClientRect().top - content.clientHeight
+        const spaceArrowLeft = button.getBoundingClientRect().left + button.clientWidth - content.clientWidth
+        const spaceArrowRight = window.innerWidth - button.getBoundingClientRect().left - content.clientWidth
         this.buttonSize = (button.clientWidth >= 160) ? 24 : (button.clientWidth > 64) ? (((button.clientWidth / 2 >> 4) + 1) << 4) / 4 : Math.round(button.clientWidth / 2 / 4) + 1
 
         const anyTrue = this.up || this.down || this.left || this.right
@@ -175,16 +175,16 @@ export default class Drop extends Vue {
 
         if (this.up || (maxSpace === spaceUp && !anyTrue)) {
           newPos[0] = 'bottom'
-          newPos[1] = this.compareSpace(spaceALeft, spaceARight, this.aright) ? 'left' : 'right'
+          newPos[1] = this.compareSpace(spaceArrowLeft, spaceArrowRight, this.arrowright) ? 'left' : 'right'
         } else if (this.down || (maxSpace === spaceDown && !anyTrue)) {
           newPos[0] = 'top'
-          newPos[1] = this.compareSpace(spaceALeft, spaceARight, this.aright) ? 'left' : 'right'
+          newPos[1] = this.compareSpace(spaceArrowLeft, spaceArrowRight, this.arrowright) ? 'left' : 'right'
         } else if (this.left || (maxSpace === spaceLeft && !anyTrue)) {
           newPos[0] = 'right'
-          newPos[1] = this.compareSpace(spaceAUp, spaceADown, this.adown) ? 'top' : 'bottom'
+          newPos[1] = this.compareSpace(spaceArrowUp, spaceArrowDown, this.arrowdown) ? 'top' : 'bottom'
         } else {
           newPos[0] = 'left'
-          newPos[1] = this.compareSpace(spaceAUp, spaceADown, this.adown) ? 'top' : 'bottom'
+          newPos[1] = this.compareSpace(spaceArrowUp, spaceArrowDown, this.arrowdown) ? 'top' : 'bottom'
         }
         if (newPos[0] !== this.currentPosition[0] || newPos[1] !== this.currentPosition[1]) {
           this.currentPosition = newPos
