@@ -1,7 +1,7 @@
 <template>
   <div
     id="toolbar"
-    class="flex flex-col items-center w-16 shadow-innerright py-4"
+    class="flex flex-col items-center w-16 shadow-inner-right py-4"
   >
     <div class="mb-4">
       <s-icon
