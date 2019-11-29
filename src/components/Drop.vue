@@ -175,16 +175,16 @@ export default class Drop extends Vue {
 
         if (this.up || (maxSpace === spaceUp && !anyTrue)) {
           newPos[0] = 'bottom'
-          newPos[1] = this.compareSpace(spaceArrowLeft, spaceArrowRight, this.arrowright) ? 'left' : 'right'
+          newPos[1] = this.compareSpace(spaceArrowLeft, spaceArrowRight, this.arrowleft, this.arrowright) ? 'left' : 'right'
         } else if (this.down || (maxSpace === spaceDown && !anyTrue)) {
           newPos[0] = 'top'
-          newPos[1] = this.compareSpace(spaceArrowLeft, spaceArrowRight, this.arrowright) ? 'left' : 'right'
+          newPos[1] = this.compareSpace(spaceArrowLeft, spaceArrowRight, this.arrowleft, this.arrowright) ? 'left' : 'right'
         } else if (this.left || (maxSpace === spaceLeft && !anyTrue)) {
           newPos[0] = 'right'
-          newPos[1] = this.compareSpace(spaceArrowUp, spaceArrowDown, this.arrowdown) ? 'top' : 'bottom'
+          newPos[1] = this.compareSpace(spaceArrowUp, spaceArrowDown, this.arrowup, this.arrowdown) ? 'top' : 'bottom'
         } else {
           newPos[0] = 'left'
-          newPos[1] = this.compareSpace(spaceArrowUp, spaceArrowDown, this.arrowdown) ? 'top' : 'bottom'
+          newPos[1] = this.compareSpace(spaceArrowUp, spaceArrowDown, this.arrowup, this.arrowdown) ? 'top' : 'bottom'
         }
         if (newPos[0] !== this.currentPosition[0] || newPos[1] !== this.currentPosition[1]) {
           this.currentPosition = newPos
@@ -193,8 +193,8 @@ export default class Drop extends Vue {
     })
   }
 
-  private compareSpace (s1: number, s2: number, o: boolean) {
-    if ((s2 < 0 && (s1 >= 0 || s1 > s2)) || o) {
+  private compareSpace (s1: number, s2: number, o1: boolean, o2: boolean) {
+    if ((Math.max(s1, s2) === s1 || o2) && !o1) {
       return false
     }
     return true
