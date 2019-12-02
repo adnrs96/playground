@@ -3,6 +3,26 @@
     id="welcome"
     class="bg-gray-10"
   >
+    <div class="flex items-center flex-no-wrap bg-white px-6 h-14 shadow-navbar border-solid border-b border-gray-20 z-20 justify-between">
+      <router-link
+        id="home-btn-logo"
+        class="flex items-center cursor-pointer"
+        :to="{ name: 'welcome' }"
+      >
+        <s-icon
+          icon="story"
+          height="18"
+          width="18"
+        />
+        <s-icon
+          icon="storyscript"
+          color="text-indigo-logo"
+          height="14"
+          width="82"
+          class="ml-2 mt-1"
+        />
+      </router-link>
+    </div>
     <slot name="notification" />
     <perfect-scrollbar
       ref="content"

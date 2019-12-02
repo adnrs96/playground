@@ -1,9 +1,6 @@
 <template>
   <div class="min-h-screen">
-    <s-navbar
-      :intro="isIntro"
-    />
-    <router-view @introChange="isIntro = $event">
+    <router-view>
       <template slot="notification">
         <slot name="notification" />
       </template>
@@ -13,22 +10,16 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import SNavbar from '@/components/Navbar.vue'
 
 @Component({
-  components: {
-    SNavbar
-  }
+  name: 'StudioIndex'
 })
-export default class Layout extends Vue {
-  private isIntro = true
-
+export default class StudioIndex extends Vue {
   mounted () {
     if ((!this.$route || !this.$route.params || !('sample' in this.$route.params)) &&
       (this.$route && this.$route.path && !this.$route.path.includes('welcome'))) {
       this.$router.push({ name: 'welcome' })
     }
-    this.isIntro = !(this.$route && this.$route.query && this.$route.query.skipIntro && this.$route.query.skipIntro === 'true')
   }
 }
 </script>

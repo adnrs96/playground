@@ -60,25 +60,25 @@
         </div>
       </s-modal>
     </s-blur>
-    <s-button
+    <div
       id="share-btn"
-      color="text-gray-100"
-      white
-      center
-      reverse
-      small
-      @click.prevent="$refs.shareModal.show()"
+      tabindex="2"
+      class="flex items-center rounded-md cursor-pointer bg-indigo-70 hover:bg-indigo-60"
+      @click="$refs.shareModal.show()"
     >
-      <span class="flex flex-row items-center">
-        <s-icon
-          icon="user-plus"
-          color="text-gray-100"
-          is-stroke
-          class="mr-3"
-        />
+      <s-icon
+        icon="user-plus"
+        color="text-white"
+        class="m-2"
+      />
+      <s-text
+        p="5"
+        weight="medium"
+        class="mr-3 my-1 text-white"
+      >
         Share
-      </span>
-    </s-button>
+      </s-text>
+    </div>
   </div>
 </template>
 

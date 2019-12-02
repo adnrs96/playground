@@ -3,6 +3,7 @@ import { Wrapper, shallowMount } from '@vue/test-utils'
 
 describe('index.vue', () => {
   let view: Wrapper<Index>
+  const push: any = jest.fn()
 
   beforeEach(() => { })
 
@@ -18,7 +19,7 @@ describe('index.vue', () => {
         },
         mocks: {
           $route: { params: {}, path: '/' },
-          $router: { push: jest.fn() }
+          $router: { push }
         }
       })
     })
@@ -28,8 +29,14 @@ describe('index.vue', () => {
       expect(view.html()).toBeDefined()
     })
 
+    it('should redirect', async () => {
+      expect.assertions(1)
+      expect(push).toHaveBeenCalled()
+    })
+
     it('isIntro should be false', async () => {
       expect.assertions(1)
+      const rpush = jest.fn()
 
       const idxView = await shallowMount(Index, {
         stubs: {
@@ -37,14 +44,14 @@ describe('index.vue', () => {
         },
         mocks: {
           $route: {
-            query: {
-              skipIntro: 'true'
+            params: {
+              sample: 'counter'
             }
-          }
+          },
+          $router: { push: rpush }
         }
       })
-      const ivm = idxView.vm as any
-      expect(ivm).toHaveProperty('isIntro', false)
+      expect(rpush).not.toHaveBeenCalled()
       idxView.destroy()
     })
   })

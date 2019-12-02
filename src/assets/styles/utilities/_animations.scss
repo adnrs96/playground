@@ -30,15 +30,18 @@
 }
 
 .animate-wheel {
-  animation: wheel 2.5s linear infinite;
+  animation-name: wheel;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-timing-function: linear;
 }
 
 @keyframes wheel {
-  0% {
+  from {
     @apply rotate;
   }
 
-  100% {
+  to {
     @apply rotate-360deg;
   }
 }

@@ -19,35 +19,35 @@ const counter: IStorySample = {
       name: 'welcome-to-storyscript',
       text:
         "This is Storyscript, the cloud-native programming language.\n\nLet's take a quick walk through the language features with this example building a simple counter application.",
-      x: 375,
+      x: 260,
       y: 76
     },
     {
       name: 'storyscript-redis',
       text:
         "Storyscript removes the need for you to care about infrastructure. When this story runs, the platform will create, configure and connect a Redis database so you don't have to!\n\nBy integrating with the Open Microservice Specification, a library of services become available on the Storyscript Hub.",
-      x: 35,
-      y: 118
+      x: 70,
+      y: 116
     },
     {
       name: 'storyscript-oms',
       text:
         'The Open Microservice Specification also allows Storyscript to strongly type interactions with microservices with IDE support.',
-      x: 285,
-      y: 118
+      x: 350,
+      y: 116
     },
     {
       name: 'storyscript-http',
       text:
         'Services in Storyscript can also be event driven.\n\nHere, an http server listens for events and the inner block is executed when a request is received.',
-      x: 35,
+      x: 70,
       y: 135
     },
     {
       name: 'storyscript-publish',
       text:
         'How about we publish this story, and see what the platform can take care of for you?',
-      x: 304,
+      x: 200,
       y: 20
     }
   ],
