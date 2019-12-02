@@ -2,90 +2,62 @@
   <nav class="flex items-center flex-no-wrap bg-indigo-50 px-6 h-14 z-20 justify-between">
     <div class="flex flex-1 items-center justify-start">
       <div class="flex items-center mr-6">
-        <s-text
-          p="2"
-          weight="medium"
-          color="text-white whitespace-no-wrap"
+        <div
+          id="publish-btn"
+          tabindex="1"
+          class="flex items-center rounded-md"
+          :class="[
+            `${publishing ? 'cursor-wait bg-indigo-40' : 'cursor-pointer bg-indigo-70 hover:bg-indigo-60'}`
+          ]"
+          @click="publish"
         >
-          My first story
-        </s-text>
-        <s-icon
-          icon="info-o"
-          color="text-indigo-20 hover:text-indigo-10"
-          class="ml-1"
-          clickable
-        />
-      </div>
-      <div
-        id="publish-btn"
-        tabindex="1"
-        class="flex items-center rounded-md"
-        :class="[
-          `${publishing ? 'cursor-wait bg-indigo-40' : 'cursor-pointer bg-indigo-70 hover:bg-indigo-60'}`
-        ]"
-        @click="publish"
-      >
-        <s-text
-          p="5"
-          weight="semibold"
-          class="mx-3 my-1 text-white"
-        >
-          Publish
-        </s-text>
-        <s-icon
-          icon="send"
-          color="text-white"
-          class="mr-2"
-          clickable
-        />
-      </div>
-    </div>
-    <div class="flex flex-1 items-center justify-center">
-      <s-text
-        p="5"
-        weight="medium"
-        color="text-white whitespace-no-wrap"
-      >
-        Studio Preview
-      </s-text>
-      <s-icon
-        icon="info-o"
-        color="text-indigo-20 hover:text-indigo-10"
-        class="ml-1"
-        clickable
-      />
-    </div>
-    <div class="flex flex-1 items-center justify-end">
-      <s-collaborators class="mr-4" />
-      <s-share />
-      <s-drop
-        id="new-from-tpl-btn"
-        mode="hover|focus"
-        bottom
-        light
-        bordered
-        class="ml-8"
-      >
-        <div class="flex items-center cursor-pointer select-none bg-colorful">
           <s-text
             p="5"
-            weight="medium"
-            color="text-gray-100"
-            class="px-3 py-2 whitespace-no-wrap"
+            weight="semibold"
+            class="mx-3 my-1 text-white"
           >
-            New from template
+            Publish
           </s-text>
+          <s-icon
+            icon="send"
+            color="text-white"
+            class="mr-2"
+            clickable
+          />
         </div>
-        <s-text
-          slot="content"
-          p="5"
-          weight="medium"
-          color="text-gray-90"
-          class="max-w-xxs whitespace-normal w-max-content"
+      </div>
+      <div class="flex flex-1 items-center justify-end">
+        <s-collaborators class="mr-4" />
+        <s-share />
+        <s-drop
+          id="new-from-tpl-btn"
+          mode="hover|focus"
+          bottom
+          light
+          bordered
+          class="ml-8"
         >
-          Studio for creating your own apps is under active development.
-        </s-text>
-      </s-drop>
+          <div class="flex items-center cursor-pointer select-none bg-colorful">
+            <s-text
+              p="5"
+              weight="medium"
+              color="text-gray-100"
+              class="px-3 py-2 whitespace-no-wrap"
+            >
+              New from template
+            </s-text>
+          </div>
+          <s-text
+            slot="content"
+            p="5"
+            weight="medium"
+            color="text-gray-90"
+            class="max-w-xxs whitespace-normal w-max-content"
+          >
+            Studio for creating your own apps is under active development.
+          </s-text>
+        </s-drop>
+      </div>
     </div>
   </nav>
 </template>
