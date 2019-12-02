@@ -3,6 +3,7 @@ import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
 import samples from '@/samples'
 import Vuex, { Store } from 'vuex'
 import StorePayload from '@/store/modules/Payload'
+import StoreTips from '@/store/modules/Tips'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
@@ -12,7 +13,11 @@ describe('Studio index', () => {
   let store: Store<any>
 
   beforeEach(() => {
-    store = new Vuex.Store(StorePayload)
+    store = new Vuex.Store({
+      state: { ...StorePayload.state, ...StoreTips.state },
+      getters: { ...StorePayload.getters, ...StoreTips.getters },
+      mutations: { ...StorePayload.mutations, ...StoreTips.mutations }
+    })
     studio = shallowMount(Studio, {
       stubs: {
         RouterView: true
@@ -49,6 +54,8 @@ describe('Studio index', () => {
       propsData: {
         sample: 'not-a-sample'
       },
+      store,
+      localVue,
       mocks: {
         $route: {
           query: { skipIntro: 'true' }
