@@ -26,15 +26,6 @@
     </div>
 
     <div class="my-4">
-      <s-icon
-        id="toolbar-feedback"
-        icon="feedback-circle"
-        height="20"
-        width="20"
-      />
-    </div>
-
-    <div class="my-4">
       <s-drop
         id="toolbar-nav-drop"
         class="ml-px mt-px"
