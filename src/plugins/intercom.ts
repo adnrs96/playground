@@ -84,6 +84,14 @@ export class IntercomPlugin {
     return this.callIntercom('getVisitorId') as string
   }
 
+  public hideLauncher (): string {
+    return this.callIntercom('update', ...[{ hide_default_launcher: true }]) as string
+  }
+
+  public showLauncher (): string {
+    return this.callIntercom('update', ...[{ hide_default_launcher: false }]) as string
+  }
+
   public loadScript (appId: string, done: () => void): void {
     const script = document.createElement('script')
     script.async = true

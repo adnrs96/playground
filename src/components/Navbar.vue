@@ -29,6 +29,7 @@
       <div class="flex flex-1 items-center justify-end">
         <s-collaborators class="mr-4" />
         <s-share />
+        <s-help />
         <s-drop
           id="new-from-tpl-btn"
           mode="hover|focus"
@@ -70,6 +71,7 @@ import SText from '@/components/Text.vue'
 import event from '@/event'
 import SCollaborators from '@/components/Collaborators.vue'
 import SShare from '@/views/Share.vue'
+import SHelp from '@/components/HelpDrop.vue'
 
 @Component({
   name: 'Navbar',
@@ -78,7 +80,8 @@ import SShare from '@/views/Share.vue'
     SText,
     SDrop,
     SCollaborators,
-    SShare
+    SShare,
+    SHelp
   }
 })
 export default class Navbar extends Vue {

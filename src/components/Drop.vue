@@ -29,12 +29,16 @@
           [`before-m${currentPosition[1][0]}-${arrowForceMargin || buttonSize}`],
           { [`${currentPosition[0]}-full`]: currentPosition !== undefined },
           { [`${currentPosition[1]}-0`]: currentPosition !== undefined },
-          { 'border border-gray-30': bordered }
+          { 'border border-gray-30': bordered },
+          { 'p-px': narrow },
+          { 'rounded-sm': narrow },
+          { 'rounded-xl': !narrow },
+          { 'no-arrow': noArrow }
         ]"
       >
         <div
           v-if="$slots.content"
-          class="my-2 mx-2"
+          :class="narrow ? 'm-px' : 'my-2 mx-2'"
         >
           <slot name="content" />
         </div>
@@ -101,6 +105,7 @@ export default class Drop extends Vue {
   @Prop({ type: Boolean, default: false }) private arrowright!: boolean
   @Prop({ type: Boolean, default: false }) private narrow!: boolean
   @Prop({ type: [String, Number], default: undefined }) private arrowForceMargin!: string | number | undefined
+  @Prop({ type: Boolean, default: false }) private noArrow!: boolean
 
   @Prop({ type: Boolean, default: false }) readonly light!: boolean
 
@@ -125,7 +130,9 @@ export default class Drop extends Vue {
 
   public hideIfShown () {
     if (this.show) {
-      this.show = false
+      this.modes.click = false
+      this.modes.focus = false
+      this.modes.hover = false
       this.$emit('close')
     }
   }

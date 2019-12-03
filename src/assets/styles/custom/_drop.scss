@@ -2,14 +2,14 @@
   @apply relative select-none;
 
   .content {
-    @apply absolute bg-gray-100 rounded-xl text-white whitespace-pre-wrap z-30;
+    @apply absolute bg-gray-100 text-white whitespace-pre-wrap z-30;
 
-    &:before {
+    &:not(.no-arrow):before {
       content: '';
       @apply absolute block bg-gray-100 w-2 h-2 rotate-45deg border-gray-30;
     }
 
-    &.light {
+    &:not(.no-arrow).light {
       @apply bg-white;
 
       &:before {

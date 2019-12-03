@@ -82,6 +82,7 @@ export default class Studio extends Vue {
 
   mounted () {
     this.$intercom.boot()
+    this.$intercom.hideLauncher()
   }
 }
 </script>
