@@ -3,17 +3,16 @@
     ref="self"
     v-click-outside="hideIfShown"
     class="drop"
-    @mouseover="showTrigger('hover', true)"
-    @mouseleave="showTrigger('hover', false)"
-    @click="$emit('click', $event)"
   >
     <div
       ref="button"
       tabindex="3"
       class="cursor-pointer relative focus:outline-none"
+      @mouseover="showTrigger('hover', true)"
+      @mouseleave="showTrigger('hover', false)"
       @focus.capture="showTrigger('focus', true)"
-      @blur.capture="showTrigger('focus', false)"
-      @click="showTrigger('click', !show)"
+      @blur.capture="showTrigger('focus', false);"
+      @click="$emit('click', $event); showTrigger('click', !show)"
     >
       <slot :open="show" />
     </div>
