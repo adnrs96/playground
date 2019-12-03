@@ -101,7 +101,7 @@
     <s-drop
       id="new-from-tpl-btn"
       mode="hover"
-      bottom
+      down
       light
       bordered
       class="ml-8"
