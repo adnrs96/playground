@@ -1,9 +1,9 @@
 <template>
-  <div id="login">
+  <div id="register-interest">
     <s-blur
-      id="login-blur"
+      id="register-interest-blur"
       key="blur"
-      ref="loginModal"
+      ref="registerInterestModal"
       class="flex justify-center items-center h-full w-full"
     >
       <s-modal cross>
@@ -18,7 +18,7 @@
           Please drop your email to get updated for general availability.
         </s-text>
         <form
-          id="login-form"
+          id="register-interest-form"
           name="register-interest"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
@@ -74,7 +74,7 @@
             </div>
           </s-labeled-input>
           <s-button
-            id="login-submit-btn"
+            id="register-interest-submit-btn"
             primary
             center
             type="submit"
@@ -113,7 +113,7 @@
           color="text-gray-100"
           class="px-3 py-2 whitespace-no-wrap"
           clickable
-          @click="$refs.loginModal.show()"
+          @click="$refs.registerInterestModal.show()"
         >
           New from template
         </s-text>
@@ -141,7 +141,7 @@ import SModal from '@/components/Modals/Modal.vue'
 import SDrop from '@/components/Drop.vue'
 
 @Component({
-  name: 'Login',
+  name: 'RegisterInterest',
   components: {
     SText,
     SButton,
@@ -151,7 +151,7 @@ import SDrop from '@/components/Drop.vue'
     SDrop
   }
 })
-export default class Login extends Vue {
+export default class RegisterInterest extends Vue {
   private comment = ''
   private email = ''
   private emailError = ''
@@ -207,7 +207,7 @@ export default class Login extends Vue {
   }
 
   private close () {
-    const modal = this.$refs.loginModal as SBlur
+    const modal = this.$refs.registerInterestModal as SBlur
     if (modal) {
       modal.hide()
     }
