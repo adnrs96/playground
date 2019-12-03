@@ -20,22 +20,6 @@ describe('Login', () => {
   })
 
   describe('watchers', () => {
-    describe('name', () => {
-      it('should not do anything when name is valid', () => {
-        expect.assertions(1)
-        vm.name = 'toto'
-        vm.onNameHandler()
-        expect(vm).toHaveProperty('nameError', '')
-      })
-
-      it('should display an error when name is invalid', () => {
-        expect.assertions(1)
-        vm.name = 'to'
-        vm.onNameHandler()
-        expect(vm).toHaveProperty('nameError', 'Name too short.')
-      })
-    })
-
     describe('email', () => {
       it('should not do anything when email is valid', () => {
         expect.assertions(1)
@@ -62,14 +46,16 @@ describe('Login', () => {
     })
 
     it('should send form info to netlify - error', async () => {
-      expect.assertions(1)
+      expect.assertions(2)
       vm.sending = false
       window.fetch = jest.fn().mockResolvedValue({
         status: 500
       })
       vm.$refs.loginModal.hide = jest.fn()
       vm.submit()
+      await new Promise(resolve => setTimeout(resolve, 1))
       expect(window.fetch).toHaveBeenCalledTimes(1)
+      expect(vm).toHaveProperty('error', true)
     })
 
     it('should send form info to netlify - success', async () => {
@@ -91,7 +77,7 @@ describe('Login', () => {
       vm.$refs.loginModal.hide = jest.fn()
       vm.close()
       expect(vm.$refs.loginModal.hide).toHaveBeenCalledTimes(1)
-      expect(vm).toHaveProperty('name', '')
+      expect(vm).toHaveProperty('comment', '')
       expect(vm).toHaveProperty('email', '')
     })
   })
