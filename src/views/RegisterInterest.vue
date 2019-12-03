@@ -10,11 +10,18 @@
         <s-text
           head="2"
           weight="semibold"
-          color="text-black"
-          class="w-full"
+          color="text-gray-100"
+          class="w-full mb-6"
           center
         >
-          The Storyscript Studio is in private beta only.
+          The Storyscript Studio is in private beta only
+        </s-text>
+        <s-text
+          span
+          color="text-gray-70"
+          class="w-full"
+          left
+        >
           Please drop your email to get updated for general availability.
         </s-text>
         <form
