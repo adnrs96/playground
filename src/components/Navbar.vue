@@ -29,34 +29,7 @@
       <div class="flex flex-1 items-center justify-end">
         <s-collaborators class="mr-4" />
         <s-share />
-        <s-drop
-          id="new-from-tpl-btn"
-          mode="hover|focus"
-          bottom
-          light
-          bordered
-          class="ml-8"
-        >
-          <div class="flex items-center cursor-pointer select-none bg-colorful">
-            <s-text
-              p="5"
-              weight="medium"
-              color="text-gray-100"
-              class="px-3 py-2 whitespace-no-wrap"
-            >
-              New from template
-            </s-text>
-          </div>
-          <s-text
-            slot="content"
-            p="5"
-            weight="medium"
-            color="text-gray-90"
-            class="max-w-xxs whitespace-normal w-max-content"
-          >
-            Studio for creating your own apps is under active development.
-          </s-text>
-        </s-drop>
+        <s-login />
       </div>
     </div>
   </nav>
@@ -64,21 +37,21 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
-import SDrop from '@/components/Drop.vue'
 import SIcon from '@/components/Icon.vue'
 import SText from '@/components/Text.vue'
 import event from '@/event'
 import SCollaborators from '@/components/Collaborators.vue'
 import SShare from '@/views/Share.vue'
+import SLogin from '@/views/Login.vue'
 
 @Component({
   name: 'Navbar',
   components: {
     SIcon,
     SText,
-    SDrop,
     SCollaborators,
-    SShare
+    SShare,
+    SLogin
   }
 })
 export default class Navbar extends Vue {

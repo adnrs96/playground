@@ -14,7 +14,8 @@
           class="w-full"
           center
         >
-          Continue Your Story
+          The Storyscript Studio is in private beta only.
+          Please drop your email to get updated for general availability.
         </s-text>
         <form
           id="login-form"
@@ -36,29 +37,6 @@
               Bot Field
             </div>
           </s-labeled-input>
-          <s-labeled-input
-            v-model.trim="name"
-            autocomplete="off"
-            name="name"
-            type="text"
-            class="w-full mt-6"
-            placeholder="Enter your name"
-            required
-            shadow
-          >
-            <div slot="label">
-              Name
-            </div>
-          </s-labeled-input>
-          <s-text
-            v-if="nameError.length > 0"
-            p="5"
-            weight="medium"
-            color="text-red-70"
-            class="mt-2"
-          >
-            {{ nameError }}
-          </s-text>
           <s-labeled-input
             v-model.trim="email"
             autocomplete="off"
@@ -82,6 +60,19 @@
           >
             {{ emailError }}
           </s-text>
+          <s-labeled-input
+            v-model.trim="comment"
+            autocomplete="off"
+            name="comment"
+            type="text"
+            class="w-full mt-6"
+            placeholder="Type your comment here (optional)"
+            shadow
+          >
+            <div slot="label">
+              Comment
+            </div>
+          </s-labeled-input>
           <s-button
             id="login-submit-btn"
             primary
@@ -90,7 +81,7 @@
             class="w-full mt-8"
             color="text-white"
             :class="{ 'mb-16': !error }"
-            :disabled="nameError.length > 0 || emailError.length > 0 || name.length === 0 || email.length === 0 || sending"
+            :disabled="emailError.length > 0 || email.length === 0 || sending"
           >
             {{ sending ? 'Sending...' : success ? 'Thanks!' : 'Register Interest' }}
           </s-button>
@@ -107,19 +98,36 @@
         </form>
       </s-modal>
     </s-blur>
-
-    <s-button
-      id="login-btn"
-      icon="account-pin-o"
-      primary
-      reverse
-      danger
-      center
-      small
-      url="//storyscript.io/#bottom"
+    <s-drop
+      id="new-from-tpl-btn"
+      mode="hover"
+      bottom
+      light
+      bordered
+      class="ml-8"
     >
-      Register Interest
-    </s-button>
+      <div class="flex items-center cursor-pointer select-none bg-colorful">
+        <s-text
+          p="5"
+          weight="medium"
+          color="text-gray-100"
+          class="px-3 py-2 whitespace-no-wrap"
+          clickable
+          @click="$refs.loginModal.show()"
+        >
+          New from template
+        </s-text>
+      </div>
+      <s-text
+        slot="content"
+        p="5"
+        weight="medium"
+        color="text-gray-90"
+        class="max-w-xxs whitespace-normal w-max-content"
+      >
+        Write a new Story starting from this template.
+      </s-text>
+    </s-drop>
   </div>
 </template>
 
@@ -130,6 +138,7 @@ import SLabeledInput from '@/components/Inputs/LabeledInput.vue'
 import SButton from '@/components/Button.vue'
 import SBlur from '@/components/Blur.vue'
 import SModal from '@/components/Modals/Modal.vue'
+import SDrop from '@/components/Drop.vue'
 
 @Component({
   name: 'Login',
@@ -138,26 +147,17 @@ import SModal from '@/components/Modals/Modal.vue'
     SButton,
     SLabeledInput,
     SBlur,
-    SModal
+    SModal,
+    SDrop
   }
 })
 export default class Login extends Vue {
-  private name = ''
+  private comment = ''
   private email = ''
-  private nameError = ''
   private emailError = ''
   private sending = false
   private success = false
   private error = false
-
-  @Watch('name')
-  private onNameHandler () {
-    if (this.name.length > 0 && this.name.length < 3) {
-      this.nameError = 'Name too short.'
-    } else {
-      this.nameError = ''
-    }
-  }
 
   @Watch('success')
   private async onSuccess () {
@@ -194,7 +194,7 @@ export default class Login extends Vue {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `form-name=${encodeURIComponent('register-interest')}&email=${encodeURIComponent(this.email)}&name=${encodeURIComponent(this.name)}`
+      body: `form-name=${encodeURIComponent('register-interest')}&email=${encodeURIComponent(this.email)}&comment=${encodeURIComponent(this.comment)}`
     }).then((response: Response) => {
       if (response.status !== 200) {
         this.error = true
@@ -211,7 +211,7 @@ export default class Login extends Vue {
     if (modal) {
       modal.hide()
     }
-    this.name = ''
+    this.comment = ''
     this.email = ''
   }
 }
