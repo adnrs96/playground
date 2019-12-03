@@ -16,6 +16,7 @@
         bordered
         class="ml-px mt-px"
         light
+        down
         mode="click"
         shadow="sm"
         :style="`left:${currentTip.x}px;top:${currentTip.y}px`"
