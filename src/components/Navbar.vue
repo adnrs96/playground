@@ -29,7 +29,7 @@
       <div class="flex flex-1 items-center justify-end">
         <s-collaborators class="mr-4" />
         <s-share />
-        <s-login />
+        <s-register-interest />
       </div>
     </div>
   </nav>
@@ -42,7 +42,7 @@ import SText from '@/components/Text.vue'
 import event from '@/event'
 import SCollaborators from '@/components/Collaborators.vue'
 import SShare from '@/views/Share.vue'
-import SLogin from '@/views/Login.vue'
+import SRegisterInterest from '@/views/RegisterInterest.vue'
 
 @Component({
   name: 'Navbar',
@@ -51,7 +51,7 @@ import SLogin from '@/views/Login.vue'
     SText,
     SCollaborators,
     SShare,
-    SLogin
+    SRegisterInterest
   }
 })
 export default class Navbar extends Vue {

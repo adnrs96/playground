@@ -50,6 +50,6 @@ module.exports = {
     '!src/samples/**/*.ts',
     '!src/directives/*.ts',
     '!src/plugins/**/*.{js,ts,vue}',
-    'src/views/Login.vue'
+    'src/views/RegisterInterest.vue'
   ]
 }

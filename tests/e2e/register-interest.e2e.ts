@@ -12,7 +12,7 @@ describe('Logs', () => {
     page = await browser.newPage()
     page.setBypassCSP(true)
     await page.goto(`${TEST_URL}/example/counter?skipIntro=true`)
-    await page.waitForSelector('#login')
+    await page.waitForSelector('#register-interest')
   })
 
   afterAll(() => {
@@ -39,11 +39,11 @@ describe('Logs', () => {
     expect(tip.trim()).toEqual('Write a new Story starting from this template.')
     await new Promise(resolve => setTimeout(resolve, 500))
     expect((await page.$$('#new-from-tpl-btn>.content')).length).toEqual(0)
-    expect(await page.$('#login-form')).toBeTruthy()
+    expect(await page.$('#register-interest-form')).toBeTruthy()
 
-    expect((await page.$$('#login input')).length).toEqual(3)
-    expect((await page.$$eval('#login input', (nodes: any) => nodes.map((n: any) => n.type)))).toEqual(['text', 'email', 'text'])
-    expect((await page.$$eval('#login input', (nodes: any) => nodes.map((n: any) => n.name)))).toEqual(['form-name', 'email', 'comment'])
+    expect((await page.$$('#register-interest input')).length).toEqual(3)
+    expect((await page.$$eval('#register-interest input', (nodes: any) => nodes.map((n: any) => n.type)))).toEqual(['text', 'email', 'text'])
+    expect((await page.$$eval('#register-interest input', (nodes: any) => nodes.map((n: any) => n.name)))).toEqual(['form-name', 'email', 'comment'])
     await percySnapshot(page, 'Studio NewFromTemplate RegisterInterest Modal')
   })
 
@@ -53,8 +53,8 @@ describe('Logs', () => {
     await page.type('[name="comment"]', 'x')
     await page.type('[name="email"]', 'x')
 
-    expect((await page.$$('#login .text-red-70')).length).toEqual(1)
-    expect((await page.$$eval('#login .text-red-70', (nodes: any) => nodes.map((n: any) => n.textContent.trim())))).toEqual(['Email is invalid.'])
+    expect((await page.$$('#register-interest .text-red-70')).length).toEqual(1)
+    expect((await page.$$eval('#register-interest .text-red-70', (nodes: any) => nodes.map((n: any) => n.textContent.trim())))).toEqual(['Email is invalid.'])
   })
 
   /**
@@ -68,9 +68,9 @@ describe('Logs', () => {
       await page.type('[name="email"]', 'storyscript.e2e@gmail.com')
       await page.click('[name="comment"]', { clickCount: 3 })
       await page.type('[name="comment"]', 'storyscript-e2e')
-      await page.click('#login-submit-btn')
+      await page.click('#register-interest-submit-btn')
       await page.waitFor(2000)
-      expect((await page.waitForSelector('#login-blur', { hidden: true }))).toBeTruthy()
+      expect((await page.waitForSelector('#register-interest-blur', { hidden: true }))).toBeTruthy()
     } else {
       expect(true).toBeTruthy()
     }
