@@ -20,8 +20,11 @@ describe('Intercom', () => {
 
   it('should display the intercom dialog', async () => {
     expect.assertions(1)
-    await page.waitForSelector('#intercom-container>div>iframe')
-    await page.click('#intercom-container>div>iframe')
+    await page.waitForSelector('#help-drop-btn') // click on help dropdown
+    await page.click('#help-drop-btn')
+    await page.waitForSelector('#chat-with-us-btn') // click on chat button
+    await page.click('#chat-with-us-btn')
+    await page.waitForSelector('#intercom-container>div>div>iframe')
     const frame = await page.$eval('#intercom-container>div>div>iframe', (e: Element) => e.tagName)
     expect(frame).toEqual('IFRAME')
     await percySnapshot(page, 'Studio intercom dialog')

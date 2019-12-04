@@ -25,6 +25,7 @@
       class="whitespace-normal w-max-content max-w-xs flex flex-col rounded-sm"
     >
       <div
+        id="chat-with-us-btn"
         class="w-full bg-gray-80 text-white rounded-xs flex px-2 py-3 items-center justify-start cursor-pointer"
         @click="chatWithUs"
       >

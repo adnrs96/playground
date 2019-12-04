@@ -29,4 +29,13 @@ describe('Navbar', () => {
     expect(tip.trim()).toEqual('Studio for creating your own apps is under active development.')
     await percySnapshot(page, 'Studio NewFromTemplate Tip')
   })
+
+  it('should display help dropdown', async () => {
+    expect.assertions(1)
+    await page.waitForSelector('#help-drop-btn')
+    await page.click('#help-drop-btn')
+    const intercomBtn = await page.$eval('#chat-with-us-btn', (e: Element) => e.innerHTML)
+    expect(intercomBtn).toBeTruthy()
+    await percySnapshot(page, 'Studio Help Dropdown')
+  })
 })
