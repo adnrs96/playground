@@ -37,7 +37,7 @@
           p="3"
           weight="medium"
         >
-          Live Support
+          Live support
         </s-text>
         <div
           class="rounded-full border-2 border-white shadow-md w-6 h-6 relative ml-10"
