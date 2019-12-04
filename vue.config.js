@@ -6,8 +6,9 @@ module.exports = {
     disableHostCheck: true
   },
   pwa: {
+    workboxPluginMode: 'InjectManifest',
     workboxOptions: {
-      skipWaiting: true
+      swSrc: 'src/service-worker.js'
     },
     name: 'Storyscript Studio',
     themeColor: '#5C52FF',
