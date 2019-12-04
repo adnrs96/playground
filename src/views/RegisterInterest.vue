@@ -201,7 +201,7 @@ export default class RegisterInterest extends Vue {
     this.error = false
     fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Cache-Control': 'no-cache' },
       body: `form-name=${encodeURIComponent('register-interest')}&email=${encodeURIComponent(this.email)}&comment=${encodeURIComponent(this.comment)}`
     }).then((response: Response) => {
       if (response.status !== 200) {
