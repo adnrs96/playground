@@ -45,6 +45,7 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{js,ts,vue}',
     '!src/(registerServiceWorker|main|router).ts',
+    '!src/service-worker.js',
     '!src/store/index.ts',
     '!src/store/modules/index.ts',
     '!src/samples/**/*.ts',
