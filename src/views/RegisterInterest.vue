@@ -11,12 +11,11 @@
           head="2"
           weight="semibold"
           color="text-gray-100"
-          class="w-full"
+          class="w-full mb-6"
           center
         >
           The Storyscript Studio is in private beta only
         </s-text>
-        <br>
         <s-text
           span
           color="text-gray-70"
