@@ -35,17 +35,21 @@ describe('Drop.vue', () => {
       navbar.destroy()
     })
 
-    it('should hide', () => {
+    it('should hide', async () => {
       expect.assertions(2)
       expect(vm).toHaveProperty('show', true)
       vm.hideIfShown()
+      vm.onModesUpdate()
+      await vm.$nextTick()
       expect(vm).toHaveProperty('show', false)
     })
 
-    it('should do nothing', () => {
+    it('should do nothing', async () => {
       expect.assertions(2)
       expect(vm).toHaveProperty('show', false)
       vm.hideIfShown()
+      vm.onModesUpdate()
+      await vm.$nextTick()
       expect(vm).toHaveProperty('show', false)
     })
   })
