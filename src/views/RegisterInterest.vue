@@ -49,13 +49,13 @@
             autocomplete="off"
             name="email"
             type="email"
-            placeholder="Enter your e-mail address"
+            placeholder="Enter your email address"
             class="w-full mt-6"
             required
             shadow
           >
             <div slot="label">
-              E-mail
+              Email
             </div>
           </s-labeled-input>
           <s-text
