@@ -5,7 +5,10 @@
   >
     <s-toolbar />
     <div class="flex flex-col w-full">
-      <s-navbar :intro="isIntro" />
+      <s-navbar
+        :intro="isIntro"
+        :title="payload.name"
+      />
       <div class="min-h-screen-no-navbar flex">
         <div
           v-if="$slots.notification && $slots.notification.length > 0"
@@ -20,27 +23,6 @@
             `${fullscreen ? 'w-full' : 'w-2/3'}`
           ]"
         >
-          <div class="flex justify-between items-center my-4 mx-8">
-            <div class="flex items-center">
-              <s-text
-                p="3"
-                weight="semibold"
-                color="text-gray-100"
-              >
-                {{ payload.name }}
-              </s-text>
-            </div>
-            <s-icon
-              id="toggle-fullscreen"
-              :icon="`${!fullscreen ? 'fullscreen' : 'fullscreen-exit'}`"
-              width="20"
-              height="20"
-              color="text-indigo-50"
-              class="hover:bg-gray-10 rounded-full p-1"
-              clickable
-              @click="fullscreen = !fullscreen"
-            />
-          </div>
           <!-- FIX FOR SAFARI, see https://bugs.webkit.org/show_bug.cgi?id=198375 -->
           <div class="h-0 flex-1">
             <monaco-editor

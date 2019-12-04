@@ -1,7 +1,15 @@
 <template>
   <nav class="flex items-center flex-no-wrap bg-indigo-50 px-6 h-14 z-20 justify-between">
     <div class="flex flex-1 items-center justify-start">
-      <div class="flex items-center mr-6">
+      <s-text
+        v-if="title"
+        p="2"
+        weight="medium"
+        class="text-white"
+      >
+        {{ title }}
+      </s-text>
+      <div class="flex items-center mx-6">
         <div
           id="publish-btn"
           tabindex="1"
@@ -86,6 +94,7 @@ import SHelp from '@/components/HelpDrop.vue'
 })
 export default class Navbar extends Vue {
   @Prop({ type: Boolean, default: false }) private intro!: boolean
+  @Prop({ type: String, default: undefined }) private title?: string
 
   private publishing = false
   private welcome: boolean = true
