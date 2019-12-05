@@ -14,6 +14,9 @@ describe('Modal.vue', () => {
       inject: {
         show: { from: 'SBlur', default: () => { } },
         hide: { from: 'SBlur', default: () => { } }
+      },
+      stubs: {
+        's-text': '<div />'
       }
     })
 

@@ -6,7 +6,12 @@ describe('Login', () => {
   let vm: any
 
   beforeEach(() => {
-    login = shallowMount(Login)
+    login = shallowMount(Login, {
+      stubs: {
+        's-text': '<div />',
+        's-button': '<div />'
+      }
+    })
     vm = login.vm as any
   })
 

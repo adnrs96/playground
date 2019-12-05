@@ -10,6 +10,10 @@ describe('Toolbar.vue', () => {
         $route: {
           name: 'welcome'
         }
+      },
+      stubs: {
+        's-icon': '<div />',
+        's-text': '<div />'
       }
     })
   })

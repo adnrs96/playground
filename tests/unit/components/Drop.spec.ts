@@ -10,6 +10,9 @@ describe('Drop.vue', () => {
       const drop = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       expect(drop.html()).toBeTruthy()
@@ -25,6 +28,9 @@ describe('Drop.vue', () => {
       navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       vm = navbar.vm as any
@@ -58,6 +64,9 @@ describe('Drop.vue', () => {
       navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       vm = navbar.vm as any
@@ -97,6 +106,9 @@ describe('Drop.vue', () => {
       const navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -115,6 +127,9 @@ describe('Drop.vue', () => {
       const navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       expect(window.addEventListener).toHaveBeenCalledTimes(2)
@@ -131,6 +146,9 @@ describe('Drop.vue', () => {
       drop = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       vm = drop.vm as any
@@ -172,6 +190,9 @@ describe('Drop.vue', () => {
       navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       vm = navbar.vm as any
@@ -209,6 +230,9 @@ describe('Drop.vue', () => {
       const navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -226,6 +250,9 @@ describe('Drop.vue', () => {
       const navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -243,6 +270,9 @@ describe('Drop.vue', () => {
       const navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -260,6 +290,9 @@ describe('Drop.vue', () => {
       const navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -277,6 +310,9 @@ describe('Drop.vue', () => {
       const navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -294,6 +330,9 @@ describe('Drop.vue', () => {
       const navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -311,6 +350,9 @@ describe('Drop.vue', () => {
       const navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -328,6 +370,9 @@ describe('Drop.vue', () => {
       const navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -347,6 +392,9 @@ describe('Drop.vue', () => {
           up: true,
           arrowright: true,
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -366,6 +414,9 @@ describe('Drop.vue', () => {
           up: true,
           arrowleft: true,
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -385,6 +436,9 @@ describe('Drop.vue', () => {
           down: true,
           arrowright: true,
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -404,6 +458,9 @@ describe('Drop.vue', () => {
           down: true,
           arrowleft: true,
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -423,6 +480,9 @@ describe('Drop.vue', () => {
           right: true,
           arrowup: true,
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -442,6 +502,9 @@ describe('Drop.vue', () => {
           right: true,
           arrowdown: true,
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -461,6 +524,9 @@ describe('Drop.vue', () => {
           left: true,
           arrowup: true,
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -480,6 +546,9 @@ describe('Drop.vue', () => {
           left: true,
           arrowdown: true,
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any
@@ -497,6 +566,9 @@ describe('Drop.vue', () => {
       const navbar = shallowMount(Drop, {
         propsData: {
           options: [{ name: 'hello' }]
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       const vm = navbar.vm as any

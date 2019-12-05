@@ -38,6 +38,9 @@ describe('Events.vue', () => {
       propsData: {
         events: testEvents,
         eventDelay: 0
+      },
+      stubs: {
+        's-text': '<div />'
       }
     })
     vm = events.vm as any
@@ -57,6 +60,9 @@ describe('Events.vue', () => {
     const view = shallowMount(Events, {
       propsData: {
         eventDelay: 0
+      },
+      stubs: {
+        's-text': '<div />'
       }
     })
     expect(view.html()).toBeTruthy()

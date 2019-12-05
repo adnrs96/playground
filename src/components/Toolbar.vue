@@ -20,7 +20,7 @@
         icon="code"
         height="20"
         width="20"
-        color="text-grey-100"
+        color="text-gray-100"
         class="bg-gray-20 rounded p-2"
       />
     </div>
@@ -43,15 +43,15 @@
             icon="compass"
             height="20"
             width="20"
+            color="text-gray-100"
             clickable
           />
         </a>
         <s-text
           slot="content"
-          p="5"
+          p="4"
           weight="medium"
-          color="white"
-          class="max-w-xxs whitespace-normal w-max-content"
+          class="max-w-xxs whitespace-normal w-max-content text-white"
         >
           Discover services in the Storyscript Hub
         </s-text>
@@ -62,16 +62,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import SIcon from '@/components/Icon.vue'
 import SDrop from '@/components/Drop.vue'
-import SText from '@/components/Text.vue'
 
 @Component({
   name: 'Toolbar',
   components: {
-    SIcon,
-    SDrop,
-    SText
+    SDrop
   }
 })
 export default class Toolbar extends Vue {}

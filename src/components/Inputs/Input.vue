@@ -69,15 +69,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
-import SIcon from '@/components/Icon.vue'
-import SText from '@/components/Text.vue'
 
 @Component({
-  name: 'SInput',
-  components: {
-    SIcon,
-    SText
-  }
+  name: 'SInput'
 })
 export default class Input extends Vue {
   @Prop({ type: Boolean, default: false }) readonly white!: boolean

@@ -4,7 +4,11 @@ import Notification from '@/components/Notification.vue'
 describe('Notification.vue', () => {
   describe('notification should mount', () => {
     it('should display', () => {
-      const notification = shallowMount(Notification)
+      const notification = shallowMount(Notification, {
+        stubs: {
+          's-text': '<div />'
+        }
+      })
       expect(notification.html()).toBeTruthy()
       notification.destroy()
     })
@@ -15,7 +19,11 @@ describe('Notification.vue', () => {
     let vm: any
 
     beforeEach(() => {
-      notification = shallowMount(Notification)
+      notification = shallowMount(Notification, {
+        stubs: {
+          's-text': '<div />'
+        }
+      })
       vm = notification.vm as any
     })
 
@@ -44,6 +52,9 @@ describe('Notification.vue', () => {
       const view = shallowMount(Notification, {
         propsData: {
           hidden: true
+        },
+        stubs: {
+          's-text': '<div />'
         }
       })
       expect(view.vm).toHaveProperty('visible', false)

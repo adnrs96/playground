@@ -9,6 +9,11 @@ describe('Share', () => {
     share = shallowMount(Share, {
       mocks: {
         $copyText: jest.fn()
+      },
+      stubs: {
+        's-text': '<div />',
+        's-button': '<div />',
+        's-icon': '<div />'
       }
     })
     vm = share.vm as any

@@ -29,11 +29,10 @@
       class="overflow-hidden min-h-screen-no-navbar max-h-screen-no-navbar"
     >
       <s-text
-        head="1"
-        weifht="regular"
-        color="text-gray-90"
-        class="py-10"
-        center
+        h="1"
+        weight="regular"
+        class="py-10 text-gray-90"
+        align="center"
       >
         Welcome to Storyscript Studio!
       </s-text>
@@ -111,13 +110,22 @@
             </div>
             <s-button
               :id="`explore-${card.id}`"
-              icon="rocket-o"
-              primary
-              reverse
-              danger
+              accent
+              class="flex items-center"
               @click="go(card.id)"
             >
-              Explore
+              <s-icon
+                icon="rocket-o"
+                class="mr-2 rotate-45deg"
+                color="text-white"
+              />
+              <s-text
+                p="3"
+                weight="regular"
+                class="text-white"
+              >
+                Explore
+              </s-text>
             </s-button>
           </div>
         </div>
@@ -136,9 +144,6 @@
 import { Component, Vue } from 'vue-property-decorator'
 import event from '@/event'
 import PerfectScrollbar from '@/components/PerfectScrollbar.vue'
-import SText from '@/components/Text.vue'
-import SButton from '@/components/Button.vue'
-import SIcon from '@/components/Icon.vue'
 import SFooter from '@/components/Footer.vue'
 import samples from '@/samples'
 import { IStorySample } from '@/models/StorySample'
@@ -147,9 +152,6 @@ import { IStorySample } from '@/models/StorySample'
   name: 'Welcome',
   components: {
     PerfectScrollbar,
-    SText,
-    SIcon,
-    SButton,
     SFooter
   }
 })

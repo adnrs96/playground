@@ -8,7 +8,7 @@
     >
       <s-modal cross>
         <s-text
-          head="2"
+          h="2"
           weight="semibold"
           color="text-black"
           class="w-full"
@@ -52,10 +52,9 @@
           </s-labeled-input>
           <s-text
             v-if="nameError.length > 0"
-            p="5"
+            p="4"
             weight="medium"
-            color="text-red-70"
-            class="mt-2"
+            class="mt-2 text-red-70"
           >
             {{ nameError }}
           </s-text>
@@ -75,10 +74,9 @@
           </s-labeled-input>
           <s-text
             v-if="emailError.length > 0"
-            p="5"
+            p="4"
             weight="medium"
-            color="text-red-70"
-            class="mt-2"
+            class="mt-2 text-red-70"
           >
             {{ emailError }}
           </s-text>
@@ -87,8 +85,7 @@
             primary
             center
             type="submit"
-            class="w-full mt-8"
-            color="text-white"
+            class="w-full mt-8 text-white"
             :class="{ 'mb-16': !error }"
             :disabled="nameError.length > 0 || emailError.length > 0 || name.length === 0 || email.length === 0 || sending"
           >
@@ -96,11 +93,10 @@
           </s-button>
           <s-text
             v-if="error"
-            p="5"
+            p="4"
             weight="medium"
-            color="text-red-70"
             :class="{'mb-12': error}"
-            class="mt-2"
+            class="mt-2 text-red-70"
           >
             Failed to send your information.
           </s-text>
@@ -125,17 +121,13 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
-import SText from '@/components/Text.vue'
 import SLabeledInput from '@/components/Inputs/LabeledInput.vue'
-import SButton from '@/components/Button.vue'
 import SBlur from '@/components/Blur.vue'
 import SModal from '@/components/Modals/Modal.vue'
 
 @Component({
   name: 'Login',
   components: {
-    SText,
-    SButton,
     SLabeledInput,
     SBlur,
     SModal
