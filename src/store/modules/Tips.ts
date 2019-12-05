@@ -15,6 +15,11 @@ const mutations = {
     if (!state.samplesShown.includes(sampleId)) {
       state.samplesShown.push(sampleId)
     }
+  },
+  sampleHasNotBeenShown: (state: any, sampleId: string) => {
+    if (state.samplesShown.includes(sampleId)) {
+      state.samplesShown.splice(state.samplesShown.indexOf(sampleId), 1)
+    }
   }
 }
 

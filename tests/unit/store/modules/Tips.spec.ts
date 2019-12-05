@@ -35,5 +35,23 @@ describe('Store::Tips', () => {
         expect(store.state.samplesShown).toEqual(['counter'])
       })
     })
+    describe('sampleHasNotBeenShown', () => {
+      beforeEach(() => {
+        store.commit('sampleHasBeenShown', 'counter')
+      })
+      it('should remove the value', () => {
+        expect.assertions(2)
+        expect(store.state.samplesShown).toEqual(['counter'])
+        store.commit('sampleHasNotBeenShown', 'counter')
+        expect(store.state.samplesShown).toEqual([])
+      })
+      it('should not remove the value again', () => {
+        expect.assertions(2)
+        expect(store.state.samplesShown).toEqual(['counter'])
+        store.commit('sampleHasNotBeenShown', 'counter')
+        store.commit('sampleHasNotBeenShown', 'counter')
+        expect(store.state.samplesShown).toEqual([])
+      })
+    })
   })
 })

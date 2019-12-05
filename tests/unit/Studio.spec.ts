@@ -5,16 +5,19 @@ describe('main::Studio.vue', () => {
   let studio: Wrapper<Studio>
   let vm: any
   let boot: typeof jest.fn
+  let hideLauncher: typeof jest.fn
 
   beforeEach(() => {
     boot = jest.fn()
+    hideLauncher = jest.fn()
     studio = shallowMount(Studio, {
       stubs: {
         'router-view': '<div />'
       },
       mocks: {
         $intercom: {
-          boot
+          boot,
+          hideLauncher
         }
       }
     })
@@ -26,8 +29,9 @@ describe('main::Studio.vue', () => {
   })
 
   it('should mount', () => {
-    expect.assertions(2)
+    expect.assertions(3)
     expect(boot).toHaveBeenCalled()
+    expect(hideLauncher).toHaveBeenCalled()
     expect(studio.html()).toBeTruthy()
   })
 

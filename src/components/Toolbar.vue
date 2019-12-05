@@ -43,6 +43,7 @@
             icon="compass"
             height="20"
             width="20"
+            class="text-gray-90"
             clickable
           />
         </a>
