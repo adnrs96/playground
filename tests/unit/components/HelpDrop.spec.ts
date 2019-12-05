@@ -66,4 +66,19 @@ describe('HelpDrop.vue', () => {
       expect(vm.$refs.self.hideIfShown).toHaveBeenCalled()
     })
   })
+
+  describe('.clickBtn()', () => {
+    it('should call showTrigger', () => {
+      expect.assertions(1)
+      vm.$refs.self = { showTrigger: jest.fn(), show: false }
+      vm.clickBtn()
+      expect(vm.$refs.self.showTrigger).toHaveBeenCalled()
+    })
+    it('should not call showTrigger', () => {
+      expect.assertions(1)
+      vm.$refs.self = undefined
+      vm.clickBtn()
+      expect(vm.$refs.self).toBeUndefined()
+    })
+  })
 })
