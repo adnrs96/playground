@@ -89,11 +89,12 @@ export default class Intro extends Vue {
   private element: HTMLElement | null = null
 
   @Watch('currentTipIdx')
-  private async onCurrentTipIncrement () {
+  private onCurrentTipIncrement () {
     this.refreshTip = true
-    await this.$nextTick()
-    this.element = document.querySelector(this.currentTip?.element || '')
-    this.refreshTip = false
+    this.$nextTick().then(() => {
+      this.element = document.querySelector(this.currentTip?.element || 'body')
+      this.refreshTip = false
+    })
   }
 
   private updateTip () {
@@ -127,7 +128,7 @@ export default class Intro extends Vue {
       this.$nextTick().then(() => (this.$nextTick().then(this.showTip)))
     }
     this.$nextTick().then(() => {
-      this.element = document.querySelector(this.currentTip?.element || '')
+      this.element = document.querySelector(this.currentTip?.element || 'body')
     })
   }
 
