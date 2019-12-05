@@ -19,7 +19,10 @@ describe('Collaborators', () => {
     store = new Vuex.Store(StorePayload)
     view = shallowMount(Collaborators, {
       store,
-      localVue
+      localVue,
+      stubs: {
+        's-text': '<div />'
+      }
     })
     vm = view.vm as any
   })

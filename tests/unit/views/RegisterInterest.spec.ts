@@ -6,7 +6,12 @@ describe('RegisterInterest', () => {
   let vm: any
 
   beforeEach(() => {
-    registerInterest = shallowMount(RegisterInterest)
+    registerInterest = shallowMount(RegisterInterest, {
+      stubs: {
+        's-text': '<div />',
+        's-button': '<div />'
+      }
+    })
     vm = registerInterest.vm as any
   })
 

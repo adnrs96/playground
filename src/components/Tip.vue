@@ -17,10 +17,9 @@
     />
     <s-text
       slot="content"
-      p="5"
+      p="4"
       weight="medium"
-      color="text-gray-90"
-      class="max-w-xxs whitespace-normal w-max-content"
+      class="max-w-xxs whitespace-normal w-max-content text-gray-90"
       v-text="text"
     />
   </s-drop>
@@ -28,15 +27,11 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import SIcon from '@/components/Icon.vue'
-import SText from '@/components/Text.vue'
 import SDrop from '@/components/Drop.vue'
 
 @Component({
   name: 'Tip',
   components: {
-    SIcon,
-    SText,
     SDrop
   }
 })

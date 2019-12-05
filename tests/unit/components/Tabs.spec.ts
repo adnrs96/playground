@@ -9,6 +9,9 @@ describe('Tabs.vue', () => {
     view = shallowMount(Tabs, {
       slots: {
         default: ['<div data-tab-title="hello" />', '<div data-tab-title="world" />']
+      },
+      stubs: {
+        's-text': '<div />'
       }
     })
     vm = view.vm as any

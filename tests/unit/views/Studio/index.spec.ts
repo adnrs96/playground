@@ -20,7 +20,9 @@ describe('Studio index', () => {
     })
     studio = shallowMount(Studio, {
       stubs: {
-        RouterView: true
+        'router-view': '<div />',
+        's-text': '<div />',
+        's-icon': '<div />'
       },
       mocks: {
         $route: {
@@ -64,6 +66,10 @@ describe('Studio index', () => {
           push: jest.fn(),
           replace: jest.fn()
         }
+      },
+      stubs: {
+        's-text': '<div />',
+        's-icon': '<div />'
       }
     })
     expect(view.vm).toHaveProperty('isIntro', false)
@@ -86,6 +92,10 @@ describe('Studio index', () => {
             push: jest.fn(),
             replace: jest.fn()
           }
+        },
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
         }
       })
       const vvm = view.vm as any
@@ -117,6 +127,10 @@ describe('Studio index', () => {
             push: jest.fn(),
             replace: jest.fn()
           }
+        },
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
         }
       })
       ivm = idxView.vm as any

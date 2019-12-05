@@ -12,10 +12,9 @@
       >
         <s-text
           center
-          head="2"
+          h="2"
           weight="regular"
-          color="text-gray-100"
-          class="w-full mb-8"
+          class="w-full mb-8 text-gray-100"
         >
           Share your story to the world!
         </s-text>
@@ -23,8 +22,7 @@
           <s-text
             p="2"
             weight="regular"
-            color="text-gray-70"
-            class="mb-2"
+            class="mb-2 text-gray-70"
           >
             Copy link
           </s-text>
@@ -50,18 +48,19 @@
           </s-input>
           <s-text
             v-show="copied"
-            p="5"
+            p="4"
             weight="regular"
-            color="text-indigo-70"
-            class="mt-2"
+            class="mt-2 text-indigo-70"
           >
             Link copied in your clipboard!
           </s-text>
         </div>
       </s-modal>
     </s-blur>
-    <div
+    <s-button
       id="share-btn"
+      accent
+      size="smaller"
       tabindex="2"
       class="flex items-center rounded-md cursor-pointer bg-indigo-70 hover:bg-indigo-60"
       @click="$refs.shareModal.show()"
@@ -69,24 +68,21 @@
       <s-icon
         icon="user-plus"
         color="text-white"
-        class="m-2"
+        class="mr-2"
       />
       <s-text
-        p="5"
+        p="4"
         weight="medium"
-        class="mr-3 my-1 text-white"
+        class="text-white"
       >
         Share
       </s-text>
-    </div>
+    </s-button>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import SButton from '@/components/Button.vue'
-import SIcon from '@/components/Icon.vue'
-import SText from '@/components/Text.vue'
 import SBlur from '@/components/Blur.vue'
 import { SModal } from '@/components/Modals'
 import { SInput } from '@/components/Inputs'
@@ -94,9 +90,6 @@ import { SInput } from '@/components/Inputs'
 @Component({
   name: 'SShare',
   components: {
-    SButton,
-    SIcon,
-    SText,
     SBlur,
     SModal,
     SInput
