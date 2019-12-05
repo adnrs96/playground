@@ -24,9 +24,9 @@ describe('Navbar', () => {
   it('should display text under button', async () => {
     expect.assertions(1)
     await page.waitForSelector('#new-from-tpl-btn')
-    await page.click('#new-from-tpl-btn')
+    await page.hover('#new-from-tpl-btn')
     const tip = await page.$eval('#new-from-tpl-btn>.content>div>p', (e: Element) => e.innerHTML)
-    expect(tip.trim()).toEqual('Studio for creating your own apps is under active development.')
+    expect(tip.trim()).toEqual('Write a new Story starting from this template.')
     await percySnapshot(page, 'Studio NewFromTemplate Tip')
   })
 

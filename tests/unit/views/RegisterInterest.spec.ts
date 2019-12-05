@@ -1,41 +1,25 @@
 import { Wrapper, shallowMount } from '@vue/test-utils'
-import Login from '@/views/Login.vue'
+import RegisterInterest from '@/views/RegisterInterest.vue'
 
-describe('Login', () => {
-  let login: Wrapper<Login>
+describe('RegisterInterest', () => {
+  let registerInterest: Wrapper<RegisterInterest>
   let vm: any
 
   beforeEach(() => {
-    login = shallowMount(Login)
-    vm = login.vm as any
+    registerInterest = shallowMount(RegisterInterest)
+    vm = registerInterest.vm as any
   })
 
   afterEach(() => {
-    login.destroy()
+    registerInterest.destroy()
   })
 
   it('should mount', () => {
     expect.assertions(1)
-    expect(login.html()).toBeTruthy()
+    expect(registerInterest.html()).toBeTruthy()
   })
 
   describe('watchers', () => {
-    describe('name', () => {
-      it('should not do anything when name is valid', () => {
-        expect.assertions(1)
-        vm.name = 'toto'
-        vm.onNameHandler()
-        expect(vm).toHaveProperty('nameError', '')
-      })
-
-      it('should display an error when name is invalid', () => {
-        expect.assertions(1)
-        vm.name = 'to'
-        vm.onNameHandler()
-        expect(vm).toHaveProperty('nameError', 'Name too short.')
-      })
-    })
-
     describe('email', () => {
       it('should not do anything when email is valid', () => {
         expect.assertions(1)
@@ -62,14 +46,16 @@ describe('Login', () => {
     })
 
     it('should send form info to netlify - error', async () => {
-      expect.assertions(1)
+      expect.assertions(2)
       vm.sending = false
       window.fetch = jest.fn().mockResolvedValue({
         status: 500
       })
-      vm.$refs.loginModal.hide = jest.fn()
+      vm.$refs.registerInterestModal.hide = jest.fn()
       vm.submit()
+      await new Promise(resolve => setTimeout(resolve, 1))
       expect(window.fetch).toHaveBeenCalledTimes(1)
+      expect(vm).toHaveProperty('error', true)
     })
 
     it('should send form info to netlify - success', async () => {
@@ -78,7 +64,7 @@ describe('Login', () => {
       window.fetch = jest.fn().mockResolvedValue({
         status: 200
       })
-      vm.$refs.loginModal.hide = jest.fn()
+      vm.$refs.registerInterestModal.hide = jest.fn()
       vm.submit()
       expect(vm).toHaveProperty('error', false)
       expect(window.fetch).toHaveBeenCalledTimes(1)
@@ -88,10 +74,10 @@ describe('Login', () => {
   describe('.close()', () => {
     it('should close the modal, then reset the inputs', () => {
       expect.assertions(3)
-      vm.$refs.loginModal.hide = jest.fn()
+      vm.$refs.registerInterestModal.hide = jest.fn()
       vm.close()
-      expect(vm.$refs.loginModal.hide).toHaveBeenCalledTimes(1)
-      expect(vm).toHaveProperty('name', '')
+      expect(vm.$refs.registerInterestModal.hide).toHaveBeenCalledTimes(1)
+      expect(vm).toHaveProperty('comment', '')
       expect(vm).toHaveProperty('email', '')
     })
   })
@@ -99,15 +85,15 @@ describe('Login', () => {
   describe('.onSuccess()', () => {
     it('should reset success state, then close the modal, after 2s', async () => {
       expect.assertions(6)
-      vm.$refs.loginModal = { hide: jest.fn() }
+      vm.$refs.registerInterestModal = { hide: jest.fn() }
       await vm.onSuccess()
-      expect(vm.$refs.loginModal.hide).toHaveBeenCalledTimes(0)
+      expect(vm.$refs.registerInterestModal.hide).toHaveBeenCalledTimes(0)
       vm.success = true
       vm.error = true
       expect(vm).toHaveProperty('success', true)
       expect(vm).toHaveProperty('error', true)
       await new Promise(resolve => setTimeout(resolve, 2000))
-      expect(vm.$refs.loginModal.hide).toHaveBeenCalledTimes(1)
+      expect(vm.$refs.registerInterestModal.hide).toHaveBeenCalledTimes(1)
       expect(vm).toHaveProperty('success', false)
       expect(vm).toHaveProperty('error', false)
     })
