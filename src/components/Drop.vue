@@ -3,17 +3,16 @@
     ref="self"
     v-click-outside="hideIfShown"
     class="drop"
-    @mouseover="showTrigger('hover', true)"
-    @mouseleave="showTrigger('hover', false)"
-    @click="$emit('click', $event)"
   >
     <div
       ref="button"
       tabindex="3"
       class="cursor-pointer relative focus:outline-none"
+      @mouseover="showTrigger('hover', true)"
+      @mouseleave="showTrigger('hover', false)"
       @focus.capture="showTrigger('focus', true)"
-      @blur.capture="showTrigger('focus', false)"
-      @click="showTrigger('click', !show)"
+      @blur.capture="showTrigger('focus', false);"
+      @click="$emit('click', $event); showTrigger('click', !show)"
     >
       <slot :open="show" />
     </div>
@@ -150,7 +149,7 @@ export default class Drop extends Vue {
 
   /**
    * refreshPosition will set a new array of position and define the buttonSize needed for the arrow position
-   * prevent those classes to be purged in production : before-mr-3 before-mr-4 before-mr-6 before-ml-3
+   * prevent those classes to be purged in production : before-mr-3 before-mr-4 before-mr-20 before-mr-6 before-ml-3
    * before-ml-4 before-ml-6 before-mt-3 before-mt-4 before-mt-6 before-mb-3 before-m-4 before-mb-6
    * top-full bottom-full left-full right-full top-0 bottom-0 left-0 right-0
    */
@@ -170,22 +169,36 @@ export default class Drop extends Vue {
         const spaceArrowRight = window.innerWidth - button.getBoundingClientRect().left - content.clientWidth
         this.buttonSize = (button.clientWidth >= 160) ? 24 : (button.clientWidth > 64) ? (((button.clientWidth / 2 >> 4) + 1) << 4) / 4 : Math.round(button.clientWidth / 2 / 4) + 1
 
-        const anyTrue = this.up || this.down || this.left || this.right
-        const maxSpace = Math.max(spaceUp, spaceDown, spaceLeft, spaceRight)
-
-        if (this.up || (maxSpace === spaceUp && !anyTrue)) {
-          newPos[0] = 'bottom'
-          newPos[1] = this.compareSpace(spaceArrowLeft, spaceArrowRight, this.arrowleft, this.arrowright) ? 'left' : 'right'
-        } else if (this.down || (maxSpace === spaceDown && !anyTrue)) {
+        if (this.up || this.down) {
           newPos[0] = 'top'
+          if (this.up && spaceUp > 0) {
+            newPos[0] = 'bottom'
+          }
           newPos[1] = this.compareSpace(spaceArrowLeft, spaceArrowRight, this.arrowleft, this.arrowright) ? 'left' : 'right'
-        } else if (this.left || (maxSpace === spaceLeft && !anyTrue)) {
-          newPos[0] = 'right'
+        } else if (this.left || this.right) {
+          newPos[0] = 'left'
+          if (this.left && spaceLeft > 0) {
+            newPos[0] = 'right'
+          }
           newPos[1] = this.compareSpace(spaceArrowUp, spaceArrowDown, this.arrowup, this.arrowdown) ? 'top' : 'bottom'
         } else {
-          newPos[0] = 'left'
-          newPos[1] = this.compareSpace(spaceArrowUp, spaceArrowDown, this.arrowup, this.arrowdown) ? 'top' : 'bottom'
+          const maxSpace = Math.max(spaceUp, spaceDown, spaceLeft, spaceRight)
+
+          if (maxSpace === spaceUp) {
+            newPos[0] = 'bottom'
+            newPos[1] = this.compareSpace(spaceArrowLeft, spaceArrowRight, this.arrowleft, this.arrowright) ? 'left' : 'right'
+          } else if (maxSpace === spaceDown) {
+            newPos[0] = 'top'
+            newPos[1] = this.compareSpace(spaceArrowLeft, spaceArrowRight, this.arrowleft, this.arrowright) ? 'left' : 'right'
+          } else if (maxSpace === spaceLeft) {
+            newPos[0] = 'right'
+            newPos[1] = this.compareSpace(spaceArrowUp, spaceArrowDown, this.arrowup, this.arrowdown) ? 'top' : 'bottom'
+          } else {
+            newPos[0] = 'left'
+            newPos[1] = this.compareSpace(spaceArrowUp, spaceArrowDown, this.arrowup, this.arrowdown) ? 'top' : 'bottom'
+          }
         }
+
         if (newPos[0] !== this.currentPosition[0] || newPos[1] !== this.currentPosition[1]) {
           this.currentPosition = newPos
         }
