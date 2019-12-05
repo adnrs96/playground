@@ -37,16 +37,6 @@
         Welcome to Storyscript Studio!
       </s-text>
 
-      <!-- <s-text
-        p="3"
-        weight="regular"
-        color="text-gray-70"
-        class="pb-10"
-        center
-      >
-        toto
-      </s-text> -->
-
       <div class="flex flex-col md:flex-row md:flex-wrap justify-center mb-12">
         <div
           v-for="(card, idx) in samples"
@@ -67,16 +57,14 @@
                 <s-text
                   p="1"
                   weight="bold"
-                  color="text-gray-100"
-                  class="title"
+                  class="title text-gray-100"
                 >
                   {{ card.name }}
                 </s-text>
                 <s-text
                   p="3"
                   weight="regular"
-                  color="text-black"
-                  class="description"
+                  class="description text-black"
                 >
                   {{ card.description }}
                 </s-text>
