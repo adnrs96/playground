@@ -23,11 +23,18 @@
       @apply relative;
     }
 
+    &.border {
+      --arrow-margin: -.3rem
+    }
+    &:not(.border) {
+      --arrow-margin: -.25rem
+    }
+
     &.top-full.right-0 {
       @apply mt-3 -mr-3;
 
       &:before {
-        top: -.3rem;
+        top: var(--arrow-margin);
         right: 0;
       }
     }
@@ -36,7 +43,7 @@
       @apply mt-3 -ml-3;
 
       &:before {
-        top: -.3rem;
+        top: var(--arrow-margin);
         left: 0;
       }
     }
@@ -45,7 +52,7 @@
       @apply mb-3 -ml-3;
 
       &:before {
-        bottom: -.3rem;
+        bottom: var(--arrow-margin);
         left: 0;
       }
     }
@@ -54,7 +61,7 @@
       @apply mb-3 -mr-3;
 
       &:before {
-        bottom: -.3rem;
+        bottom: var(--arrow-margin);
         right: 0;
       }
     }
@@ -64,7 +71,7 @@
 
       &:before {
         top: .75rem;
-        left: -.3rem;
+        left: var(--arrow-margin);
       }
     }
 
@@ -73,7 +80,7 @@
 
       &:before {
         bottom: .75rem;
-        left: -.3rem;
+        left: var(--arrow-margin);
       }
     }
 
@@ -82,7 +89,7 @@
 
       &:before {
         top: .75rem;
-        right: -.3rem;
+        right: var(--arrow-margin);
       }
     }
 
@@ -91,7 +98,7 @@
 
       &:before {
         bottom: .75rem;
-        right: -.3rem;
+        right: var(--arrow-margin);
       }
     }
 
