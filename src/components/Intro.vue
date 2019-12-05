@@ -19,7 +19,7 @@
         down
         mode="click"
         shadow="sm"
-        :style="`left:${currentTip.x}px;top:${currentTip.y}px`"
+        :style="`left:${left}px;top:${top}px`"
         @close="updateTip"
       >
         <s-icon
@@ -86,11 +86,14 @@ export default class Intro extends Vue {
   @Prop({ type: Boolean, default: false }) private showAtStartup!: boolean
   private currentTipIdx = 0
   private refreshTip = false
+  private element: HTMLElement | null = null
 
   @Watch('currentTipIdx')
-  private onCurrentTipIncrement () {
+  private async onCurrentTipIncrement () {
     this.refreshTip = true
-    this.$nextTick().then(() => (this.refreshTip = false))
+    await this.$nextTick()
+    this.element = document.querySelector(this.currentTip?.element || '')
+    this.refreshTip = false
   }
 
   private updateTip () {
@@ -111,10 +114,21 @@ export default class Intro extends Vue {
     }, 100)
   }
 
+  private get left (): number {
+    return (this.element?.offsetLeft || 0) + (this.currentTip?.x || 0)
+  }
+
+  private get top (): number {
+    return (this.element?.offsetTop || 0) + (this.currentTip?.y || 0)
+  }
+
   mounted () {
     if (this.showAtStartup) {
-      this.$nextTick().then(this.showTip)
+      this.$nextTick().then(() => (this.$nextTick().then(this.showTip)))
     }
+    this.$nextTick().then(() => {
+      this.element = document.querySelector(this.currentTip?.element || '')
+    })
   }
 
   private get currentTip (): IStorySampleTip | undefined {
