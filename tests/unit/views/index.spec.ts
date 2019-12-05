@@ -29,16 +29,16 @@ describe('index.vue', () => {
       expect(view.html()).toBeDefined()
     })
 
-    it('should redirect', async () => {
+    it('should redirect', () => {
       expect.assertions(1)
       expect(push).toHaveBeenCalled()
     })
 
-    it('isIntro should be false', async () => {
+    it('isIntro should be false', () => {
       expect.assertions(1)
       const rpush = jest.fn()
 
-      const idxView = await shallowMount(Index, {
+      const idxView = shallowMount(Index, {
         stubs: {
           RouterView: true
         },
@@ -53,6 +53,15 @@ describe('index.vue', () => {
       })
       expect(rpush).not.toHaveBeenCalled()
       idxView.destroy()
+    })
+
+    describe('watcher', () => {
+      it('should call the checkRoute method when route changes', () => {
+        const vm = view.vm as any
+        vm.checkRoute = jest.fn()
+        vm.onRouteChange()
+        expect(vm.checkRoute).toHaveBeenCalled()
+      })
     })
   })
 })
