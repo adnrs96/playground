@@ -11,8 +11,7 @@
       >
         <s-text
           v-if="section.name"
-          class="mb-8"
-          color="text-indigo-100"
+          class="mb-8 text-indigo-100"
           p="1"
           weight="semibold"
           v-text="section.name"
@@ -60,8 +59,7 @@
     <div class="py-4 flex flex-grow flex-col items-center justify-between max-w-5xl mx-auto relative">
       <div class="w-full h-12 hidden sm:block" />
       <s-text
-        class="flex items-center relative sm:absolute inset-y-0 left-0"
-        color="text-gray-100"
+        class="flex items-center relative sm:absolute inset-y-0 left-0 text-gray-100"
         p="2"
         weight="semibold"
       >
@@ -85,10 +83,9 @@
       </div>
       <div class="flex items-center relative sm:absolute inset-y-0 right-0">
         <s-text
-          color="text-gray-100"
           p="2"
           weight="semibold"
-          class="sm:mr-2"
+          class="sm:mr-2 text-gray-100"
         >
           {{ new Date() | moment('YYYY') }} Storyscript
         </s-text>
@@ -114,16 +111,10 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import SText from '@/components/Text.vue'
-import SIcon from '@/components/Icon.vue'
 import FooterElements from '@/components/footer.json'
 
 @Component({
-  name: 'SFooter',
-  components: {
-    SText,
-    SIcon
-  }
+  name: 'SFooter'
 })
 export default class Footer extends Vue {
   @Prop({ type: Boolean, default: false }) private readonly full!: boolean

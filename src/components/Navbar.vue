@@ -10,9 +10,10 @@
         {{ title }}
       </s-text>
       <div class="flex items-center mx-6">
-        <div
+        <s-button
           id="publish-btn"
           tabindex="1"
+          size="smaller"
           class="flex items-center rounded-md"
           :class="[
             `${publishing ? 'cursor-wait bg-indigo-40' : 'cursor-pointer bg-indigo-70 hover:bg-indigo-60'}`
@@ -20,9 +21,9 @@
           @click="publish"
         >
           <s-text
-            p="5"
+            p="4"
             weight="semibold"
-            class="mx-3 my-1 text-white"
+            class="mx-2 text-white"
           >
             Publish
           </s-text>
@@ -32,7 +33,7 @@
             class="mr-2"
             clickable
           />
-        </div>
+        </s-button>
       </div>
       <div class="flex flex-1 items-center justify-end">
         <s-collaborators class="mr-4" />
@@ -46,8 +47,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
-import SIcon from '@/components/Icon.vue'
-import SText from '@/components/Text.vue'
+import SDrop from '@/components/Drop.vue'
 import event from '@/event'
 import SCollaborators from '@/components/Collaborators.vue'
 import SShare from '@/views/Share.vue'
@@ -57,8 +57,7 @@ import SRegisterInterest from '@/views/RegisterInterest.vue'
 @Component({
   name: 'Navbar',
   components: {
-    SIcon,
-    SText,
+    SDrop,
     SCollaborators,
     SShare,
     SHelp,

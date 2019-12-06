@@ -12,7 +12,7 @@
       <s-text
         p="5"
         weight="medium"
-        class="pl-3 py-2 whitespace-no-wrap"
+        class="pl-3 py-2 whitespace-no-wrap text-white"
       >
         Help
       </s-text>
@@ -155,15 +155,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { Mutation } from 'vuex-class'
-import SIcon from '@/components/Icon.vue'
-import SText from '@/components/Text.vue'
 import SDrop from '@/components/Drop.vue'
 
 @Component({
   name: 'HelpDrop',
   components: {
-    SIcon,
-    SText,
     SDrop
   }
 })

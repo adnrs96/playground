@@ -17,17 +17,17 @@
         hidden
       >
         <s-text
-          p="5"
+          p="4"
           weight="medium"
-          color="text-gray-30"
+          class="text-gray-30"
         >
           A new version is available.
           <s-text
             clickable
-            span
-            p="5"
+            tag="span"
+            p="4"
             weight="bold"
-            color="text-indigo-40 hover:text-indigo-70 active:text-indigo-80"
+            class="text-indigo-40 hover:text-indigo-70 active:text-indigo-80"
             @click.prevent="refresh"
           >
             Click here
@@ -43,13 +43,11 @@
 import { Component, Vue } from 'vue-property-decorator'
 import event from './event'
 import SNotification from '@/components/Notification.vue'
-import SText from '@/components/Text.vue'
 
 @Component({
   name: 'Studio',
   components: {
-    SNotification,
-    SText
+    SNotification
   }
 })
 export default class Studio extends Vue {

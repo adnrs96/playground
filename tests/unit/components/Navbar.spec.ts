@@ -12,6 +12,12 @@ describe('Navbar.vue', () => {
         $route: {
           name: 'welcome'
         }
+      },
+      stubs: {
+        's-text': '<div />',
+        's-icon': '<div />',
+        's-button': '<div />',
+        's-gradient-border-button': '<div />'
       }
     })
     vm = navbar.vm as any

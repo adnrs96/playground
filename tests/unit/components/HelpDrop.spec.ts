@@ -22,6 +22,10 @@ describe('HelpDrop.vue', () => {
           }
         }
       },
+      stubs: {
+        's-text': '<div />',
+        's-icon': '<div />'
+      },
       store,
       localVue
     })

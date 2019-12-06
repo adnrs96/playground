@@ -7,8 +7,7 @@
       <s-text
         p="3"
         weight="semibold"
-        color="text-gray-80"
-        class="mb-2"
+        class="mb-2 text-gray-80"
       >
         <slot name="label" />
       </s-text>
@@ -40,15 +39,11 @@
 <script lang="ts">
 import { Component } from 'vue-property-decorator'
 import SInput from '@/components/Inputs/Input.vue'
-import SText from '@/components/Text.vue'
-import SIcon from '@/components/Icon.vue'
 
 @Component({
   name: 'LabeledInput',
   components: {
-    SText,
-    SInput,
-    SIcon
+    SInput
   }
 })
 export default class LabeledInput extends SInput {}

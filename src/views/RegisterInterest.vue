@@ -8,7 +8,7 @@
     >
       <s-modal cross>
         <s-text
-          head="2"
+          h="2"
           weight="semibold"
           color="text-gray-100"
           class="w-full mb-6"
@@ -62,8 +62,7 @@
             v-if="emailError.length > 0"
             p="5"
             weight="medium"
-            color="text-red-70"
-            class="mt-2"
+            class="mt-2 text-red-70"
           >
             {{ emailError }}
           </s-text>
@@ -85,8 +84,7 @@
             primary
             center
             type="submit"
-            class="w-full mt-8"
-            color="text-white"
+            class="w-full mt-8 text-white"
             :class="{ 'mb-16': !error }"
             :disabled="emailError.length > 0 || email.length === 0 || sending"
           >
@@ -94,11 +92,10 @@
           </s-button>
           <s-text
             v-if="error"
-            p="5"
+            p="4"
             weight="medium"
-            color="text-red-70"
             :class="{'mb-12': error}"
-            class="mt-2"
+            class="mt-2 text-red-70"
           >
             Failed to send your information.
           </s-text>
@@ -140,9 +137,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
-import SText from '@/components/Text.vue'
 import SLabeledInput from '@/components/Inputs/LabeledInput.vue'
-import SButton from '@/components/Button.vue'
 import SBlur from '@/components/Blur.vue'
 import SModal from '@/components/Modals/Modal.vue'
 import SDrop from '@/components/Drop.vue'
@@ -150,8 +145,6 @@ import SDrop from '@/components/Drop.vue'
 @Component({
   name: 'RegisterInterest',
   components: {
-    SText,
-    SButton,
     SLabeledInput,
     SBlur,
     SModal,

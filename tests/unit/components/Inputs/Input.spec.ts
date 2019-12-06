@@ -4,7 +4,12 @@ import { SInput } from '@/components/Inputs'
 describe('Input.vue', () => {
   describe('basic input', () => {
     it('should exist', () => {
-      const input = mount(SInput)
+      const input = mount(SInput, {
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
+        }
+      })
 
       expect(input.html()).toBeTruthy()
       input.destroy()
@@ -13,7 +18,12 @@ describe('Input.vue', () => {
 
   describe('validation', () => {
     it('should be neutral when nothing changed', () => {
-      const cmpnt = mount(SInput)
+      const cmpnt = mount(SInput, {
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
+        }
+      })
 
       expect(cmpnt.classes('border-gray-30')).toBeTruthy()
       cmpnt.destroy()
@@ -23,6 +33,10 @@ describe('Input.vue', () => {
       const cmpnt = mount(SInput, {
         propsData: {
           valid: true
+        },
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
         }
       })
 
@@ -34,6 +48,10 @@ describe('Input.vue', () => {
       const cmpnt = mount(SInput, {
         propsData: {
           valid: false
+        },
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
         }
       })
       const input = cmpnt.find('input')
@@ -48,6 +66,10 @@ describe('Input.vue', () => {
       const valid = mount(SInput, {
         propsData: {
           icon: 'github-o'
+        },
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
         }
       })
 
@@ -57,7 +79,12 @@ describe('Input.vue', () => {
     })
 
     it('should emit', () => {
-      const valid = mount(SInput)
+      const valid = mount(SInput, {
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
+        }
+      })
 
       expect.assertions(14)
       const vm = valid.vm as any
@@ -93,7 +120,12 @@ describe('Input.vue', () => {
     })
 
     it('should emit no-value', () => {
-      const valid = mount(SInput)
+      const valid = mount(SInput, {
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
+        }
+      })
 
       expect.assertions(1)
       const vm = valid.vm as any

@@ -15,6 +15,10 @@ describe('Comments.vue', () => {
           author: 'Crabbie',
           comment: 'hello'
         }]
+      },
+      stubs: {
+        's-text': '<div />',
+        's-text-button': '<div />'
       }
     })
     vm = view.vm as any
@@ -31,7 +35,12 @@ describe('Comments.vue', () => {
 
   it('should mount without comments', () => {
     expect.assertions(1)
-    const vView = shallowMount(Comments)
+    const vView = shallowMount(Comments, {
+      stubs: {
+        's-text': '<div />',
+        's-text-button': '<div />'
+      }
+    })
     expect(vView.html()).toBeTruthy()
     vView.destroy()
   })

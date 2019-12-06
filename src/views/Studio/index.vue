@@ -78,8 +78,6 @@ import { IStorySample } from '@/models/StorySample'
 import samples from '@/samples'
 import MonacoEditor from '@/components/MonacoEditor.vue'
 import SNavbar from '@/components/Navbar.vue'
-import SText from '@/components/Text.vue'
-import SIcon from '@/components/Icon.vue'
 import SIntro from '@/components/Intro.vue'
 import STabs from '@/components/Tabs.vue'
 import SComments from '@/components/Comments.vue'
@@ -89,9 +87,7 @@ import SToolbar from '@/components/Toolbar.vue'
   components: {
     SArchitecture,
     MonacoEditor,
-    SIcon,
     SNavbar,
-    SText,
     SIntro,
     STabs,
     SComments,

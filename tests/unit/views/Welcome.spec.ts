@@ -23,7 +23,10 @@ describe('Welcome.vue', () => {
       router,
       localVue,
       stubs: {
-        'router-view': '<div />'
+        'router-view': '<div />',
+        's-text': '<div />',
+        's-icon': '<div />',
+        's-button': '<div />'
       }
     })
     vm = welcome.vm as any
