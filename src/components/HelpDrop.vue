@@ -155,15 +155,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { Mutation } from 'vuex-class'
-import SIcon from '@/components/Icon.vue'
-import SText from '@/components/Text.vue'
 import SDrop from '@/components/Drop.vue'
 
 @Component({
   name: 'HelpDrop',
   components: {
-    SIcon,
-    SText,
     SDrop
   }
 })
