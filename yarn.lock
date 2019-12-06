@@ -1342,10 +1342,10 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
-"@storyscript/vue@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@storyscript/vue/-/vue-3.0.0.tgz#0d5542c8401e53617a692fc717609faf0a9bedb3"
-  integrity sha512-gkDNCLkpGG0PzGFHE8Zc8D8v3yO+9z8ATvEtOSBa+zLDSnC+7TSmC85OJSOpJ4zIsHH0v4AqYkTgDG09bgl31g==
+"@storyscript/vue@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@storyscript/vue/-/vue-3.1.0.tgz#6ac9db3346e9f38485d870f2e770749e58c709ea"
+  integrity sha512-n/aPweJBpjGAFLnvjfm6mmPMAtDwE12MVxb1OfhzClyqQ0uIlEcx2i/+ApE7sIHpRdsPuvjrzyVPTeQlnK9wYA==
   dependencies:
     vue-property-decorator "8.3.0"
     vue-runtime-helpers "1.1.2"
