@@ -62,9 +62,8 @@
                 :icon="option.icon"
               />
               <s-text
-                color="text-gray-30"
-                p="5"
-                :class="{ 'min-w-24': !narrow }"
+                p="4"
+                :class="['text-gray-30', { 'min-w-24': !narrow }]"
                 v-text="option.name"
               />
             </template>
@@ -77,12 +76,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import SIcon from '@/components/Icon.vue'
-import SText from '@/components/Text.vue'
 
 @Component({
-  name: 'SDrop',
-  components: { SIcon, SText }
+  name: 'SDrop'
 })
 export default class Drop extends Vue {
   private show = false

@@ -6,8 +6,7 @@
     <s-text
       p="3"
       weight="semibold"
-      color="text-gray-100"
-      class="bg-white pl-8 py-1 flex items-center border-t border-b border-gray-20"
+      class="bg-white pl-8 py-1 flex items-center border-t border-b border-gray-20 text-gray-100"
     >
       Services
     </s-text>
@@ -36,9 +35,9 @@
             class="flex items-center"
           >
             <s-text
-              p="5"
+              p="4"
               weight="bold"
-              color="text-yellow-60"
+              class="text-yellow-60"
             >
               Staged
             </s-text>
@@ -56,9 +55,9 @@
               class="flex items-center"
             >
               <s-text
-                p="5"
+                p="4"
                 weight="bold"
-                color="text-green-70"
+                class="text-green-70"
               >
                 Healthy
               </s-text>
@@ -77,17 +76,13 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import SText from '@/components/Text.vue'
-import SIcon from '@/components/Icon.vue'
 import PerfectScrollbar from '@/components/PerfectScrollbar.vue'
 import event from '@/event'
 
 @Component({
   name: 'Architecture',
   components: {
-    PerfectScrollbar,
-    SText,
-    SIcon
+    PerfectScrollbar
   }
 })
 export default class Architecture extends Vue {

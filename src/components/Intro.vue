@@ -32,29 +32,26 @@
         <template #content>
           <s-text
             id="tip-content"
-            p="5"
+            p="4"
             weight="medium"
-            color="text-gray-90"
-            class="max-w-xs w-max-content"
+            class="max-w-xs w-max-content text-gray-90"
             v-text="currentTip.text"
           />
           <div class="flex items-stretch justify-between mt-2">
             <s-text
               id="next-tip"
-              p="6"
+              p="4"
               weight="semibold"
-              color="text-indigo-60"
-              class="cursor-pointer"
+              class="cursor-pointer text-indigo-60"
               @click="$refs.tip.hideIfShown()"
               v-text="currentTipIdx + 1 < tips.length ? 'Next tip' : 'Got it!'"
             />
             <s-text
               v-if="currentTipIdx + 1 < tips.length"
               id="skip-tips"
-              p="6"
+              p="4"
               weight="semibold"
-              color="text-indigo-60"
-              class="cursor-pointer"
+              class="cursor-pointer text-indigo-60"
               @click="$emit('done')"
             >
               Skip tips
@@ -70,15 +67,11 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import { IStorySampleTip } from '@/models/StorySample'
 import SDrop from '@/components/Drop.vue'
-import SIcon from '@/components/Icon.vue'
-import SText from '@/components/Text.vue'
 
 @Component({
   name: 'Intro',
   components: {
-    SDrop,
-    SIcon,
-    SText
+    SDrop
   }
 })
 export default class Intro extends Vue {

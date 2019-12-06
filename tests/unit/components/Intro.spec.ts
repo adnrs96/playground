@@ -4,7 +4,15 @@ import Intro from '@/components/Intro.vue'
 describe('Intro.vue', () => {
   describe('intro should mount', () => {
     it('should display', () => {
-      const intro = shallowMount(Intro, { propsData: { tips: [{ name: '', text: '', x: 0, y: 0 }] } })
+      const intro = shallowMount(Intro, {
+        propsData: {
+          tips: [{ name: '', text: '', x: 0, y: 0 }]
+        },
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
+        }
+      })
       expect(intro.html()).toBeTruthy()
       intro.destroy()
     })
@@ -29,6 +37,10 @@ describe('Intro.vue', () => {
             y: 0
           }],
           showAtStartup: true
+        },
+        stubs: {
+          's-icon': '<div />',
+          's-text': '<div />'
         }
       })
       vm = view.vm as any

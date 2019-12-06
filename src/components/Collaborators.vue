@@ -19,8 +19,7 @@
           v-show="hovered === idx"
           p="3"
           weight="medium"
-          color="text-indigo-70"
-          class="flex items-center justiryf-center px-2 py-1 mx-2"
+          class="text-indigo-70 flex items-center justiryf-center px-2 py-1 mx-2"
         >
           {{ c.name }}
         </s-text>
@@ -48,16 +47,10 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { IStoryCollaborator } from '../models/StorySample'
-import SIcon from '@/components/Icon.vue'
-import SText from '@/components/Text.vue'
 import collaborators from '@/samples/defaultCollaborators'
 
 @Component({
-  name: 'Collaborators',
-  components: {
-    SIcon,
-    SText
-  }
+  name: 'Collaborators'
 })
 export default class Collaborators extends Vue {
   private collaborators: Array<IStoryCollaborator> = collaborators

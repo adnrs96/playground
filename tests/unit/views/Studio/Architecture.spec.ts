@@ -18,6 +18,10 @@ describe('Plaground::Architecture', () => {
         services: ['toto'],
         startAfter: 0,
         serviceDelay: -1
+      },
+      stubs: {
+        's-text': '<div />',
+        's-icon': '<div />'
       }
     })
     vm = archi.vm as any
@@ -35,6 +39,10 @@ describe('Plaground::Architecture', () => {
         services: ['toto'],
         startAfter: 0,
         serviceDelay: -1
+      },
+      stubs: {
+        's-text': '<div />',
+        's-icon': '<div />'
       }
     })
     vm = archi.vm as any
@@ -53,6 +61,10 @@ describe('Plaground::Architecture', () => {
           services: ['toto'],
           startAfter: 0,
           serviceDelay: 0
+        },
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
         }
       })
       vm = archi.vm as any

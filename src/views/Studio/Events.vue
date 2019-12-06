@@ -7,7 +7,7 @@
       v-if="firedEvents.length === 0"
       p="3"
       weight="medium"
-      color="text-gray-50"
+      class="text-gray-50"
     >
       {{ `${events.length !== 0 ? 'Events will appear after a story is published...' : 'This story does not handle events...'}` }}
     </s-text>
@@ -29,9 +29,9 @@
         <div class="flex items-center justify-start w-full p-4">
           <div class="flex items-center">
             <s-text
-              p="5"
+              p="4"
               weight="bold"
-              color="text-gray-70"
+              class="text-gray-70"
             >
               {{ e.title }}
             </s-text>
@@ -51,14 +51,10 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { IStoryEvent } from '@/models/StorySample.ts'
-import SText from '@/components/Text.vue'
 import event from '@/event'
 
 @Component({
-  name: 'Events',
-  components: {
-    SText
-  }
+  name: 'Events'
 })
 export default class Events extends Vue {
   @Prop({ type: Array, default: () => ([]) }) readonly events!: Array<IStoryEvent>

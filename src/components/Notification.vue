@@ -9,9 +9,9 @@
         <div class="flex flex-row p-3 rounded-sm bg-gray-100">
           <s-text
             v-if="!$slots.default"
-            p="5"
+            p="4"
             weight="medium"
-            color="text-gray-30"
+            class="text-gray-30"
           >
             {{ content }}
           </s-text>
@@ -34,13 +34,10 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import SIcon from '@/components/Icon.vue'
-import SText from '@/components/Text.vue'
 import IDisplay from '@/models/Display'
 
 @Component({
-  name: 'SNotification',
-  components: { SIcon, SText }
+  name: 'SNotification'
 })
 export default class Notification extends Vue implements IDisplay {
   @Prop({ type: Boolean, default: false }) private closeable!: boolean

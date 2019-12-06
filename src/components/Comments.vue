@@ -49,33 +49,27 @@
         placeholder="write a comment..."
         @keyup.enter="addComment"
       />
-      <s-button
-        primary
-        small
+      <s-text-button
+        size="small"
+        accent
         :disabled="commentInput.trim().length === 0"
         @click="addComment"
       >
         Send
-      </s-button>
+      </s-text-button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import SText from '@/components/Text.vue'
-import SIcon from '@/components/Icon.vue'
 import { IStorySampleComment } from '@/models/StorySample.ts'
 import { SInput } from '@/components/Inputs'
-import SButton from '@/components/Button.vue'
 import SPerfectScrollbar from '@/components/PerfectScrollbar.vue'
 
 @Component({
   components: {
-    SIcon,
-    SText,
     SInput,
-    SButton,
     SPerfectScrollbar
   }
 })

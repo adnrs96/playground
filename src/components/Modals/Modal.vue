@@ -18,7 +18,6 @@
         v-if="title"
         p="4"
         weight="semibold"
-        color="text-black"
       >
         {{ title }}
       </s-text>
@@ -42,16 +41,10 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Inject } from 'vue-property-decorator'
-import SText from '@/components/Text.vue'
-import SIcon from '@/components/Icon.vue'
 import IDisplay from '@/models/Display'
 
 @Component({
-  name: 'Modal',
-  components: {
-    SText,
-    SIcon
-  }
+  name: 'Modal'
 })
 export default class Modal extends Vue implements IDisplay {
   @Prop({ type: String, default: undefined }) readonly title!: string | undefined
