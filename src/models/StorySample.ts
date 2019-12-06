@@ -6,6 +6,7 @@ export interface IStoryCollaborator {
 export interface IStorySampleTip {
   x: number;
   y: number;
+  element?: string;
   name: string;
   text: string;
 }

@@ -24,7 +24,10 @@
           ]"
         >
           <!-- FIX FOR SAFARI, see https://bugs.webkit.org/show_bug.cgi?id=198375 -->
-          <div class="h-0 flex-1">
+          <div
+            id="editor"
+            class="h-0 flex-1"
+          >
             <monaco-editor
               v-model="payload.code"
               class="w-full h-full"
