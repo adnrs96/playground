@@ -12,7 +12,7 @@
       <s-text
         p="5"
         weight="medium"
-        class="pl-3 py-2 whitespace-no-wrap"
+        class="pl-3 py-2 whitespace-no-wrap text-white"
       >
         Help
       </s-text>
