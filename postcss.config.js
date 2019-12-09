@@ -11,7 +11,8 @@ module.exports = {
         './node_modules/monaco-editor/esm/vs/editor/standalone/**/*.js',
         './node_modules/monaco-editor/esm/vs/editor/standalone/**/*.css',
         './node_modules/monaco-editor/esm/vs/editor/*.js',
-        './node_modules/monaco-editor/esm/vs/editor/**/*.js'
+        './node_modules/monaco-editor/esm/vs/editor/**/*.js',
+        './node_modules/@storyscript/vue/dist/vue.storyscript.esm.js'
       ],
       defaultExtractor: content => content.match(/[a-zA-Z0-9-_:/]+/g)
     })

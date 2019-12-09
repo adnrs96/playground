@@ -1,39 +1,3 @@
 .bg-indigo-100-10 {
   background: rgba(16, 22, 111, 0.1)
 }
-
-.bg-colorful {
-  @apply relative rounded-md overflow-hidden;
-
-  &:before,
-  &:after {
-    content: '';
-    @apply block absolute z-0;
-  }
-
-  &:before {
-    @apply -left-1;
-    width: calc(100% + .5rem);
-    padding-top: calc(100% + .5rem);
-    @include linear-gradient(to right, #9650FD, #F24323, #FF9288, #1D78E2, #1AB3FA, #0DC775);
-  }
-
-  &:hover,
-  &:active,
-  &:focus {
-    &:before {
-      animation-name: wheel;
-      animation-iteration-count: infinite;
-      animation-duration: 3s;
-      animation-timing-function: linear;
-    }
-  }
-
-  &:after {
-    @apply bg-white inset-min rounded-sm;
-  }
-
-  &>* {
-    @apply z-10;
-  }
-}

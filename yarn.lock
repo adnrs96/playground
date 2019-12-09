@@ -1364,10 +1364,10 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
-"@storyscript/vue@3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@storyscript/vue/-/vue-3.2.4.tgz#5fdf88c546f547f57153ce983477daa82fb79387"
-  integrity sha512-SlyIv76KiId6JXfG/hH2cxnnUrb+sUjxoV8BjG8YhrGaZenxx6Mk/Yyh/g+wptgPJcYQyxeWgj9xPP5eXBIgKw==
+"@storyscript/vue@3.2.6":
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/@storyscript/vue/-/vue-3.2.6.tgz#a03e681d70115fcdac690e3c4901bb553588bfd7"
+  integrity sha512-itltc/+13I0QSl+5RLIMV3QDmOTYYbQdM/n+T2LaHscBvM4TMNdW4NzEynRTV8PlOhNz6bwP88fg3G5I3osnJA==
   dependencies:
     perfect-scrollbar "1.4.0"
     vue-property-decorator "8.3.0"

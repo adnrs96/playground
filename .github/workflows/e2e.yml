@@ -14,16 +14,27 @@ jobs:
     
     steps:
       - uses: actions/checkout@v1
-
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
       - name: Start the integration studio
         run: yarn stack:studio
         env:
           VUE_APP_INTERCOM_APP_ID: ${{ secrets.VUE_APP_INTERCOM_APP_ID }}
-
+      - name: Caching dependencies
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: v1-deps-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            v1-deps-${{ hashFiles('yarn.lock') }}
+            v1-deps-
       - name: Install dependencies locally
         run: yarn
-        
       - name: End2End testing with Percy report
-        run: yarn percy
+        uses: percy/exec-action@master
+        with:
+          command: "yarn percy"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+
