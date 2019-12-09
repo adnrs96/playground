@@ -1,6 +1,6 @@
-import PerfectScrollbar from '@/components/PerfectScrollbar.vue'
+import PerfectScrollbar from '@internal/components/PerfectScrollbar.vue'
 import { shallowMount, Wrapper, createLocalVue } from '@vue/test-utils'
-import event from '@/event'
+import event from '@app/event'
 
 const localVue = createLocalVue()
 

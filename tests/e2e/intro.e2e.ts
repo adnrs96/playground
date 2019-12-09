@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer'
 import samples from '@/samples'
-import { IStorySampleTip } from '@/models/StorySample'
+import { IStorySampleTip } from '&/StorySample'
 
 const { TEST_URL, puppeteerConfig } = require('./puppeteer.config')
 

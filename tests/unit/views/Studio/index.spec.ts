@@ -1,9 +1,9 @@
-import Studio from '@/views/Studio/index.vue'
+import Studio from '@app/Studio/index.vue'
 import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
 import samples from '@/samples'
 import Vuex, { Store } from 'vuex'
-import StorePayload from '@/store/modules/Payload'
-import StoreTips from '@/store/modules/Tips'
+import StorePayload from '@app/store/modules/Payload'
+import StoreTips from '@app/store/modules/Tips'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)

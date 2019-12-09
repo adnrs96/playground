@@ -1,6 +1,6 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Architecture from '@/views/Studio/Architecture.vue'
-import event from '@/event'
+import Architecture from '@app/Studio/Architecture.vue'
+import event from '@app/event'
 
 describe('Plaground::Architecture', () => {
   let archi: Wrapper<Architecture>

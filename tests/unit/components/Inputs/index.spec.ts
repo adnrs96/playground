@@ -1,7 +1,7 @@
 import {
   SInput,
   SLabeledInput
-} from '@/components/Inputs'
+} from '@internal/components/Inputs'
 
 describe('Inputs index.spec.ts', () => {
   it('should return Inputs components', () => {

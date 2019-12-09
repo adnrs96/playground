@@ -1,5 +1,5 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Intro from '@/components/Intro.vue'
+import Intro from '@internal/components/Intro.vue'
 
 describe('Intro.vue', () => {
   describe('intro should mount', () => {

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { SInput } from '@/components/Inputs'
+import { SInput } from '@internal/components/Inputs'
 
 describe('Input.vue', () => {
   describe('basic input', () => {

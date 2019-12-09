@@ -1,5 +1,5 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Comments from '@/components/Comments.vue'
+import Comments from '@internal/components/Comments.vue'
 
 describe('Comments.vue', () => {
   let view: Wrapper<Comments>

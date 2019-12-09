@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es5", 
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
@@ -11,21 +11,23 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env", "jest", "node"],
+    "types": ["webpack-env", "jest", "node", "vue"],
     "resolveJsonModule": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@app/*": ["src/app/views/*", "src/app/*"],
+      "@editor/*": ["src/editor/core/views/*", "src/editor/core/*"],
+      "@editor-plugin/*": ["src/editor/plugin-*/index.ts"],
+      "@internal/*": ["src/internal/*"],
+      "&/*": ["src/app/types/*", "src/editor/core/types/*", "src/internal/types/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "include": [
-    "src/*.vue",
     "src/**/*.ts",
-    "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx",
-    "src/plugins/storyscript.lang.js"
+    "src/editor/core/plugins/storyscript.lang.js"
   ],
   "exclude": ["node_modules"]
 }

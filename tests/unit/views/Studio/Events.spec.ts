@@ -1,6 +1,6 @@
-import Events from '@/views/Studio/Events.vue'
+import Events from '@app/Studio/Events.vue'
 import { Wrapper, shallowMount } from '@vue/test-utils'
-import event from '@/event'
+import event from '@app/event'
 
 describe('Events.vue', () => {
   let events: Wrapper<Events>

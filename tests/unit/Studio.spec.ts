@@ -1,5 +1,5 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Studio from '@/Studio.vue'
+import Studio from '@app/Studio.vue'
 
 describe('main::Studio.vue', () => {
   let studio: Wrapper<Studio>

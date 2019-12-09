@@ -2,6 +2,8 @@ const { defaults } = require('jest-config')
 const puppeteerModes = ['integration', 'integration-local']
 const { TEST_MODE, TEST_FILE } = process.env
 const PUPPETEER_MODE = puppeteerModes.includes(TEST_MODE)
+const { pathsToModuleNameMapper } = require('ts-jest/utils')
+const { compilerOptions } = require('./tsconfig')
 
 module.exports = {
   preset: PUPPETEER_MODE ? 'jest-puppeteer' : defaults.preset,
@@ -12,11 +14,16 @@ module.exports = {
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
       'jest-transform-stub',
     '^.+\\.tsx?$': 'ts-jest',
-    '\\.story': 'jest-raw-loader'
+    '^.+\\.story$': 'jest-raw-loader'
   },
   transformIgnorePatterns: ['node_modules'],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1'
+    '^@app/Studio.vue$': '<rootDir>/src/app/Studio.vue',
+    '^@app/store(.*)$': '<rootDir>/src/app/store$1',
+    '^@app/router(.*)$': '<rootDir>/src/app/router$1',
+    '^@app/event(.*)$': '<rootDir>/src/app/event$1',
+    '^&/(.*)$': '<rootDir>/src/**/types/$1',
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' })
   },
   snapshotSerializers: ['jest-serializer-vue'],
   testMatch:
@@ -44,12 +51,12 @@ module.exports = {
     TEST_MODE !== 'integration' && TEST_MODE !== 'integration-local',
   collectCoverageFrom: [
     'src/**/*.{js,ts,vue}',
-    '!src/(registerServiceWorker|main|router).ts',
-    '!src/service-worker.js',
-    '!src/store/index.ts',
-    '!src/store/modules/index.ts',
+    '!src/app/(main|router|registerServiceWorker|serviceWorker).{ts,js}',
+    '!src/app/store/index.ts',
+    '!src/app/store/modules/index.ts',
     '!src/samples/**/*.ts',
-    '!src/directives/*.ts',
-    '!src/plugins/**/*.{js,ts,vue}'
+    '!src/internal/directives/*.ts',
+    '!src/internal/plugins/**/*.{js,ts,vue}',
+    '!src/editor/core/plugins/*.{js,ts,vue}'
   ]
 }
