@@ -110,24 +110,17 @@
       bordered
       class="ml-8"
     >
-      <div class="flex items-center cursor-pointer select-none bg-colorful">
-        <s-text
-          p="5"
-          weight="medium"
-          color="text-gray-100"
-          class="px-3 py-2 whitespace-no-wrap"
-          clickable
-          @click="$refs.registerInterestModal.show()"
-        >
-          New from template
-        </s-text>
-      </div>
+      <s-gradient-border-button
+        secondary
+        @click="$refs.registerInterestModal.show()"
+      >
+        New from template
+      </s-gradient-border-button>
       <s-text
         slot="content"
         p="5"
         weight="medium"
-        color="text-gray-90"
-        class="max-w-xxs whitespace-normal w-max-content"
+        class="max-w-xxs whitespace-normal w-max-content text-gray-90"
       >
         Write a new Story starting from this template.
       </s-text>
