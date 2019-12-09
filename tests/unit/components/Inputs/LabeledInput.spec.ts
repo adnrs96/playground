@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import LabeledInput from '@/components/Inputs/LabeledInput.vue'
+import LabeledInput from '@internal/components/Inputs/LabeledInput.vue'
 
 describe('LabeledInput.vue', () => {
   it('should mount', () => {

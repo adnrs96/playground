@@ -1,5 +1,5 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Blur from '@/components/Blur.vue'
+import Blur from '@internal/components/Blur.vue'
 
 describe('Blur.vue', () => {
   let view: Wrapper<Blur>

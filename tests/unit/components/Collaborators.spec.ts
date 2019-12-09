@@ -1,6 +1,6 @@
 import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
-import Collaborators from '@/components/Collaborators.vue'
-import StorePayload from '@/store/modules/Payload'
+import Collaborators from '@internal/components/Collaborators.vue'
+import StorePayload from '@app/store/modules/Payload'
 import Vuex, { Store } from 'vuex'
 import defaultCollaborators from '@/samples/defaultCollaborators'
 

@@ -1,5 +1,5 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Notification from '@/components/Notification.vue'
+import Notification from '@internal/components/Notification.vue'
 
 describe('Notification.vue', () => {
   describe('notification should mount', () => {

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import NotFound from '@/views/NotFound.vue'
+import NotFound from '@app/NotFound.vue'
 
 describe('NotFound.vue', () => {
   it('should mount', () => {

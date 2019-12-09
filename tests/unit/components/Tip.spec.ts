@@ -1,5 +1,5 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Tip from '@/components/Tip.vue'
+import Tip from '@internal/components/Tip.vue'
 
 describe('Tip.vue', () => {
   describe('tip should mount', () => {

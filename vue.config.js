@@ -1,3 +1,4 @@
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
   pwa: {
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
-      swSrc: 'src/service-worker.js'
+      swSrc: 'src/app/serviceWorker.js'
     },
     name: 'Storyscript Studio',
     themeColor: '#5C52FF',
@@ -34,6 +35,14 @@ module.exports = {
         test: /\.story$/,
         use: 'raw-loader'
       }]
+    },
+    resolve: {
+      plugins: [new TsconfigPathsPlugin()]
+    }
+  },
+  pages: {
+    index: {
+      entry: 'src/app/main.ts'
     }
   }
 }

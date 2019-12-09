@@ -1,4 +1,4 @@
-import { IStorySample } from '@/models/StorySample'
+import { IStorySample } from '&/StorySample'
 import code from './counter.story'
 import defaultCollaborators from './defaultCollaborators'
 

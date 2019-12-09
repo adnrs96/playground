@@ -1,4 +1,4 @@
-import Index from '@/views/index.vue'
+import Index from '@app/index.vue'
 import { Wrapper, shallowMount } from '@vue/test-utils'
 
 describe('index.vue', () => {

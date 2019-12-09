@@ -1,6 +1,6 @@
 import Vuex, { Store } from 'vuex'
 import { createLocalVue } from '@vue/test-utils'
-import Payload from '@/store/modules/Payload'
+import Payload from '@app/store/modules/Payload'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)

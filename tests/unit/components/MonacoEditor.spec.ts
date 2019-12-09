@@ -1,5 +1,5 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import MonacoEditor from '@/components/MonacoEditor.vue'
+import MonacoEditor from '@editor/MonacoEditor.vue'
 
 describe('MonacoEditor.vue', () => {
   let view: Wrapper<MonacoEditor>

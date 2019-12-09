@@ -1,6 +1,6 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Drop from '@/components/Drop.vue'
-import Directives from '@/directives'
+import Drop from '@internal/components/Drop.vue'
+import Directives from '@internal/directives'
 
 Directives.register()
 
