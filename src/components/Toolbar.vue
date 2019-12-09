@@ -26,6 +26,10 @@
     </div>
 
     <div class="my-4">
+      <s-feedback />
+    </div>
+
+    <div class="my-4">
       <s-drop
         id="toolbar-nav-drop"
         class="ml-px mt-px"
@@ -63,11 +67,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import SDrop from '@/components/Drop.vue'
+import SFeedback from '@/views/Feedback.vue'
 
 @Component({
   name: 'Toolbar',
   components: {
-    SDrop
+    SDrop,
+    SFeedback
   }
 })
 export default class Toolbar extends Vue {}
