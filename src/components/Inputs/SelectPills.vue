@@ -3,7 +3,7 @@
     <slot name="label" />
     <div class="flex flex-row rounded-md bg-gray-10 mb-4 px-2 py-2">
       <div
-        v-for="(option, idx) in options"
+        v-for="(option, idx) in optionStrings"
         :key="`selectpill-${Math.random()}-option-${idx}`"
         class="w-full flex flex-row"
       >
@@ -17,8 +17,8 @@
             'cursor-pointer',
             'select-none',
             'font-body',
-            {'bg-indigo-50 text-white': option.selected},
-            {'bg-white text-gray-100': !option.selected},
+            {'bg-indigo-50 text-white': option === selected},
+            {'bg-white text-gray-100': !(option === selected)},
             fontSize,
             fontWeight
           ]"
@@ -26,14 +26,13 @@
           <input
             v-model="selected"
             hidden
-            type="checkbox"
-            :value="option.option"
-            @click="selectHandler(option)"
+            type="radio"
+            :value="option"
           >
-          {{ option.option }}
+          {{ option }}
         </label>
         <div
-          v-if="idx + 1 < options.length"
+          v-if="idx + 1 < optionStrings.length"
           class="border mx-2 my-1 rounded border-gray-30"
         />
       </div>
@@ -49,9 +48,9 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
   components: {}
 })
 export default class SelectPills extends Vue {
-  private selected = [];
+  private selected = '';
 
-  @Prop({ type: Array, default: undefined }) private optionStrings!: String[];
+  @Prop({ type: Array, default: undefined }) readonly optionStrings!: String[];
 
   @Prop({
     type: String,
@@ -88,18 +87,6 @@ export default class SelectPills extends Vue {
   @Watch('selected')
   private onPillSelected () {
     this.$emit('pillSelectionChange', this.selected)
-  }
-
-  selectHandler (option: any) {
-    option.selected = !option.selected
-  }
-
-  private get options (): Array<Object> {
-    const opts = []
-    for (const opt of this.optionStrings) {
-      opts.push({ option: opt, selected: false })
-    }
-    return opts
   }
 }
 </script>
