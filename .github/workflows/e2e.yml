@@ -3,15 +3,8 @@ name: Studio E2E
 on: [pull_request]
 
 jobs:
-  
   endtoend:
-  
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node-version: [12.x]
-    
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
