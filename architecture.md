@@ -1,6 +1,6 @@
 ## Architecture
 
-In order to allow contributions easily, we're thinking the architecture of the studio in a way that allow us to prevent merging conflicts.
+In order to allow contributions easily, we're thinking the architecture of the studio in a way that allows us to prevent merging conflicts.
 Multiple folders are present inside src:
 
 - `app`: contains the app views and statefull-necessities plugins (routes, storage)

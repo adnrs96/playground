@@ -1,104 +1,107 @@
 <template>
   <div id="register-interest">
-    <s-modal
-      id="register-interest-modal"
+    <s-blur
+      id="register-interest-blur"
+      key="blur"
       ref="registerInterestModal"
-      @hidden="onHidden"
+      class="flex justify-center items-center h-full w-full"
     >
-      <s-text
-        h="2"
-        weight="semibold"
-        color="text-gray-100"
-        class="w-full mb-6"
-        center
-      >
-        The Storyscript Studio is in private beta only
-      </s-text>
-      <s-text
-        span
-        color="text-gray-70"
-        class="w-full"
-        left
-      >
-        Please drop your email to get updated for general availability.
-      </s-text>
-      <form
-        id="register-interest-form"
-        name="register-interest"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        @submit.prevent="submit"
-      >
-        <s-labeled-input
-          name="form-name"
-          type="text"
-          class="w-full mt-6"
-          placeholder="Don’t fill this out if you're human"
-          value="register-interest"
-          hidden
-          readonly
-        >
-          <div slot="label">
-            Bot Field
-          </div>
-        </s-labeled-input>
-        <s-labeled-input
-          v-model="email"
-          autocomplete="off"
-          name="email"
-          type="email"
-          placeholder="Enter your email address"
-          class="w-full mt-6"
-          required
-          shadow
-        >
-          <div slot="label">
-            Email
-          </div>
-        </s-labeled-input>
+      <s-modal cross>
         <s-text
-          v-if="emailError.length > 0"
-          p="5"
-          weight="medium"
-          class="mt-2 text-red-70"
-        >
-          {{ emailError }}
-        </s-text>
-        <s-labeled-input
-          v-model="comment"
-          autocomplete="off"
-          name="comment"
-          type="text"
-          class="w-full mt-6"
-          placeholder="Type your comment here (optional)"
-          shadow
-        >
-          <div slot="label">
-            Comment
-          </div>
-        </s-labeled-input>
-        <s-button
-          id="register-interest-submit-btn"
-          primary
+          h="2"
+          weight="semibold"
+          color="text-gray-100"
+          class="w-full mb-6"
           center
-          type="submit"
-          class="w-full mt-8 text-white"
-          :class="{ 'mb-16': !error }"
-          :disabled="emailError.length > 0 || email.length === 0 || sending"
         >
-          {{ sending ? 'Sending...' : success ? 'Thanks!' : 'Register Interest' }}
-        </s-button>
-        <s-text
-          v-if="error"
-          p="4"
-          weight="medium"
-          :class="{'mb-12': error}"
-          class="mt-2 text-red-70"
-        >
-          Failed to send your information.
+          The Storyscript Studio is in private beta only
         </s-text>
-      </form>
-    </s-modal>
+        <s-text
+          span
+          color="text-gray-70"
+          class="w-full"
+          left
+        >
+          Please drop your email to get updated for general availability.
+        </s-text>
+        <form
+          id="register-interest-form"
+          name="register-interest"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          @submit.prevent="submit"
+        >
+          <s-labeled-input
+            name="form-name"
+            type="text"
+            class="w-full mt-6"
+            placeholder="Don’t fill this out if you're human"
+            value="register-interest"
+            hidden
+            readonly
+          >
+            <div slot="label">
+              Bot Field
+            </div>
+          </s-labeled-input>
+          <s-labeled-input
+            v-model.trim="email"
+            autocomplete="off"
+            name="email"
+            type="email"
+            placeholder="Enter your email address"
+            class="w-full mt-6"
+            required
+            shadow
+          >
+            <div slot="label">
+              Email
+            </div>
+          </s-labeled-input>
+          <s-text
+            v-if="emailError.length > 0"
+            p="5"
+            weight="medium"
+            class="mt-2 text-red-70"
+          >
+            {{ emailError }}
+          </s-text>
+          <s-labeled-input
+            v-model.trim="comment"
+            autocomplete="off"
+            name="comment"
+            type="text"
+            class="w-full mt-6"
+            placeholder="Type your comment here (optional)"
+            shadow
+          >
+            <div slot="label">
+              Comment
+            </div>
+          </s-labeled-input>
+          <s-button
+            id="register-interest-submit-btn"
+            primary
+            center
+            type="submit"
+            class="w-full mt-8 text-white"
+            :class="{ 'mb-16': !error }"
+            :disabled="emailError.length > 0 || email.length === 0 || sending"
+          >
+            {{ sending ? 'Sending...' : success ? 'Thanks!' : 'Register Interest' }}
+          </s-button>
+          <s-text
+            v-if="error"
+            p="4"
+            weight="medium"
+            :class="{'mb-12': error}"
+            class="mt-2 text-red-70"
+          >
+            Failed to send your information.
+          </s-text>
+        </form>
+      </s-modal>
+    </s-blur>
     <s-drop
       id="new-from-tpl-btn"
       mode="hover"
@@ -107,17 +110,24 @@
       bordered
       class="ml-8"
     >
-      <s-gradient-border-button
-        secondary
-        @click="$refs.registerInterestModal.show()"
-      >
-        New from template
-      </s-gradient-border-button>
+      <div class="flex items-center cursor-pointer select-none bg-colorful">
+        <s-text
+          p="5"
+          weight="medium"
+          color="text-gray-100"
+          class="px-3 py-2 whitespace-no-wrap"
+          clickable
+          @click="$refs.registerInterestModal.show()"
+        >
+          New from template
+        </s-text>
+      </div>
       <s-text
         slot="content"
         p="5"
         weight="medium"
-        class="max-w-xxs whitespace-normal w-max-content text-gray-90"
+        color="text-gray-90"
+        class="max-w-xxs whitespace-normal w-max-content"
       >
         Write a new Story starting from this template.
       </s-text>
@@ -128,12 +138,16 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import SLabeledInput from '@internal/components/Inputs/LabeledInput.vue'
+import SBlur from '@internal/components/Blur.vue'
+import SModal from '@internal/components/Modals/Modal.vue'
 import SDrop from '@internal/components/Drop.vue'
 
 @Component({
   name: 'RegisterInterest',
   components: {
     SLabeledInput,
+    SBlur,
+    SModal,
     SDrop
   }
 })
@@ -192,17 +206,13 @@ export default class RegisterInterest extends Vue {
     })
   }
 
-  private onHidden () {
-    this.comment = ''
-    this.email = ''
-  }
-
   private close () {
-    this.onHidden()
-    const modal = this.$refs.registerInterestModal as any
+    const modal = this.$refs.registerInterestModal as SBlur
     if (modal) {
       modal.hide()
     }
+    this.comment = ''
+    this.email = ''
   }
 }
 </script>
