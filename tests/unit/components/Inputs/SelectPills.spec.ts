@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { SSelectPills } from '@/components/Inputs'
+import { SSelectPills } from '@internal/components/Inputs'
 
 describe('SelectPills.vue', () => {
   describe('basic input', () => {

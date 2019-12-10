@@ -1,6 +1,6 @@
 import Vuex, { Store } from 'vuex'
 import { createLocalVue } from '@vue/test-utils'
-import Tips from '@/store/modules/Tips'
+import Tips from '@app/store/modules/Tips'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)

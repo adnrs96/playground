@@ -1,7 +1,7 @@
 import { shallowMount, Wrapper, createLocalVue } from '@vue/test-utils'
-import HelpDrop from '@/components/HelpDrop.vue'
+import HelpDrop from '@internal/components/HelpDrop.vue'
 import Vuex, { Store } from 'vuex'
-import Tips, { IStoreTips } from '@/store/modules/Tips'
+import Tips, { IStoreTips } from '@app/store/modules/Tips'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)

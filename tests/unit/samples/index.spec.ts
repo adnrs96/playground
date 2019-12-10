@@ -1,4 +1,4 @@
-import { IStorySample } from '@/models/StorySample'
+import { IStorySample } from '&/StorySample'
 import samples from '@/samples'
 
 describe('Counter sample', () => {

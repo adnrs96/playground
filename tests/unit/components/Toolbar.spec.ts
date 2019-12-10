@@ -1,5 +1,5 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Toolbar from '@/components/Toolbar.vue'
+import Toolbar from '@internal/components/Toolbar.vue'
 
 describe('Toolbar.vue', () => {
   let toolbar: Wrapper<Toolbar>

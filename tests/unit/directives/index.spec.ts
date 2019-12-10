@@ -1,4 +1,4 @@
-import { directives } from '@/directives'
+import { directives } from '@internal/directives'
 
 describe('Directives index.spec.ts', () => {
   it('should return directives', () => {

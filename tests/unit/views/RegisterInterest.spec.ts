@@ -1,5 +1,5 @@
 import { Wrapper, shallowMount } from '@vue/test-utils'
-import RegisterInterest from '@/views/RegisterInterest.vue'
+import RegisterInterest from '@app/RegisterInterest.vue'
 
 describe('RegisterInterest', () => {
   let registerInterest: Wrapper<RegisterInterest>

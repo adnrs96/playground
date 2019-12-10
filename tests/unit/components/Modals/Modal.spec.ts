@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
-import Modal from '@/components/Modals/Modal.vue'
-import Directives from '@/directives'
+import Modal from '@internal/components/Modals/Modal.vue'
+import Directives from '@internal/directives'
 
 Directives.register()
 

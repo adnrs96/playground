@@ -1,4 +1,4 @@
-import { IStorySample } from '@/models/StorySample'
+import { IStorySample } from '&/StorySample'
 import code from './stripe.story'
 import defaultCollaborators from './defaultCollaborators'
 

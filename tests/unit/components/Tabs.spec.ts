@@ -1,5 +1,5 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Tabs from '@/components/Tabs.vue'
+import Tabs from '@internal/components/Tabs.vue'
 
 describe('Tabs.vue', () => {
   let view: Wrapper<Tabs>

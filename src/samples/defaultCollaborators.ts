@@ -1,4 +1,4 @@
-import { IStoryCollaborator } from '@/models/StorySample'
+import { IStoryCollaborator } from '&/StorySample'
 
 const collaborators: Array<IStoryCollaborator> = [
   { name: 'Inkie', avatar: 'inkie' },

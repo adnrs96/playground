@@ -1,5 +1,5 @@
 import { Wrapper, shallowMount } from '@vue/test-utils'
-import Feedback from '@/views/Feedback.vue'
+import Feedback from '@app/Feedback.vue'
 
 describe('Feedback', () => {
   let feedback: Wrapper<Feedback>

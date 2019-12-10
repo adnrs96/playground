@@ -1,5 +1,5 @@
 import { Wrapper, shallowMount } from '@vue/test-utils'
-import Share from '@/views/Share.vue'
+import Share from '@app/Share.vue'
 
 describe('Share', () => {
   let share: Wrapper<Share>

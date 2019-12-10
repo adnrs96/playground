@@ -1,7 +1,7 @@
 import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
-import Welcome from '@/views/Welcome.vue'
+import Welcome from '@app/Welcome.vue'
 import VueRouter from 'vue-router'
-import event from '@/event'
+import event from '@app/event'
 
 const localVue = createLocalVue()
 
