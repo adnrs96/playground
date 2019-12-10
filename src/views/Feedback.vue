@@ -183,24 +183,25 @@ import SSelectPills from '@/components/Inputs/SelectPills.vue'
   }
 })
 export default class Feedback extends Vue {
-  private comment = '';
-  private email = '';
-  private emailError = '';
-  private sending = false;
-  private success = false;
-  private error = false;
-  private questionsAnswered = 0;
-  private shutdownStoryscriptAnswer = '';
-  private understandStoryscriptAnswer = '';
-  private q1 = 'How would you feel if we stopped building storyscript?';
-  private q2 = 'Is it clear what the product does?';
-  private shutdownStoryscriptQuestion = ["Don't care", 'Meh', 'Sad', 'Angry'];
+  private comment = ''
+  private email = ''
+  private emailError = ''
+  private sending = false
+  private success = false
+  private error = false
+  private questionsAnswered = 0
+  private shutdownStoryscriptAnswer = ''
+  private understandStoryscriptAnswer = ''
+  private shutdownStoryscriptQuestion = ["Don't care", 'Meh', 'Sad', 'Angry']
   private understandStoryscriptQuestion = [
     'Yes, I get it!',
     'No, does not make sense.'
-  ];
+  ]
 
-  private disabled = true;
+  readonly q1 = 'How would you feel if we stopped building storyscript?'
+  readonly q2 = 'Is it clear what the product does?'
+
+  private disabled = true
 
   private updateDisabled () {
     if (
