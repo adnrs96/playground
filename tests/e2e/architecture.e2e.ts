@@ -41,8 +41,8 @@ describe('Architecture', () => {
     })
 
     expect(icons).toEqual([
-      `http://${TEST_URL}/img/services/redis.svg`,
-      `http://${TEST_URL}/img/services/http.svg`
+      `${TEST_URL}/img/services/redis.svg`,
+      `${TEST_URL}/img/services/http.svg`
     ])
     expect(texts).toEqual(['Staged', 'Healthy', 'Staged', 'Healthy'])
     expect((await page.$eval('#publish-btn', (btn: Element) => btn.classList.contains('cursor-pointer')))).toBeTruthy()
