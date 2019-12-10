@@ -13,7 +13,6 @@ describe('Input.vue', () => {
 
       expect.assertions(2)
       expect(input.html()).toBeTruthy()
-      expect(input.vm).toHaveProperty('getTag', 'input')
       input.destroy()
     })
 
@@ -34,7 +33,6 @@ describe('Input.vue', () => {
       const inputs = input.findAll('input')
       expect(textarea.length).toEqual(1)
       expect(inputs.length).toEqual(0)
-      expect(input.vm).toHaveProperty('getTag', 'textarea')
       input.destroy()
     })
   })

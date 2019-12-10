@@ -190,10 +190,6 @@ export default class Input extends Vue {
 
   private focused = false
 
-  private get getTag () {
-    return this.type === 'textarea' ? 'textarea' : 'input'
-  }
-
   private get listeners (): object {
     return {
       blur: this.onBlur,
