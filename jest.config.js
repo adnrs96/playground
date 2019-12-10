@@ -5,7 +5,7 @@ const PUPPETEER_MODE = puppeteerModes.includes(TEST_MODE)
 
 module.exports = {
   preset: PUPPETEER_MODE ? 'jest-puppeteer' : defaults.preset,
-  verbose: !process.env.NODE_ENV === 'production',
+  verbose: process.env.NODE_ENV !== 'production',
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue', 'ts', 'tsx'],
   transform: {
     '^.+\\.vue$': 'vue-jest',
