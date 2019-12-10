@@ -70,7 +70,7 @@ describe('Logs', () => {
       await page.type('#register-interest [name="comment"]', 'storyscript-e2e')
       await page.click('#register-interest-submit-btn')
       await page.waitFor(2000)
-      expect((await page.waitForSelector('#register-interest-blur', { hidden: true }))).toBeTruthy()
+      expect((await page.waitForSelector('#register-interest-modal', { hidden: true }))).toBeTruthy()
     } else {
       expect(true).toBeTruthy()
     }

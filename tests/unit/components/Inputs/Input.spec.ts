@@ -23,7 +23,7 @@ describe('Input.vue', () => {
           's-icon': '<div />'
         },
         propsData: {
-          textarea: true
+          type: 'textarea'
         }
       })
 

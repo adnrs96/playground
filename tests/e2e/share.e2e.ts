@@ -28,13 +28,13 @@ describe('Share', () => {
     it('should open a modal when clicked', async () => {
       await page.click('#share-btn')
       await page.waitFor(1000)
-      expect(await page.$('#share-blur')).toBeTruthy()
+      expect(await page.$('#share-modal')).toBeTruthy()
     })
 
     describe('copy to clipboard', () => {
       it('should display a readonly input with the page url', async () => {
-        expect(await page.$eval('#share-blur #copy [name="url"]', (e: Element) => e.getAttribute('readonly'))).toEqual('readonly')
-        expect(await page.$eval('#share-blur #copy [name="url"]', (e: Element) => e.getAttribute('placeholder'))).toEqual(page.url())
+        expect(await page.$eval('#share-modal #copy [name="url"]', (e: Element) => e.getAttribute('readonly'))).toEqual('readonly')
+        expect(await page.$eval('#share-modal #copy [name="url"]', (e: Element) => e.getAttribute('placeholder'))).toEqual(page.url())
       })
     })
   })
