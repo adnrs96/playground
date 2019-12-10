@@ -48,8 +48,8 @@ describe('Feedback', () => {
   it('should display a some errors when I enter wrong info', async () => {
     expect.assertions(2)
     await page.waitFor(250)
-    await page.type('[name="comment"]', 'x')
-    await page.type('[name="email"]', 'x')
+    await page.type('#feedback-form [name="comment"]', 'x')
+    await page.type('#feedback-form [name="email"]', 'x')
 
     expect((await page.$$('#feedback-form .text-red-70')).length).toEqual(1)
     expect((await page.$$eval('#feedback-form .text-red-70', (nodes: any) => nodes.map((n: any) => n.textContent.trim())))).toEqual(['Email is invalid.'])
@@ -62,11 +62,11 @@ describe('Feedback', () => {
   it('should close the modal and clear the inputs when submitted', async () => {
     expect.assertions(1)
     if (page.url().indexOf('localhost') === -1) {
-      await page.click('[type="radio"]', { clickCount: 3 })
-      await page.click('[name="email"]', { clickCount: 3 })
-      await page.type('[name="email"]', 'storyscript.e2e@gmail.com')
-      await page.click('[name="comment"]', { clickCount: 3 })
-      await page.type('[name="comment"]', 'storyscript-e2e')
+      await page.click('#feedback-form [type="radio"]', { clickCount: 3 })
+      await page.click('#feedback-form [name="email"]', { clickCount: 3 })
+      await page.type('#feedback-form [name="email"]', 'storyscript.e2e@gmail.com')
+      await page.click('#feedback-form [name="comment"]', { clickCount: 3 })
+      await page.type('#feedback-form [name="comment"]', 'storyscript-e2e')
       await page.click('#feedback-submit-btn')
       await page.waitFor(2500)
       expect((await page.waitForSelector('#feeback-modal', { hidden: true }))).toBeTruthy()
