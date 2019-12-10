@@ -2,6 +2,7 @@
   <div id="share">
     <s-modal
       id="share-modal"
+      ref="shareModal"
     >
       <s-text
         center
