@@ -2,6 +2,45 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/storyscript/studio/compare/v0.4.0...v0.5.0) (2019-12-10)
+
+
+### Features
+
+* **archi:** remove k8s and story tiles + col displaying ([a5dd103](https://github.com/storyscript/studio/commit/a5dd1037e47f7cc88adc7f4a1724640e53ccac74))
+* **Feedback:** add modal to collect user feedback. ([ddd0db2](https://github.com/storyscript/studio/commit/ddd0db231a50d11d48380ff9744b9336e9f524fb))
+* **help-drop:** update design ([b569ffd](https://github.com/storyscript/studio/commit/b569ffd1940e4c374c1b702ae846937813e09130))
+* **help-dropdown:** add component + adapt tips/intercom/icons ([9aa16d3](https://github.com/storyscript/studio/commit/9aa16d3e6b4a3a7b45d4bee7653ba8648ad705dd))
+* **navbar:** add navbar design ([cdbc729](https://github.com/storyscript/studio/commit/cdbc729aaf13cd3b62f2271d1eeb7d3d7ac62e9e))
+* **navbar:** move navbar into studio views + put back previous on welcome + improve share button ([b78fa8f](https://github.com/storyscript/studio/commit/b78fa8fc57333797cf4354341cb9ad3961061054))
+* **navbar:** put story title in navbar ([723475c](https://github.com/storyscript/studio/commit/723475ceddbfd6b65cc15006be6cda4f3e48c652))
+* **NewFromTemplate:** add modal for recording emails of people interested. ([24a3746](https://github.com/storyscript/studio/commit/24a374623d355040426c6ab1c28f3d9bbb43400e))
+* **NewFromTemplate:** add modal for recording emails of people interested. ([0839adf](https://github.com/storyscript/studio/commit/0839adf0ba0bc439849d8c43adfa546f9c728107))
+* **persistence:** add vuex-persistedstate and Tips persistent store module ([0ac43ef](https://github.com/storyscript/studio/commit/0ac43ef96128d5c8da0c75a3bdda537774699db2))
+* **pwa:** add cache strategy for fetch POST methods ([c978c9e](https://github.com/storyscript/studio/commit/c978c9ef17eeb67978e77ebc67595a58f2073196))
+* **remove-labels:** remove studio view labels ([060a45f](https://github.com/storyscript/studio/commit/060a45f566d856a728ef5f94c3d1996bcefdda5e))
+* **SelectPills:** add new input component using pills. ([a00f942](https://github.com/storyscript/studio/commit/a00f942deb78660714e2c51f3ba6bd22f15997df))
+* **share:** add share btn + copy to clipboard ([294e087](https://github.com/storyscript/studio/commit/294e087e79735e38ead5751b434f851d7d9d9d46))
+* **story-titles:** update IStorySample + stories and welcome view ([029d25d](https://github.com/storyscript/studio/commit/029d25d22f9645caabdb323bdebe804c51df5ff3))
+* **tips:** update intro component to optional relative component base + add editor id + counter repositions ([18cd24d](https://github.com/storyscript/studio/commit/18cd24d7a6944fc8af99cc7938af4b4792435613))
+* **tips-persistence:** bring isIntro & skip from Tips store ([e58df3e](https://github.com/storyscript/studio/commit/e58df3e37b61aefd974aca955ddd08e92faf0b66))
+* **Toolbar:** add toolbar to studio. ([c4dde8c](https://github.com/storyscript/studio/commit/c4dde8cc95b1dd7a2e2e250bc0cc8af1c94fc912))
+
+
+### Bug Fixes
+
+* **build:** revert vue test utils update ([1297621](https://github.com/storyscript/studio/commit/1297621ea3e1a120b741b3cd08436994f2a730eb))
+* **cache:** try to remove cache from fetch request ([259af5e](https://github.com/storyscript/studio/commit/259af5e765b692963b600d60f838ca08787b71c3))
+* **deps:** update dependency core-js to v3.4.7 ([ed4a69f](https://github.com/storyscript/studio/commit/ed4a69f3d81f1dc003e9cbde7c8ac288765af1b4))
+* **e2e:** remove fullscreen e2e tests ([687c0be](https://github.com/storyscript/studio/commit/687c0be0b723b9fb614970e1e51ba32c0357fd11))
+* **e2e+input:** fix e2e tests + input behavior ([2b4e46c](https://github.com/storyscript/studio/commit/2b4e46c0e0ecf6282031e2081253abcba544a95d))
+* **help-drop:** white text on dropdown ([8360331](https://github.com/storyscript/studio/commit/83603311eaec89e97807e5c6604de13552aaf6fb))
+* **intro:** remove await from watcher + default element string to body on querySelector ([4fd447d](https://github.com/storyscript/studio/commit/4fd447d40cfb6d2c7aea5be46ca2f9be6330eb45))
+* **jest:** remove useless collectCoverage file ([225c81a](https://github.com/storyscript/studio/commit/225c81a73d6f9fa938ee0ced2d69a3c15b384f33))
+* **navbar:** fix new from template button style ([b49589a](https://github.com/storyscript/studio/commit/b49589acc057d1156f00066449846d933ee42c0a))
+* **routing:** fix issue when redirecting to /welcome ([f4dc15f](https://github.com/storyscript/studio/commit/f4dc15fd8c98b1ba3e03ee58d89aacf8c3dcddc0))
+* **share:** disable auto-close modal ([3aba5a4](https://github.com/storyscript/studio/commit/3aba5a4f2cb06d4f352676c3e5d57072cfc3151c))
+
 ## [0.4.0](https://github.com/storyscript/studio/compare/v0.3.1...v0.4.0) (2019-11-20)
 
 
