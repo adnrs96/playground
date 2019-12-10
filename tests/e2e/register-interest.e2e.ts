@@ -50,8 +50,8 @@ describe('Logs', () => {
   it('should display a some errors when I enter wrong info', async () => {
     expect.assertions(2)
     await page.waitFor(250)
-    await page.type('[name="comment"]', 'x')
-    await page.type('[name="email"]', 'x')
+    await page.type('#register-interest [name="comment"]', 'x')
+    await page.type('#register-interest [name="email"]', 'x')
 
     expect((await page.$$('#register-interest .text-red-70')).length).toEqual(1)
     expect((await page.$$eval('#register-interest .text-red-70', (nodes: any) => nodes.map((n: any) => n.textContent.trim())))).toEqual(['Email is invalid.'])
@@ -64,10 +64,10 @@ describe('Logs', () => {
   it('should close the modal and clear the inputs when submitted', async () => {
     expect.assertions(1)
     if (page.url().indexOf('localhost') === -1) {
-      await page.click('[name="email"]', { clickCount: 3 })
-      await page.type('[name="email"]', 'storyscript.e2e@gmail.com')
-      await page.click('[name="comment"]', { clickCount: 3 })
-      await page.type('[name="comment"]', 'storyscript-e2e')
+      await page.click('#register-interest [name="email"]', { clickCount: 3 })
+      await page.type('#register-interest [name="email"]', 'storyscript.e2e@gmail.com')
+      await page.click('#register-interest [name="comment"]', { clickCount: 3 })
+      await page.type('#register-interest [name="comment"]', 'storyscript-e2e')
       await page.click('#register-interest-submit-btn')
       await page.waitFor(2000)
       expect((await page.waitForSelector('#register-interest-blur', { hidden: true }))).toBeTruthy()

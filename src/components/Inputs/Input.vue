@@ -15,7 +15,8 @@
       {'w-full': full}
     ]"
   >
-    <input
+    <component
+      :is="getTag"
       :class="[
         `${readonly ? 'text-indigo-90' : disabled ? 'text-gray-30' : valid === false ? 'text-red-80' : 'text-gray-100'}`,
         'font-body',
@@ -27,6 +28,7 @@
         'focus:outline-none',
         `${small ? 'rounded-md' : 'rounded-xl'}`,
         {'bg-gray-10': disabled},
+        {'h-40': textarea}
       ]"
       :type="type"
       :disabled="disabled"
@@ -37,7 +39,7 @@
       :readonly="readonly"
       :autocomplete="autocomplete"
       v-on="listeners"
-    >
+    />
     <s-icon
       v-if="!$slots.icon && !icon && loading"
       icon="spinner"
@@ -77,6 +79,7 @@ export default class Input extends Vue {
   @Prop({ type: Boolean, default: false }) readonly white!: boolean
   @Prop({ type: Boolean, default: false }) readonly shadow!: boolean
   @Prop({ type: Boolean, default: false }) readonly full!: boolean
+  @Prop({ type: Boolean, default: false }) readonly textarea!: boolean
 
   @Prop({
     type: Boolean,
@@ -167,6 +170,10 @@ export default class Input extends Vue {
   }
 
   private focused = false
+
+  private get getTag () {
+    return this.textarea ? 'textarea' : 'input'
+  }
 
   private get listeners (): object {
     return {
