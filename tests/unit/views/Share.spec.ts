@@ -13,7 +13,8 @@ describe('Share', () => {
       stubs: {
         's-text': '<div />',
         's-button': '<div />',
-        's-icon': '<div />'
+        's-icon': '<div />',
+        's-modal': '<div />'
       }
     })
     vm = share.vm as any

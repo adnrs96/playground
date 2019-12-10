@@ -10,7 +10,8 @@ describe('RegisterInterest', () => {
       stubs: {
         's-text': '<div />',
         's-button': '<div />',
-        's-gradient-border-button': '<div />'
+        's-gradient-border-button': '<div />',
+        's-modal': '<div />'
       }
     })
     vm = registerInterest.vm as any
