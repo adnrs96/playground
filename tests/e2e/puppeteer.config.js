@@ -1,8 +1,9 @@
 const os = require('os')
 
 const PORT = process.env.PORT || 8080
+const HOST = process.env.HOST || 'localhost'
 const platform = os.platform()
-const TEST_URL = `http://localhost:${PORT}`
+const TEST_URL = `http://${HOST}:${PORT}`
 const SEED = Date.now()
 
 const puppeteerConfig = () => {
@@ -25,7 +26,6 @@ const puppeteerConfig = () => {
 }
 
 module.exports = {
-  PORT,
   TEST_URL,
   SEED,
   puppeteerConfig
