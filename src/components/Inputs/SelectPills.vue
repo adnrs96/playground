@@ -50,7 +50,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 export default class SelectPills extends Vue {
   private selected = '';
 
-  @Prop({ type: Array, default: undefined }) readonly optionStrings!: String[];
+  @Prop({ type: Array, default: undefined, required: true }) readonly optionStrings!: String[];
 
   @Prop({
     type: String,
