@@ -52,7 +52,7 @@
               class="mb-2 text-gray-90"
             >
               How would you feel if we
-              <span class="font-semibold">stopped building</span> storyscript?
+              <span class="font-semibold">stopped building</span> Storyscript?
             </s-text>
           </s-select-pills>
 
