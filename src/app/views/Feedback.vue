@@ -172,8 +172,8 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
-import SLabeledInput from '@/components/Inputs/LabeledInput.vue'
-import SSelectPills from '@/components/Inputs/SelectPills.vue'
+import SLabeledInput from '@internal/components/Inputs/LabeledInput.vue'
+import SSelectPills from '@internal/components/Inputs/SelectPills.vue'
 
 @Component({
   name: 'Feedback',
