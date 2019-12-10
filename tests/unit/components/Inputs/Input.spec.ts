@@ -11,7 +11,7 @@ describe('Input.vue', () => {
         }
       })
 
-      expect.assertions(2)
+      expect.assertions(1)
       expect(input.html()).toBeTruthy()
       input.destroy()
     })
@@ -27,7 +27,7 @@ describe('Input.vue', () => {
         }
       })
 
-      expect.assertions(4)
+      expect.assertions(3)
       expect(input.html()).toBeTruthy()
       const textarea = input.findAll('textarea')
       const inputs = input.findAll('input')
