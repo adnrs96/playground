@@ -3,7 +3,6 @@
     <s-modal
       id="share-modal"
       ref="shareModal"
-      cross
     >
       <s-text
         center
