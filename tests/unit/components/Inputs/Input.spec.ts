@@ -11,7 +11,28 @@ describe('Input.vue', () => {
         }
       })
 
+      expect.assertions(1)
       expect(input.html()).toBeTruthy()
+      input.destroy()
+    })
+
+    it('should exist - textarea', () => {
+      const input = mount(SInput, {
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
+        },
+        propsData: {
+          textarea: true
+        }
+      })
+
+      expect.assertions(3)
+      expect(input.html()).toBeTruthy()
+      const textarea = input.findAll('textarea')
+      const inputs = input.findAll('input')
+      expect(textarea.length).toEqual(1)
+      expect(inputs.length).toEqual(0)
       input.destroy()
     })
   })
