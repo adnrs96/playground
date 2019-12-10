@@ -6,7 +6,7 @@
       @hidden="onHidden"
     >
       <div class="flex flex-col justify-center items-center h-full w-full">
-        <img src="../assets/img/feedback-modal-header.svg">
+        <img src="@/assets/img/feedback-modal-header.svg">
 
         <s-text
           h="2"
