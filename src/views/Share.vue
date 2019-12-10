@@ -1,6 +1,7 @@
 <template>
   <div id="share">
     <s-modal
+      id="share-modal"
       ref="shareModal"
       cross
     >

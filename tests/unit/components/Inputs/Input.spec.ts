@@ -11,8 +11,9 @@ describe('Input.vue', () => {
         }
       })
 
-      expect.assertions(1)
+      expect.assertions(2)
       expect(input.html()).toBeTruthy()
+      expect(input.vm).toHaveProperty('getTag', 'input')
       input.destroy()
     })
 
@@ -23,16 +24,17 @@ describe('Input.vue', () => {
           's-icon': '<div />'
         },
         propsData: {
-          textarea: true
+          type: 'textarea'
         }
       })
 
-      expect.assertions(3)
+      expect.assertions(4)
       expect(input.html()).toBeTruthy()
       const textarea = input.findAll('textarea')
       const inputs = input.findAll('input')
       expect(textarea.length).toEqual(1)
       expect(inputs.length).toEqual(0)
+      expect(input.vm).toHaveProperty('getTag', 'textarea')
       input.destroy()
     })
   })

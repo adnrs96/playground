@@ -1,8 +1,9 @@
 <template>
   <div id="register-interest">
     <s-modal
+      id="register-interest-modal"
       ref="registerInterestModal"
-      cross
+      @hidden="onHidden"
     >
       <s-text
         h="2"
@@ -42,7 +43,7 @@
           </div>
         </s-labeled-input>
         <s-labeled-input
-          v-model.trim="email"
+          v-model="email"
           autocomplete="off"
           name="email"
           type="email"
@@ -64,7 +65,7 @@
           {{ emailError }}
         </s-text>
         <s-labeled-input
-          v-model.trim="comment"
+          v-model="comment"
           autocomplete="off"
           name="comment"
           type="text"
@@ -191,13 +192,17 @@ export default class RegisterInterest extends Vue {
     })
   }
 
+  private onHidden () {
+    this.comment = ''
+    this.email = ''
+  }
+
   private close () {
+    this.onHidden()
     const modal = this.$refs.registerInterestModal as any
     if (modal) {
       modal.hide()
     }
-    this.comment = ''
-    this.email = ''
   }
 }
 </script>

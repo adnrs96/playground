@@ -3,6 +3,7 @@
     <s-modal
       id="feeback-modal"
       ref="feedbackModal"
+      @hidden="onHidden"
     >
       <div class="flex flex-col justify-center items-center h-full w-full">
         <img src="../assets/img/feedback-modal-header.svg">
@@ -75,10 +76,9 @@
 
           <s-labeled-input
             v-model.trim="comment"
-            textarea
+            type="textarea"
             autocomplete="off"
             name="comment"
-            type="text"
             class="w-full mt-6"
             placeholder="Type something"
             shadow
@@ -301,13 +301,19 @@ export default class Feedback extends Vue {
       })
   }
 
+  private onHidden () {
+    this.comment = ''
+    this.email = ''
+    this.shutdownStoryscriptAnswer = ''
+    this.understandStoryscriptAnswer = ''
+  }
+
   private close () {
+    this.onHidden()
     const modal = this.$refs.feedbackModal as any
     if (modal) {
       modal.hide()
     }
-    this.comment = ''
-    this.email = ''
     this.success = false
     this.error = false
   }

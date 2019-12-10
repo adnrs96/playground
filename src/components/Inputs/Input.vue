@@ -15,8 +15,8 @@
       {'w-full': full}
     ]"
   >
-    <component
-      :is="getTag"
+    <textarea
+      v-if="type === 'textarea'"
       :class="[
         `${readonly ? 'text-indigo-90' : disabled ? 'text-gray-30' : valid === false ? 'text-red-80' : 'text-gray-100'}`,
         'font-body',
@@ -28,18 +28,41 @@
         'focus:outline-none',
         `${small ? 'rounded-md' : 'rounded-xl'}`,
         {'bg-gray-10': disabled},
-        {'h-40': textarea}
+        'h-40'
       ]"
       :type="type"
       :disabled="disabled"
-      :value="value"
+      :name="name"
+      :placeholder="placeholder"
+      :required="required"
+      :readonly="readonly"
+      :value="mValue"
+      v-on="listeners"
+    />
+    <input
+      v-else
+      :class="[
+        `${readonly ? 'text-indigo-90' : disabled ? 'text-gray-30' : valid === false ? 'text-red-80' : 'text-gray-100'}`,
+        'font-body',
+        `${small ? 'text-xs' : 'text-base'}`,
+        `${small ? 'py-3' : 'py-4'}`,
+        `${small ? 'px-3' : 'px-4'}`,
+        'bg-transparent',
+        'w-full',
+        'focus:outline-none',
+        `${small ? 'rounded-md' : 'rounded-xl'}`,
+        {'bg-gray-10': disabled},
+      ]"
+      :type="type"
+      :disabled="disabled"
+      :value="mValue"
       :name="name"
       :placeholder="placeholder"
       :required="required"
       :readonly="readonly"
       :autocomplete="autocomplete"
       v-on="listeners"
-    />
+    >
     <s-icon
       v-if="!$slots.icon && !icon && loading"
       icon="spinner"
@@ -70,7 +93,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
+import { Component, Prop, Vue, Emit, PropSync } from 'vue-property-decorator'
 
 @Component({
   name: 'SInput'
@@ -79,7 +102,6 @@ export default class Input extends Vue {
   @Prop({ type: Boolean, default: false }) readonly white!: boolean
   @Prop({ type: Boolean, default: false }) readonly shadow!: boolean
   @Prop({ type: Boolean, default: false }) readonly full!: boolean
-  @Prop({ type: Boolean, default: false }) readonly textarea!: boolean
 
   @Prop({
     type: Boolean,
@@ -89,13 +111,10 @@ export default class Input extends Vue {
   @Prop({
     type: String,
     default: 'text',
-    validator: x => ['text', 'email', 'password', 'tel', 'number'].includes(x)
+    validator: x => ['text', 'email', 'password', 'tel', 'number', 'textarea'].includes(x)
   }) readonly type!: string
 
-  @Prop({
-    type: String,
-    default: ''
-  }) readonly value!: string
+  @PropSync('value') private mValue!: string
 
   @Prop({
     type: String,
@@ -172,7 +191,7 @@ export default class Input extends Vue {
   private focused = false
 
   private get getTag () {
-    return this.textarea ? 'textarea' : 'input'
+    return this.type === 'textarea' ? 'textarea' : 'input'
   }
 
   private get listeners (): object {

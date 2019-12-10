@@ -16,7 +16,6 @@
     <s-input
       :type="type"
       :disabled="disabled"
-      :textarea="textarea"
       :name="name"
       :placeholder="placeholder"
       :required="required"
