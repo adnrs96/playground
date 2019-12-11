@@ -33,9 +33,7 @@ export interface IStorySample {
   code: string;
   collaborators: Array<IStoryCollaborator>;
   image?: string;
-  events: Array<IStoryEvent>;
   services: Array<string>;
   description: string;
   tips?: Array<IStorySampleTip>;
-  comments?: Array<IStorySampleComment>;
 }
