@@ -30,6 +30,7 @@
             :name="`selectpills-list-${uid}`"
             type="radio"
             :value="option"
+            @change="$emit('input', option)"
           >
           {{ option }}
         </label>
@@ -43,7 +44,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import { Component, Vue, Prop, PropSync } from 'vue-property-decorator'
 import uuid from 'uuid/v4'
 
 @Component({
@@ -51,7 +52,6 @@ import uuid from 'uuid/v4'
   components: {}
 })
 export default class SelectPills extends Vue {
-  private selected = ''
   private uid = uuid()
 
   @Prop({ type: Array, default: undefined, required: true }) readonly optionStrings!: String[]
@@ -70,6 +70,8 @@ export default class SelectPills extends Vue {
   })
   readonly weight!: string
 
+  @PropSync('value') private selected!: string
+
   private get fontSize (): string {
     /* text-base text-lg text-sm text-xs */
     return `text-${
@@ -86,11 +88,6 @@ export default class SelectPills extends Vue {
   private get fontWeight (): string {
     /* font-normal font-medium font-semibold font-bold */
     return `font-${this.weight === 'regular' ? 'normal' : this.weight}`
-  }
-
-  @Watch('selected')
-  private onPillSelected () {
-    this.$emit('pillSelectionChange', this.selected)
   }
 }
 </script>
