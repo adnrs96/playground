@@ -59,6 +59,7 @@ import SComments from '@internal/components/Comments.vue'
 import SLibrary from '@app/Library/index.vue'
 
 @Component({
+  name: 'SLayout',
   components: {
     MonacoEditor,
     SNavbar,
@@ -67,7 +68,7 @@ import SLibrary from '@app/Library/index.vue'
     SLibrary
   }
 })
-export default class Studio extends Vue {
+export default class SLayout extends Vue {
   @Prop({ type: String, default: 'counter' }) readonly sample!: string
 
   @Getter('hasTipsBeenShown')

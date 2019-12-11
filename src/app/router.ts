@@ -22,7 +22,7 @@ export default new Router({
           props: route => ({
             sample: route.params.sample
           }),
-          component: () => import('@app/Studio/index.vue')
+          component: () => import('@app/Layout/index.vue')
         }
       ]
     },

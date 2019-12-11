@@ -1,4 +1,4 @@
-import Studio from '@app/Studio/index.vue'
+import Layout from '@app/Layout/index.vue'
 import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
 import samples from '@/samples'
 import Vuex, { Store } from 'vuex'
@@ -8,8 +8,8 @@ import StoreTips from '@app/store/modules/Tips'
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-describe('Studio index', () => {
-  let studio: Wrapper<Studio>
+describe('Layout index', () => {
+  let layout: Wrapper<Layout>
   let store: Store<any>
 
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe('Studio index', () => {
       getters: { ...StorePayload.getters, ...StoreTips.getters },
       mutations: { ...StorePayload.mutations, ...StoreTips.mutations }
     })
-    studio = shallowMount(Studio, {
+    layout = shallowMount(Layout, {
       stubs: {
         'router-view': '<div />',
         's-text': '<div />',
@@ -42,17 +42,17 @@ describe('Studio index', () => {
   })
 
   afterEach(() => {
-    studio.destroy()
+    layout.destroy()
   })
 
   it('should mount', () => {
     expect.assertions(1)
-    expect(studio.html()).toBeDefined()
+    expect(layout.html()).toBeDefined()
   })
 
   it('should skip intro', () => {
     expect.assertions(1)
-    const view = shallowMount(Studio, {
+    const view = shallowMount(Layout, {
       propsData: {
         sample: 'not-a-sample'
       },
@@ -78,7 +78,7 @@ describe('Studio index', () => {
 
   describe('.setPayload(string)', () => {
     it('should set the payload', () => {
-      const view = shallowMount(Studio, {
+      const view = shallowMount(Layout, {
         store,
         localVue,
         propsData: {
