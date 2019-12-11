@@ -21,7 +21,8 @@ describe('Plaground::Architecture', () => {
       },
       stubs: {
         's-text': '<div />',
-        's-icon': '<div />'
+        's-icon': '<div />',
+        's-scrollbar': '<div />'
       }
     })
     vm = archi.vm as any
@@ -42,7 +43,8 @@ describe('Plaground::Architecture', () => {
       },
       stubs: {
         's-text': '<div />',
-        's-icon': '<div />'
+        's-icon': '<div />',
+        's-scrollbar': '<div />'
       }
     })
     vm = archi.vm as any
@@ -64,7 +66,9 @@ describe('Plaground::Architecture', () => {
         },
         stubs: {
           's-text': '<div />',
-          's-icon': '<div />'
+          's-icon': '<div />',
+
+          's-scrollbar': '<div />'
         }
       })
       vm = archi.vm as any

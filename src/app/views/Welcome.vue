@@ -24,7 +24,7 @@
       </router-link>
     </div>
     <slot name="notification" />
-    <perfect-scrollbar
+    <s-scrollbar
       ref="content"
       class="overflow-hidden min-h-screen-no-navbar max-h-screen-no-navbar"
     >
@@ -124,14 +124,13 @@
       </div>
 
       <s-footer @scrollTop="$refs.content.$el.scrollTop = 0" />
-    </perfect-scrollbar>
+    </s-scrollbar>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import event from '@app/event'
-import PerfectScrollbar from '@internal/components/PerfectScrollbar.vue'
 import SFooter from '@internal/components/Footer.vue'
 import samples from '@/samples'
 import { IStorySample } from '&/StorySample'
@@ -139,7 +138,6 @@ import { IStorySample } from '&/StorySample'
 @Component({
   name: 'Welcome',
   components: {
-    PerfectScrollbar,
     SFooter
   }
 })

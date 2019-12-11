@@ -4,27 +4,25 @@
       v-show="open"
       class="ease bg-blurred-3xl z-30 w-screen h-screen absolute inset-0 bg-indigo-100-10"
     >
-      <perfect-scrollbar
+      <s-scrollbar
         ref="blurPS"
         class="min-h-screen max-h-screen w-full flex flex-col"
       >
         <div class="ease w-full h-full p-2 my-auto">
           <slot />
         </div>
-      </perfect-scrollbar>
+      </s-scrollbar>
     </div>
   </transition>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch, Provide } from 'vue-property-decorator'
-import PerfectScrollbar from '@internal/components/PerfectScrollbar.vue'
 import event from '@app/event'
 import IDisplay from '&/Display'
 
 @Component({
-  name: 'SBlur',
-  components: { PerfectScrollbar }
+  name: 'SBlur'
 })
 export default class Blur extends Vue implements IDisplay {
   private open = false
@@ -36,7 +34,7 @@ export default class Blur extends Vue implements IDisplay {
       this.enforce = false
       setTimeout(() => (this.open = false), 60)
     }
-    const ps = this.$refs.blurPS as PerfectScrollbar
+    const ps = this.$refs.blurPS as any
     if (this.open) {
       document.documentElement.classList.add('overflow-hidden')
       event.$emit('stopScrolling')

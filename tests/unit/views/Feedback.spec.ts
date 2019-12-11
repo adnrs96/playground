@@ -114,19 +114,26 @@ describe('Feedback', () => {
   })
 
   describe('.onSuccess()', () => {
-    it('should reset success state, then close the modal, after 2.5s', async () => {
-      expect.assertions(6)
-      vm.$refs.feedbackModal = { hide: jest.fn() }
-      await vm.onSuccess()
-      expect(vm.$refs.feedbackModal.hide).toHaveBeenCalledTimes(0)
+    it('should call close() after 2.5s', async () => {
+      expect.assertions(2)
+      vm.close = jest.fn()
       vm.success = true
-      vm.error = true
-      expect(vm).toHaveProperty('success', true)
-      expect(vm).toHaveProperty('error', true)
+
+      vm.onSuccess()
+      expect(vm.close).not.toHaveBeenCalled()
       await new Promise(resolve => setTimeout(resolve, 2500))
-      expect(vm.$refs.feedbackModal.hide).toHaveBeenCalledTimes(1)
-      expect(vm).toHaveProperty('success', false)
-      expect(vm).toHaveProperty('error', false)
+      expect(vm.close).toHaveBeenCalledTimes(1)
+    })
+
+    it('should not call close on error', async () => {
+      expect.assertions(2)
+      vm.close = jest.fn()
+      vm.success = false
+
+      vm.onSuccess()
+      expect(vm.close).not.toHaveBeenCalled()
+      await new Promise(resolve => setTimeout(resolve, 2500))
+      expect(vm.close).not.toHaveBeenCalled()
     })
   })
 

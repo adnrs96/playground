@@ -92,17 +92,19 @@ describe('RegisterInterest', () => {
   describe('.onSuccess()', () => {
     it('should reset success state, then close the modal, after 2s', async () => {
       expect.assertions(6)
-      vm.$refs.registerInterestModal = { hide: jest.fn() }
-      await vm.onSuccess()
-      expect(vm.$refs.registerInterestModal.hide).toHaveBeenCalledTimes(0)
+      vm.close = jest.fn()
       vm.success = true
       vm.error = true
+
+      vm.onSuccess()
       expect(vm).toHaveProperty('success', true)
       expect(vm).toHaveProperty('error', true)
+      expect(vm.close).not.toHaveBeenCalled()
+
       await new Promise(resolve => setTimeout(resolve, 2000))
-      expect(vm.$refs.registerInterestModal.hide).toHaveBeenCalledTimes(1)
       expect(vm).toHaveProperty('success', false)
       expect(vm).toHaveProperty('error', false)
+      expect(vm.close).toHaveBeenCalledTimes(1)
     })
   })
 })

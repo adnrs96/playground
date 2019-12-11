@@ -18,7 +18,8 @@ describe('Comments.vue', () => {
       },
       stubs: {
         's-text': '<div />',
-        's-text-button': '<div />'
+        's-text-button': '<div />',
+        's-scrollbar': '<div />'
       }
     })
     vm = view.vm as any
@@ -38,7 +39,8 @@ describe('Comments.vue', () => {
     const vView = shallowMount(Comments, {
       stubs: {
         's-text': '<div />',
-        's-text-button': '<div />'
+        's-text-button': '<div />',
+        's-scrollbar': '<div />'
       }
     })
     expect(vView.html()).toBeTruthy()
