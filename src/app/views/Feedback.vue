@@ -40,10 +40,10 @@
           </s-labeled-input>
 
           <s-select-pills
+            v-model="shutdownStoryscriptAnswer"
             p="2"
             weight="medium"
             :option-strings="shutdownStoryscriptQuestion"
-            @pillSelectionChange="onPillSelectionChange('q1', $event)"
           >
             <s-text
               slot="label"
@@ -58,10 +58,10 @@
           </s-select-pills>
 
           <s-select-pills
+            v-model="understandStoryscriptAnswer"
             p="3"
             weight="medium"
             :option-strings="understandStoryscriptQuestion"
-            @pillSelectionChange="onPillSelectionChange('q2', $event)"
           >
             <s-text
               slot="label"
@@ -226,6 +226,16 @@ export default class Feedback extends Vue {
     this.updateDisabled()
   }
 
+  @Watch('shutdownStoryscriptAnswer')
+  private onShutdownStoryscriptAnswer () {
+    this.updateQuestionsAnswered()
+  }
+
+  @Watch('understandStoryscriptAnswer')
+  private onUnderstandStoryscriptAnswer () {
+    this.updateQuestionsAnswered()
+  }
+
   @Watch('comment')
   private onComment () {
     this.updateDisabled()
@@ -258,15 +268,6 @@ export default class Feedback extends Vue {
         resolve()
       }
     })
-  }
-
-  private onPillSelectionChange (q: string, selected: any) {
-    if (q === 'q1') {
-      this.shutdownStoryscriptAnswer = selected
-    } else if (q === 'q2') {
-      this.understandStoryscriptAnswer = selected
-    }
-    this.updateQuestionsAnswered()
   }
 
   private submit () {
