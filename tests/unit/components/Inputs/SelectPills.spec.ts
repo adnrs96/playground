@@ -33,9 +33,9 @@ describe('SelectPills.vue', () => {
         }
       })
 
-      const vm = pills.vm as any
-      vm.onPillSelected()
-      expect(pills.emitted().pillSelectionChange).toBeTruthy()
+      const option = pills.findAll('label').at(0)
+      option.trigger('click')
+      expect(pills.emitted().input).toBeTruthy()
       pills.destroy()
     })
   })

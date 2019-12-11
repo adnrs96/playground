@@ -17,11 +17,11 @@ const counter: IStorySample = {
   tips: [
     {
       name: 'welcome-to-storyscript',
-      element: '#publish-btn',
+      element: '#toolbar-ss-logo',
       text:
         "This is Storyscript, the cloud-native programming language.\n\nLet's take a quick walk through the language features with this example building a simple counter application.",
-      x: -20,
-      y: 3
+      x: 240,
+      y: 5
     },
     {
       name: 'storyscript-redis',
@@ -46,48 +46,6 @@ const counter: IStorySample = {
         'Services in Storyscript can also be event driven.\n\nHere, an http server listens for events and the inner block is executed when a request is received.',
       x: 105,
       y: 16
-    },
-    {
-      name: 'storyscript-publish',
-      element: '#publish-btn',
-      text:
-        'How about we publish this story, and see what the platform can take care of for you?',
-      x: 70,
-      y: 3
-    }
-  ],
-  comments: [{
-    author: 'Sharkie',
-    comment: 'Hey Inkie, I think that the redis increment action defaults to 1 for the by argument, so this may be redundant!'
-  }, {
-    author: 'Inkie',
-    comment: "Thanks! I'll change it soon!"
-  }],
-  events: [
-    {
-      title: 'http',
-      icon: 'http',
-      text: '  Story:\n    count: 1\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
-    },
-    {
-      title: 'http',
-      icon: 'http',
-      text: '  Story:\n    count: 2\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
-    },
-    {
-      title: 'http',
-      icon: 'http',
-      text: '  Story:\n    count: 3\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
-    },
-    {
-      title: 'http',
-      icon: 'http',
-      text: '  Story:\n    count: 4\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
-    },
-    {
-      title: 'http',
-      icon: 'http',
-      text: '  Story:\n    count: 5\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
     }
   ]
 }
