@@ -86,7 +86,6 @@ export default class Studio extends Vue {
   }
 
   private skipIntro: boolean = false
-  private fullscreen: boolean = false
   private options: any = {
     readOnly: true,
     minimap: { enabled: false },
@@ -96,14 +95,6 @@ export default class Studio extends Vue {
     scrollBeyondLastLine: false,
     scrollBeyondLastColumn: false,
     contextmenu: false
-  }
-
-  mounted () {
-    window.addEventListener('keyup', this.exitFullscreen)
-  }
-
-  beforeDestroy () {
-    window.removeEventListener('keyup', this.exitFullscreen)
   }
 
   created () {
@@ -120,12 +111,6 @@ export default class Studio extends Vue {
   public setPayloadName (sample: string) {
     this.payload = samples[sample]
     this.setPayload(this.payload)
-  }
-
-  private exitFullscreen (evt: KeyboardEvent) {
-    if (evt.key === 'Escape' && this.fullscreen) {
-      this.fullscreen = false
-    }
   }
 }
 </script>
