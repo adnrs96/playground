@@ -15,6 +15,8 @@ export const EditorOptions: IEditorConstructionOptions = {
   scrollBeyondLastColumn: 0,
   overviewRulerBorder: false,
   hideCursorInOverviewRuler: true,
+  selectionHighlight: false,
+  occurrencesHighlight: false,
   contextmenu: false
 }
 
