@@ -52,7 +52,7 @@ module.exports = {
     TEST_MODE !== 'integration' && TEST_MODE !== 'integration-local',
   collectCoverageFrom: [
     'src/**/*.{js,ts,vue}',
-    '!src/app/(main|router|registerServiceWorker|serviceWorker).{ts,js}',
+    '!src/app/(main|router|registerServiceWorker|service-worker).{ts,js}',
     '!src/app/store/index.ts',
     '!src/app/store/modules/index.ts',
     '!src/samples/**/*.ts',

@@ -9,7 +9,7 @@ module.exports = {
   pwa: {
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
-      swSrc: 'src/app/serviceWorker.js'
+      swSrc: 'src/app/service-worker.js'
     },
     name: 'Storyscript Studio',
     themeColor: '#5C52FF',
