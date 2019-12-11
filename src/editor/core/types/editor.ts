@@ -13,6 +13,8 @@ export const EditorOptions: IEditorConstructionOptions = {
   renderIndentGuides: false,
   scrollBeyondLastLine: false,
   scrollBeyondLastColumn: 0,
+  overviewRulerBorder: false,
+  hideCursorInOverviewRuler: true,
   contextmenu: false
 }
 

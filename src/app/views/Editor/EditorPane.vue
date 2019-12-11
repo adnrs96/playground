@@ -69,14 +69,19 @@ export default class EditorPane extends Vue {
 
 <style lang="scss">
 #editor-pane .monaco-editor {
+
   .line-numbers {
     opacity: 0;
     transition: all .2s ease-out;
   }
 
   &:hover,&.focused {
-    .line-numbers {
+    .current-line ~ .line-numbers {
       opacity: 1;
+    }
+    .line-numbers {
+      opacity: .5;
+      color: rgba(0,0,0,0.4)
     }
   }
 }
