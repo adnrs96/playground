@@ -1,5 +1,16 @@
 <template>
-  <nav class="flex items-center flex-no-wrap bg-indigo-50 px-6 h-14 z-20 justify-between">
+  <nav class="flex items-center flex-no-wrap bg-indigo-50 px-5 h-14 z-20 justify-between">
+    <div class="flex justify-center items-center border-r border-indigo-70 mr-2">
+      <s-icon
+        icon="story"
+        color="text-white"
+        width="24"
+        height="24"
+        class="mr-5"
+        clickable
+        @click="$router.push({ name: 'welcome' })"
+      />
+    </div>
     <div class="flex flex-1 items-center justify-start">
       <s-text
         v-if="title"

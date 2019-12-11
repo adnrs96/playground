@@ -3,7 +3,6 @@
     id="studio-view"
     class="flex flex-row"
   >
-    <s-toolbar />
     <div class="flex flex-col w-full">
       <s-navbar
         :title="payload.name"
@@ -15,6 +14,11 @@
         >
           <slot name="notification" />
         </div>
+
+        <div class="w-full flex-1 flex">
+          <s-library class="pt-3" />
+        </div>
+
         <div
           id="left-col"
           class="flex flex-col w-full"
@@ -49,19 +53,22 @@ import { Mutation, Getter } from 'vuex-class'
 import { IStorySample } from '&/StorySample'
 import samples from '@/samples'
 import MonacoEditor from '@editor/MonacoEditor.vue'
-import SNavbar from '@internal/components/Navbar.vue'
+import SNavbar from '@app/Layout/Navbar.vue'
 import SIntro from '@internal/components/Intro.vue'
-import SToolbar from '@internal/components/Toolbar.vue'
+import SComments from '@internal/components/Comments.vue'
+import SLibrary from '@app/Library/index.vue'
 
 @Component({
+  name: 'SLayout',
   components: {
     MonacoEditor,
     SNavbar,
     SIntro,
-    SToolbar
+    SComments,
+    SLibrary
   }
 })
-export default class Studio extends Vue {
+export default class SLayout extends Vue {
   @Prop({ type: String, default: 'counter' }) readonly sample!: string
 
   @Getter('hasTipsBeenShown')

@@ -11,6 +11,6 @@ export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   plugins: [createPersistedState({
     key: `studio-v${version.split('.')[0]}`, // keeping storage away from potential breaking changes
-    paths: ['Tips']
+    paths: ['Tips', 'LibraryPane']
   })]
 })

@@ -1,5 +1,5 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
-import Navbar from '@internal/components/Navbar.vue'
+import Navbar from '@app/Layout/Navbar.vue'
 
 describe('Navbar.vue', () => {
   let navbar: Wrapper<Navbar>

@@ -143,6 +143,7 @@ module.exports = {
       },
       boxShadow: {
         sm: '0 3px 5px rgba(0, 0, 0, 0.05)',
+        sm2: '0px 0px 2px rgba(0, 0, 0, 0.15)',
         card: '0px 5px 18px rgba(0, 0, 0, 0.06)',
         'inner-right': 'inset -1px -4px 10px 2px rgba(0, 0, 0, 0.06)'
       },
