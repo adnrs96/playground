@@ -6,6 +6,7 @@ describe('Editor.ts', () => {
     it('without options', () => {
       const editor = new Editor(Languages.Storyscript)
       expect(editor).toHaveProperty('language', 'storyscript')
+      expect(editor).toHaveProperty('icon', 'story')
     })
 
     it('with default options', () => {
