@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 import { Mutation, Getter } from 'vuex-class'
 import { IStorySample } from '&/StorySample'
 import samples from '@/samples'
@@ -64,11 +64,6 @@ import SToolbar from '@internal/components/Toolbar.vue'
 })
 export default class Studio extends Vue {
   @Prop({ type: String, default: 'counter' }) readonly sample!: string
-
-  @Emit('introChange')
-  @Watch('isIntro') private onIntroChange (): boolean {
-    return this.isIntro
-  }
 
   @Getter('hasTipsBeenShown')
   private hasTipsBeenShown!: (sampleId: string) => boolean
