@@ -1,4 +1,4 @@
-interface ILibraryStore {
+export interface ILibraryStore {
   open: boolean
 }
 

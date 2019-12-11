@@ -1,12 +1,12 @@
 import { createLocalVue } from '@vue/test-utils'
 import Vuex, { Store } from 'vuex'
-import LibraryPane from '@/app/store/modules/LibraryPane'
+import LibraryPane, { ILibraryStore } from '@app/store/modules/LibraryPane'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
 describe('LibraryPane Vuex Store', () => {
-  let store: Store<any>
+  let store: Store<ILibraryStore>
 
   beforeEach(() => {
     store = new Vuex.Store(LibraryPane)

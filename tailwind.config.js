@@ -138,7 +138,6 @@ module.exports = {
         'fit-content': 'fit-content',
         'max-content': 'max-content',
         '2full': '200%',
-        7: '1.75rem',
         14: '3.5rem', // 56px
         22: '5.5rem' // 88px
       },

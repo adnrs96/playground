@@ -1,7 +1,7 @@
 import { shallowMount, createLocalVue, Wrapper } from '@vue/test-utils'
 import Vuex, { Store } from 'vuex'
 import Library from '@app/Library/index.vue'
-import LibraryPane from '@/app/store/modules/LibraryPane'
+import LibraryPane, { ILibraryStore } from '@app/store/modules/LibraryPane'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
@@ -9,7 +9,7 @@ localVue.use(Vuex)
 describe('Library > index.vue', () => {
   let view: Wrapper<Library>
   let vm: any
-  let store: Store<any>
+  let store: Store<ILibraryStore>
 
   beforeAll(() => {
     store = new Vuex.Store({

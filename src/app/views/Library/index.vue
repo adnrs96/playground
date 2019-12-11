@@ -49,7 +49,7 @@
         class="flex flex-col items-center px-4"
       >
         <img
-          class="mt-7 mb-6"
+          class="my-6"
           src="/img/illustrations/library/services.png"
           alt="multiples services icons"
         >

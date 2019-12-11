@@ -16,8 +16,8 @@
           <slot name="notification" />
         </div>
 
-        <div class="mt-3 w-full flex-1 flex">
-          <s-library />
+        <div class="w-full flex-1 flex">
+          <s-library class="pt-3" />
         </div>
 
         <div
