@@ -1,9 +1,9 @@
 .min-h-screen-no-navbar {
-  min-height: calc(100vh - 3.5rem);
+  min-height: calc(100vh - 3.5rem - .75rem);
 }
 
 .max-h-screen-no-navbar {
-  max-height: calc(100vh - 3.5rem);
+  max-height: calc(100vh - 3.5rem - .75rem);
 }
 
 .min-h-screen-no-navbar-tabs {

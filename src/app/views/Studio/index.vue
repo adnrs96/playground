@@ -3,7 +3,6 @@
     id="studio-view"
     class="flex flex-row"
   >
-    <s-toolbar />
     <div class="flex flex-col w-full">
       <s-navbar
         :intro="isIntro"
@@ -16,6 +15,11 @@
         >
           <slot name="notification" />
         </div>
+
+        <div class="mt-3 w-full flex-1 flex">
+          <s-library />
+        </div>
+
         <div
           id="left-col"
           class="flex flex-col"
@@ -77,11 +81,11 @@ import SEvents from '@app/Studio/Events.vue'
 import { IStorySample } from '&/StorySample'
 import samples from '@/samples'
 import MonacoEditor from '@editor/MonacoEditor.vue'
-import SNavbar from '@internal/components/Navbar.vue'
+import SNavbar from '@app/Layout/Navbar.vue'
 import SIntro from '@internal/components/Intro.vue'
 import STabs from '@internal/components/Tabs.vue'
 import SComments from '@internal/components/Comments.vue'
-import SToolbar from '@internal/components/Toolbar.vue'
+import SLibrary from '@app/Library/index.vue'
 
 @Component({
   components: {
@@ -92,7 +96,7 @@ import SToolbar from '@internal/components/Toolbar.vue'
     STabs,
     SComments,
     SEvents,
-    SToolbar
+    SLibrary
   }
 })
 export default class Studio extends Vue {
