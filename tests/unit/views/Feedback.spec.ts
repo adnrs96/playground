@@ -55,6 +55,36 @@ describe('Feedback', () => {
         expect(vm).toHaveProperty('disabled', false)
       })
     })
+
+    describe('onShutdownStoryscriptAnswer', () => {
+      it('should update questions answered', () => {
+        expect.assertions(2)
+        vm.email = ''
+        vm.comment = ''
+        vm.emailError = ''
+        vm.questionsAnswered = 0
+        vm.disabled = true
+        vm.shutdownStoryscriptAnswer = 'foobar'
+        vm.onShutdownStoryscriptAnswer()
+        expect(vm).toHaveProperty('questionsAnswered', 1)
+        expect(vm).toHaveProperty('disabled', false)
+      })
+    })
+
+    describe('onUnderstandStoryscriptAnswer', () => {
+      it('should update questions answered', () => {
+        expect.assertions(2)
+        vm.email = ''
+        vm.comment = ''
+        vm.emailError = ''
+        vm.questionsAnswered = 0
+        vm.disabled = true
+        vm.understandStoryscriptAnswer = 'foobar'
+        vm.onUnderstandStoryscriptAnswer()
+        expect(vm).toHaveProperty('questionsAnswered', 1)
+        expect(vm).toHaveProperty('disabled', false)
+      })
+    })
   })
 
   describe('.submit()', () => {
@@ -134,38 +164,6 @@ describe('Feedback', () => {
       expect(vm.close).not.toHaveBeenCalled()
       await new Promise(resolve => setTimeout(resolve, 2500))
       expect(vm.close).not.toHaveBeenCalled()
-    })
-  })
-
-  describe('.onPillSelectionChange()', () => {
-    it('should store answer to question 1', async () => {
-      vm.shutdownStoryscriptAnswer = ''
-      vm.questionsAnswered = 0
-      vm.onPillSelectionChange('q1', 'foobar')
-
-      expect.assertions(2)
-      expect(vm.questionsAnswered).toBe(1)
-      expect(vm.shutdownStoryscriptAnswer).toBe('foobar')
-    })
-
-    it('should store answer to question 2', async () => {
-      vm.understandStoryscriptAnswer = ''
-      vm.questionsAnswered = 0
-      vm.onPillSelectionChange('q2', 'foobar')
-
-      expect.assertions(2)
-      expect(vm.questionsAnswered).toBe(1)
-      expect(vm.understandStoryscriptAnswer).toBe('foobar')
-    })
-
-    it('should store answer to question 3', async () => {
-      vm.understandStoryscriptAnswer = ''
-      vm.questionsAnswered = 0
-      vm.onPillSelectionChange('q3', 'foobar')
-
-      expect.assertions(2)
-      expect(vm.questionsAnswered).toBe(0)
-      expect(vm.understandStoryscriptAnswer).toBe('')
     })
   })
 })
