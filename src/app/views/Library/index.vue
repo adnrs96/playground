@@ -1,5 +1,5 @@
 <template>
-  <div class="z-20">
+  <div class="z-10">
     <div
       class="transition-all-fast absolute bg-white cursor-pointer w-10 h-10 flex items-center justify-center shadow-sm2 border-t border-r border-b border-gray-20 rounded-tr-md rounded-br"
       :class="[
