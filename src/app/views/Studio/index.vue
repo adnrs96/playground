@@ -18,10 +18,7 @@
         </div>
         <div
           id="left-col"
-          class="flex flex-col"
-          :class="[
-            `${fullscreen ? 'w-full' : 'w-2/3'}`
-          ]"
+          class="flex flex-col w-full"
         >
           <!-- FIX FOR SAFARI, see https://bugs.webkit.org/show_bug.cgi?id=198375 -->
           <div
@@ -34,30 +31,8 @@
               :options="options"
             />
           </div>
-          <div
-            id="bottom-container"
-            class="w-full flex"
-            :class="{'h-0': fullscreen}"
-          >
-            <s-architecture :services="payload.services" />
-          </div>
         </div>
-        <s-tabs
-          id="right-col"
-          class="border-l border-gray-20"
-          :class="[
-            `${fullscreen ? 'w-0' : 'w-1/3'}`]
-          "
-        >
-          <s-events
-            data-tab-title="Events"
-            :events="payload.events"
-          />
-          <s-comments
-            data-tab-title="Comments"
-            :comments="payload.comments"
-          />
-        </s-tabs>
+
         <s-intro
           v-if="payload.tips && isIntro"
           :tips="payload.tips"
@@ -72,26 +47,18 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
 import { Mutation, Getter } from 'vuex-class'
-import SArchitecture from '@app/Studio/Architecture.vue'
-import SEvents from '@app/Studio/Events.vue'
 import { IStorySample } from '&/StorySample'
 import samples from '@/samples'
 import MonacoEditor from '@editor/MonacoEditor.vue'
 import SNavbar from '@internal/components/Navbar.vue'
 import SIntro from '@internal/components/Intro.vue'
-import STabs from '@internal/components/Tabs.vue'
-import SComments from '@internal/components/Comments.vue'
 import SToolbar from '@internal/components/Toolbar.vue'
 
 @Component({
   components: {
-    SArchitecture,
     MonacoEditor,
     SNavbar,
     SIntro,
-    STabs,
-    SComments,
-    SEvents,
     SToolbar
   }
 })
