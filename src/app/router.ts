@@ -12,7 +12,8 @@ export default new Router({
       component: () => import('@app/index.vue'),
       children: [
         {
-          path: '/welcome',
+          path: '',
+          alias: '/welcome',
           name: 'welcome',
           component: () => import('@app/Welcome.vue')
         },
@@ -23,6 +24,11 @@ export default new Router({
             sample: route.params.sample
           }),
           component: () => import('@app/Studio/index.vue')
+        },
+        {
+          path: 'e',
+          name: 'editor',
+          component: () => import('@app/Editor/index.vue')
         }
       ]
     },
