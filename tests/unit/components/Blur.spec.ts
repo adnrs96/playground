@@ -6,7 +6,11 @@ describe('Blur.vue', () => {
   let vm: any
 
   beforeEach(() => {
-    view = shallowMount(Blur, {})
+    view = shallowMount(Blur, {
+      stubs: {
+        's-scrollbar': '<div />'
+      }
+    })
     const ps = view.vm.$refs.blurPS as any
     ps.setScrollingY = jest.fn()
     vm = view.vm as any

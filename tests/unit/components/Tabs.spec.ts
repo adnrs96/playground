@@ -11,7 +11,8 @@ describe('Tabs.vue', () => {
         default: ['<div data-tab-title="hello" />', '<div data-tab-title="world" />']
       },
       stubs: {
-        's-text': '<div />'
+        's-text': '<div />',
+        's-scrollbar': '<div><slot /></div>'
       }
     })
     vm = view.vm as any
@@ -53,7 +54,12 @@ describe('Tabs.vue', () => {
 
   it('mount with no slots has no slots', () => {
     expect.assertions(1)
-    const tabs = shallowMount(Tabs)
+    const tabs = shallowMount(Tabs, {
+      stubs: {
+        's-text': '<div />',
+        's-scrollbar': '<div><slot /></div>'
+      }
+    })
     expect(tabs.vm).toHaveProperty('slots', [])
     tabs.destroy()
   })

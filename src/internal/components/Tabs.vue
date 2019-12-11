@@ -17,19 +17,20 @@
     </div>
     <!-- FIX FOR SAFARI, see https://bugs.webkit.org/show_bug.cgi?id=198375 -->
     <!-- Added flex to be able to add `flex-1` when we need a 10% height div on Safari (iPad) -->
-    <s-perfect-scrollbar
+    <s-scrollbar
       class="flex min-h-screen-no-navbar-tabs max-h-screen-no-navbar-tabs w-full"
     >
       <slot />
-    </s-perfect-scrollbar>
+    </s-scrollbar>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import SPerfectScrollbar from '@internal/components/PerfectScrollbar.vue'
 
-@Component({ name: 'Tabs', components: { SPerfectScrollbar } })
+@Component({
+  name: 'Tabs'
+})
 export default class Tabs extends Vue {
   @Prop({ type: [String, Number], default: 0 })
   private selected!: string | number

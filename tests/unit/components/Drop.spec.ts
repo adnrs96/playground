@@ -223,8 +223,9 @@ describe('Drop.vue', () => {
       vm.show = true
       expect(vm).toHaveProperty('show', true)
       vm.showTrigger('hover', false)
-      expect(vm.refreshPosition).not.toHaveBeenCalled()
       expect(vm).toHaveProperty('show', true)
+      vm.onDisplayChange = jest.fn()
+      expect(vm.onDisplayChange).not.toHaveBeenCalled()
     })
   })
 

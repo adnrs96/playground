@@ -26,7 +26,8 @@ describe('Welcome.vue', () => {
         'router-view': '<div />',
         's-text': '<div />',
         's-icon': '<div />',
-        's-button': '<div />'
+        's-button': '<div />',
+        's-scrollbar': '<div />'
       }
     })
     vm = welcome.vm as any

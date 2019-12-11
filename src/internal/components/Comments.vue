@@ -2,7 +2,7 @@
   <div
     class="px-4 pb-6 min-h-screen-no-navbar-tabs flex flex-col"
   >
-    <s-perfect-scrollbar>
+    <s-scrollbar>
       <transition-group
         name="fade-in"
         tag="div"
@@ -28,7 +28,7 @@
           />
         </div>
       </transition-group>
-    </s-perfect-scrollbar>
+    </s-scrollbar>
     <div
       key="self-input"
       class="flex flex-row mt-auto pt-4 items-center w-full"
@@ -65,12 +65,10 @@
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { IStorySampleComment } from '&/StorySample'
 import { SInput } from '@internal/components/Inputs'
-import SPerfectScrollbar from '@internal/components/PerfectScrollbar.vue'
 
 @Component({
   components: {
-    SInput,
-    SPerfectScrollbar
+    SInput
   }
 })
 export default class Comments extends Vue {

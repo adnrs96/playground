@@ -10,7 +10,7 @@
     >
       Services
     </s-text>
-    <perfect-scrollbar class="bg-gray-10 p-8 max-h-xs flex flex-wrap">
+    <s-scrollbar class="bg-gray-10 p-8 max-h-xs flex flex-wrap">
       <div
         v-for="(c, idx) in services"
         :key="`card-${idx}`"
@@ -70,20 +70,16 @@
           </transition>
         </div>
       </div>
-    </perfect-scrollbar>
+    </s-scrollbar>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import PerfectScrollbar from '@internal/components/PerfectScrollbar.vue'
 import event from '@app/event'
 
 @Component({
-  name: 'Architecture',
-  components: {
-    PerfectScrollbar
-  }
+  name: 'Architecture'
 })
 export default class Architecture extends Vue {
   @Prop({ type: Array, default: [] }) readonly services!: Array<string>
