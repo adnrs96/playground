@@ -42,46 +42,39 @@ describe('Feedback', () => {
         expect(vm).toHaveProperty('emailError', 'Email is invalid.')
       })
     })
+  })
 
+  describe('disabled', () => {
     describe('comment', () => {
       it('should make button enabled when not null', () => {
         expect.assertions(1)
         vm.email = ''
         vm.comment = 'foobar'
         vm.emailError = ''
-        vm.questionsAnswered = 0
-        vm.disabled = true
-        vm.onComment()
+        vm.shutdownStoryscriptAnswer = ''
+        vm.understandStoryscriptAnswer = ''
         expect(vm).toHaveProperty('disabled', false)
       })
     })
 
-    describe('onShutdownStoryscriptAnswer', () => {
-      it('should update questions answered', () => {
-        expect.assertions(2)
+    describe('shutdownStoryscriptAnswer', () => {
+      it('should make button enabled when not null', () => {
+        expect.assertions(1)
         vm.email = ''
         vm.comment = ''
         vm.emailError = ''
-        vm.questionsAnswered = 0
-        vm.disabled = true
         vm.shutdownStoryscriptAnswer = 'foobar'
-        vm.onShutdownStoryscriptAnswer()
-        expect(vm).toHaveProperty('questionsAnswered', 1)
         expect(vm).toHaveProperty('disabled', false)
       })
     })
 
-    describe('onUnderstandStoryscriptAnswer', () => {
-      it('should update questions answered', () => {
-        expect.assertions(2)
+    describe('understandStoryscriptAnswer', () => {
+      it('should make button enabled when not null', () => {
+        expect.assertions(1)
         vm.email = ''
         vm.comment = ''
         vm.emailError = ''
-        vm.questionsAnswered = 0
-        vm.disabled = true
         vm.understandStoryscriptAnswer = 'foobar'
-        vm.onUnderstandStoryscriptAnswer()
-        expect(vm).toHaveProperty('questionsAnswered', 1)
         expect(vm).toHaveProperty('disabled', false)
       })
     })
@@ -91,13 +84,13 @@ describe('Feedback', () => {
     it('should not do anything when already sending', async () => {
       expect.assertions(1)
       vm.sending = true
+      vm.comment = 'foobar'
       vm.submit()
       expect(vm).toHaveProperty('sending', true)
     })
 
     it('should not do anything when disabled', async () => {
       expect.assertions(1)
-      vm.disabled = true
       vm.submit()
       expect(vm).toHaveProperty('disabled', true)
     })
@@ -105,7 +98,7 @@ describe('Feedback', () => {
     it('should send form info to netlify - error', async () => {
       expect.assertions(2)
       vm.sending = false
-      vm.disabled = false
+      vm.comment = 'foobar'
       window.fetch = jest.fn().mockResolvedValue({
         status: 500
       })
@@ -119,7 +112,7 @@ describe('Feedback', () => {
     it('should send form info to netlify - success', async () => {
       expect.assertions(2)
       vm.sending = false
-      vm.disabled = false
+      vm.comment = 'foobar'
       window.fetch = jest.fn().mockResolvedValue({
         status: 200
       })
