@@ -6,7 +6,6 @@
     <s-toolbar />
     <div class="flex flex-col w-full">
       <s-navbar
-        :intro="isIntro"
         :title="payload.name"
       />
       <div class="min-h-screen-no-navbar flex">

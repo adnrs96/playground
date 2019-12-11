@@ -39,7 +39,6 @@ import SRegisterInterest from '@app/RegisterInterest.vue'
   }
 })
 export default class Navbar extends Vue {
-  @Prop({ type: Boolean, default: false }) private intro!: boolean
   @Prop({ type: String, default: undefined }) private title?: string
 
   private welcome: boolean = true
