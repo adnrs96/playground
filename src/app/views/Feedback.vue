@@ -40,10 +40,10 @@
           </s-labeled-input>
 
           <s-select-pills
+            v-model="shutdownStoryscriptAnswer"
             p="2"
             weight="medium"
             :option-strings="shutdownStoryscriptQuestion"
-            @pillSelectionChange="onPillSelectionChange('q1', $event)"
           >
             <s-text
               slot="label"
@@ -58,10 +58,10 @@
           </s-select-pills>
 
           <s-select-pills
+            v-model="understandStoryscriptAnswer"
             p="3"
             weight="medium"
             :option-strings="understandStoryscriptQuestion"
-            @pillSelectionChange="onPillSelectionChange('q2', $event)"
           >
             <s-text
               slot="label"
@@ -189,7 +189,6 @@ export default class Feedback extends Vue {
   private sending = false
   private success = false
   private error = false
-  private questionsAnswered = 0
   private shutdownStoryscriptAnswer = ''
   private understandStoryscriptAnswer = ''
   private shutdownStoryscriptQuestion = ["Don't care", 'Meh', 'Sad', 'Angry']
@@ -201,34 +200,19 @@ export default class Feedback extends Vue {
   readonly q1 = 'How would you feel if we stopped building storyscript?'
   readonly q2 = 'Is it clear what the product does?'
 
-  private disabled = true
-
-  private updateDisabled () {
+  private get disabled () {
     if (
       this.emailError.length > 0 ||
       this.sending ||
-      (this.email === '' && this.comment === '' && this.questionsAnswered === 0)
+      (this.email === '' &&
+        this.comment === '' &&
+        this.shutdownStoryscriptAnswer === '' &&
+        this.understandStoryscriptAnswer === '')
     ) {
-      this.disabled = true
+      return true
     } else {
-      this.disabled = false
+      return false
     }
-  }
-
-  private updateQuestionsAnswered () {
-    this.questionsAnswered = 0
-    if (this.shutdownStoryscriptAnswer !== '') {
-      this.questionsAnswered += 1
-    }
-    if (this.understandStoryscriptAnswer !== '') {
-      this.questionsAnswered += 1
-    }
-    this.updateDisabled()
-  }
-
-  @Watch('comment')
-  private onComment () {
-    this.updateDisabled()
   }
 
   @Watch('email')
@@ -243,7 +227,6 @@ export default class Feedback extends Vue {
     } else {
       this.emailError = ''
     }
-    this.updateDisabled()
   }
 
   @Watch('success')
@@ -258,15 +241,6 @@ export default class Feedback extends Vue {
         resolve()
       }
     })
-  }
-
-  private onPillSelectionChange (q: string, selected: any) {
-    if (q === 'q1') {
-      this.shutdownStoryscriptAnswer = selected
-    } else if (q === 'q2') {
-      this.understandStoryscriptAnswer = selected
-    }
-    this.updateQuestionsAnswered()
   }
 
   private submit () {
