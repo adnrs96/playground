@@ -1,4 +1,4 @@
-import Studio from '@app/Studio/index.vue'
+import Layout from '@app/Layout/index.vue'
 import { Wrapper, shallowMount, createLocalVue } from '@vue/test-utils'
 import samples from '@/samples'
 import Vuex, { Store } from 'vuex'
@@ -8,8 +8,8 @@ import StoreTips from '@app/store/modules/Tips'
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-describe('Studio index', () => {
-  let studio: Wrapper<Studio>
+describe('Layout index', () => {
+  let layout: Wrapper<Layout>
   let store: Store<any>
 
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe('Studio index', () => {
       getters: { ...StorePayload.getters, ...StoreTips.getters },
       mutations: { ...StorePayload.mutations, ...StoreTips.mutations }
     })
-    studio = shallowMount(Studio, {
+    layout = shallowMount(Layout, {
       stubs: {
         'router-view': '<div />',
         's-text': '<div />',
@@ -42,17 +42,17 @@ describe('Studio index', () => {
   })
 
   afterEach(() => {
-    studio.destroy()
+    layout.destroy()
   })
 
   it('should mount', () => {
     expect.assertions(1)
-    expect(studio.html()).toBeDefined()
+    expect(layout.html()).toBeDefined()
   })
 
   it('should skip intro', () => {
     expect.assertions(1)
-    const view = shallowMount(Studio, {
+    const view = shallowMount(Layout, {
       propsData: {
         sample: 'not-a-sample'
       },
@@ -78,7 +78,7 @@ describe('Studio index', () => {
 
   describe('.setPayload(string)', () => {
     it('should set the payload', () => {
-      const view = shallowMount(Studio, {
+      const view = shallowMount(Layout, {
         store,
         localVue,
         propsData: {
@@ -105,57 +105,6 @@ describe('Studio index', () => {
       vvm.setPayload('counter')
       expect(vvm).toHaveProperty('payload', samples.counter)
       view.destroy()
-    })
-  })
-
-  describe('exitFullscreen', () => {
-    let idxView: Wrapper<Studio>
-    let ivm: any
-
-    beforeEach(() => {
-      idxView = shallowMount(Studio, {
-        store,
-        localVue,
-        propsData: {
-          sample: 'counter'
-        },
-        mocks: {
-          $route: {
-            query: { skipIntro: 'true' }
-          },
-          $router: {
-            push: jest.fn(),
-            replace: jest.fn()
-          }
-        },
-        stubs: {
-          's-text': '<div />',
-          's-icon': '<div />'
-        }
-      })
-      ivm = idxView.vm as any
-    })
-
-    afterEach(() => {
-      idxView.destroy()
-    })
-
-    it('should exit fullscreen when hitting Esc', () => {
-      ivm.fullscreen = true
-      ivm.exitFullscreen({ key: 'Escape' })
-      expect(ivm.fullscreen).toBeFalsy()
-    })
-
-    it('shoud not exit on different keys', () => {
-      ivm.fullscreen = true
-      ivm.exitFullscreen({ key: 'Enter' })
-      expect(ivm.fullscreen).toBeTruthy()
-    })
-
-    it('shoud not exit when not in fullscreen', () => {
-      ivm.fullscreen = false
-      ivm.exitFullscreen({ key: 'Escape' })
-      expect(ivm.fullscreen).toBeFalsy()
     })
   })
 })

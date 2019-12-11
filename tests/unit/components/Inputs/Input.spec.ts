@@ -50,6 +50,19 @@ describe('Input.vue', () => {
       cmpnt.destroy()
     })
 
+    it('should be neutral and darker when focused', () => {
+      const cmpnt = mount(SInput, {
+        stubs: {
+          's-text': '<div />',
+          's-icon': '<div />'
+        }
+      })
+      ;(cmpnt.vm as any).valid = undefined
+      ;(cmpnt.vm as any).focused = true
+      expect((cmpnt.vm as any).validationBorder).toEqual('border-gray-50')
+      cmpnt.destroy()
+    })
+
     it('should be green when it is valid', () => {
       const cmpnt = mount(SInput, {
         propsData: {
