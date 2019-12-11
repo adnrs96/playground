@@ -11,7 +11,6 @@
       </s-text>
 
       <div class="flex flex-1 items-center justify-end">
-        <s-collaborators class="mr-4" />
         <s-share />
         <s-help />
         <s-register-interest />
@@ -23,7 +22,6 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import SDrop from '@internal/components/Drop.vue'
-import SCollaborators from '@internal/components/Collaborators.vue'
 import SShare from '@app/Share.vue'
 import SHelp from '@internal/components/HelpDrop.vue'
 import SRegisterInterest from '@app/RegisterInterest.vue'
@@ -32,7 +30,6 @@ import SRegisterInterest from '@app/RegisterInterest.vue'
   name: 'Navbar',
   components: {
     SDrop,
-    SCollaborators,
     SShare,
     SHelp,
     SRegisterInterest
