@@ -47,40 +47,6 @@ const counter: IStorySample = {
       x: 105,
       y: 16
     }
-  ],
-  comments: [{
-    author: 'Sharkie',
-    comment: 'Hey Inkie, I think that the redis increment action defaults to 1 for the by argument, so this may be redundant!'
-  }, {
-    author: 'Inkie',
-    comment: "Thanks! I'll change it soon!"
-  }],
-  events: [
-    {
-      title: 'http',
-      icon: 'http',
-      text: '  Story:\n    count: 1\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
-    },
-    {
-      title: 'http',
-      icon: 'http',
-      text: '  Story:\n    count: 2\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
-    },
-    {
-      title: 'http',
-      icon: 'http',
-      text: '  Story:\n    count: 3\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
-    },
-    {
-      title: 'http',
-      icon: 'http',
-      text: '  Story:\n    count: 4\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
-    },
-    {
-      title: 'http',
-      icon: 'http',
-      text: '  Story:\n    count: 5\n\n  Request:\n    Headers:\n      Host: example.com\n      User-Agent: Mozilla'
-    }
   ]
 }
 
