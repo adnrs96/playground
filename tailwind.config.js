@@ -155,7 +155,8 @@ module.exports = {
         full: '100%'
       },
       maxWidth: {
-        xxs: '10rem'
+        xxs: '10rem',
+        pane: '16rem'
       }
     },
     letterSpacing: {

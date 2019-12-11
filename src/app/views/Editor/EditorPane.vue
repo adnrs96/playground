@@ -14,9 +14,9 @@
           :id="`editor-pane-${idx}`"
           :key="`editor-pane-lang-${editor.lang}-${idx}`"
           :data-lang="editor.language"
-          class="p-4 mb-4 flex flex-col w-full"
+          class="py-4 mb-4 flex flex-col w-full"
         >
-          <div class="flex flex-no-wrap items-center mb-4">
+          <div class="flex flex-no-wrap items-center mx-4 mb-4">
             <s-icon
               :icon="editor.icon"
               class="m-1"
@@ -43,9 +43,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Getter } from 'vuex-class'
 import MonacoEditor from '@editor/MonacoEditor.vue'
 import { Editor, Languages } from '&/editor'
+import { IStorySample } from '&/StorySample'
 
 @Component({
   name: 'EditorPane',
@@ -53,11 +55,14 @@ import { Editor, Languages } from '&/editor'
 })
 export default class EditorPane extends Vue {
   private editors: Array<Editor> = []
-  private code: string = ''
 
-  mounted () {
-    this.editors.push(new Editor(Languages.Storyscript, ''))
-    this.editors.push(new Editor(Languages.Text))
+  @Getter('getPayload')
+  private payload!: IStorySample
+
+  @Watch('payload', { immediate: true })
+  private onPayloadUpdate () {
+    this.editors.splice(0, this.editors.length)
+    this.editors.push(new Editor(Languages.Storyscript, this.payload.code, { readOnly: true }))
   }
 }
 </script>

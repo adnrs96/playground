@@ -19,16 +19,12 @@ export default new Router({
         },
         {
           path: 'example/:sample',
+          alias: 's/:sample',
           name: 'studio',
           props: route => ({
             sample: route.params.sample
           }),
           component: () => import('@app/Layout/index.vue')
-        },
-        {
-          path: 'e',
-          name: 'editor',
-          component: () => import('@app/Editor/index.vue')
         }
       ]
     },
