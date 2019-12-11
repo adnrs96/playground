@@ -17,11 +17,11 @@ const counter: IStorySample = {
   tips: [
     {
       name: 'welcome-to-storyscript',
-      element: '#publish-btn',
+      element: '#toolbar-ss-logo',
       text:
         "This is Storyscript, the cloud-native programming language.\n\nLet's take a quick walk through the language features with this example building a simple counter application.",
-      x: -20,
-      y: 3
+      x: 240,
+      y: 5
     },
     {
       name: 'storyscript-redis',
@@ -46,14 +46,6 @@ const counter: IStorySample = {
         'Services in Storyscript can also be event driven.\n\nHere, an http server listens for events and the inner block is executed when a request is received.',
       x: 105,
       y: 16
-    },
-    {
-      name: 'storyscript-publish',
-      element: '#publish-btn',
-      text:
-        'How about we publish this story, and see what the platform can take care of for you?',
-      x: 70,
-      y: 3
     }
   ],
   comments: [{
