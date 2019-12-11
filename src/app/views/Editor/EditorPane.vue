@@ -4,33 +4,40 @@
     class="flex flex-1 flex-col"
   >
     <div class="bg-white mx-3 mt-3 shadow-dropdown flex flex-col flex-1 rounded-t-sm">
-      <div
-        v-for="(editor, idx) in editors"
-        :id="`editor-pane-lang-${editor.language}-${idx}`"
-        :key="`editor-lang-lang-${editor.lang}-${idx}`"
-        class="p-4 mb-4 flex flex-col w-full"
-      >
-        <div class="flex flex-no-wrap items-center mb-4">
-          <s-icon
-            :icon="editor.icon"
-            class="m-1"
-          />
-          <s-text
-            p="4"
-            weight="medium"
-            class="text-gray-100 ml-2 capitalize"
-            v-text="editor.language"
-          />
+      <template v-for="(editor, idx) in editors">
+        <div
+          v-if="idx > 0"
+          :key="`editor-pane-separator-${idx -1}-${idx}`"
+          class="w-full h-px bg-gray-20"
+        />
+        <div
+          :id="`editor-pane-${idx}`"
+          :key="`editor-pane-lang-${editor.lang}-${idx}`"
+          :data-lang="editor.language"
+          class="p-4 mb-4 flex flex-col w-full"
+        >
+          <div class="flex flex-no-wrap items-center mb-4">
+            <s-icon
+              :icon="editor.icon"
+              class="m-1"
+            />
+            <s-text
+              p="4"
+              weight="medium"
+              class="text-gray-100 ml-2 capitalize"
+              v-text="editor.language"
+            />
+          </div>
+          <div class="flex-1">
+            <monaco-editor
+              v-model="editor.value"
+              :language="editor.language"
+              class="w-full h-32"
+              :options="editor.options"
+            />
+          </div>
         </div>
-        <div class="flex-1">
-          <monaco-editor
-            v-model="editor.value"
-            :language="editor.language"
-            class="w-full h-32"
-            :options="editor.options"
-          />
-        </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>
