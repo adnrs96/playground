@@ -169,7 +169,10 @@
         </div>
       </div>
     </s-drop>
-    <s-feedback ref="feedback" />
+    <s-feedback
+      ref="feedback"
+      class="cursor-default"
+    />
   </div>
 </template>
 
