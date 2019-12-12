@@ -52,7 +52,7 @@ describe('Feedback', () => {
 
   it('should display a some errors when I enter wrong info', async () => {
     expect.assertions(2)
-    await page.waitFor(250)
+    await page.waitFor(300)
     await page.type('#feedback-form [name="comment"]', 'x')
     await page.type('#feedback-form [name="email"]', 'x')
 
