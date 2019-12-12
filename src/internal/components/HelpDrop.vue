@@ -1,8 +1,10 @@
 <template>
   <div
+
     class="flex items-center justify-center cursor-pointer select-none text-white ml-8"
   >
     <div
+      id="help"
       class="flex items-center justify-center"
       @click.stop="clickBtn"
     >
@@ -106,6 +108,24 @@
               class="text-gray-20"
             >Documentation</s-text>
           </a>
+
+          <div
+            id="helpdrop-feedback"
+            class="px-1 py-2 cursor-pointer flex items-center hover:bg-gray-80 rounded-xs"
+            @click="hideOnElementClicked(); $refs.feedback.$refs.feedbackModal.show();"
+          >
+            <s-icon
+              icon="send"
+              class="text-gray-40 mr-2"
+            />
+            <s-text
+              p="4"
+              weight="medium"
+              class="text-gray-20"
+            >
+              Share feedback
+            </s-text>
+          </div>
         </div>
         <div
           class="flex items-center justify-center p-2"
@@ -149,6 +169,7 @@
         </div>
       </div>
     </s-drop>
+    <s-feedback ref="feedback" />
   </div>
 </template>
 
@@ -156,11 +177,13 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { Mutation } from 'vuex-class'
 import SDrop from '@internal/components/Drop.vue'
+import SFeedback from '@app/Feedback.vue'
 
 @Component({
   name: 'HelpDrop',
   components: {
-    SDrop
+    SDrop,
+    SFeedback
   }
 })
 export default class HelpDrop extends Vue {
