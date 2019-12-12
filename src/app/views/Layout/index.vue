@@ -7,7 +7,7 @@
       <s-navbar
         :title="payload.name"
       />
-      <div class="min-h-screen-no-navbar flex">
+      <div class="min-h-screen-no-navbar flex bg-gray-10">
         <div
           v-if="$slots.notification && $slots.notification.length > 0"
           class="absolute mx-auto w-full -mt-2"
@@ -15,8 +15,13 @@
           <slot name="notification" />
         </div>
 
-        <div class="w-full flex-1 flex bg-gray-10">
-          <s-library class="pt-3" />
+        <div
+          id="layout-content"
+          class="flex flex-row justify-center items-stretch w-full"
+        >
+          <div class="inline-flex">
+            <s-library class="pt-3" />
+          </div>
           <s-editor />
         </div>
 

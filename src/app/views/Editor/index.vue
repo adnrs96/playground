@@ -1,9 +1,9 @@
 <template>
   <s-scrollbar
     id="editor-view"
-    class="min-h-screen-no-navbar max-h-screen-no-navbar w-full "
+    class="min-h-screen-no-navbar max-h-screen-no-navbar w-full"
   >
-    <div class="w-auto max-w-5xl flex min-h-screen-no-navbar">
+    <div class="mx-auto w-auto max-w-5xl flex min-h-screen-no-navbar">
       <editor-pane class="w-2/3" />
       <infos-pane class="w-1/3" />
     </div>

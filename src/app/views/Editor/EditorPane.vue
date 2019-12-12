@@ -14,9 +14,9 @@
           :id="`editor-pane-${idx}`"
           :key="`editor-pane-lang-${editor.lang}-${idx}`"
           :data-lang="editor.language"
-          class="py-4 mb-4 flex flex-col w-full"
+          class="py-4 px-2 mb-2 flex flex-col w-full"
         >
-          <div class="flex flex-no-wrap items-center mx-4 mb-4">
+          <div class="flex flex-no-wrap items-center mx-2 mb-4">
             <s-icon
               :icon="editor.icon"
               class="m-1"
@@ -69,20 +69,8 @@ export default class EditorPane extends Vue {
 
 <style lang="scss">
 #editor-pane .monaco-editor {
-
-  .line-numbers {
-    opacity: 0;
-    transition: all .2s ease-out;
-  }
-
-  &:hover,&.focused {
-    .current-line ~ .line-numbers {
-      opacity: 1;
-    }
-    .line-numbers {
-      opacity: .5;
-      color: rgba(0,0,0,0.4)
-    }
+  .current-line {
+    display: none;
   }
 }
 </style>

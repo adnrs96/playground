@@ -17,7 +17,11 @@ export const EditorOptions: IEditorConstructionOptions = {
   hideCursorInOverviewRuler: true,
   selectionHighlight: false,
   occurrencesHighlight: false,
-  contextmenu: false
+  contextmenu: false,
+  folding: false,
+  cursorBlinking: 'blink',
+  cursorWidth: 1,
+  lineNumbers: 'off'
 }
 
 export abstract class EditorDefaultOptions {
