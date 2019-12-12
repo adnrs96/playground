@@ -24,7 +24,8 @@ module.exports = {
     '^@app/event(.*)$': '<rootDir>/src/app/event$1',
     '^&/(editor(.d)?|monaco)$': '<rootDir>/src/editor/core/types/$1',
     '^&/(.*)$': '<rootDir>/src/**/types/$1',
-    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' })
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
+    '^vscode$': 'monaco-languageclient/lib/vscode-compatibility'
   },
   snapshotSerializers: ['jest-serializer-vue'],
   testMatch:

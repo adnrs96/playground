@@ -16,7 +16,7 @@ export default class MonacoEditor extends Vue {
   @Prop({ type: String, default: 'storyscript' }) private language!: string
   @Prop({ type: Object, default: () => ({}) }) private options!: any
   @Prop({ type: Boolean, default: false }) private diffEditor!: boolean
-  @Prop({ type: Array, default: () => ([]) }) private plugins!: EditorPlugin[]
+  @Prop({ type: Array, default: () => ([]) }) private plugins?: EditorPlugin[]
 
   private editor: any = undefined
 
