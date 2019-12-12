@@ -33,6 +33,17 @@ export default class MonacoEditor extends Vue {
       if (this.value !== editor.getValue()) {
         editor.setValue(this.value)
       }
+      this.autoHeightEditor()
+    }
+  }
+
+  private autoHeightEditor () {
+    if (this.editor) {
+      const editor = this.getModifiedEditor()
+      const contentHeight = editor.getModel().getLineCount() * 16
+      const el = this.$el as HTMLElement
+      el.style.height = `${contentHeight}px`
+      editor.layout()
     }
   }
 
@@ -92,6 +103,7 @@ export default class MonacoEditor extends Vue {
     editor.onDidChangeModelContent(this.onDidChangeModelContent)
 
     this.$emit('editorDidMount', this.editor)
+    this.autoHeightEditor()
   }
 
   private onDidChangeModelContent (event: any) {

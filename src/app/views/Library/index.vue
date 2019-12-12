@@ -1,5 +1,5 @@
 <template>
-  <div class="z-10">
+  <div class="z-10 w-full max-w-pane">
     <div
       class="transition-all-fast absolute bg-white cursor-pointer w-10 h-10 flex items-center justify-center shadow-sm2 border-t border-r border-b border-gray-20 rounded-tr-md rounded-br"
       :class="[
@@ -44,44 +44,46 @@
           @click="togglePane"
         />
       </div>
-      <div
-        id="library-content"
-        class="flex flex-col items-center px-4"
-      >
-        <img
-          class="my-6"
-          src="/img/illustrations/library/services.png"
-          alt="multiples services icons"
+      <s-scrollbar class="max-h-screen-no-navbar-no-pane-header pb-2">
+        <div
+          id="library-content"
+          class="flex flex-col items-center px-4"
         >
-        <s-text
-          p="2"
-          weight="medium"
-          class="text-gray-100 mb-3"
-          align="center"
-        >
-          Library of services to<br>
-          power your Story
-        </s-text>
-        <s-text
-          p="4"
-          weight="regular"
-          class="text-gray-70 mb-4"
-          align="center"
-        >
-          Our native library is coming into the studio soon. As you develop, the library will show you documentation related to what service you are working with. For now, enjoy our library of services at the Storyscript Hub.
-        </s-text>
-        <a
-          href="//hub.storyscript.io"
-          target="_blank"
-        >
-          <s-text-button
-            accent
-            size="smaller"
+          <img
+            class="my-6"
+            src="/img/illustrations/library/services.png"
+            alt="multiples services icons"
           >
-            Explore Hub
-          </s-text-button>
-        </a>
-      </div>
+          <s-text
+            p="2"
+            weight="medium"
+            class="text-gray-100 mb-3"
+            align="center"
+          >
+            Library of services to<br>
+            power your Story
+          </s-text>
+          <s-text
+            p="4"
+            weight="regular"
+            class="text-gray-70 mb-4"
+            align="center"
+          >
+            Our native library is coming into the studio soon. As you develop, the library will show you documentation related to what service you are working with. For now, enjoy our library of services at the Storyscript Hub.
+          </s-text>
+          <a
+            href="//hub.storyscript.io"
+            target="_blank"
+          >
+            <s-text-button
+              accent
+              size="smaller"
+            >
+              Explore Hub
+            </s-text-button>
+          </a>
+        </div>
+      </s-scrollbar>
     </div>
   </div>
 </template>

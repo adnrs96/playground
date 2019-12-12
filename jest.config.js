@@ -22,6 +22,7 @@ module.exports = {
     '^@app/store(.*)$': '<rootDir>/src/app/store$1',
     '^@app/router(.*)$': '<rootDir>/src/app/router$1',
     '^@app/event(.*)$': '<rootDir>/src/app/event$1',
+    '^&/(editor(.d)?|monaco)$': '<rootDir>/src/editor/core/types/$1',
     '^&/(.*)$': '<rootDir>/src/**/types/$1',
     ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' })
   },
@@ -51,7 +52,7 @@ module.exports = {
     TEST_MODE !== 'integration' && TEST_MODE !== 'integration-local',
   collectCoverageFrom: [
     'src/**/*.{js,ts,vue}',
-    '!src/app/(main|router|registerServiceWorker|serviceWorker).{ts,js}',
+    '!src/app/(main|router|registerServiceWorker|service-worker).{ts,js}',
     '!src/app/store/index.ts',
     '!src/app/store/modules/index.ts',
     '!src/samples/**/*.ts',

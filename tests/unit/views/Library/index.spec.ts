@@ -23,7 +23,8 @@ describe('Library > index.vue', () => {
       stubs: {
         's-icon': '<div />',
         's-text': '<div />',
-        's-text-button': '<div />'
+        's-text-button': '<div />',
+        's-scrollbar': '<div />'
       }
     })
     vm = view.vm as any

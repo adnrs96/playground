@@ -12,12 +12,14 @@ export default new Router({
       component: () => import('@app/index.vue'),
       children: [
         {
-          path: '/welcome',
+          path: '',
+          alias: '/welcome',
           name: 'welcome',
           component: () => import('@app/Welcome.vue')
         },
         {
           path: 'example/:sample',
+          alias: 's/:sample',
           name: 'studio',
           props: route => ({
             sample: route.params.sample

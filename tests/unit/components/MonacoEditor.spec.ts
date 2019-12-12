@@ -10,10 +10,12 @@ describe('MonacoEditor.vue', () => {
     focus: jest.fn(),
     dispose: jest.fn(),
     setModel: jest.fn(),
-    getModel: jest.fn(),
+    getModel: jest.fn().mockImplementation(() => ({ ...editor })),
     setValue: jest.fn(),
     getValue: jest.fn(),
-    updateOptions: jest.fn()
+    updateOptions: jest.fn(),
+    getLineCount: jest.fn(),
+    layout: jest.fn()
   }
   const monacoEditor: any = {
     createModel: jest.fn(),
@@ -66,6 +68,17 @@ describe('MonacoEditor.vue', () => {
     vm.editor = undefined
     vm.getModifiedEditor = jest.fn().mockImplementationOnce(() => ({ ...editor }))
     vm.onValueChange()
+    expect(vm.getModifiedEditor).not.toHaveBeenCalled()
+  })
+
+  it('autoHeightEditor()', () => {
+    expect.assertions(2)
+    vm.editor.getModel = jest.fn().mockImplementationOnce(() => ({ ...editor, getLineCount: jest.fn().mockImplementationOnce(() => 3) }))
+    vm.autoHeightEditor()
+    expect(view.element.style).toHaveProperty('height', '48px')
+    vm.editor = undefined
+    vm.getModifiedEditor = jest.fn().mockImplementationOnce(() => ({ ...editor }))
+    vm.autoHeightEditor()
     expect(vm.getModifiedEditor).not.toHaveBeenCalled()
   })
 

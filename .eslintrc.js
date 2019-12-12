@@ -17,7 +17,8 @@ module.exports = {
     '@typescript-eslint/camelcase': 'error',
     'no-array-constructor': 'off',
     '@typescript-eslint/no-array-constructor': 'error',
-    '@typescript-eslint/no-empty-interface': 'error'
+    '@typescript-eslint/no-empty-interface': 'error',
+    'no-useless-constructor': 'off'
   },
   parserOptions: {
     parser: '@typescript-eslint/parser'
