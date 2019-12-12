@@ -2,11 +2,18 @@ import { editor } from 'monaco-editor/esm/vs/editor/editor.api'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IEditorConstructionOptions extends editor.IEditorConstructionOptions {}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface IStandaloneCodeEditor extends editor.IStandaloneCodeEditor {}
 
 export class EditorLang {
   name: string
   extension: string
   icon: string
+}
+
+export interface EditorPlugin {
+  attach: (editor: IStandaloneCodeEditor) => void
+  detach: () => void
 }
 
 export namespace Languages {

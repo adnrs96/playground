@@ -4,8 +4,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
-import { SLS } from '@/plugins/sls'
-import { enterIndentAction } from '@/plugins/editor/actions'
+import { EditorPlugin } from '&/editor.d'
 
 @Component({
   name: 'MonacoEditor'
@@ -17,9 +16,9 @@ export default class MonacoEditor extends Vue {
   @Prop({ type: String, default: 'storyscript' }) private language!: string
   @Prop({ type: Object, default: () => ({}) }) private options!: any
   @Prop({ type: Boolean, default: false }) private diffEditor!: boolean
+  @Prop({ type: Array, default: () => ([]) }) private plugins!: EditorPlugin[]
 
   private editor: any = undefined
-  private sls : SLS | undefined = undefined
 
   @Watch('options', { deep: true })
   private onOptionsChange () {
@@ -43,7 +42,7 @@ export default class MonacoEditor extends Vue {
   private autoHeightEditor () {
     if (this.editor) {
       const editor = this.getModifiedEditor()
-      const contentHeight = editor.getModel().getLineCount() * 16
+      const contentHeight = editor.getModel().getLineCount() * 19
       const el = this.$el as HTMLElement
       el.style.height = `${contentHeight}px`
       editor.layout()
@@ -71,7 +70,11 @@ export default class MonacoEditor extends Vue {
 
   beforeDestroy () {
     this.editor && this.editor.dispose()
-    this.sls && this.sls.disconnect()
+    if (this.plugins) {
+      for (const plugin of this.plugins) {
+        plugin.detach()
+      }
+    }
   }
 
   private initMonaco () {
@@ -81,11 +84,7 @@ export default class MonacoEditor extends Vue {
       ...this.options,
       value: this.value,
       theme: this.theme,
-      language: this.language,
-      glyphMargin: true,
-      lightbulb: {
-        enabled: true
-      }
+      language: this.language
     }
 
     if (this.diffEditor) {
@@ -104,15 +103,20 @@ export default class MonacoEditor extends Vue {
       })
     } else {
       this.editor = this.$monaco.editor.create(this.$el as HTMLElement, options)
-      this.sls = new SLS(this.editor)
-      this.editor.addAction(enterIndentAction(this.sls))
     }
 
     const editor = this.getModifiedEditor()
 
     editor.onDidChangeModelContent(this.onDidChangeModelContent)
 
-    this.$emit('editorDidMount', this.editor)
+    this.$emit('editorDidMount', this.editor.language)
+
+    // init plugins
+    if (this.plugins) {
+      for (const plugin of this.plugins) {
+        plugin.attach(this.editor)
+      }
+    }
     this.autoHeightEditor()
   }
 

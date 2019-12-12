@@ -1,4 +1,4 @@
-import { EditorLang, IEditorConstructionOptions } from '&/editor.d'
+import { EditorLang, EditorPlugin, IEditorConstructionOptions } from '&/editor.d'
 
 export namespace Languages {
   export const Storyscript: EditorLang = { name: 'storyscript', extension: 'story', icon: 'story' }
@@ -19,9 +19,14 @@ export const EditorOptions: IEditorConstructionOptions = {
   occurrencesHighlight: false,
   contextmenu: false,
   folding: false,
+  autoIndent: true,
   cursorBlinking: 'blink',
   cursorWidth: 1,
-  lineNumbers: 'off'
+  lineNumbers: 'off',
+  glyphMargin: true,
+  lightbulb: {
+    enabled: true
+  }
 }
 
 export abstract class EditorDefaultOptions {
@@ -41,12 +46,14 @@ export abstract class EditorDefaultOptions {
 
 export class Editor extends EditorDefaultOptions {
   private readonly _lang: EditorLang
+  public plugins: Array<EditorPlugin>
   public value: String
 
-  constructor (lang: EditorLang, value?: string, options?: IEditorConstructionOptions) {
+  constructor (lang: EditorLang, value?: string, options?: IEditorConstructionOptions, plugins?: Array<EditorPlugin>) {
     super(options)
     this._lang = lang
     this.value = value || ''
+    this.plugins = plugins || []
   }
 
   public get icon (): string {

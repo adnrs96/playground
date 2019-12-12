@@ -1,4 +1,3 @@
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import {
   CloseAction,
   createConnection,
@@ -9,23 +8,30 @@ import {
 import ReconnectingWebSocket from 'reconnecting-websocket'
 import 'setimmediate' // required by vscode-jsonrpc
 import { listen, MessageConnection } from 'vscode-ws-jsonrpc'
+import { EditorPlugin, IStandaloneCodeEditor } from '&/editor.d'
+// import { enterIndentAction } from '@editor-plugin-sls/actions'
 
 const normalizeURL = require('normalize-url')
 
-export class SLS {
+export class SLS implements EditorPlugin {
   private webSocket: WebSocket | undefined
   private languageClient: MonacoLanguageClient | undefined
 
-  constructor (editor: monaco.editor.IStandaloneCodeEditor) {
+  attach (editor: IStandaloneCodeEditor) {
     this.connect(editor)
+    // editor.addAction(enterIndentAction(this))
   }
 
-  connect (editor: monaco.editor.IStandaloneCodeEditor) {
+  detach () {
+    this.disconnect()
+  }
+
+  connect (editor: IStandaloneCodeEditor) {
     // install Monaco language client services
     MonacoServices.install(editor)
 
     // create the web socket
-    const url = new URL(normalizeURL(process.env.SLS_URL as string))
+    const url = new URL(normalizeURL(process.env.VUE_APP_SLS_URL as string))
     this.webSocket = this.createWebSocket(url)
 
     // subscribe to websocket -> start client once opened
@@ -74,7 +80,7 @@ export class SLS {
     if (url.protocol === 'https:') {
       url.protocol = 'wss:'
     } else {
-      url.protocol = 'ws:'
+      url.protocol = 'wss:'
     }
     const ws = new ReconnectingWebSocket(url.toString(), [], {
       maxReconnectionDelay: 10000,
@@ -88,3 +94,5 @@ export class SLS {
     return ws as unknown as WebSocket
   }
 }
+
+export default SLS

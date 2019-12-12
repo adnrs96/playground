@@ -1,5 +1,5 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-import { SLS } from '@/plugins/sls'
+import { SLS } from '&/sls/types/sls.d'
 
 /**
 Overloads the 'enter' key in the editor for a custom indentation behavior.

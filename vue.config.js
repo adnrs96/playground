@@ -1,5 +1,4 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-const webpack = require('webpack')
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 
 module.exports = {
@@ -27,11 +26,7 @@ module.exports = {
   configureWebpack: {
     plugins: [
       new MonacoWebpackPlugin({
-        languages: ['storyscript'],
-        features: ['!clipboard']
-      }),
-      new webpack.EnvironmentPlugin({
-        SLS_URL: 'https://sls.storyscript.io'
+        languages: ['storyscript']
       })
     ],
     module: {

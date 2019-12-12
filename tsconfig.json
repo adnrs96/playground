@@ -17,9 +17,9 @@
       "@/*": ["src/*"],
       "@app/*": ["src/app/views/*", "src/app/*"],
       "@editor/*": ["src/editor/core/views/*", "src/editor/core/*"],
-      "@editor-plugin/*": ["src/editor/plugin-*/index.ts"],
+      "@editor-plugin-*": ["src/editor/plugin-*"],
       "@internal/*": ["src/internal/*"],
-      "&/*": ["src/app/types/*", "src/editor/core/types/*", "src/internal/types/*"]
+      "&/*": ["src/app/types/*", "src/editor/core/types/*", "src/internal/types/*", "src/editor/plugin-*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "skipLibCheck": true,
