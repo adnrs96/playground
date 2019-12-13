@@ -22,11 +22,13 @@ export class SLS extends Socket {
     this._selectors = (typeof selector === typeof '' ? [selector] : selector) as string[]
   }
 
+  /* istanbul ignore next */
   protected onConnect (connection: MessageConnection) {
     this._client = this.createLanguageClient(connection)
     this._instance = this._client.start()
   }
 
+  /* istanbul ignore next */
   protected onClose () {
     if (this._instance) {
       this._instance.dispose()
@@ -45,10 +47,12 @@ export class SLS extends Socket {
     this.close()
   }
 
+  /* istanbul ignore next */
   public get languageClient (): MonacoLanguageClient | undefined {
     return this._client
   }
 
+  /* istanbul ignore next */
   private createLanguageClient (connection: MessageConnection): MonacoLanguageClient {
     return new MonacoLanguageClient({
       name: this._name,

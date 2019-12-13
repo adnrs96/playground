@@ -25,6 +25,7 @@ export const EditorOptions: IEditorConstructionOptions = {
   cursorWidth: 1,
   lineNumbers: 'off',
   glyphMargin: true,
+  wordBasedSuggestions: false,
   lightbulb: {
     enabled: true
   }

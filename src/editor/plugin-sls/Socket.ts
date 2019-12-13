@@ -30,6 +30,7 @@ export abstract class Socket {
   protected abstract onClose (): void
   protected abstract onConnect (connection: MessageConnection): void
 
+  /* istanbul ignore next */
   private onConnection (connection: MessageConnection) {
     this.onConnect(connection)
     connection.onClose(() => this.onClose())
@@ -42,8 +43,9 @@ export abstract class Socket {
     })
   }
 
+  /* istanbul ignore next */
   protected close () {
-    if (this._ws.readyState === WebSocket.OPEN) {
+    if (![WebSocket.CLOSED, WebSocket.CLOSING].includes(this._ws.readyState)) {
       this._ws.close()
     }
   }
