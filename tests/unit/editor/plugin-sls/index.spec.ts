@@ -11,10 +11,12 @@ describe('editor-plugin-sls', () => {
     expect(typeof sls).toBe('object')
   })
 
-  it('should return a websoket', () => {
+  it('should attach and detach accordingly', () => {
     const sls = new StoryscriptSLS()
     const editor = monaco.editor.create(element as HTMLElement, { value: '', theme: 'vs', language: 'storyscript' })
+    sls.install = jest.fn()
     sls.attach(editor)
     sls.detach()
+    expect(sls.install).toHaveBeenCalled()
   })
 })
