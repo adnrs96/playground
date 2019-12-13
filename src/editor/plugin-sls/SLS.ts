@@ -11,8 +11,8 @@ import { IStandaloneCodeEditor } from '&/editor.d'
 import Socket from './Socket'
 
 export class SLS extends Socket {
-  private _client?: MonacoLanguageClient = undefined
-  private _instance?: Disposable = undefined
+  private _client?: MonacoLanguageClient
+  private _instance?: Disposable
   private readonly _name: string
   private readonly _selectors: string[]
 

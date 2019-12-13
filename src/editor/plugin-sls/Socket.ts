@@ -33,7 +33,7 @@ export abstract class Socket {
   /* istanbul ignore next */
   private onConnection (connection: MessageConnection) {
     this.onConnect(connection)
-    connection.onClose(() => this.onClose())
+    connection.onClose(this.onClose)
   }
 
   protected listen () {
