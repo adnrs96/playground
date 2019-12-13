@@ -3,6 +3,7 @@
     <s-modal
       id="feeback-modal"
       ref="feedbackModal"
+      class="text-black"
       @hidden="onHidden"
     >
       <div class="flex flex-col justify-center items-center h-full w-full">
@@ -158,15 +159,6 @@
         </form>
       </div>
     </s-modal>
-    <s-icon
-      id="toolbar-feedback"
-      icon="feedback-circle"
-      color="text-gray-90"
-      height="20"
-      width="20"
-      clickable
-      @click="$refs.feedbackModal.show()"
-    />
   </div>
 </template>
 
