@@ -1,8 +1,8 @@
 import Vue, { PluginObject, PluginFunction } from 'vue'
 import storyTheme from 'monaco-themes/themes/IDLE.json'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-const StoryHighlightRules = require('./storyscript.lang.js').default
-const registerRulesForLanguage = require('./storyscript.lang.js').registerRulesForLanguage
+const StoryHighlightRules = require('./storyscript.lang').default
+const registerRulesForLanguage = require('./storyscript.lang').registerRulesForLanguage
 
 export class MonacoPlugin {
   private self: typeof monaco

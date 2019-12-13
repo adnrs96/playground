@@ -1,26 +1,27 @@
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import { SLS } from '&/sls/types/sls.d'
+import { IStandaloneCodeEditor, IActionDescriptor, Position } from '&/editor.d'
+import { KeyCode } from '&/editor'
 
 /**
 Overloads the 'enter' key in the editor for a custom indentation behavior.
 */
 // TODO: transform into experimental LSP Feature and add as capability
-export function enterIndentAction (completion: SLS) : monaco.editor.IActionDescriptor {
+export function enterIndentAction (completion: SLS) : IActionDescriptor {
   return {
     id: 'enter-indent',
     label: 'Enter Indent Overload',
 
-    keybindings: [monaco.KeyCode.Enter],
+    keybindings: [KeyCode.Enter],
     keybindingContext: undefined, // don't show in context menu
 
-    run: (ed: monaco.editor.IStandaloneCodeEditor): Promise<void> => {
+    run: (ed: IStandaloneCodeEditor): Promise<void> => {
       const selections = ed.getSelections()
       // no indentation with a selection
       if (selections === null || selections.length === 0) {
         return Promise.resolve()
       }
       // TODO: might not be connected
-      const lc = completion.getLanguageClient()
+      const lc = completion.languageClient!
       const pos = ed.getPosition()!
       return lc.onReady().then(() => {
         // convert to LSP request
@@ -37,7 +38,7 @@ export function enterIndentAction (completion: SLS) : monaco.editor.IActionDescr
 
         const value = lines.join('\n')
         ed.getModel()!.setValue(value)
-        const newPos = new monaco.Position(lineIndex + 2, indent.length + 1)
+        const newPos = new Position(lineIndex + 2, indent.length + 1)
         ed.setPosition(newPos)
 
         return Promise.resolve()

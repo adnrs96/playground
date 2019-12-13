@@ -49,7 +49,7 @@ import { Getter } from 'vuex-class'
 import MonacoEditor from '@editor/MonacoEditor.vue'
 import { Editor, Languages } from '&/editor'
 import { IStorySample } from '&/StorySample'
-import SLS from '@editor-plugin-sls'
+import StoryscriptSLS from '@editor-plugin-sls'
 
 @Component({
   name: 'EditorPane',
@@ -64,7 +64,7 @@ export default class EditorPane extends Vue {
   @Watch('payload', { immediate: true })
   private onPayloadUpdate () {
     this.editors.splice(0, this.editors.length)
-    this.editors.push(new Editor(Languages.Storyscript, this.payload.code, { readOnly: false }, [new SLS()]))
+    this.editors.push(new Editor(Languages.Storyscript, this.payload.code, { readOnly: false }, [new StoryscriptSLS()]))
   }
 }
 </script>

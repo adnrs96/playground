@@ -1,10 +1,11 @@
 import { MonacoLanguageClient } from 'monaco-languageclient'
-import { EditorPlugin, IStandaloneCodeEditor } from '&/editor.d'
+import { IStandaloneCodeEditor } from '&/editor.d'
+import Socket from './Socket'
 
-export declare class SLS implements EditorPlugin {
-  attach: (editor: IStandaloneCodeEditor) => void
-  detach: () => void
-  connect: (editor: IStandaloneCodeEditor) => void
-  getLanguageClient: () => MonacoLanguageClient
-  disconnect: () => void
+export declare class SLS extends Socket {
+  constructor (url: string, name: string, selector: string | string[])
+  connect (): void
+  disconnect (): void
+  install (editor: IStandaloneCodeEditor): void
+  get languageClient (): MonacoLanguageClient | undefined
 }

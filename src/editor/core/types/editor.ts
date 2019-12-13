@@ -1,4 +1,5 @@
 import { EditorLang, EditorPlugin, IEditorConstructionOptions } from '&/editor.d'
+export { KeyCode } from 'monaco-editor/esm/vs/editor/editor.api'
 
 export namespace Languages {
   export const Storyscript: EditorLang = { name: 'storyscript', extension: 'story', icon: 'story' }

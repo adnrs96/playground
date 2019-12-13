@@ -36,10 +36,7 @@ module.exports = {
       }]
     },
     resolve: {
-      plugins: [new TsconfigPathsPlugin()],
-      alias: {
-        vscode: require.resolve('monaco-languageclient/lib/vscode-compatibility')
-      }
+      plugins: [new TsconfigPathsPlugin()]
     }
   },
   pages: {
