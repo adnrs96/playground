@@ -4,7 +4,7 @@
       p="4"
       weight="medium"
       align="center"
-      class="text-gray-50 mt-3"
+      class="text-gray-50 mt-3 sticky top-3"
     >
       0 Suggestions, 0 Error
     </s-text>
