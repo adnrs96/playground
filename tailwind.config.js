@@ -151,6 +151,7 @@ module.exports = {
       inset: {
         min: '.125rem',
         1: '.25rem',
+        3: '.75rem',
         half: '50%',
         full: '100%'
       },
