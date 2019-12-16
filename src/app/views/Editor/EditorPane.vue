@@ -14,7 +14,7 @@
           :id="`editor-pane-${idx}`"
           :key="`editor-pane-lang-${editor.lang}-${idx}`"
           :data-lang="editor.language"
-          class="py-4 px-2 mb-2 flex flex-col w-full"
+          class="p-4 px-2 mb-2 flex flex-col w-full"
         >
           <div class="flex flex-no-wrap items-center mx-2 mb-4">
             <s-icon
@@ -34,6 +34,7 @@
               :language="editor.language"
               class="w-full h-32"
               :options="editor.options"
+              :plugins="editor.plugins"
             />
           </div>
         </div>
@@ -48,6 +49,7 @@ import { Getter } from 'vuex-class'
 import MonacoEditor from '@editor/MonacoEditor.vue'
 import { Editor, Languages } from '&/editor'
 import { IStorySample } from '&/StorySample'
+import StoryscriptSLS from '@editor-plugin-sls'
 
 @Component({
   name: 'EditorPane',
@@ -62,7 +64,7 @@ export default class EditorPane extends Vue {
   @Watch('payload', { immediate: true })
   private onPayloadUpdate () {
     this.editors.splice(0, this.editors.length)
-    this.editors.push(new Editor(Languages.Storyscript, this.payload.code, { readOnly: true }))
+    this.editors.push(new Editor(Languages.Storyscript, this.payload.code, { readOnly: false }, [new StoryscriptSLS()]))
   }
 }
 </script>

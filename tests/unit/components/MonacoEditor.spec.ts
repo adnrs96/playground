@@ -1,5 +1,6 @@
 import { shallowMount, Wrapper } from '@vue/test-utils'
 import MonacoEditor from '@editor/MonacoEditor.vue'
+import { EditorPlugin } from '&/editor.d'
 
 describe('MonacoEditor.vue', () => {
   let view: Wrapper<MonacoEditor>
@@ -47,6 +48,19 @@ describe('MonacoEditor.vue', () => {
     expect(view.html()).toBeTruthy()
   })
 
+  it('should have plugins', () => {
+    const plugin = { attach: jest.fn(), detach: jest.fn() } as EditorPlugin
+    view.setProps({ plugins: [plugin] })
+    vm.initMonaco()
+    expect(view.vm).toHaveProperty('plugins', [plugin])
+  })
+
+  it('should not have plugins', () => {
+    view.setProps({ plugins: undefined })
+    vm.initMonaco()
+    expect(view.vm).toHaveProperty('plugins', undefined)
+  })
+
   it('onOptionsChange()', () => {
     expect.assertions(2)
     vm.onOptionsChange()
@@ -75,7 +89,7 @@ describe('MonacoEditor.vue', () => {
     expect.assertions(2)
     vm.editor.getModel = jest.fn().mockImplementationOnce(() => ({ ...editor, getLineCount: jest.fn().mockImplementationOnce(() => 3) }))
     vm.autoHeightEditor()
-    expect(view.element.style).toHaveProperty('height', '48px')
+    expect(view.element.style).toHaveProperty('height', '57px')
     vm.editor = undefined
     vm.getModifiedEditor = jest.fn().mockImplementationOnce(() => ({ ...editor }))
     vm.autoHeightEditor()

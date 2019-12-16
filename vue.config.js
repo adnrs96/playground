@@ -26,8 +26,7 @@ module.exports = {
   configureWebpack: {
     plugins: [
       new MonacoWebpackPlugin({
-        languages: ['storyscript'],
-        features: ['!clipboard']
+        languages: ['storyscript']
       })
     ],
     module: {
@@ -37,7 +36,10 @@ module.exports = {
       }]
     },
     resolve: {
-      plugins: [new TsconfigPathsPlugin()]
+      plugins: [new TsconfigPathsPlugin()],
+      alias: {
+        vscode: require.resolve('monaco-languageclient/lib/vscode-compatibility')
+      }
     }
   },
   pages: {

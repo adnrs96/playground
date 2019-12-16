@@ -13,18 +13,23 @@ module.exports = {
     '^.+\\.vue$': 'vue-jest',
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
       'jest-transform-stub',
+    '^.+\\.jsx?$': 'babel-jest',
     '^.+\\.tsx?$': 'ts-jest',
     '^.+\\.story$': 'jest-raw-loader'
   },
-  transformIgnorePatterns: ['node_modules'],
+  transformIgnorePatterns: ['<rootDir>/node_modules/(?!monaco-editor).+\\.js$'],
+  setupFiles: ['jest-canvas-mock'],
   moduleNameMapper: {
     '^@app/Studio.vue$': '<rootDir>/src/app/Studio.vue',
     '^@app/store(.*)$': '<rootDir>/src/app/store$1',
     '^@app/router(.*)$': '<rootDir>/src/app/router$1',
     '^@app/event(.*)$': '<rootDir>/src/app/event$1',
+    '^@editor/plugins/(editor|monaco)$': '<rootDir>/src/editor/core/plugins/$1',
     '^&/(editor(.d)?|monaco)$': '<rootDir>/src/editor/core/types/$1',
     '^&/(.*)$': '<rootDir>/src/**/types/$1',
-    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' })
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
+    '^vscode$': 'monaco-languageclient/lib/vscode-compatibility',
+    '^monaco-editor$': 'monaco-editor/esm/vs/editor/editor.api'
   },
   snapshotSerializers: ['jest-serializer-vue'],
   testMatch:
