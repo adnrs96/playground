@@ -36,10 +36,11 @@ export abstract class Socket {
     connection.onClose(this.onClose)
   }
 
+  /* istanbul ignore next */
   protected listen () {
     listen({
       webSocket: this._ws,
-      onConnection: this.onConnection
+      onConnection: connection => this.onConnection(connection)
     })
   }
 

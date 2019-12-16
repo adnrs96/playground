@@ -24,6 +24,7 @@ export class SLS extends Socket {
 
   /* istanbul ignore next */
   protected onConnect (connection: MessageConnection) {
+    console.log('called onConnect')
     this._client = this.createLanguageClient(connection)
     this._instance = this._client.start()
   }
