@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@storyscript/vue": "3.3.0",
-    "core-js": "3.5.0",
+    "core-js": "3.6.0",
     "jest-canvas-mock": "2.2.0",
     "monaco-languageclient": "0.10.2",
     "normalize-url": "4.5.0",
