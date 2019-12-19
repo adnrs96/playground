@@ -16,7 +16,6 @@ export class StoryscriptError implements EditorPlugin {
     }
 
     public attach (editor: IStandaloneCodeEditor) {
-      const setModelMarkers = this.setModelMarkersOriginal
       this.monacoEditor.setModelMarkers = function (model: editor.ITextModel, owner: string, markers: editor.IMarkerData[]): void {
         if (markers.length > 0) {
           const sln = markers[0].startLineNumber
@@ -25,7 +24,6 @@ export class StoryscriptError implements EditorPlugin {
         } else {
           store.commit('clearErrorState')
         }
-        setModelMarkers(model, owner, markers)
       }
       editor.onDidChangeCursorPosition((e) => store.commit('setCursorLine', e.position.lineNumber))
       editor.onDidBlurEditorText(() => store.commit('clearCursorState'))
