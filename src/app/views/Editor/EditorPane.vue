@@ -45,11 +45,12 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
-import { Getter } from 'vuex-class'
+import { Getter, Mutation } from 'vuex-class'
 import MonacoEditor from '@editor/MonacoEditor.vue'
 import { Editor, Languages } from '&/editor'
 import { IStorySample } from '&/StorySample'
 import StoryscriptSLS from '@editor-plugin-sls'
+import StoryscriptError from '@editor-plugin-error'
 
 @Component({
   name: 'EditorPane',
@@ -61,10 +62,15 @@ export default class EditorPane extends Vue {
   @Getter('getPayload')
   private payload!: IStorySample
 
+  @Mutation('clearErrorState')
+  private clearErrorState!: () => void
+
   @Watch('payload', { immediate: true })
   private onPayloadUpdate () {
     this.editors.splice(0, this.editors.length)
-    this.editors.push(new Editor(Languages.Storyscript, this.payload.code, { readOnly: false }, [new StoryscriptSLS()]))
+    this.clearErrorState()
+    const plugins = [new StoryscriptError(this.$monaco.editor), new StoryscriptSLS()]
+    this.editors.push(new Editor(Languages.Storyscript, this.payload.code, { readOnly: false }, plugins))
   }
 }
 </script>
