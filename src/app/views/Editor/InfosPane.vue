@@ -1,5 +1,8 @@
 <template>
-  <div id="infos-pane">
+  <div
+    id="infos-pane"
+    class="max-w-pane mr-1 relative"
+  >
     <s-text
       p="4"
       weight="medium"
@@ -17,10 +20,8 @@
       }"
       class="transition-all-fastest"
     >
-      <div class="flex flex-row absolute w-fit-content min-w-brick max-w-pane bg-white border border-solid border-red-30 rounded-lg shadow-sm p-1">
-        <div
-          class="rounded-2xl border-red-60 border-2 mr-2 h-8"
-        />
+      <div class="flex flex-row absolute w-full bg-white border border-solid border-red-30 rounded-lg shadow-sm p-1">
+        <div class="rounded-full border-red-60 border-2 mr-2 h-8" />
         <s-text
           p="2"
           weight="medium"

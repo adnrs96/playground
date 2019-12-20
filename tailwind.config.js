@@ -131,7 +131,6 @@ module.exports = {
         sm: '.25rem',
         md: '.3125rem',
         xl: '.4375rem',
-        '2xl': '1.5rem',
         '3xl': '1.875rem'
       },
       spacing: {
@@ -159,9 +158,6 @@ module.exports = {
       maxWidth: {
         xxs: '10rem',
         pane: '16rem'
-      },
-      minWidth: {
-        brick: '20rem'
       }
     },
     letterSpacing: {
