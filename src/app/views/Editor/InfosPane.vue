@@ -4,6 +4,7 @@
     class="max-w-pane mr-1 relative"
   >
     <s-text
+      id="infos-counter"
       p="4"
       weight="medium"
       align="center"
@@ -16,6 +17,7 @@
     <div
       v-for="error in errors"
       :key="`error-brick-${error.line}-${error.msg}`"
+      :name="`error-brick-${error.line}-${error.msg}`"
       :style="{
         marginTop: error.relativeTop + error.editorTop - 43 + 'px',
         marginLeft: cursorLine === error.line? '-2rem': 'unset'
