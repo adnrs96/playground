@@ -36,7 +36,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { Getter } from 'vuex-class'
-import { ISLSError } from '@app/store/modules/InfosPane'
+import { ISLSError } from '@app/store/modules/EditorErrors'
 
 @Component({
   name: 'InfosPane'

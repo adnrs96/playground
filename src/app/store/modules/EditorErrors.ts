@@ -1,10 +1,15 @@
 export interface ISLSError {
-    msg: string,
-    line: number,
-    relativeTop: number
+  msg: string,
+  line: number,
+  relativeTop: number
 }
 
-const state = {
+export interface ISLSErrorState {
+  errors: ISLSError[],
+  cursorLine: number
+}
+
+const state: ISLSErrorState = {
   errors: [] as ISLSError[],
   cursorLine: -1
 }
