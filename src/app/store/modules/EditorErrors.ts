@@ -1,7 +1,8 @@
 export interface ISLSError {
   msg: string,
   line: number,
-  relativeTop: number
+  relativeTop: number,
+  editorTop: number
 }
 
 export interface ISLSErrorState {

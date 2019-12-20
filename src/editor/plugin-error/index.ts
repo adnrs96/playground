@@ -20,7 +20,9 @@ export class StoryscriptError implements EditorPlugin {
         if (markers.length > 0) {
           const sln = markers[0].startLineNumber
           const errorMsg = markers[0].message
-          store.commit('setSLSErrors', [{ msg: errorMsg, line: sln, relativeTop: editor.getTopForLineNumber(sln) }])
+          const editorTop = editor.getDomNode()!.offsetTop
+          store.commit('setSLSErrors',
+            [{ msg: errorMsg, line: sln, relativeTop: editor.getTopForLineNumber(sln), editorTop: editorTop }])
         } else {
           store.commit('clearErrorState')
         }

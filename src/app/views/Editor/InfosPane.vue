@@ -11,11 +11,13 @@
     >
       0 Suggestions, {{ errors.length }} Error
     </s-text>
+    <!-- We use 43px static offset here to account for difference from where top is being measured -->
+    <!-- Ideally we should in future do this offset calculation dynamically -->
     <div
       v-for="error in errors"
       :key="`error-brick-${error.line}-${error.msg}`"
       :style="{
-        marginTop: error.relativeTop + 26 + 'px',
+        marginTop: error.relativeTop + error.editorTop - 43 + 'px',
         marginLeft: cursorLine === error.line? '-2rem': 'unset'
       }"
       class="transition-all-fastest"
