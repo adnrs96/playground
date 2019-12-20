@@ -36,6 +36,7 @@ describe('EditorErrors', () => {
   it('should display a error card on error', async () => {
     expect.assertions(2)
     const context = await page.mainFrame().executionContext()
+    await page.waitFor(2500)
     await context.evaluateHandle('monaco.editor.getModels()[0].setValue("http")')
     // Long wait here since API call involved.
     await page.waitFor(2500)
